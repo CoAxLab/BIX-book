@@ -1,0 +1,7 @@
+format: jb-book
+root: intro
+
+parts:
+  - caption: Smart little bacteria
+    chapters:
+    - file: notebooks/getting-started

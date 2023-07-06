@@ -1,0 +1,26 @@
+#######################################################################################
+# A default configuration that will be loaded for all jupyter books
+# See the documentation for help and more options:
+# https://jupyterbook.org/customize/config.html
+
+#######################################################################################
+# Book settings
+title                       : Data explorations 
+author                      : Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, Fiona Horner
+copyright                   : "2023"  
+logo                        : imgs/information.png
+
+# Don't execute.
+execute:
+  execute_notebooks         : off
+
+# Information about where the book exists on the web
+repository:
+  url                       : https://github.com/CoAxLab/Data-Explorations
+  path_to_book              : book/
+  branch                    : main
+
+# only_build_toc_files        : true
+launch_buttons:
+  colab_url: "https://colab.research.google.com"
+  binderhub_url: "https://mybinder.org"

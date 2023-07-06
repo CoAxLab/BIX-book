@@ -1,0 +1,26 @@
+#######################################################################################
+# A default configuration that will be loaded for all jupyter books
+# See the documentation for help and more options:
+# https://jupyterbook.org/customize/config.html
+
+#######################################################################################
+# Book settings
+title                       : Biologically Intelligent eXploration (BIX)
+author                      : Timothy Verstynen, Erik Peterson, Matthew Clapp, Jack Burgess
+copyright                   : "2023"  
+logo                        : imgs/levy-flight.png
+
+# Don't execute.
+execute:
+  execute_notebooks         : off
+
+# Information about where the book exists on the web
+repository:
+  url                       : https://github.com/CoAxLab/BIX-book
+  path_to_book              : book/
+  branch                    : main
+
+# only_build_toc_files        : true
+launch_buttons:
+  colab_url: "https://colab.research.google.com"
+  binderhub_url: "https://mybinder.org"

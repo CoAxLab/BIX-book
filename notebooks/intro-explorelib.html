@@ -310,6 +310,21 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#step-1">
    Step 1
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#install-explorationlib">
+     Install
+     <em>
+      explorationlib
+     </em>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-some-modules">
+     Import some modules
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -334,6 +349,21 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#step-1">
    Step 1
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#install-explorationlib">
+     Install
+     <em>
+      explorationlib
+     </em>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-some-modules">
+     Import some modules
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -355,16 +385,96 @@ title="Print to PDF"
 <p>Use the button to open this assignment in a colab. Once it is open, if it is open, run all the cells. Read each cell, then run it, that is. This simple test of the colab is also a good but basic introduction to <em>explorationlib</em>, which is the basis for all the experiments and assignments you will see.</p>
 <p>If there are no errors, celebrate and consider <em>this</em> assignment complete.</p>
 <p><em>Note:</em> I assume that you, reader, are familiar with python programming already. If you are not, see the <em>Introduction to python</em> assignment.</p>
+<section id="install-explorationlib">
+<h3>Install <em>explorationlib</em><a class="headerlink" href="#install-explorationlib" title="Permalink to this heading">#</a></h3>
+<p>Colab’s come with many of the libraries we will need. It does not come with <em>explorationlib</em>. It’s a module we will be using, and was written to support this book. Let’s Install it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># (The magic &#39;%&#39; below will put the plot nicely in place)</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline 
-
-<span class="c1"># Put your code here.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/coaxlab/explorationlib
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/MattChanTK/gym-maze.git
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>celluloid<span class="w"> </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>gifs
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="import-some-modules">
+<h3>Import some modules<a class="headerlink" href="#import-some-modules" title="Permalink to this heading">#</a></h3>
+<p>Now let’s import some modules from the standard library. These are just some general purpose tools we will use.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we can import modules that are common to scientific programming in python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next let’s grab a bunch of functions from <em>explorationlib</em> to play with. If our install using <em>pip</em> above worked out, this next cell should run without error.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All the explorers we will play with are called</span>
+<span class="c1"># &quot;agents&quot;; a bit of computer science jargon</span>
+<span class="kn">from</span> <span class="nn">explorationlib</span> <span class="kn">import</span> <span class="n">agent</span>
+
+<span class="c1"># The environments we will simulate live in a &quot;gym&quot;</span>
+<span class="kn">from</span> <span class="nn">explorationlib</span> <span class="kn">import</span> <span class="n">local_gym</span> <span class="k">as</span> <span class="n">gym</span>
+
+<span class="c1"># Computational experiments are run with &#39;experiment&#39;</span>
+<span class="kn">from</span> <span class="nn">explorationlib.run</span> <span class="kn">import</span> <span class="n">experiment</span>
+
+<span class="c1"># Here are some tools to select, save, and load</span>
+<span class="c1"># data from computational experiments</span>
+<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">select_exp</span>
+<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">load</span>
+<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">save</span>
+
+<span class="c1"># A bunch of tools for plotting and for</span>
+<span class="c1"># movie making</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_position2d</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_length_hist</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_length</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_targets2d</span>
+<span class="c1">#from explorationlib.plot import render_2d</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">show_gif</span>
+
+<span class="c1"># A couple metrics for scoring how well, or poorly,</span>
+<span class="c1"># an exploration experiment went.</span>
+<span class="kn">from</span> <span class="nn">explorationlib.score</span> <span class="kn">import</span> <span class="n">search_efficiency</span>
+<span class="kn">from</span> <span class="nn">explorationlib.score</span> <span class="kn">import</span> <span class="n">total_reward</span>
+<span class="c1">#from explorationlib.score import average_reward</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before we go too far, let’s do some work to make the plots look nicer.  We don’t <em>have</em> to do this, but having clear data visualization helps us better understand our results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format=&#39;retina&#39;
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;16&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, let’s set up some better autocomplete and development tools in our notebooks. Again, optional. If this errors out, you might consider skipping it.</p>
+</section>
 </section>
 </section>
 

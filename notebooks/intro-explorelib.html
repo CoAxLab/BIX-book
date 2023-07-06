@@ -1,0 +1,811 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to explorationlib - Lab &#8212; Biologically Intelligent eXploration (BIX)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/intro-explorelib';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Exercise 1: Github &amp; Colab" href="../exercises/getting-started.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/levy-flight.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/levy-flight.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Biologically Intelligent eXploration (BIX)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting the basics down</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro-python.html">Introduction to python</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to <em>explorationlib</em> - Lab</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/CoAxLab/BIX-book/main?urlpath=tree/book/notebooks/intro-explorelib.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/CoAxLab/BIX-book/blob/main/book/notebooks/intro-explorelib.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/intro-explorelib.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to explorationlib - Lab</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction to <em>explorationlib</em> - Lab</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#take-this-over-to-colab">Take this over to Colab</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-explorationlib">Install <em>explorationlib</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-some-modules">Import some modules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-space-for-the-data">Make a space for the data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-make-some-baceria">Let’s make some baceria!</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiate">Instantiate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run">Run</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot">Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#score">Score</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#direction">Direction:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question">Question:</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-explorationlib-lab">
+<h1>Introduction to <em>explorationlib</em> - Lab<a class="headerlink" href="#introduction-to-explorationlib-lab" title="Permalink to this heading">#</a></h1>
+<p>This section has two goals. First to get you familiar with the python library used throughout to simulate and explore exploration. Second, is to get familiar with running that code online using Google’s colaboratory.</p>
+<p>Google colab is a simple free way to run python code. See the <em>python</em> chapter for more on it. Most of the chapters and assignments in this book have a button to open in colab. This notebook is a simple compact test for all the others. A quick way to make sure the rest should work.</p>
+<p>This section has two assignments.</p>
+<section id="take-this-over-to-colab">
+<h2>Take this over to Colab<a class="headerlink" href="#take-this-over-to-colab" title="Permalink to this heading">#</a></h2>
+<p>Use the button to open this assignment in a colab. Once it is open, if it is open, run all the cells. Read each cell, then run it, that is. This simple test of the colab is also a good but basic introduction to <em>explorationlib</em>, which is the basis for all the experiments and assignments you will see.</p>
+<p>If there are no errors, celebrate and consider <em>this</em> assignment complete.</p>
+<p><em>Note:</em> I assume that you, reader, are familiar with python programming already. If you are not, see the <em>Introduction to python</em> assignment.</p>
+<section id="install-explorationlib">
+<h3>Install <em>explorationlib</em><a class="headerlink" href="#install-explorationlib" title="Permalink to this heading">#</a></h3>
+<p>Colab’s come with many of the libraries we will need. It does not come with <em>explorationlib</em>. It’s a module we will be using, and was written to support this book. Let’s Install it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/coaxlab/explorationlib
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/MattChanTK/gym-maze.git
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>celluloid<span class="w"> </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>gifs
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">DEPRECATION: Configuring installation scheme with distutils config files is deprecated and will no longer work in the near future. If you are using a Homebrew or Linuxbrew Python, please see discussion at https://github.com/Homebrew/homebrew-core/issues/76621</span>
+Collecting git+https://github.com/coaxlab/explorationlib
+  Cloning https://github.com/coaxlab/explorationlib to /private/var/folders/6_/rrkxrwx90sb8r8dskz3syftm0000gp/T/pip-req-build-3xi_omew
+  Running command git clone --filter=blob:none --quiet https://github.com/coaxlab/explorationlib /private/var/folders/6_/rrkxrwx90sb8r8dskz3syftm0000gp/T/pip-req-build-3xi_omew
+  Resolved https://github.com/coaxlab/explorationlib to commit 9b55c9a590a2d7e229a3d7b452fc4347427fa882
+  Preparing metadata (setup.py) ... ?25ldone
+?25h<span class=" -Color -Color-Yellow">DEPRECATION: Configuring installation scheme with distutils config files is deprecated and will no longer work in the near future. If you are using a Homebrew or Linuxbrew Python, please see discussion at https://github.com/Homebrew/homebrew-core/issues/76621</span>
+<span class=" -Color -Color-Yellow">DEPRECATION: Configuring installation scheme with distutils config files is deprecated and will no longer work in the near future. If you are using a Homebrew or Linuxbrew Python, please see discussion at https://github.com/Homebrew/homebrew-core/issues/76621</span>
+Collecting git+https://github.com/MattChanTK/gym-maze.git
+  Cloning https://github.com/MattChanTK/gym-maze.git to /private/var/folders/6_/rrkxrwx90sb8r8dskz3syftm0000gp/T/pip-req-build-txl41yts
+  Running command git clone --filter=blob:none --quiet https://github.com/MattChanTK/gym-maze.git /private/var/folders/6_/rrkxrwx90sb8r8dskz3syftm0000gp/T/pip-req-build-txl41yts
+  Resolved https://github.com/MattChanTK/gym-maze.git to commit 83176811b49b5538a6213520612f44fb1bc49114
+  Preparing metadata (setup.py) ... ?25ldone
+?25hRequirement already satisfied: gym in /opt/homebrew/lib/python3.9/site-packages (from gym-maze==0.4) (0.26.1)
+Requirement already satisfied: pygame in /opt/homebrew/lib/python3.9/site-packages (from gym-maze==0.4) (2.1.2)
+Requirement already satisfied: numpy in /opt/homebrew/lib/python3.9/site-packages (from gym-maze==0.4) (1.23.3)
+Requirement already satisfied: cloudpickle&gt;=1.2.0 in /opt/homebrew/lib/python3.9/site-packages (from gym-&gt;gym-maze==0.4) (2.2.0)
+Requirement already satisfied: gym-notices&gt;=0.0.4 in /opt/homebrew/lib/python3.9/site-packages (from gym-&gt;gym-maze==0.4) (0.0.8)
+Requirement already satisfied: importlib-metadata&gt;=4.8.0 in /opt/homebrew/lib/python3.9/site-packages (from gym-&gt;gym-maze==0.4) (4.12.0)
+Requirement already satisfied: zipp&gt;=0.5 in /opt/homebrew/lib/python3.9/site-packages (from importlib-metadata&gt;=4.8.0-&gt;gym-&gt;gym-maze==0.4) (3.8.1)
+<span class=" -Color -Color-Yellow">DEPRECATION: Configuring installation scheme with distutils config files is deprecated and will no longer work in the near future. If you are using a Homebrew or Linuxbrew Python, please see discussion at https://github.com/Homebrew/homebrew-core/issues/76621</span>
+<span class=" -Color -Color-Yellow">DEPRECATION: Configuring installation scheme with distutils config files is deprecated and will no longer work in the near future. If you are using a Homebrew or Linuxbrew Python, please see discussion at https://github.com/Homebrew/homebrew-core/issues/76621</span>
+Requirement already satisfied: celluloid in /opt/homebrew/lib/python3.9/site-packages (0.2.0)
+Requirement already satisfied: matplotlib in /opt/homebrew/lib/python3.9/site-packages (from celluloid) (3.7.1)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /opt/homebrew/lib/python3.9/site-packages (from matplotlib-&gt;celluloid) (1.1.0)
+Requirement already satisfied: cycler&gt;=0.10 in /opt/homebrew/lib/python3.9/site-packages (from matplotlib-&gt;celluloid) (0.11.0)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /opt/homebrew/lib/python3.9/site-packages (from matplotlib-&gt;celluloid) (4.40.0)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /opt/homebrew/lib/python3.9/site-packages (from matplotlib-&gt;celluloid) (1.4.4)
+Requirement already satisfied: numpy&gt;=1.20 in /opt/homebrew/lib/python3.9/site-packages (from matplotlib-&gt;celluloid) (1.23.3)
+Requirement already satisfied: packaging&gt;=20.0 in /opt/homebrew/lib/python3.9/site-packages (from matplotlib-&gt;celluloid) (21.3)
+Requirement already satisfied: pillow&gt;=6.2.0 in /opt/homebrew/lib/python3.9/site-packages (from matplotlib-&gt;celluloid) (10.0.0)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in /opt/homebrew/lib/python3.9/site-packages (from matplotlib-&gt;celluloid) (3.0.9)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /opt/homebrew/lib/python3.9/site-packages (from matplotlib-&gt;celluloid) (2.8.2)
+Requirement already satisfied: importlib-resources&gt;=3.2.0 in /opt/homebrew/lib/python3.9/site-packages (from matplotlib-&gt;celluloid) (5.12.0)
+Requirement already satisfied: zipp&gt;=3.1.0 in /opt/homebrew/lib/python3.9/site-packages (from importlib-resources&gt;=3.2.0-&gt;matplotlib-&gt;celluloid) (3.8.1)
+Requirement already satisfied: six&gt;=1.5 in /opt/homebrew/lib/python3.9/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;celluloid) (1.16.0)
+<span class=" -Color -Color-Yellow">DEPRECATION: Configuring installation scheme with distutils config files is deprecated and will no longer work in the near future. If you are using a Homebrew or Linuxbrew Python, please see discussion at https://github.com/Homebrew/homebrew-core/issues/76621</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="import-some-modules">
+<h3>Import some modules<a class="headerlink" href="#import-some-modules" title="Permalink to this heading">#</a></h3>
+<p>Now let’s import some modules from the standard library. These are just some general purpose tools we will use.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we can import modules that are common to scientific programming in python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next let’s grab a bunch of functions from <em>explorationlib</em> to play with. If our install using <em>pip</em> above worked out, this next cell should run without error.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All the explorers we will play with are called</span>
+<span class="c1"># &quot;agents&quot;; a bit of computer science jargon</span>
+<span class="kn">from</span> <span class="nn">explorationlib</span> <span class="kn">import</span> <span class="n">agent</span>
+
+<span class="c1"># The environments we will simulate live in a &quot;gym&quot;</span>
+<span class="kn">from</span> <span class="nn">explorationlib</span> <span class="kn">import</span> <span class="n">local_gym</span> <span class="k">as</span> <span class="n">gym</span>
+
+<span class="c1"># Computational experiments are run with &#39;experiment&#39;</span>
+<span class="kn">from</span> <span class="nn">explorationlib.run</span> <span class="kn">import</span> <span class="n">experiment</span>
+
+<span class="c1"># Here are some tools to select, save, and load</span>
+<span class="c1"># data from computational experiments</span>
+<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">select_exp</span>
+<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">load</span>
+<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">save</span>
+
+<span class="c1"># A bunch of tools for plotting and for</span>
+<span class="c1"># movie making</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_position2d</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_length_hist</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_length</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_targets2d</span>
+<span class="c1">#from explorationlib.plot import render_2d</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">show_gif</span>
+
+<span class="c1"># A couple metrics for scoring how well, or poorly,</span>
+<span class="c1"># an exploration experiment went.</span>
+<span class="kn">from</span> <span class="nn">explorationlib.score</span> <span class="kn">import</span> <span class="n">search_efficiency</span>
+<span class="kn">from</span> <span class="nn">explorationlib.score</span> <span class="kn">import</span> <span class="n">total_reward</span>
+<span class="c1">#from explorationlib.score import average_reward</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before we go too far, let’s do some work to make the plots look nicer.  We don’t <em>have</em> to do this, but having clear data visualization helps us better understand our results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format=&#39;retina&#39;
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;16&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, let’s set up some better autocomplete and development tools in our notebooks. Again, optional. If this errors out, you might consider skipping it.</p>
+</section>
+<section id="make-a-space-for-the-data">
+<h3>Make a space for the data<a class="headerlink" href="#make-a-space-for-the-data" title="Permalink to this heading">#</a></h3>
+<p>Make a folder called “data” to keep experimental data in. We will use it for all our examples.</p>
+<p><strong>WARNING</strong> When running in a colab, anything you save to “data/” will be lost as soon as you shutdown the colab. This is ok for now. We will cover ways to save your data permanently later on.</p>
+<p>if not os.path.exists(“data”):
+os.makedirs(“data”)</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="let-s-make-some-baceria">
+<h1>Let’s make some baceria!<a class="headerlink" href="#let-s-make-some-baceria" title="Permalink to this heading">#</a></h1>
+<p>Now we want to run a simple experiment using <em>explorationlib</em>. We will simpulate a simple bacteria agent wandering a small environment with “food” resources that are detectable by scents (though our toy animal has no sensory abilities yet).</p>
+<ol class="arabic simple">
+<li><p>Instantiate a random walker, in a small 2d box environment, with walls and a lot of targets to find when exploring. Each target should have a value of ‘1’.</p></li>
+<li><p>Run an experiment, for 200 steps.</p></li>
+<li><p>Plot the env, target, the agents path in the experiment.</p></li>
+<li><p>Make a movie of experiment.</p></li>
+<li><p>Score the agent, and reward (targets), and its efficiency.</p></li>
+</ol>
+<section id="instantiate">
+<h2>Instantiate<a class="headerlink" href="#instantiate" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameters</span>
+<span class="n">exp_name</span> <span class="o">=</span> <span class="s2">&quot;data/explorationlib_a1.pkl&quot;</span>   <span class="c1"># all experiments need names</span>
+<span class="n">num_experiments</span> <span class="o">=</span> <span class="mi">1</span>             <span class="c1"># we only want to run one experiment</span>
+<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">200</span>                 <span class="c1"># how many exploration steps in space?</span>
+
+<span class="n">scale</span> <span class="o">=</span> <span class="mi">2</span>             <span class="c1"># The noise scale; the diffusion constant</span>
+<span class="n">detection_radius</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># How far can the agent see?</span>
+<span class="n">boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>   <span class="c1"># a 2d world, 10 by 10</span>
+<span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;stopping&quot;</span>     <span class="c1"># stop when we hit a wall</span>
+<span class="n">num_targets</span> <span class="o">=</span> <span class="mi">100</span>     <span class="c1"># how many thingss to &quot;eat&quot;?</span>
+
+<span class="c1"># Setup targets. Targets are an abstraction for the</span>
+<span class="c1"># thing we are exploring to find. For now, all targets</span>
+<span class="c1"># are just the number 1 placed randomly about.</span>
+<span class="n">targets</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">uniform_targets</span><span class="p">(</span><span class="n">num_targets</span><span class="p">,</span> <span class="n">boundary</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">constant_values</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Setup agent and env</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">Bounded</span><span class="p">(</span><span class="n">boundary</span><span class="o">=</span><span class="n">boundary</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">add_targets</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="n">brownian</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">Diffusion2d</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run">
+<h2>Run<a class="headerlink" href="#run" title="Permalink to this heading">#</a></h2>
+<p>(If you’ve been playing with this notebook for a while, then clear the old output first.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cleanup old versions</span>
+<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">exp_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run!</span>
+<span class="n">exp_data</span> <span class="o">=</span> <span class="n">experiment</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;brownian&quot;</span><span class="p">,</span>
+    <span class="n">brownian</span><span class="p">,</span>
+    <span class="n">env</span><span class="p">,</span>
+    <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">,</span>
+    <span class="n">num_experiments</span><span class="o">=</span><span class="n">num_experiments</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="mi">59393</span><span class="p">,</span>
+    <span class="n">dump</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "eb0c6de8627347eb96a31ba2575a8cb4"}</script></div>
+</div>
+</section>
+<section id="plot">
+<h2>Plot<a class="headerlink" href="#plot" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the 2d env, and the targets (black dots)</span>
+<span class="n">plot_targets2d</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">boundary</span><span class="o">=</span><span class="n">boundary</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Simple box&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Simple box&#39;}, xlabel=&#39;x&#39;, ylabel=&#39;y&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/5368965f32dc4683ce26a888c72b12f10abc254e3a00cc48e38110d0822e24e7.png" src="../_images/5368965f32dc4683ce26a888c72b12f10abc254e3a00cc48e38110d0822e24e7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the positions the agent took during its</span>
+<span class="c1"># random walk, and the targets (this time in red)</span>
+<span class="c1">#</span>
+<span class="c1"># Note: there are quite a few parameters you can play</span>
+<span class="c1"># with to change the size of the plot, colors, and so on.</span>
+<span class="c1"># See `explorationlib.plot` for all the options</span>
+
+<span class="c1"># View size</span>
+<span class="n">plot_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># Agent</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_position2d</span><span class="p">(</span>
+    <span class="n">select_exp</span><span class="p">(</span><span class="n">exp_data</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Brownian&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Brownian Exp.&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;brown&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_targets2d</span><span class="p">(</span>
+    <span class="n">env</span><span class="p">,</span>
+    <span class="n">boundary</span><span class="o">=</span><span class="n">boundary</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Targets&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/60c9813ddbaf8d827d2522557b2cc65489088195115505ae531b3eaf03c10633.png" src="../_images/60c9813ddbaf8d827d2522557b2cc65489088195115505ae531b3eaf03c10633.png" />
+</div>
+</div>
+</section>
+<section id="score">
+<h2>Score<a class="headerlink" href="#score" title="Permalink to this heading">#</a></h2>
+<p>Now we can quantify our animal’s behavior.</p>
+</section>
+<section id="direction">
+<h2>Direction:<a class="headerlink" href="#direction" title="Permalink to this heading">#</a></h2>
+<p>Go back to the top of this section, and run it again. Each time you do you should generate a new exploration. You’ll get different rewards and efficiency each time as well.</p>
+</section>
+<section id="question">
+<h2>Question:<a class="headerlink" href="#question" title="Permalink to this heading">#</a></h2>
+<p>How much variation do you see from run to run? More to the point, if this was how you <em>had</em> to explore the world, how well do you think you’d do?</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../exercises/getting-started.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Exercise 1: Github &amp; Colab</strong></p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction to <em>explorationlib</em> - Lab</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#take-this-over-to-colab">Take this over to Colab</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-explorationlib">Install <em>explorationlib</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-some-modules">Import some modules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-space-for-the-data">Make a space for the data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-make-some-baceria">Let’s make some baceria!</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiate">Instantiate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run">Run</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot">Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#score">Score</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#direction">Direction:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question">Question:</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Timothy Verstynen, Erik Peterson, Matthew Clapp, Jack Burgess
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

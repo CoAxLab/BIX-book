@@ -380,7 +380,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run">Run</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot">Plot</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#score">Score</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#play">Play</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1">Question 1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2">Question 1.2</a></li>
 </ul>
 </li>
 </ul>
@@ -425,43 +427,12 @@ document.write(`
 <p><em>Note:</em> I assume that you, reader, are familiar with python programming already. If you are not, see the <em>Introduction to python</em> assignment.</p>
 <section id="install-explorationlib">
 <h3>Install <em>explorationlib</em><a class="headerlink" href="#install-explorationlib" title="Permalink to this heading">#</a></h3>
-<p>Colab’s come with many of the libraries we will need. It does not come with <em>explorationlib</em>. It’s a module we will be using, and was written to support this book. Let’s Install it.</p>
+<p>Colab comes with many of the libraries we will need. It does not come with <em>explorationlib</em>. It’s a module we will be using, and was written to support this book. Let’s Install it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/coaxlab/explorationlib
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/MattChanTK/gym-maze.git
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>celluloid<span class="w"> </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>gifs
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting git+https://github.com/coaxlab/explorationlib
-  Cloning https://github.com/coaxlab/explorationlib to /tmp/pip-req-build-0jutvdej
-  Running command git clone --filter=blob:none --quiet https://github.com/coaxlab/explorationlib /tmp/pip-req-build-0jutvdej
-  Resolved https://github.com/coaxlab/explorationlib to commit 9b55c9a590a2d7e229a3d7b452fc4347427fa882
-  Preparing metadata (setup.py) ... ?25l?25hdone
-Collecting git+https://github.com/MattChanTK/gym-maze.git
-  Cloning https://github.com/MattChanTK/gym-maze.git to /tmp/pip-req-build-fm6w1yfr
-  Running command git clone --filter=blob:none --quiet https://github.com/MattChanTK/gym-maze.git /tmp/pip-req-build-fm6w1yfr
-  Resolved https://github.com/MattChanTK/gym-maze.git to commit 83176811b49b5538a6213520612f44fb1bc49114
-  Preparing metadata (setup.py) ... ?25l?25hdone
-Requirement already satisfied: gym in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (0.25.2)
-Requirement already satisfied: pygame in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (2.4.0)
-Requirement already satisfied: numpy in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (1.22.4)
-Requirement already satisfied: cloudpickle&gt;=1.2.0 in /usr/local/lib/python3.10/dist-packages (from gym-&gt;gym-maze==0.4) (2.2.1)
-Requirement already satisfied: gym-notices&gt;=0.0.4 in /usr/local/lib/python3.10/dist-packages (from gym-&gt;gym-maze==0.4) (0.0.8)
-Requirement already satisfied: celluloid in /usr/local/lib/python3.10/dist-packages (0.2.0)
-Requirement already satisfied: matplotlib in /usr/local/lib/python3.10/dist-packages (from celluloid) (3.7.1)
-Requirement already satisfied: contourpy&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (1.1.0)
-Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (0.11.0)
-Requirement already satisfied: fonttools&gt;=4.22.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (4.40.0)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (1.4.4)
-Requirement already satisfied: numpy&gt;=1.20 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (1.22.4)
-Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (23.1)
-Requirement already satisfied: pillow&gt;=6.2.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (8.4.0)
-Requirement already satisfied: pyparsing&gt;=2.3.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (3.1.0)
-Requirement already satisfied: python-dateutil&gt;=2.7 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (2.8.2)
-Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;celluloid) (1.16.0)
 </pre></div>
 </div>
 </div>
@@ -579,6 +550,7 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </ol>
 <section id="instantiate">
 <h3>Instantiate<a class="headerlink" href="#instantiate" title="Permalink to this heading">#</a></h3>
+<p>First we get things ready by specifying all of the relevaant parameters and objects.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameters</span>
@@ -609,6 +581,7 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </section>
 <section id="run">
 <h3>Run<a class="headerlink" href="#run" title="Permalink to this heading">#</a></h3>
+<p>We use the <em>experiment</em> function to exeucte the simulations.</p>
 <p>(If you’ve been playing with this notebook for a while, then clear the old output first.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -634,24 +607,17 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "bec159bb13e84b6f854d2b384c61aebe", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 </section>
 <section id="plot">
 <h3>Plot<a class="headerlink" href="#plot" title="Permalink to this heading">#</a></h3>
+<p><em>explorationlib</em> has a set of built in visualization functions that we loaded at the beginning. We’ll use a few here to see how our agents are doing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the 2d env, and the targets (black dots)</span>
 <span class="n">plot_targets2d</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">boundary</span><span class="o">=</span><span class="n">boundary</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Simple box&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Simple box&#39;}, xlabel=&#39;x&#39;, ylabel=&#39;y&#39;&gt;
-</pre></div>
-</div>
-<img alt="../_images/d74f52dba062f738ec90c8b1294affcc9b2b7b8616985f18f67ae3530ba348a7.png" src="../_images/d74f52dba062f738ec90c8b1294affcc9b2b7b8616985f18f67ae3530ba348a7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -689,14 +655,12 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/ae8200f843b95029733f9760b46445d2049742b19b6f89355779c428d3618399.png" src="../_images/ae8200f843b95029733f9760b46445d2049742b19b6f89355779c428d3618399.png" />
-</div>
 </div>
 </section>
 <section id="score">
 <h3>Score<a class="headerlink" href="#score" title="Permalink to this heading">#</a></h3>
 <p>Now we can quantify our animal’s behavior.</p>
+<p>First we will look at <em>total_reward</em>, which counts how many times the bacteria ran into a food target.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Total rewards (targets) collected</span>
@@ -704,12 +668,8 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "2cd15cc51ed94550ad4d4233a1167cf8", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[110.0]
-</pre></div>
 </div>
-</div>
-</div>
+<p>Next we will look at the efficiency of the search, which is just the number of movements taken by the bacteria over the number of food targets collected.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># How efficient (movements/target) was the search</span>
@@ -717,17 +677,26 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "333a15d29d77480db486b0cb20bedff6", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5.527638190954771]
-</pre></div>
 </div>
-</div>
-</div>
-<p>Nwo go back to the top of this section, change the random seed number in the cell where we ran the experiment, and run it again. Each time you do you should generate a new exploration. You’ll get different rewards and efficiency each time as well.</p>
+</section>
+<section id="play">
+<h3>Play<a class="headerlink" href="#play" title="Permalink to this heading">#</a></h3>
+<p>Go back to the top of this section, change the random seed number in the cell where we ran the experiment, and run it again. Each time you do you should generate a new exploration. You’ll get different rewards and efficiency each time as well.</p>
 </section>
 <section id="question-1-1">
 <h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h3>
 <p>How much variation do you see from run to run? More to the point, if this was how you <em>had</em> to explore the world, how well do you think you’d do?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-1-2">
+<h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this heading">#</a></h3>
+<p>Run the simulations as is a few more times, changing the random seed. Keep track of the two outcome measures, <em>total reward</em> and <em>search efficiency</em>. Now change the number of steps in each simulation (the <em>num_steps</em> parameter) to 400. How do the two outcome measures change?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
@@ -823,7 +792,9 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run">Run</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot">Plot</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#score">Score</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#play">Play</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1">Question 1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2">Question 1.2</a></li>
 </ul>
 </li>
 </ul>

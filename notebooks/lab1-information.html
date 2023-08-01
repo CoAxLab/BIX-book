@@ -177,7 +177,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../exercises/getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Homework 2: Signals and decisions</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise3-cbgt_and_info.html"><strong>Homework 3: CBGT decision-making and information concepts</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise4-foraging_and_rl.html"><strong>Homework 4: Foraging and reinforcement learning</strong></a></li>
 </ul>
 
     </div>
@@ -393,11 +396,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3">Question 2.3</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-3-transfer-entropy">Section 3 - Transfer entropy</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-1">Question 3.1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2">Question 3.2</a></li>
-</ul>
-</li>
 </ul>
             </nav>
         </div>
@@ -416,7 +414,6 @@ document.write(`
 <ol class="arabic simple">
 <li><p>Entropy</p></li>
 <li><p>Mutual information</p></li>
-<li><p>Transfer entropy</p></li>
 </ol>
 <section id="background">
 <h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
@@ -435,7 +432,6 @@ document.write(`
 <ul class="simple">
 <li><p>The <em>joint entropy</em> between two discrete random variables, <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, is just an expansion of the regular concept of entropy: <span class="math notranslate nohighlight">\(H(X, Y)= \sum_{x \in X} p(x,y) \log _2 p(x,y)^{-1}\)</span>.</p></li>
 <li><p>Note that in here, <span class="math notranslate nohighlight">\(p(x,y)\)</span> is the joint probability distribution between the variables.</p></li>
-<li><p>The joint information is always symmetircal, i.e., <span class="math notranslate nohighlight">\(H(X,Y) = H(Y,X)\)</span>.</p></li>
 <li><p>Expanding out from the rules of conditional probabilities (thank you Mr. Bayes), the joint entropy can be expanded as the product of the entropy of the primary variable and the conditional entropy of the two variables: <span class="math notranslate nohighlight">\(H(X,Y) = H(X) + H(Y|X)\)</span>. <em>Pay attention to the ordering of terms, it gets important later</em>.</p></li>
 </ul>
 </section>
@@ -496,18 +492,18 @@ document.write(`
 <span class="sd">    If neuron1 is not None, then this neuron is influenced by neuron1.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">spikes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
-    
+
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">):</span>
         <span class="n">firing_prob</span> <span class="o">=</span> <span class="n">base_firing_prob</span>
-        
+
         <span class="k">if</span> <span class="n">neuron1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">neuron1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">firing_prob</span> <span class="o">+=</span> <span class="n">influence</span>
-            
+
         <span class="n">firing_prob</span> <span class="o">+=</span> <span class="n">noise_level</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">firing_prob</span><span class="p">:</span>
             <span class="n">spikes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-            
+
     <span class="k">return</span> <span class="n">spikes</span>
 
 <span class="c1"># Simulate the two neurons</span>
@@ -536,7 +532,7 @@ document.write(`
     <span class="n">time_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">neuron1</span><span class="p">))</span> <span class="o">/</span> <span class="n">sampling_rate_hz</span>
 
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    
+
     <span class="c1"># Neuron 1</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">eventplot</span><span class="p">(</span><span class="n">time_points</span><span class="p">[</span><span class="n">neuron1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Neuron 1&quot;</span><span class="p">)</span>
@@ -725,135 +721,6 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="section-3-transfer-entropy">
-<h2>Section 3 - Transfer entropy<a class="headerlink" href="#section-3-transfer-entropy" title="Permalink to this heading">#</a></h2>
-<p>While mutual information reflects the information provided about <span class="math notranslate nohighlight">\(X\)</span> from <span class="math notranslate nohighlight">\(Y\)</span>, it is essentially symmetrical. But we have put a causal relationship in our simulated neurons: neuron 1 <em>influences</em> neuron 2. To get at this causal (in a statistical sense) relationship, we’ll want to estimate the <em>transfer entropy</em> instead.</p>
-<p>Recall that transfer entropy describes the statisitcal dependency between past states of a source signal and future states of the receiver signal. Specifically it captures how much information the source has transfered to the receiver: <span class="math notranslate nohighlight">\(T(X \rightarrow Y) = I(Y_{f} ; X_p | Y_p) = H(Y_f|Y_p) - H(Y_f|X_p, Y_p)\)</span></p>
-<p>Let’s begin by writting a function to calculate transfer entropy</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_transfer_entropy</span><span class="p">(</span><span class="n">neuron1</span><span class="p">,</span> <span class="n">neuron2</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Calculate the transfer entropy from neuron1 to neuron2.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">transfer_entropy</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">neuron1</span><span class="p">)):</span>
-        <span class="c1"># The states at time t</span>
-        <span class="n">x_t</span> <span class="o">=</span> <span class="n">neuron1</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">y_t</span> <span class="o">=</span> <span class="n">neuron2</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        
-        <span class="c1"># The state at time t+1</span>
-        <span class="n">y_t_plus_1</span> <span class="o">=</span> <span class="n">neuron2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-
-        <span class="c1"># The joint probabilities</span>
-        <span class="n">p_y_t_plus_1_y_t_x_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">neuron2</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="n">y_t_plus_1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">neuron2</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">y_t</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">neuron1</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">x_t</span><span class="p">))</span>
-        <span class="n">p_y_t_plus_1_y_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">neuron2</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="n">y_t_plus_1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">neuron2</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">y_t</span><span class="p">))</span>
-
-        <span class="c1"># Avoid division by zero</span>
-        <span class="k">if</span> <span class="n">p_y_t_plus_1_y_t</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="c1"># The conditional probabilities</span>
-            <span class="n">p_conditional_joint</span> <span class="o">=</span> <span class="n">p_y_t_plus_1_y_t_x_t</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">neuron2</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">y_t</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">neuron1</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">x_t</span><span class="p">))</span>
-            <span class="n">p_conditional</span> <span class="o">=</span> <span class="n">p_y_t_plus_1_y_t</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">neuron2</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">y_t</span><span class="p">)</span>
-
-            <span class="c1"># The contribution to the transfer entropy</span>
-            <span class="n">transfer_entropy</span> <span class="o">+=</span> <span class="n">p_y_t_plus_1_y_t_x_t</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">p_conditional_joint</span> <span class="o">/</span> <span class="n">p_conditional</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">transfer_entropy</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>In order to really see the causal effect let’s ramp up our influence to 0.9 and calculate the transfer entropy.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Time and rates</span>
-<span class="n">total_time_sec</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">sampling_rate_hz</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">n_samples</span> <span class="o">=</span> <span class="n">total_time_sec</span> <span class="o">*</span> <span class="n">sampling_rate_hz</span>
-
-<span class="c1"># Probabilities</span>
-<span class="n">base_firing_prob</span> <span class="o">=</span> <span class="mf">0.02</span>
-<span class="n">influence</span> <span class="o">=</span> <span class="mf">0.9</span>
-<span class="n">noise_level</span> <span class="o">=</span> <span class="mf">0.01</span>
-
-<span class="c1"># Simulate the two neurons</span>
-<span class="n">neuron1</span> <span class="o">=</span> <span class="n">simulate_neuron_spikes</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">base_firing_prob</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">noise_level</span><span class="p">)</span>
-<span class="n">neuron2</span> <span class="o">=</span> <span class="n">simulate_neuron_spikes</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">base_firing_prob</span><span class="p">,</span> <span class="n">influence</span><span class="p">,</span> <span class="n">noise_level</span><span class="p">,</span> <span class="n">neuron1</span><span class="p">)</span>
-
-<span class="c1"># Calculate and print the transfer entropy</span>
-<span class="n">transfer_entropy</span> <span class="o">=</span> <span class="n">calculate_transfer_entropy</span><span class="p">(</span><span class="n">neuron1</span><span class="p">,</span> <span class="n">neuron2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Transfer Entropy from Neuron 1 to Neuron 2: </span><span class="si">{</span><span class="n">transfer_entropy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Re-run the code cell above multiple times. What do you notice about the estimate of transfer entropy?</p>
-<p>Just to get a sense of what is going on, let’s look at our neurons’ behavior by plotting them. What do you see?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the plotting function</span>
-<span class="n">plot_spikes</span><span class="p">(</span><span class="n">neuron1</span><span class="p">,</span> <span class="n">neuron2</span><span class="p">,</span> <span class="n">sampling_rate_hz</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Okay, clearly there is something different between neuron 1 and neuron 2, but the transfer entropy measure is noisy. So let’s run a bunch of simulations and plot the results.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the number of simulations</span>
-<span class="n">T</span> <span class="o">=</span> <span class="mi">100</span>
-
-<span class="c1"># Initialize the list to hold transfer entropies</span>
-<span class="n">transfer_entropies</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="c1"># Run the simulation T times</span>
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
-    
-    <span class="c1"># Simulate the neurons</span>
-    <span class="n">neuron1</span> <span class="o">=</span> <span class="n">simulate_neuron_spikes</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">base_firing_prob</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">noise_level</span><span class="p">)</span>
-    <span class="n">neuron2</span> <span class="o">=</span> <span class="n">simulate_neuron_spikes</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">base_firing_prob</span><span class="p">,</span> <span class="n">influence</span><span class="p">,</span> <span class="n">noise_level</span><span class="p">,</span> <span class="n">neuron1</span><span class="p">)</span>
-    
-    <span class="c1"># Calculate and print the transfer entropy</span>
-    <span class="n">transfer_entropy</span> <span class="o">=</span> <span class="n">calculate_transfer_entropy</span><span class="p">(</span><span class="n">neuron1</span><span class="p">,</span> <span class="n">neuron2</span><span class="p">)</span>
-    <span class="n">transfer_entropies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">transfer_entropy</span><span class="p">)</span>
-
-<span class="c1"># Plot a histogram of the transfer entropies</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">transfer_entropies</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Histogram of Transfer Entropies&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Transfer Entropy&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Note that negative transfer entropies are a thing. This is okay. It means that the probability of neuron 2 spiking given that neuron 1 is spiking is lower than the probability that the neurons are independnet. This can sometimes when there are oscillations in the signal (in these simple Poisson process simulations, things that look like oscillation or cross-correlations, but aren’t really, can pop up).</p>
-<p>In any case, we should be looking at whether there is structure in the estimates of transfer entropy across simulations and whether it is different from zero. It is clear that we see structure in the transfer entropy from neuron 1 to neuron 2. What is this structure?</p>
-<section id="question-3-1">
-<h3>Question 3.1<a class="headerlink" href="#question-3-1" title="Permalink to this heading">#</a></h3>
-<p>Re-run the previous code cell, but switch the order of the neurons in the calculation of transfer entropy (i.e., estimate the entropy from neuron 2 to neuron 1). What do you see in the distribution of transfer entropy values and why?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="question-3-2">
-<h3>Question 3.2<a class="headerlink" href="#question-3-2" title="Permalink to this heading">#</a></h3>
-<p>Re-run the batch simulations above, but reduce the influence parameter back down to 0.03. Calculate the transfer entropy from neuron 1 to neuron 2 again. What do you see in the distribution of transfer entropy values and what does this tell you?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -941,11 +808,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1">Question 2.1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2">Question 2.2</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3">Question 2.3</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-3-transfer-entropy">Section 3 - Transfer entropy</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-1">Question 3.1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2">Question 3.2</a></li>
 </ul>
 </li>
 </ul>

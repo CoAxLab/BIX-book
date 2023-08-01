@@ -1,9 +1,0 @@
-format: jb-book
-root: intro
-
-parts:
-  - caption: Getting started
-    chapters:
-    - file: notebooks/intro-python
-      sections:
-      - file: exercises/getting-started

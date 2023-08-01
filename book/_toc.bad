@@ -1,0 +1,12 @@
+format: jb-book
+root: intro
+
+parts:
+  - caption: Getting the basics down
+    chapters:
+    - file: notebooks/intro-python
+    - file: notebooks/intro-explorelib
+  - caption: Building smarter bacteria
+
+
+

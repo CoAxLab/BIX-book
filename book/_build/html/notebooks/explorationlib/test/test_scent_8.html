@@ -1,0 +1,1020 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Testing - scents grid w/ noise - 8 &#8212; Biologically Intelligent eXploration (BIX)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/explorationlib/test/test_scent_8';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/levy-flight.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/levy-flight.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Biologically Intelligent eXploration (BIX)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro-python.html">Introduction to python</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lab1-information.html">Lab 1- Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab2-explorelib.html">Lab 2 - Introduction to <em>explorationlib</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab3-chemotaxis.html">Lab 3 - Chemotaxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab4-evidence_accumulation.html">Lab 4 - Evidence Accumulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab5-cbgt.html">Lab 5 - CBGT pathways</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../lab6-predator_prey.html">Lab 6 - Predator-prey dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab7-foraging.html">Lab 7 - Foraging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../exercises/exercise2-signals_and_decisions.html"><strong>Homework 2: Signals and decisions</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../exercises/exercise3-cbgt_and_info.html"><strong>Homework 3: CBGT decision-making and information concepts</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../exercises/exercise4-foraging_and_rl.html"><strong>Homework 4: Foraging and reinforcement learning</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/CoAxLab/BIX-book/main?urlpath=tree/book/notebooks/explorationlib/test/test_scent_8.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/CoAxLab/BIX-book/blob/main/book/notebooks/explorationlib/test/test_scent_8.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/explorationlib/test/test_scent_8.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Testing - scents grid w/ noise - 8</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Testing - scents grid w/ noise - 8</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shared-params-env-and-agents">Shared params, env, and agents</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#value-traces">Value traces</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="testing-scents-grid-w-noise-8">
+<h1>Testing - scents grid w/ noise - 8<a class="headerlink" href="#testing-scents-grid-w-noise-8" title="Permalink to this heading">#</a></h1>
+<p>RL algs, on the grid</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+
+<span class="kn">import</span> <span class="nn">explorationlib</span>
+<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">ScentGrid</span>
+
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">ActorCriticGrid</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">CriticGrid</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">SoftmaxActor</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">DiffusionGrid</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">GradientDiffusionGrid</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">AccumulatorGradientGrid</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">AccumulatorInfoGrid</span>
+
+<span class="kn">from</span> <span class="nn">explorationlib.run</span> <span class="kn">import</span> <span class="n">experiment</span>
+<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">select_exp</span>
+<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">load</span>
+<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">save</span>
+
+<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">uniform_targets</span>
+<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">constant_values</span>
+<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">ScentGrid</span>
+<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">create_grid_scent</span>
+<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">add_noise</span>
+<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">create_grid_scent_patches</span>
+
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_position2d</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_length_hist</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_length</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_targets2d</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_scent_grid</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_targets2d</span>
+
+<span class="kn">from</span> <span class="nn">explorationlib.score</span> <span class="kn">import</span> <span class="n">total_reward</span>
+<span class="kn">from</span> <span class="nn">explorationlib.score</span> <span class="kn">import</span> <span class="n">num_death</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pygame 2.0.1 (SDL 2.0.14, Python 3.6.7)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pretty plots</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format=&#39;retina&#39;
+<span class="o">%</span><span class="k">config</span> IPCompleter.greedy=True
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;16&quot;</span>
+
+<span class="c1"># Uncomment for local development</span>
+<span class="o">%</span><span class="k">load_ext</span> nb_black
+<span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 2;
+                var nbb_unformatted_code = "# Pretty plots\n%matplotlib inline\n%config InlineBackend.figure_format='retina'\n%config IPCompleter.greedy=True\n\nplt.rcParams[\"axes.facecolor\"] = \"white\"\nplt.rcParams[\"figure.facecolor\"] = \"white\"\nplt.rcParams[\"font.size\"] = \"16\"\n\n# Uncomment for local development\n%load_ext nb_black\n%load_ext autoreload\n%autoreload 2";
+                var nbb_formatted_code = "# Pretty plots\n%matplotlib inline\n%config InlineBackend.figure_format='retina'\n%config IPCompleter.greedy=True\n\nplt.rcParams[\"axes.facecolor\"] = \"white\"\nplt.rcParams[\"figure.facecolor\"] = \"white\"\nplt.rcParams[\"font.size\"] = \"16\"\n\n# Uncomment for local development\n%load_ext nb_black\n%load_ext autoreload\n%autoreload 2";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="shared-params-env-and-agents">
+<h1>Shared params, env, and agents<a class="headerlink" href="#shared-params-env-and-agents" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Noise and delete</span>
+<span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">noise_sigma</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="c1"># Shared </span>
+<span class="n">num_experiments</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">seed_value</span> <span class="o">=</span> <span class="mi">5838</span>
+
+<span class="c1"># ! (leave alone)</span>
+<span class="n">detection_radius</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">cog_mult</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">max_steps</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">min_length</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">num_targets</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># with 80 agents are more competitive!</span>
+<span class="n">target_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Targets</span>
+<span class="n">prng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
+<span class="n">targets</span> <span class="o">=</span> <span class="n">uniform_targets</span><span class="p">(</span><span class="n">num_targets</span><span class="p">,</span> <span class="n">target_boundary</span><span class="p">,</span> <span class="n">prng</span><span class="o">=</span><span class="n">prng</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">constant_values</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Scents</span>
+<span class="n">scents</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">targets</span><span class="p">)):</span>
+    <span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent_patches</span><span class="p">(</span>
+        <span class="n">target_boundary</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">scents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scent</span><span class="p">)</span>
+
+<span class="c1"># Env</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">ScentGrid</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">add_scents</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">scents</span><span class="p">,</span> <span class="n">noise_sigma</span><span class="o">=</span><span class="n">noise_sigma</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 3;
+                var nbb_unformatted_code = "# Noise and delete\np_scent = 0.1\nnoise_sigma = 0.5\n\n# Shared \nnum_experiments = 100\nnum_steps = 200\nseed_value = 5838\n\n# ! (leave alone)\ndetection_radius = 1\ncog_mult = 4\nmax_steps = 1\nmin_length = 1\nnum_targets = 20 # with 80 agents are more competitive!\ntarget_boundary = (10, 10)\n\n# Targets\nprng = np.random.RandomState(seed_value)\ntargets = uniform_targets(num_targets, target_boundary, prng=prng)\nvalues = constant_values(targets, 1)\n\n# Scents\nscents = []\nfor _ in range(len(targets)):\n    coord, scent = create_grid_scent_patches(\n        target_boundary, p=1.0, amplitude=1, sigma=2)\n    scents.append(scent)\n\n# Env\nenv = ScentGrid(mode=None)\nenv.seed(seed_value)\nenv.add_scents(targets, values, coord, scents, noise_sigma=noise_sigma)";
+                var nbb_formatted_code = "# Noise and delete\np_scent = 0.1\nnoise_sigma = 0.5\n\n# Shared\nnum_experiments = 100\nnum_steps = 200\nseed_value = 5838\n\n# ! (leave alone)\ndetection_radius = 1\ncog_mult = 4\nmax_steps = 1\nmin_length = 1\nnum_targets = 20  # with 80 agents are more competitive!\ntarget_boundary = (10, 10)\n\n# Targets\nprng = np.random.RandomState(seed_value)\ntargets = uniform_targets(num_targets, target_boundary, prng=prng)\nvalues = constant_values(targets, 1)\n\n# Scents\nscents = []\nfor _ in range(len(targets)):\n    coord, scent = create_grid_scent_patches(\n        target_boundary, p=1.0, amplitude=1, sigma=2\n    )\n    scents.append(scent)\n\n# Env\nenv = ScentGrid(mode=None)\nenv.seed(seed_value)\nenv.add_scents(targets, values, coord, scents, noise_sigma=noise_sigma)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bins = np.linspace(0, 2, 5)</span>
+<span class="n">possible_actions</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+
+<span class="n">critic</span> <span class="o">=</span> <span class="n">CriticGrid</span><span class="p">(</span><span class="n">default_value</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">actor</span> <span class="o">=</span> <span class="n">SoftmaxActor</span><span class="p">(</span><span class="n">num_actions</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">actions</span><span class="o">=</span><span class="n">possible_actions</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">rl</span> <span class="o">=</span> <span class="n">ActorCriticGrid</span><span class="p">(</span><span class="n">actor</span><span class="p">,</span> <span class="n">critic</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="c1"># !</span>
+<span class="n">rl_exp</span> <span class="o">=</span> <span class="n">experiment</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;rl&quot;</span><span class="p">,</span>
+    <span class="n">rl</span><span class="p">,</span>
+    <span class="n">env</span><span class="p">,</span>
+    <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">,</span>
+    <span class="n">num_experiments</span><span class="o">=</span><span class="n">num_experiments</span><span class="p">,</span>
+    <span class="n">dump</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">split_state</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="n">seed_value</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rl: 100%|██████████| 100/100 [00:16&lt;00:00,  6.23it/s]
+</pre></div>
+</div>
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 4;
+                var nbb_unformatted_code = "# bins = np.linspace(0, 2, 5)\npossible_actions = [(0, 1), (0, -1), (1, 0), (-1, 0)]\n\ncritic = CriticGrid(default_value=0.5)\nactor = SoftmaxActor(num_actions=4, actions=possible_actions, beta=6)\nrl = ActorCriticGrid(actor, critic, lr=0.1, gamma=0.1)\n\n# !\nrl_exp = experiment(\n    f\"rl\",\n    rl,\n    env,\n    num_steps=num_steps,\n    num_experiments=num_experiments,\n    dump=False,\n    split_state=True,\n    seed=seed_value\n)";
+                var nbb_formatted_code = "# bins = np.linspace(0, 2, 5)\npossible_actions = [(0, 1), (0, -1), (1, 0), (-1, 0)]\n\ncritic = CriticGrid(default_value=0.5)\nactor = SoftmaxActor(num_actions=4, actions=possible_actions, beta=6)\nrl = ActorCriticGrid(actor, critic, lr=0.1, gamma=0.1)\n\n# !\nrl_exp = experiment(\n    f\"rl\",\n    rl,\n    env,\n    num_steps=num_steps,\n    num_experiments=num_experiments,\n    dump=False,\n    split_state=True,\n    seed=seed_value,\n)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script></div>
+</div>
+<section id="value-traces">
+<h2>Value traces<a class="headerlink" href="#value-traces" title="Permalink to this heading">#</a></h2>
+<p>First and last</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rl_exp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;agent_reward_value&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rl_exp</span><span class="p">[</span><span class="mi">50</span><span class="p">][</span><span class="s2">&quot;agent_reward_value&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;50&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rl_exp</span><span class="p">[</span><span class="mi">99</span><span class="p">][</span><span class="s2">&quot;agent_reward_value&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;99&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fad880afe48&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/e3aed960aecf07910e3bcba4efb5bb1d660283c3b1e23d406a3dc6efab2c7d86.png" src="../../../_images/e3aed960aecf07910e3bcba4efb5bb1d660283c3b1e23d406a3dc6efab2c7d86.png" />
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 5;
+                var nbb_unformatted_code = "plt.plot(rl_exp[0][\"agent_reward_value\"], label=\"0\", color=\"grey\")\nplt.plot(rl_exp[50][\"agent_reward_value\"], label=\"50\", color=\"orange\", alpha=0.5)\nplt.plot(rl_exp[99][\"agent_reward_value\"], label=\"99\", color=\"orange\", alpha=1)\nplt.legend()";
+                var nbb_formatted_code = "plt.plot(rl_exp[0][\"agent_reward_value\"], label=\"0\", color=\"grey\")\nplt.plot(rl_exp[50][\"agent_reward_value\"], label=\"50\", color=\"orange\", alpha=0.5)\nplt.plot(rl_exp[99][\"agent_reward_value\"], label=\"99\", color=\"orange\", alpha=1)\nplt.legend()";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># rl_exp[0][&quot;exp_agent&quot;].critic.model.values()</span>
+<span class="n">plot_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># -</span>
+<span class="n">num_experiment</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_position2d</span><span class="p">(</span>
+    <span class="n">select_exp</span><span class="p">(</span><span class="n">rl_exp</span><span class="p">,</span> <span class="n">num_experiment</span><span class="p">),</span>
+    <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">num_experiment</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">num_experiment</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_position2d</span><span class="p">(</span>
+    <span class="n">select_exp</span><span class="p">(</span><span class="n">rl_exp</span><span class="p">,</span> <span class="n">num_experiment</span><span class="p">),</span>
+    <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">num_experiment</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">num_experiment</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_position2d</span><span class="p">(</span>
+    <span class="n">select_exp</span><span class="p">(</span><span class="n">rl_exp</span><span class="p">,</span> <span class="n">num_experiment</span><span class="p">),</span>
+    <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">num_experiment</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_targets2d</span><span class="p">(</span>
+    <span class="n">env</span><span class="p">,</span>
+    <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Targets&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/2470f72c999d71736a5faa16efc3d84e70c0295b9f75946608bb64fc30da7fa3.png" src="../../../_images/2470f72c999d71736a5faa16efc3d84e70c0295b9f75946608bb64fc30da7fa3.png" />
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 6;
+                var nbb_unformatted_code = "# rl_exp[0][\"exp_agent\"].critic.model.values()\nplot_boundary = (20, 20)\n\n# -\nnum_experiment = 0\nax = None\nax = plot_position2d(\n    select_exp(rl_exp, num_experiment),\n    boundary=plot_boundary,\n    label=f\"{num_experiment}\",\n    color=\"grey\",\n    alpha=0.6,\n    ax=ax,\n)\nnum_experiment = 50\nax = plot_position2d(\n    select_exp(rl_exp, num_experiment),\n    boundary=plot_boundary,\n    label=f\"{num_experiment}\",\n    color=\"orange\",\n    alpha=0.5,\n    ax=ax,\n)\nnum_experiment = 99\nax = plot_position2d(\n    select_exp(rl_exp, num_experiment),\n    boundary=plot_boundary,\n    label=f\"{num_experiment}\",\n    color=\"orange\",\n    alpha=1,\n    ax=ax,\n)\nax = plot_targets2d(\n    env,\n    boundary=plot_boundary,\n    color=\"black\",\n    alpha=1,\n    label=\"Targets\",\n    ax=ax,\n)";
+                var nbb_formatted_code = "# rl_exp[0][\"exp_agent\"].critic.model.values()\nplot_boundary = (20, 20)\n\n# -\nnum_experiment = 0\nax = None\nax = plot_position2d(\n    select_exp(rl_exp, num_experiment),\n    boundary=plot_boundary,\n    label=f\"{num_experiment}\",\n    color=\"grey\",\n    alpha=0.6,\n    ax=ax,\n)\nnum_experiment = 50\nax = plot_position2d(\n    select_exp(rl_exp, num_experiment),\n    boundary=plot_boundary,\n    label=f\"{num_experiment}\",\n    color=\"orange\",\n    alpha=0.5,\n    ax=ax,\n)\nnum_experiment = 99\nax = plot_position2d(\n    select_exp(rl_exp, num_experiment),\n    boundary=plot_boundary,\n    label=f\"{num_experiment}\",\n    color=\"orange\",\n    alpha=1,\n    ax=ax,\n)\nax = plot_targets2d(\n    env,\n    boundary=plot_boundary,\n    color=\"black\",\n    alpha=1,\n    label=\"Targets\",\n    ax=ax,\n)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Agents</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">DiffusionGrid</span><span class="p">(</span><span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">diff</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
+
+<span class="n">chemo</span> <span class="o">=</span> <span class="n">AccumulatorGradientGrid</span><span class="p">(</span>
+    <span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span> 
+    <span class="n">max_steps</span><span class="o">=</span><span class="n">max_steps</span><span class="p">,</span> 
+    <span class="n">drift_rate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
+    <span class="n">threshold</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">accumulate_sigma</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+<span class="n">chemo</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
+
+<span class="n">info</span> <span class="o">=</span> <span class="n">AccumulatorInfoGrid</span><span class="p">(</span>
+    <span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span> 
+    <span class="n">max_steps</span><span class="o">=</span><span class="n">max_steps</span><span class="p">,</span> 
+    <span class="n">drift_rate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
+    <span class="n">threshold</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">accumulate_sigma</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+<span class="n">info</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
+
+<span class="c1"># !</span>
+<span class="n">rand_exp</span> <span class="o">=</span> <span class="n">experiment</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;rand&quot;</span><span class="p">,</span>
+    <span class="n">diff</span><span class="p">,</span>
+    <span class="n">env</span><span class="p">,</span>
+    <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">,</span>
+    <span class="n">num_experiments</span><span class="o">=</span><span class="n">num_experiments</span><span class="p">,</span>
+    <span class="n">dump</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">split_state</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="n">seed_value</span>
+<span class="p">)</span>
+<span class="n">chemo_exp</span> <span class="o">=</span> <span class="n">experiment</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;chemo&quot;</span><span class="p">,</span>
+    <span class="n">chemo</span><span class="p">,</span>
+    <span class="n">env</span><span class="p">,</span>
+    <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span> <span class="o">*</span> <span class="n">cog_mult</span><span class="p">,</span>
+    <span class="n">num_experiments</span><span class="o">=</span><span class="n">num_experiments</span><span class="p">,</span>
+    <span class="n">dump</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">split_state</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="n">seed_value</span>
+<span class="p">)</span>
+<span class="n">info_exp</span> <span class="o">=</span> <span class="n">experiment</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;info&quot;</span><span class="p">,</span>
+    <span class="n">info</span><span class="p">,</span>
+    <span class="n">env</span><span class="p">,</span>
+    <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span> <span class="o">*</span> <span class="n">cog_mult</span><span class="p">,</span>
+    <span class="n">num_experiments</span><span class="o">=</span><span class="n">num_experiments</span><span class="p">,</span>
+    <span class="n">dump</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">split_state</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="n">seed_value</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rand: 100%|██████████| 100/100 [00:08&lt;00:00, 11.39it/s]
+chemo: 100%|██████████| 100/100 [00:41&lt;00:00,  2.43it/s]
+info: 100%|██████████| 100/100 [00:58&lt;00:00,  1.72it/s]
+</pre></div>
+</div>
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 7;
+                var nbb_unformatted_code = "\n# Agents\ndiff = DiffusionGrid(min_length=min_length, scale=1)\ndiff.seed(seed_value)\n\nchemo = AccumulatorGradientGrid(\n    min_length=min_length, \n    max_steps=max_steps, \n    drift_rate=1, \n    threshold=3,\n    accumulate_sigma=1\n)\nchemo.seed(seed_value)\n\ninfo = AccumulatorInfoGrid(\n    min_length=min_length, \n    max_steps=max_steps, \n    drift_rate=1, \n    threshold=3,\n    accumulate_sigma=1\n)\ninfo.seed(seed_value)\n\n# !\nrand_exp = experiment(\n    f\"rand\",\n    diff,\n    env,\n    num_steps=num_steps,\n    num_experiments=num_experiments,\n    dump=False,\n    split_state=True,\n    seed=seed_value\n)\nchemo_exp = experiment(\n    f\"chemo\",\n    chemo,\n    env,\n    num_steps=num_steps * cog_mult,\n    num_experiments=num_experiments,\n    dump=False,\n    split_state=True,\n    seed=seed_value\n)\ninfo_exp = experiment(\n    f\"info\",\n    info,\n    env,\n    num_steps=num_steps * cog_mult,\n    num_experiments=num_experiments,\n    dump=False,\n    split_state=True,\n    seed=seed_value\n)";
+                var nbb_formatted_code = "# Agents\ndiff = DiffusionGrid(min_length=min_length, scale=1)\ndiff.seed(seed_value)\n\nchemo = AccumulatorGradientGrid(\n    min_length=min_length,\n    max_steps=max_steps,\n    drift_rate=1,\n    threshold=3,\n    accumulate_sigma=1,\n)\nchemo.seed(seed_value)\n\ninfo = AccumulatorInfoGrid(\n    min_length=min_length,\n    max_steps=max_steps,\n    drift_rate=1,\n    threshold=3,\n    accumulate_sigma=1,\n)\ninfo.seed(seed_value)\n\n# !\nrand_exp = experiment(\n    f\"rand\",\n    diff,\n    env,\n    num_steps=num_steps,\n    num_experiments=num_experiments,\n    dump=False,\n    split_state=True,\n    seed=seed_value,\n)\nchemo_exp = experiment(\n    f\"chemo\",\n    chemo,\n    env,\n    num_steps=num_steps * cog_mult,\n    num_experiments=num_experiments,\n    dump=False,\n    split_state=True,\n    seed=seed_value,\n)\ninfo_exp = experiment(\n    f\"info\",\n    info,\n    env,\n    num_steps=num_steps * cog_mult,\n    num_experiments=num_experiments,\n    dump=False,\n    split_state=True,\n    seed=seed_value,\n)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">chemo_exp</span><span class="p">,</span> <span class="n">info_exp</span><span class="p">,</span> <span class="n">rand_exp</span><span class="p">,</span> <span class="n">rl_exp</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Chemo&quot;</span><span class="p">,</span> <span class="s2">&quot;Info&quot;</span><span class="p">,</span> <span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Rewo&quot;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">]</span>
+
+<span class="c1"># Score by eff</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+    <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num_death</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>   
+
+<span class="c1"># Tabulate</span>
+<span class="n">m</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+    <span class="n">sd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+
+<span class="c1"># Plot means</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">sd</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Deaths&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>num_death: 100%|██████████| 100/100 [00:00&lt;00:00, 5937.16it/s]
+num_death: 100%|██████████| 100/100 [00:00&lt;00:00, 5194.51it/s]
+num_death: 100%|██████████| 100/100 [00:00&lt;00:00, 12178.58it/s]
+num_death: 100%|██████████| 100/100 [00:00&lt;00:00, 6986.20it/s]
+</pre></div>
+</div>
+<img alt="../../../_images/1a03e1fb1270fd10cc20b50a77f77122523dfdfaf52537f019aaeb3d36286a66.png" src="../../../_images/1a03e1fb1270fd10cc20b50a77f77122523dfdfaf52537f019aaeb3d36286a66.png" />
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 8;
+                var nbb_unformatted_code = "# Results\nresults = [chemo_exp, info_exp, rand_exp, rl_exp]\nnames = [\"Chemo\", \"Info\", \"Rando\", \"Rewo\"]\ncolors = [\"blue\", \"green\", \"grey\", \"orange\"]\n\n# Score by eff\nscores = []\nfor name, res, color in zip(names, results, colors):\n    scores.append(num_death(res))   \n\n# Tabulate\nm, sd = [], []\nfor (name, s, c) in zip(names, scores, colors):\n    m.append(np.mean(s))\n    sd.append(np.std(s))\n\n# Plot means\nfig = plt.figure(figsize=(4, 3))\nplt.bar(names, m, yerr=sd, color=\"black\", alpha=0.6)\nplt.ylabel(\"Deaths\")\nplt.tight_layout()\nsns.despine()";
+                var nbb_formatted_code = "# Results\nresults = [chemo_exp, info_exp, rand_exp, rl_exp]\nnames = [\"Chemo\", \"Info\", \"Rando\", \"Rewo\"]\ncolors = [\"blue\", \"green\", \"grey\", \"orange\"]\n\n# Score by eff\nscores = []\nfor name, res, color in zip(names, results, colors):\n    scores.append(num_death(res))\n\n# Tabulate\nm, sd = [], []\nfor (name, s, c) in zip(names, scores, colors):\n    m.append(np.mean(s))\n    sd.append(np.std(s))\n\n# Plot means\nfig = plt.figure(figsize=(4, 3))\nplt.bar(names, m, yerr=sd, color=\"black\", alpha=0.6)\nplt.ylabel(\"Deaths\")\nplt.tight_layout()\nsns.despine()";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">chemo_exp</span><span class="p">,</span> <span class="n">info_exp</span><span class="p">,</span> <span class="n">rand_exp</span><span class="p">,</span> <span class="n">rl_exp</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Chemo&quot;</span><span class="p">,</span> <span class="s2">&quot;Info&quot;</span><span class="p">,</span> <span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Rewo&quot;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">]</span>
+
+<span class="c1"># Score by eff</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">total_reward</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>   
+
+<span class="c1"># Tabulate</span>
+<span class="n">m</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+    <span class="n">sd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+
+<span class="c1"># Plot means</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">sd</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Total reward&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
+
+<span class="c1"># Dists</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">scores</span><span class="p">),</span> <span class="mi">50</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Score&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total_reward: 100%|██████████| 100/100 [00:00&lt;00:00, 5981.52it/s]
+total_reward: 100%|██████████| 100/100 [00:00&lt;00:00, 3358.08it/s]
+total_reward: 100%|██████████| 100/100 [00:00&lt;00:00, 11778.44it/s]
+total_reward: 100%|██████████| 100/100 [00:00&lt;00:00, 15883.30it/s]
+</pre></div>
+</div>
+<img alt="../../../_images/108580f6ad3fcef8b0d332ef18742eca17717e474e6111b356d6eaf8eb82bc5c.png" src="../../../_images/108580f6ad3fcef8b0d332ef18742eca17717e474e6111b356d6eaf8eb82bc5c.png" />
+<img alt="../../../_images/faefcfd0c71699283191b98b26d41b571e0094c9eee503754a7d2f6bb5e9a6af.png" src="../../../_images/faefcfd0c71699283191b98b26d41b571e0094c9eee503754a7d2f6bb5e9a6af.png" />
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 9;
+                var nbb_unformatted_code = "# Results\nresults = [chemo_exp, info_exp, rand_exp, rl_exp]\nnames = [\"Chemo\", \"Info\", \"Rando\", \"Rewo\"]\ncolors = [\"blue\", \"green\", \"grey\", \"orange\"]\n\n# Score by eff\nscores = []\nfor name, res, color in zip(names, results, colors):\n    r = total_reward(res)\n    scores.append(r)   \n\n# Tabulate\nm, sd = [], []\nfor (name, s, c) in zip(names, scores, colors):\n    m.append(np.mean(s))\n    sd.append(np.std(s))\n\n# Plot means\nfig = plt.figure(figsize=(5, 3))\nplt.bar(names, m, yerr=sd, color=colors, alpha=0.6)\nplt.ylabel(\"Total reward\")\nplt.tight_layout()\nsns.despine()\n\n# Dists\nfig = plt.figure(figsize=(6, 4))\nfor (name, s, c) in zip(names, scores, colors):\n    plt.hist(s, label=name, color=c, alpha=0.5, bins=np.linspace(0, np.max(scores), 50))\n    plt.legend()\n    plt.xlabel(\"Score\")\n    plt.tight_layout()\n    sns.despine()";
+                var nbb_formatted_code = "# Results\nresults = [chemo_exp, info_exp, rand_exp, rl_exp]\nnames = [\"Chemo\", \"Info\", \"Rando\", \"Rewo\"]\ncolors = [\"blue\", \"green\", \"grey\", \"orange\"]\n\n# Score by eff\nscores = []\nfor name, res, color in zip(names, results, colors):\n    r = total_reward(res)\n    scores.append(r)\n\n# Tabulate\nm, sd = [], []\nfor (name, s, c) in zip(names, scores, colors):\n    m.append(np.mean(s))\n    sd.append(np.std(s))\n\n# Plot means\nfig = plt.figure(figsize=(5, 3))\nplt.bar(names, m, yerr=sd, color=colors, alpha=0.6)\nplt.ylabel(\"Total reward\")\nplt.tight_layout()\nsns.despine()\n\n# Dists\nfig = plt.figure(figsize=(6, 4))\nfor (name, s, c) in zip(names, scores, colors):\n    plt.hist(s, label=name, color=c, alpha=0.5, bins=np.linspace(0, np.max(scores), 50))\n    plt.legend()\n    plt.xlabel(\"Score\")\n    plt.tight_layout()\n    sns.despine()";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[82.05, 91.44, 13.63, 178.45]
+</pre></div>
+</div>
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 10;
+                var nbb_unformatted_code = "print(m)";
+                var nbb_formatted_code = "print(m)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/explorationlib/test"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Testing - scents grid w/ noise - 8</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shared-params-env-and-agents">Shared params, env, and agents</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#value-traces">Value traces</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Timothy Verstynen, Erik Peterson, Matthew Clapp, Jack Burgess
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

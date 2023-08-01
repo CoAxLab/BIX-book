@@ -1,0 +1,1332 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Homework 2: Signals and decisions &#8212; Biologically Intelligent eXploration (BIX)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercise2-signals_and_decisions';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Homework 3: CBGT decision-making and information concepts" href="exercise3-cbgt_and_info.html" />
+    <link rel="prev" title="Exercise 1: Github &amp; Colab" href="exercise1-getting-started.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/levy-flight.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/levy-flight.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Biologically Intelligent eXploration (BIX)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/intro-python.html">Introduction to python</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/lab1-information.html">Lab 1- Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/lab2-explorelib.html">Lab 2 - Introduction to <em>explorationlib</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/lab3-chemotaxis.html">Lab 3 - Chemotaxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/lab4-evidence_accumulation.html">Lab 4 - Evidence Accumulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/lab5-cbgt.html">Lab 5 - CBGT pathways</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/lab6-predator_prey.html">Lab 6 - Predator-prey dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/lab7-foraging.html">Lab 7 - Foraging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Homework 2: Signals and decisions</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercise3-cbgt_and_info.html"><strong>Homework 3: CBGT decision-making and information concepts</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercise4-foraging_and_rl.html"><strong>Homework 4: Foraging and reinforcement learning</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/CoAxLab/BIX-book/main?urlpath=tree/book/exercises/exercise2-signals_and_decisions.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/CoAxLab/BIX-book/blob/main/book/exercises/exercise2-signals_and_decisions.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/exercises/exercise2-signals_and_decisions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Homework 2: Signals and decisions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-simple-random-walk-simulations">Part 1 - Simple random walk simulations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-explorationlib">Install <em>explorationlib</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-modules">Import modules</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-notebook-configuration">Additional notebook configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-creating-agents-agents-10-pt">Task - Creating agents agents [10 pt]</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-the-experiments">Initialize and run the experiments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-trajectories-10-pt">Visualize the trajectories [10 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summarize-the-performance-10-pt">Summarize the performance [10 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1-5-pt">Question 1.1 [5 pt]</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-decreasing-scent-radius">Task - Decreasing Scent Radius</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2-5-pt">Question 1.2 [5 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3-5-pt">Question 1.3 [5 pt]</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-signal-detection-theory">Part 2 - Signal Detection Theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-setup">Section - Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-calculate-d-and-c-directly-10-pt">Task - Calculate <span class="math notranslate nohighlight">\(d'\)</span> and <span class="math notranslate nohighlight">\(c\)</span> directly [10 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1-5-pt">Question 2.1 [5 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-playing-with-signal-to-noise-distributions">Task - Playing with signal-to-noise distributions.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2-5-pt">Question 2.2 [5 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3-5-pt">Question 2.3 [5 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-4-5-pt">Question 2.4 [5 pt]</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-evidence-accumulation">Part 3 - Evidence Accumulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-necessary-import-explorationlib-modules">Install necessary import explorationlib modules</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Import modules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-influence-of-threshold-on-performance">Task - Influence of Threshold on Performance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-shared-parameters-and-initialize-environment">Define shared parameters and initialize environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-list-of-thresholds-to-test">Create a list of thresholds to test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-100-experiments-for-each-threshold-10-pts">Run 100 experiments for each threshold [10 pts]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-plots-of-distance-traveled-averaged-for-each-agent-i-e-each-threshold">Create plots of distance traveled averaged for each agent (i.e., each threshold).</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-average-number-of-deaths-for-each-agent-i-e-threshold">Plot the average number of deaths for each agent (i.e., threshold).</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-score-of-the-best-agent-for-each-type-of-agent-i-e-threshold">Plot the score of the best agent for each type of agent (i.e., threshold)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finally-plot-the-average-score-for-each-type-of-agent-i-e-threshold">Finally plot the average score for each type of agent (i.e., threshold).</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-1-5-pt">Question 3.1 [5 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2-5-pt">Question 3.2 [5 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-3-5-pt">Question 3.3 [5 pt]</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><a href="https://colab.research.google.com/github/CoAxLab/BiologicallyIntelligentExploration/blob/main/Labs/Lab3_Signal_detection_theory.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="homework-2-signals-and-decisions">
+<h1><strong>Homework 2: Signals and decisions</strong><a class="headerlink" href="#homework-2-signals-and-decisions" title="Permalink to this heading">#</a></h1>
+<section id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
+<p>This homework will involve concepts from the labs we’ve gone over in class. Feel free to reference them as you complete the assignment.</p>
+<p>This homework contains 3 sections:</p>
+<ol class="arabic simple">
+<li><p>Simulating random walks.</p></li>
+<li><p>Working with signal detection theory.</p></li>
+<li><p>Simulating decision making behavior.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="part-1-simple-random-walk-simulations">
+<h2>Part 1 - Simple random walk simulations<a class="headerlink" href="#part-1-simple-random-walk-simulations" title="Permalink to this heading">#</a></h2>
+<p>Here you will run a few simulations to see how the different parameters on random walk (Gaussian vs. Levy) influence the behavior of the agents.</p>
+<p>Fill out the code cells below to complete the assignment.  Most of the programming is extremely straight-forward, as it is all based on the code from the lab, which you can use/modify in this notebook.</p>
+<section id="install-explorationlib">
+<h3>Install <em>explorationlib</em><a class="headerlink" href="#install-explorationlib" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/coaxlab/explorationlib
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/MattChanTK/gym-maze.git
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>celluloid<span class="w"> </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>gifs
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="import-modules">
+<h3>Import modules<a class="headerlink" href="#import-modules" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from the standard library</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># these are common to scientific programming in python</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Computational experiments are run with &#39;experiment&#39;</span>
+<span class="kn">from</span> <span class="nn">explorationlib.run</span> <span class="kn">import</span> <span class="n">experiment</span>
+
+<span class="c1"># Here are some tools to select, save, and load</span>
+<span class="c1"># data from computational experiments</span>
+<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">select_exp</span>
+<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">load</span>
+<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">save</span>
+
+<span class="c1"># All the explorers we will play with are called</span>
+<span class="c1"># &quot;agents&quot;; a bit of computer science jargon</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">DiffusionDiscrete</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">GradientDiffusionGrid</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">GradientDiffusionDiscrete</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">AccumulatorGradientGrid</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">TruncatedLevyDiscrete</span>
+
+<span class="c1"># The environments we will simulate live in a &quot;gym&quot;</span>
+<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">ScentGrid</span>
+<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">create_grid_scent</span>
+<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">uniform_targets</span>
+<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">constant_values</span>
+
+
+<span class="c1"># A bunch of tools for plotting and for</span>
+<span class="c1"># movie making</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_position2d</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_length_hist</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_length</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_targets2d</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">show_gif</span>
+
+<span class="c1"># A couple metrics for scoring how well, or poorly,</span>
+<span class="c1"># an exploration experiment went.</span>
+<span class="kn">from</span> <span class="nn">explorationlib.score</span> <span class="kn">import</span> <span class="n">search_efficiency</span>
+<span class="kn">from</span> <span class="nn">explorationlib.score</span> <span class="kn">import</span> <span class="n">total_reward</span>
+<span class="kn">from</span> <span class="nn">explorationlib.score</span> <span class="kn">import</span> <span class="n">first_reward</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="additional-notebook-configuration">
+<h4>Additional notebook configuration<a class="headerlink" href="#additional-notebook-configuration" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format=&#39;retina&#39;
+<span class="o">%</span><span class="k">config</span> IPCompleter.greedy=True
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;16&quot;</span>
+<span class="o">%</span><span class="k">config</span> IPCompleter.greedy=True
+<span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="task-creating-agents-agents-10-pt">
+<h2>Task - Creating agents agents [10 pt]<a class="headerlink" href="#task-creating-agents-agents-10-pt" title="Permalink to this heading">#</a></h2>
+<p>Run a batch of simulations with the following agents:</p>
+<ul class="simple">
+<li><p>DiffusionDiscrete</p></li>
+<li><p>TruncatedLevyDiscrete</p></li>
+<li><p>GradientDiffusionDiscrete</p></li>
+</ul>
+<p>The last agent is a simple agent that takes input to make the decisions. It uses a gradient search as discussed in Lab 4, but without using evidence accumulation. If it detects a scent gradient it moves up it until the gradient decreases, then it moves again.</p>
+<p>So for this we will need to set up a sense environment, which we call the <em>ScentGrid</em>.</p>
+<p>The code for running these simulations will be very similar to the simulation code in the lab. We will scaffold some of it for you here.</p>
+<section id="initialize-and-run-the-experiments">
+<h3>Initialize and run the experiments<a class="headerlink" href="#initialize-and-run-the-experiments" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>set the parameters</p></li>
+<li><p>create the environment</p></li>
+<li><p>create the agents</p></li>
+<li><p>run the experiments</p></li>
+</ul>
+<p>Feel free to create as many code cells as you would like.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Experiment settings</span>
+<span class="n">num_experiments</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">p_neg</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">p_pos</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">scent_sigma</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># Env</span>
+<span class="n">detection_radius</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">min_length</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">max_length</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">ScentGrid</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;discrete&quot;</span><span class="p">)</span>
+<span class="n">boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">target</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent</span><span class="p">(</span><span class="n">boundary</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">scent_sigma</span><span class="p">)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">add_scent</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">scent</span><span class="p">)</span>
+
+<span class="c1"># Agents</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">DiffusionDiscrete</span><span class="p">(</span><span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">levy</span> <span class="o">=</span> <span class="n">TruncatedLevyDiscrete</span><span class="p">(</span><span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="n">max_length</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">sniff</span> <span class="o">=</span> <span class="n">GradientDiffusionDiscrete</span><span class="p">(</span><span class="n">num_actions</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">p_neg</span><span class="o">=</span><span class="n">p_neg</span><span class="p">,</span> <span class="n">p_pos</span><span class="o">=</span><span class="n">p_pos</span><span class="p">)</span>
+
+<span class="c1"># Cleanup </span>
+<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;data/test4_*.pkl&quot;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="c1"># Run Sims</span>
+<span class="c1"># Write your own agent run code here following the exampel from Labs 2 &amp; 4</span>
+
+<span class="c1">### your code below</span>
+<span class="n">levy_exp</span> <span class="o">=</span> <span class="n">experiment</span><span class="p">(</span>
+    <span class="c1">## your code here</span>
+<span class="p">)</span>
+<span class="n">diff_exp</span> <span class="o">=</span> <span class="n">experiment</span><span class="p">(</span>
+    <span class="c1">## your code here</span>
+<span class="p">)</span>
+<span class="n">sniff_exp</span> <span class="o">=</span> <span class="n">experiment</span><span class="p">(</span>
+    <span class="c1">## your code here</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-the-trajectories-10-pt">
+<h3>Visualize the trajectories [10 pt]<a class="headerlink" href="#visualize-the-trajectories-10-pt" title="Permalink to this heading">#</a></h3>
+<p>Plot the trajectories taken by the agents in all 10 experiments. Use blue to plot the levy agent, brown for the diffusion agent, and green for the sniff agent. Follow examples from Labs 2 &amp; 4.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View size</span>
+<span class="n">plot_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># Generate 10 plots of walking</span>
+<span class="c1">### your code below</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_experiments</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plot_position2d</span><span class="p">(</span>
+        <span class="c1">## your code here</span>
+    <span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plot_position2d</span><span class="p">(</span>
+        <span class="c1">## your code here</span>
+    <span class="p">)</span>
+
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plot_position2d</span><span class="p">(</span>
+        <span class="c1">## your code here</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot the average distances traveled for all three agents just on the first experiment (indexed at 0).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_experiment</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_length_hist</span><span class="p">(</span>
+    <span class="n">select_exp</span><span class="p">(</span><span class="n">levy_exp</span><span class="p">,</span> <span class="n">num_experiment</span><span class="p">),</span>
+    <span class="n">loglog</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Levy&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_length_hist</span><span class="p">(</span>
+    <span class="n">select_exp</span><span class="p">(</span><span class="n">diff_exp</span><span class="p">,</span> <span class="n">num_experiment</span><span class="p">),</span>
+    <span class="n">loglog</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;brown&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Diffusion&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_length_hist</span><span class="p">(</span>
+    <span class="n">select_exp</span><span class="p">(</span><span class="n">sniff_exp</span><span class="p">,</span> <span class="n">num_experiment</span><span class="p">),</span>
+    <span class="n">loglog</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sniff&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span> <span class="c1"># Make pretty plot</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="summarize-the-performance-10-pt">
+<h3>Summarize the performance [10 pt]<a class="headerlink" href="#summarize-the-performance-10-pt" title="Permalink to this heading">#</a></h3>
+<p>Next plot the average scores for each agent. See plotting in Lab 2 for help.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results, names, and colors</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">levy_exp</span><span class="p">,</span> <span class="n">diff_exp</span><span class="p">,</span> <span class="n">sniff_exp</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Levy&quot;</span><span class="p">,</span> <span class="s2">&quot;Diffusion&quot;</span><span class="p">,</span> <span class="s2">&quot;Sniff&quot;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;brown&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">]</span>
+
+<span class="c1"># Score by efficiency</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1">### your loop code to create score variable</span>
+
+<span class="c1"># Tabulate means and standard deviations</span>
+<span class="n">m</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="c1"># m is mean</span>
+<span class="c1"># sd is standard deviation</span>
+<span class="c1">### your loop code here</span>
+
+
+<span class="c1"># Plot</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">sd</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Score&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-1-1-5-pt">
+<h3>Question 1.1 [5 pt]<a class="headerlink" href="#question-1-1-5-pt" title="Permalink to this heading">#</a></h3>
+<p>Do you notice any tangible differences between the two random agents and the agent that uses sensory information?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="task-decreasing-scent-radius">
+<h2>Task - Decreasing Scent Radius<a class="headerlink" href="#task-decreasing-scent-radius" title="Permalink to this heading">#</a></h2>
+<p>Rerun the code in the previous section, but changing the scent radius (how far scent diffuses from each target) of the environment from 10 to 1.</p>
+<section id="question-1-2-5-pt">
+<h3>Question 1.2 [5 pt]<a class="headerlink" href="#question-1-2-5-pt" title="Permalink to this heading">#</a></h3>
+<p>How does the performance of the agents change?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-1-3-5-pt">
+<h3>Question 1.3 [5 pt]<a class="headerlink" href="#question-1-3-5-pt" title="Permalink to this heading">#</a></h3>
+<p>Speculate why the reduction in the scent radius caused the change reported in Question 1.2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="part-2-signal-detection-theory">
+<h2>Part 2 - Signal Detection Theory<a class="headerlink" href="#part-2-signal-detection-theory" title="Permalink to this heading">#</a></h2>
+<p>Now we are going to pivot to working on playing with signal detection theory. Review Lab 3 if you need help.</p>
+<section id="section-setup">
+<h3>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import ADMCode library</span>
+<span class="c1"># ADMCode uses an old version of numba</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">numba</span><span class="o">==</span><span class="m">0</span>.48
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/CoAxLab/AdaptiveDecisionMaking_2018
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import modules</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">ADMCode</span> <span class="kn">import</span> <span class="n">visualize</span> <span class="k">as</span> <span class="n">vis</span>
+<span class="kn">from</span> <span class="nn">ADMCode</span> <span class="kn">import</span> <span class="n">ddm</span><span class="p">,</span> <span class="n">sdt</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interactive</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">RankWarning</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="s2">&quot;matplotlib&quot;</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.3</span><span class="p">)</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="task-calculate-d-and-c-directly-10-pt">
+<h3>Task - Calculate <span class="math notranslate nohighlight">\(d'\)</span> and <span class="math notranslate nohighlight">\(c\)</span> directly [10 pt]<a class="headerlink" href="#task-calculate-d-and-c-directly-10-pt" title="Permalink to this heading">#</a></h3>
+<p>In the code cell below, calculate and print the <span class="math notranslate nohighlight">\(d'\)</span> and <span class="math notranslate nohighlight">\(c\)</span> values that we would expect from a <em>hit rate</em> of 0.85 and <em>false alarm</em> rate of 0.30, given the assumptions of SDT.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span> <span class="c1"># import statistical library for inverse norms</span>
+
+<span class="c1"># set your hit and FA rates to calculate resulting d&#39; and c values</span>
+<span class="n">p_hit</span> <span class="o">=</span> <span class="c1">## your code here</span>
+<span class="n">p_FA</span>  <span class="o">=</span> <span class="c1">## your code here</span>
+
+<span class="c1"># calculate and print d&#39; value</span>
+<span class="n">d_prime</span> <span class="o">=</span> <span class="c1">## your code here</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;d&#39; = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">d_prime</span><span class="p">))</span>
+
+<span class="c1"># calculate and print c value</span>
+<span class="n">c</span> <span class="o">=</span> <span class="c1">## your code here</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;c  = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-2-1-5-pt">
+<h3>Question 2.1 [5 pt]<a class="headerlink" href="#question-2-1-5-pt" title="Permalink to this heading">#</a></h3>
+<p>What are the values for <span class="math notranslate nohighlight">\(d'\)</span> and <span class="math notranslate nohighlight">\(c\)</span>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="task-playing-with-signal-to-noise-distributions">
+<h3>Task - Playing with signal-to-noise distributions.<a class="headerlink" href="#task-playing-with-signal-to-noise-distributions" title="Permalink to this heading">#</a></h3>
+<p>Now let us run the widget code and play with some parameters to answer the questions below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run this code cell to load the SDT widget</span>
+<span class="n">interactive_plot</span> <span class="o">=</span> <span class="n">interactive</span><span class="p">(</span><span class="n">vis</span><span class="o">.</span><span class="n">sdt_interact</span><span class="p">,</span> <span class="n">pH</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">.1</span><span class="p">),</span> <span class="n">pFA</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">.1</span><span class="p">))</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">interactive_plot</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">output</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="s1">&#39;300px&#39;</span>
+<span class="n">interactive_plot</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-2-2-5-pt">
+<h3>Question 2.2 [5 pt]<a class="headerlink" href="#question-2-2-5-pt" title="Permalink to this heading">#</a></h3>
+<p>Describe the relationship between the <strong>false alarm rate</strong> and <span class="math notranslate nohighlight">\(d'\)</span> in SDT (use the interactive visualization to help get some intuition), if you hold <strong>hit rate</strong> at a constant value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-2-3-5-pt">
+<h3>Question 2.3 [5 pt]<a class="headerlink" href="#question-2-3-5-pt" title="Permalink to this heading">#</a></h3>
+<p>Describe the relationship between number of <strong>correct rejections</strong> (1 - <strong>false alarms</strong>) and the criterion parameter (<span class="math notranslate nohighlight">\(c\)</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-2-4-5-pt">
+<h3>Question 2.4 [5 pt]<a class="headerlink" href="#question-2-4-5-pt" title="Permalink to this heading">#</a></h3>
+<p>Describe in plain words why when the <strong>hit</strong> and <strong>false alarm</strong> rates are equal, <span class="math notranslate nohighlight">\(d'\)</span> is zero but <span class="math notranslate nohighlight">\(c\)</span> isn’t necessarily zero.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="part-3-evidence-accumulation">
+<h2>Part 3 - Evidence Accumulation<a class="headerlink" href="#part-3-evidence-accumulation" title="Permalink to this heading">#</a></h2>
+<p>This part has two main sections:</p>
+<ul class="simple">
+<li><p>First, we will build off the lab by exploring the relationship between decision threshold (one of the DDM parameters) and the performance of an accumulating agent.</p></li>
+<li><p>Second, we will take a brief look at the role of randomness in the exploratory behavior of a sniffing agent.</p></li>
+</ul>
+<section id="install-necessary-import-explorationlib-modules">
+<h3>Install necessary import explorationlib modules<a class="headerlink" href="#install-necessary-import-explorationlib-modules" title="Permalink to this heading">#</a></h3>
+<section id="id1">
+<h4>Import modules<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Agents</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">DiffusionDiscrete</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">GradientDiffusionDiscrete</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">AccumulatorGradientGrid</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">TruncatedLevyDiscrete</span>
+
+<span class="c1"># Env</span>
+<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">ScentGrid</span>
+<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">create_grid_scent</span>
+
+<span class="c1"># Score</span>
+<span class="kn">from</span> <span class="nn">explorationlib.score</span> <span class="kn">import</span> <span class="n">total_reward</span>
+<span class="kn">from</span> <span class="nn">explorationlib.score</span> <span class="kn">import</span> <span class="n">num_death</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="task-influence-of-threshold-on-performance">
+<h2>Task - Influence of Threshold on Performance<a class="headerlink" href="#task-influence-of-threshold-on-performance" title="Permalink to this heading">#</a></h2>
+<p>How does decision thershold influence behavior? Here, we will perform a parameter sweep over the decision threshold to see how the agent is affected in a basic sniffing task.</p>
+<p>For this section, you will need to slightly modify the lab code to loop over a list of thresholds rather than a list of drift rates.</p>
+<section id="define-shared-parameters-and-initialize-environment">
+<h3>Define shared parameters and initialize environment<a class="headerlink" href="#define-shared-parameters-and-initialize-environment" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shared exp parameters</span>
+<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">max_steps</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">seed_value</span> <span class="o">=</span> <span class="mi">5838</span>
+
+<span class="n">min_length</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">step_size</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">noise_sigma</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">detection_radius</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">num_targets</span> <span class="o">=</span> <span class="mi">250</span> 
+<span class="n">target_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Env</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">ScentGrid</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
+
+<span class="c1"># Targets</span>
+<span class="n">prng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
+<span class="n">targets</span> <span class="o">=</span> <span class="n">uniform_targets</span><span class="p">(</span><span class="n">num_targets</span><span class="p">,</span> <span class="n">target_boundary</span><span class="p">,</span> <span class="n">prng</span><span class="o">=</span><span class="n">prng</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">constant_values</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Scents</span>
+<span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent</span><span class="p">(</span><span class="n">target_boundary</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">scents</span> <span class="o">=</span> <span class="p">[</span><span class="n">scent</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">targets</span><span class="p">))]</span>
+<span class="n">env</span><span class="o">.</span><span class="n">add_scents</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">scents</span><span class="p">,</span> <span class="n">noise_sigma</span><span class="o">=</span><span class="n">noise_sigma</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-a-list-of-thresholds-to-test">
+<h3>Create a list of thresholds to test<a class="headerlink" href="#create-a-list-of-thresholds-to-test" title="Permalink to this heading">#</a></h3>
+<p>We want to take our sniff agent with evidence accumulation, and loop through a set of 5 threshold values: [1, 2, 3, 4, 5].</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Our parameters </span>
+<span class="n">thresholds</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mf">3.</span><span class="p">,</span><span class="mf">4.</span><span class="p">,</span><span class="mf">5.</span><span class="p">]</span>
+
+<span class="c1"># For plotting</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;darkgreen&quot;</span><span class="p">,</span> <span class="s2">&quot;seagreen&quot;</span><span class="p">,</span> <span class="s2">&quot;cadetblue&quot;</span><span class="p">,</span> <span class="s2">&quot;steelblue&quot;</span><span class="p">,</span> <span class="s2">&quot;mediumpurple&quot;</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">thresholds</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-100-experiments-for-each-threshold-10-pts">
+<h3>Run 100 experiments for each threshold [10 pts]<a class="headerlink" href="#run-100-experiments-for-each-threshold-10-pts" title="Permalink to this heading">#</a></h3>
+<p>Borrow the loop code from Lab 4. Set the following parameters:</p>
+<ul class="simple">
+<li><p>drift_rate = 1.0</p></li>
+<li><p>accmulation_sigma = 1.0</p></li>
+</ul>
+<p>Run 100 experiments across the 5 threshold levels</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code cells below</span>
+<span class="c1"># Exp params</span>
+<span class="n">drift_rate</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">accumulate_sigma</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="n">num_experiments</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># Run</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">threshold</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">thresholds</span><span class="p">):</span>
+    <span class="n">accum</span> <span class="o">=</span> <span class="n">AccumulatorGradientGrid</span><span class="p">(</span>
+        <span class="c1">## your code here</span>
+    <span class="p">)</span>
+    <span class="n">accum</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
+ 
+    <span class="n">exp</span> <span class="o">=</span> <span class="n">experiment</span><span class="p">(</span>
+        <span class="c1">## your code here</span>
+    <span class="p">)</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">exp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-plots-of-distance-traveled-averaged-for-each-agent-i-e-each-threshold">
+<h3>Create plots of distance traveled averaged for each agent (i.e., each threshold).<a class="headerlink" href="#create-plots-of-distance-traveled-averaged-for-each-agent-i-e-each-threshold" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code cells here</span>
+<span class="c1"># Score</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>  
+    <span class="n">l</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+        <span class="n">l</span> <span class="o">+=</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;agent_total_l&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>   
+
+<span class="c1"># Tabulate</span>
+<span class="n">m</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+
+<span class="c1"># -</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">],</span> <span class="n">m</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Total distance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Threshold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-the-average-number-of-deaths-for-each-agent-i-e-threshold">
+<h3>Plot the average number of deaths for each agent (i.e., threshold).<a class="headerlink" href="#plot-the-average-number-of-deaths-for-each-agent-i-e-threshold" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num_death</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>   
+
+<span class="c1"># -</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">],</span> <span class="n">scores</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Deaths&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Threshold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-the-score-of-the-best-agent-for-each-type-of-agent-i-e-threshold">
+<h3>Plot the score of the best agent for each type of agent (i.e., threshold)<a class="headerlink" href="#plot-the-score-of-the-best-agent-for-each-type-of-agent-i-e-threshold" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">total_reward</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>   
+
+<span class="c1"># Tabulate</span>
+<span class="n">m</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+
+<span class="c1"># -</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">],</span> <span class="n">m</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Best score&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Threshold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="finally-plot-the-average-score-for-each-type-of-agent-i-e-threshold">
+<h3>Finally plot the average score for each type of agent (i.e., threshold).<a class="headerlink" href="#finally-plot-the-average-score-for-each-type-of-agent-i-e-threshold" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>  
+    <span class="n">r</span> <span class="o">=</span> <span class="n">total_reward</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>   
+
+<span class="c1"># Tabulate</span>
+<span class="n">m</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+    <span class="n">sd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+
+<span class="c1"># Plot means</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">],</span> <span class="n">m</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">sd</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Avg. score&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Threshold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
+
+<span class="c1"># Dists of means</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Score&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-3-1-5-pt">
+<h3>Question 3.1 [5 pt]<a class="headerlink" href="#question-3-1-5-pt" title="Permalink to this heading">#</a></h3>
+<p>Based on the plots above and in your own words, summarize the relationship between the decision <em>threshold</em> and the performance of the agnets.  How do the effects of increasing threshold compare to the effects of increasing drift rate (from the example in Lab 4)?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-3-2-5-pt">
+<h3>Question 3.2 [5 pt]<a class="headerlink" href="#question-3-2-5-pt" title="Permalink to this heading">#</a></h3>
+<p>Based on your observations, do you think an accumulator is needed for this <em>particular</em> task setup?  Would you expect an agent which doesn’t accumulate (having a threshold of almost zero, thus reacting immediately to its first sensory signal) to outform an agent which uses multiple time steps to accumulate evidence?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-3-3-5-pt">
+<h3>Question 3.3 [5 pt]<a class="headerlink" href="#question-3-3-5-pt" title="Permalink to this heading">#</a></h3>
+<p>Let’s get philosophical. In what scenarios would pure random exploration (e.g., the diffusion and levy agents) be better than agents that utilize the energy necessary to process and accumulate sensory signals (e.g., the sniff agents)?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>IMPORTANT</strong> Did you collaborate with anyone on this assignment? If so, list their names here.</p>
+<blockquote>
+<div><p><em>Write Name(s) here</em></p>
+</div></blockquote>
+<p><strong>DUE:</strong> 5pm ET, Oct. 7, 2022. Email the link to the completed notebook on your Github repository to the TA and me via Canvas.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./exercises"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="exercise1-getting-started.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Exercise 1: Github &amp; Colab</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="exercise3-cbgt_and_info.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Homework 3: CBGT decision-making and information concepts</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-simple-random-walk-simulations">Part 1 - Simple random walk simulations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-explorationlib">Install <em>explorationlib</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-modules">Import modules</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-notebook-configuration">Additional notebook configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-creating-agents-agents-10-pt">Task - Creating agents agents [10 pt]</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-the-experiments">Initialize and run the experiments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-trajectories-10-pt">Visualize the trajectories [10 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summarize-the-performance-10-pt">Summarize the performance [10 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1-5-pt">Question 1.1 [5 pt]</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-decreasing-scent-radius">Task - Decreasing Scent Radius</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2-5-pt">Question 1.2 [5 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3-5-pt">Question 1.3 [5 pt]</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-signal-detection-theory">Part 2 - Signal Detection Theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-setup">Section - Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-calculate-d-and-c-directly-10-pt">Task - Calculate <span class="math notranslate nohighlight">\(d'\)</span> and <span class="math notranslate nohighlight">\(c\)</span> directly [10 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1-5-pt">Question 2.1 [5 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-playing-with-signal-to-noise-distributions">Task - Playing with signal-to-noise distributions.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2-5-pt">Question 2.2 [5 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3-5-pt">Question 2.3 [5 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-4-5-pt">Question 2.4 [5 pt]</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-evidence-accumulation">Part 3 - Evidence Accumulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-necessary-import-explorationlib-modules">Install necessary import explorationlib modules</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Import modules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-influence-of-threshold-on-performance">Task - Influence of Threshold on Performance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-shared-parameters-and-initialize-environment">Define shared parameters and initialize environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-list-of-thresholds-to-test">Create a list of thresholds to test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-100-experiments-for-each-threshold-10-pts">Run 100 experiments for each threshold [10 pts]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-plots-of-distance-traveled-averaged-for-each-agent-i-e-each-threshold">Create plots of distance traveled averaged for each agent (i.e., each threshold).</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-average-number-of-deaths-for-each-agent-i-e-threshold">Plot the average number of deaths for each agent (i.e., threshold).</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-score-of-the-best-agent-for-each-type-of-agent-i-e-threshold">Plot the score of the best agent for each type of agent (i.e., threshold)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finally-plot-the-average-score-for-each-type-of-agent-i-e-threshold">Finally plot the average score for each type of agent (i.e., threshold).</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-1-5-pt">Question 3.1 [5 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2-5-pt">Question 3.2 [5 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-3-5-pt">Question 3.3 [5 pt]</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Timothy Verstynen, Erik Peterson, Matthew Clapp, Jack Burgess
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

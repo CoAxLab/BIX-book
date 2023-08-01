@@ -1,9 +1,23 @@
 format: jb-book
 root: intro
-
 parts:
   - caption: Getting started
     chapters:
     - file: notebooks/intro-python
-      sections:
-      - file: exercises/getting-started
+  - caption: Labs
+    chapters:
+    - file: notebooks/lab1-information
+    - file: notebooks/lab2-explorelib
+    - file: notebooks/lab3-chemotaxis
+    - file: notebooks/lab4-evidence_accumulation
+    - file: notebooks/lab5-cbgt
+    - file: notebooks/lab6-predator_prey
+    - file: notebooks/lab7-foraging
+    - file: notebooks/lab9-reward_seeking
+  - caption: Exercises
+    chapters:
+    - file: exercises/exercise1-getting-started
+    - file: exercises/exercise2-signals_and_decisions
+    - file: exercises/exercise3-cbgt_and_info
+    - file: exercises/exercise4-foraging_and_rl
+

@@ -164,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lab1-information.html">Lab 1- Information theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab2-explorelib.html">Lab 2 - Introduction to <em>explorationlib</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2-explorelib.html">Lab 2 - Random exploration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab3-chemotaxis.html">Lab 3 - Chemotaxis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4-evidence_accumulation.html">Lab 4 - Evidence Accumulation</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 5 - CBGT pathways</a></li>
@@ -176,9 +176,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Homework 2: Signals and decisions</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise3-cbgt_and_info.html"><strong>Homework 3: CBGT decision-making and information concepts</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise4-foraging_and_rl.html"><strong>Homework 4: Foraging and reinforcement learning</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise3-cbgt_and_info.html"><strong>Exercise 3: CBGT networks and information concepts</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise4-foraging_and_rl.html"><strong>Exercise 4: Foraging and reinforcement learning</strong></a></li>
 </ul>
 
     </div>
@@ -452,11 +452,27 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cloning into &#39;CBGT&#39;...
+remote: Enumerating objects: 604, done.
+remote: Counting objects: 100% (23/23), done.
+remote: Compressing objects: 100% (23/23), done.
+remote: Total 604 (delta 10), reused 5 (delta 0), pack-reused 581
+Receiving objects: 100% (604/604), 13.84 MiB | 9.14 MiB/s, done.
+Resolving deltas: 100% (322/322), done.
+</pre></div>
+</div>
+</div>
 </div>
 <p>This next code line sets Colab’s working directory to the CGBT library which we’ve just copied in.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /content/CBGT
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/content/CBGT
 </pre></div>
 </div>
 </div>
@@ -546,7 +562,7 @@ condLevel = dict(zip(conds+[&#39;test&#39;], cond12+[0]))
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span># helper functions to specify connection efficiacies for certain pathways
 
 def get_sampling_params(scale, direct_strength, indirect_strength):
-    
+
     # set strengths of background inputs/currents
     CxSTR      =    0.2
     CxTh       =    0.03
@@ -560,7 +576,7 @@ def get_sampling_params(scale, direct_strength, indirect_strength):
     ThSTR      =    0.34
     ThCx       =    0.02
 
-    mu = dict(Cx={&#39;STR&#39;:CxSTR, &#39;Th&#39;:CxTh, &#39;FSI&#39;:CxFSI}, 
+    mu = dict(Cx={&#39;STR&#39;:CxSTR, &#39;Th&#39;:CxTh, &#39;FSI&#39;:CxFSI},
                 Th={&#39;STR&#39;:ThSTR, &#39;Cx&#39;:ThCx},
                 D1STR={&#39;GPi&#39;: D1STR_GPi},
                 D2STR={&#39;GPeP&#39;: D2STR_GPeP},
@@ -582,19 +598,19 @@ def sample_network_efficacies(muEff, sdEff, N):
 
 # build the network with specified connections
 def build_single_network(X, idx=0):
-    
-    Cx={&#39;STR&#39;: X[&#39;Cx&#39;][&#39;STR&#39;][idx], 
-        &#39;Th&#39;: X[&#39;Cx&#39;][&#39;Th&#39;][idx], 
+
+    Cx={&#39;STR&#39;: X[&#39;Cx&#39;][&#39;STR&#39;][idx],
+        &#39;Th&#39;: X[&#39;Cx&#39;][&#39;Th&#39;][idx],
         &#39;FSI&#39;: X[&#39;Cx&#39;][&#39;FSI&#39;][idx]}
-    
+
     D1STR={&#39;GPi&#39;: X[&#39;D1STR&#39;][&#39;GPi&#39;][idx]}
     D2STR={&#39;GPeP&#39;: X[&#39;D2STR&#39;][&#39;GPeP&#39;][idx]}
-    
+
     STN={&#39;GPi&#39;: X[&#39;STN&#39;][&#39;GPi&#39;][idx]}
-    
+
     GPi={&#39;Th&#39;: X[&#39;GPi&#39;][&#39;Th&#39;][idx]}
-    
-    Th={&#39;STR&#39;: X[&#39;Th&#39;][&#39;STR&#39;][idx], 
+
+    Th={&#39;STR&#39;: X[&#39;Th&#39;][&#39;STR&#39;][idx],
         &#39;Cx&#39;: X[&#39;Th&#39;][&#39;Cx&#39;][idx]}
 
     return ng.getConEff(Cx=Cx, D1STR=D1STR, D2STR=D2STR, STN=STN, GPi=GPi, Th=Th)
@@ -625,10 +641,10 @@ def runBatch(batch_size, direct_strength, indirect_strength, parallel = 1):
 
   np.random.seed(seed=np.random.randint(0,1000))
   sweepcount = ng.configureSweep(0, experiment=&#39;mc&#39;, preset=preset, Start=Start,
-                                popscale=popscale, BaseStim=BaseStim, Choices=Choices, 
+                                popscale=popscale, BaseStim=BaseStim, Choices=Choices,
                                 WrongStim=stim, RightStim=stim, Dynamic=Dynamic,
                                 rampingCTX=True,
-                                conProb=conProb, 
+                                conProb=conProb,
                                 conEff=conEff_i)
 
   ng.compileAndRunSweepALL(batch_size, 0, 1, parallel)
@@ -802,7 +818,7 @@ vis.plot_trial_rates(t=0)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>batch_size = 20 # more runs will take more time
-direct_strength = 1.00 
+direct_strength = 1.00
 indirect_strength = 1.00
 </pre></div>
 </div>
@@ -826,7 +842,7 @@ rt_data_baseline # check out the data table
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>batch_size = 20 # more runs will take more time
-direct_strength = 1.10 
+direct_strength = 1.10
 indirect_strength = 1.00
 </pre></div>
 </div>

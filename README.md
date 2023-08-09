@@ -2,4 +2,4 @@
 Jupyter book for Biologically Intelligent eXploration
 
 ## Installation notes
-Requires Sphinx<5 (e.g., pip install Sphinx==4)
+Requires Sphinx<5 for building (e.g., pip install Sphinx==4)

@@ -1,0 +1,1142 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Lab 5 - CBGT pathways &#8212; Biologically Intelligent eXploration (BIX)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lab5-cbgt';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 6 - Predator-prey dynamics" href="lab6-predator_prey.html" />
+    <link rel="prev" title="Lab 4 - Evidence Accumulation" href="lab4-evidence_accumulation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/levy-flight.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/levy-flight.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Biologically Intelligent eXploration (BIX)
+                </a>
+            </li>
+        </ul>
+        <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro-python.html">Introduction to python</a></li>
+
+</ul>
+<p class="caption"><span class="caption-text">Labs</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lab1-information.html">Lab 1- Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2-explorelib.html">Lab 2 - Random exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3-chemotaxis.html">Lab 3 - Chemotaxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4-evidence_accumulation.html">Lab 4 - Evidence Accumulation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 5 - CBGT pathways</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="lab6-predator_prey.html">Lab 6 - Predator-prey dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7-foraging.html">Lab 7 - Foraging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise3-cbgt_and_info.html"><strong>Exercise 3: CBGT networks and information concepts</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise4-foraging_and_rl.html"><strong>Exercise 4: Foraging and reinforcement learning</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/CoAxLab/BIX-book/main?urlpath=tree/book/notebooks/lab5-cbgt.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/CoAxLab/BIX-book/blob/main/book/notebooks/lab5-cbgt.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/lab5-cbgt.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 5 - CBGT pathways</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 5 - CBGT pathways</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-setup">Section - Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-in-cbgt-modeling-code-library">Load in CBGT modeling code library</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-running-the-baseline-network">Section 1 - Running the baseline network</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#about-this-network-model">About this network model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-selection-works-in-this-model">How selection works in this model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1">Question 1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-code">Running code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2-what-behavior-did-the-network-display">Question 1.2: What behavior did the network display?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3-comparing-activity-across-action-channels">Question 1.3: Comparing activity across action channels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-4-comparing-predictions-with-results">Question 1.4: Comparing predictions with results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-investigating-the-effects-of-direct-pathway-strength">Section 2 - Investigating the effects of direct pathway strength</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1-predict-effect-on-reaction-time">Question 2.1: Predict effect on reaction time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2-predict-effect-on-accuracy">Question 2.2: Predict effect on accuracy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-test-your-predictions-first-run-the-cells-below-to-generate-a-batch-of-baseline-data-for-comparison">Let’s test  your predictions. First, run the cells below to generate a batch of baseline data for comparison.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-run-the-code-below-where-direct-strength-is-set-to-1-10">Now, run the code below, where direct_strength is set to 1.10.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3">Question 2.3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#section-3-the-effects-of-indirect-pathway-strength">Section 3: The effects of indirect pathway strength</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-1-predict-effect-on-reaction-time">Question 3.1: Predict effect on reaction time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2-predict-effect-on-accuracy">Question 3.2: Predict effect on accuracy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-code-below-where-indirect-strength-is-set-to-1-10-and-direct-strength-is-set-back-to-1-00">Run the code below, where indirect_strength is set to 1.10 (and direct_strength is set back to 1.00).</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-3">Question 3.3:</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-5-cbgt-pathways">
+<h1>Lab 5 - CBGT pathways<a class="headerlink" href="#lab-5-cbgt-pathways" title="Permalink to this headline">#</a></h1>
+<p>This lab has 3 main components designed to go over how corticobasal ganglia-thalamic (CBGT) circuits make decisions. We will use a model of this sytem to run simulations and investigate the effects of tuning different aspects of the circuit.</p>
+<p>Sections:</p>
+<ol class="arabic simple">
+<li><p>Run the baseline network, visualize simulated brain region activity patterns, and understand interactions.</p></li>
+<li><p>Investigate the effects of direct pathway strength.</p></li>
+<li><p>Investigate the effects of indirect pathway strength.</p></li>
+</ol>
+<section id="section-setup">
+<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this headline">#</a></h2>
+<p>Run all of the following code cells, which set up the environment and define several helper functions that we will use to run CBGT decision simulations.</p>
+<section id="load-in-cbgt-modeling-code-library">
+<h3>Load in CBGT modeling code library<a class="headerlink" href="#load-in-cbgt-modeling-code-library" title="Permalink to this headline">#</a></h3>
+<p>The code cell below sets the current working directory for Colab, into which we will load the CBGT library. This is the usual <code class="docutils literal notranslate"><span class="pre">/content</span></code> directory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /content
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/content
+</pre></div>
+</div>
+</div>
+</div>
+<p>Copy the CBGT simulation library from the CoAx lab GitHub to our Colab notebook (in the <code class="docutils literal notranslate"><span class="pre">/content</span></code> directory specified above).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!git clone https://github.com/CoAxLab/CBGT
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cloning into &#39;CBGT&#39;...
+remote: Enumerating objects: 604, done.
+remote: Counting objects: 100% (23/23), done.
+remote: Compressing objects: 100% (23/23), done.
+remote: Total 604 (delta 10), reused 5 (delta 0), pack-reused 581
+Receiving objects: 100% (604/604), 13.84 MiB | 9.14 MiB/s, done.
+Resolving deltas: 100% (322/322), done.
+</pre></div>
+</div>
+</div>
+</div>
+<p>This next code line sets Colab’s working directory to the CGBT library which we’ve just copied in.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /content/CBGT
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/content/CBGT
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code cell below imports libraries that the later code will need. These are libraries for performing mathematical calculations, structuring data, and plotting figures.</p>
+<p>The code also sets configurations for a prettier plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># import libraries and configure plots
+
+import os, sys
+import pandas as pd
+import numpy as np
+import random
+from future.utils import listvalues
+from copy import deepcopy
+
+import cbgt.netgen as ng
+import cbgt.analyzefx as afx
+from cbgt import vis, sim
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+import warnings
+
+warnings.simplefilter(&#39;ignore&#39;, np.RankWarning)
+warnings.filterwarnings(&quot;ignore&quot;, module=&quot;matplotlib&quot;)
+warnings.filterwarnings(&quot;ignore&quot;)
+
+%matplotlib inline
+clrs = [&#39;#347fff&#39;, &#39;#febe08&#39;]
+eclrs = [&#39;#1657de&#39;, &#39;#f5a005&#39;]
+
+rc = {&#39;lines.solid_capstyle&#39;: u&#39;butt&#39;}
+sns.set(style=&#39;ticks&#39;, rc=rc, font_scale=1.4)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This next code cell specifies a directory in our Colab environment for saving data so that the simulations we run can log their records.</p>
+<p>The code cell also specifies default model parameters, including the number of choices (<code class="docutils literal notranslate"><span class="pre">Choices</span> <span class="pre">=</span> <span class="pre">2</span></code>) in the task.</p>
+<p>The code also saves a preset of dMSN and iMSN weights for each action/choice channel (see <code class="docutils literal notranslate"><span class="pre">dMSN=[1.01,</span> <span class="pre">0.99]</span></code>). This simulates the condition of the network after some learning. Here we have weight of 1.01 for the left dMSNs vs 0.99. for right dMSNs. This simulates how the network might look after learning that the right choice was more rewarding than the left.</p>
+<p>Note: in this lab, we will only be using the <code class="docutils literal notranslate"><span class="pre">presetLow</span></code> preset, left and right dMSN weightings are closer (a slightly higher conflict condition).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># specify saving directory
+
+parentDir = &#39;cbgtDemoTEST&#39;
+savedir = os.path.join(os.path.expanduser(&#39;~&#39;), parentDir)
+if not os.path.isdir(savedir):
+    os.mkdir(savedir)
+
+# specify certain model parameters
+
+BaseStim = 0
+Stim = 2.54
+Dynamic = 30.0
+Choices = 2
+rampingCTX = True
+popscale = .3
+Start=200
+
+# save dMSN/iMSN weight presets for each choice
+
+presetLow = ng.set_post_learning_weights(dMSN=[1.01, 0.99], iMSN=[1.0,1.0])
+presetHi = ng.set_post_learning_weights(dMSN=[1.03, 0.98], iMSN=[1.0,1.0])
+presets = [presetLow, presetHi]
+
+conds = [&#39;low&#39;, &#39;high&#39;]
+condABC = [&#39;a&#39;, &#39;b&#39;]
+cond12 = [1, 2]
+
+savedirs = [os.path.join(savedir, c) for c in conds]
+saveLow, saveHi = savedirs
+saveTest=os.path.join(savedir, &#39;test&#39;)
+
+presetDict = dict(zip(conds, presets))
+condOrder = dict(zip(conds, condABC))
+condLevel = dict(zip(conds+[&#39;test&#39;], cond12+[0]))
+</pre></div>
+</div>
+</div>
+</div>
+<p>This next code cell defines and builds the CBGT network which we will use to run simulations. The code defines distributiuons of background activity for each brain region in the network and specifies connections between the regions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># helper functions to specify connection efficiacies for certain pathways
+
+def get_sampling_params(scale, direct_strength, indirect_strength):
+
+    # set strengths of background inputs/currents
+    CxSTR      =    0.2
+    CxTh       =    0.03
+    CxFSI      =    0.165
+    D1STR_GPi  =    direct_strength * 1.10
+    D2STR_GPeP =    indirect_strength * 1.65
+    STN_GPeP_A =    0.07
+    STN_GPeP_N =    4.01
+    STN_GPi    =    0.0324
+    GPi_Th     =    0.067
+    ThSTR      =    0.34
+    ThCx       =    0.02
+
+    mu = dict(Cx={&#39;STR&#39;:CxSTR, &#39;Th&#39;:CxTh, &#39;FSI&#39;:CxFSI},
+                Th={&#39;STR&#39;:ThSTR, &#39;Cx&#39;:ThCx},
+                D1STR={&#39;GPi&#39;: D1STR_GPi},
+                D2STR={&#39;GPeP&#39;: D2STR_GPeP},
+                STN={&#39;GPi&#39;: STN_GPi},
+                GPi={&#39;Th&#39;: GPi_Th})
+    sd = {i:{j: mu[i][j]*scale for j in list(mu[i])} for i in list(mu)}
+    return mu, sd
+
+# assign the background inputs to each brain region accordingly
+def sample_network_efficacies(muEff, sdEff, N):
+    X = {}
+    nuclei = list(muEff)
+    for i in nuclei:
+        targets = list(muEff[i])
+        X[i] = {}
+        for j in targets:
+            X[i][j] = np.random.normal(muEff[i][j], sdEff[i][j], N)
+    return X
+
+# build the network with specified connections
+def build_single_network(X, idx=0):
+
+    Cx={&#39;STR&#39;: X[&#39;Cx&#39;][&#39;STR&#39;][idx],
+        &#39;Th&#39;: X[&#39;Cx&#39;][&#39;Th&#39;][idx],
+        &#39;FSI&#39;: X[&#39;Cx&#39;][&#39;FSI&#39;][idx]}
+
+    D1STR={&#39;GPi&#39;: X[&#39;D1STR&#39;][&#39;GPi&#39;][idx]}
+    D2STR={&#39;GPeP&#39;: X[&#39;D2STR&#39;][&#39;GPeP&#39;][idx]}
+
+    STN={&#39;GPi&#39;: X[&#39;STN&#39;][&#39;GPi&#39;][idx]}
+
+    GPi={&#39;Th&#39;: X[&#39;GPi&#39;][&#39;Th&#39;][idx]}
+
+    Th={&#39;STR&#39;: X[&#39;Th&#39;][&#39;STR&#39;][idx],
+        &#39;Cx&#39;: X[&#39;Th&#39;][&#39;Cx&#39;][idx]}
+
+    return ng.getConEff(Cx=Cx, D1STR=D1STR, D2STR=D2STR, STN=STN, GPi=GPi, Th=Th)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This code cell defines a helper function for running a bath of simulations. The number of simulations (runs of the model leading to a single choice) to perform is specified via the <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> parameter. The simulations are independent and do not cause plasticity (learning/changing in weights) - instead they run the network each time with the simulated post-learning weights we specified earlier (specifically using the low preset we defined earlier - see <code class="docutils literal notranslate"><span class="pre">preset</span> <span class="pre">=</span> <span class="pre">presetDict['low']</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># code to run a batch of simulations
+
+def runBatch(batch_size, direct_strength, indirect_strength, parallel = 1):
+  N_subj = 1
+  sdScale = 0
+
+  conProb = ng.getConProb()
+  muEff, sdEff = get_sampling_params(sdScale, direct_strength, indirect_strength)
+  X = sample_network_efficacies(muEff, sdEff, N=N_subj)
+  subj_eff_dicts = [build_single_network(X, idx=i) for i in range(N_subj)]
+  idx = 0
+  conEff_i = subj_eff_dicts[idx]
+
+  stim = 2.5
+  preset = presetDict[&#39;low&#39;]
+
+  ng.setDirectory(saveTest)
+
+  np.random.seed(seed=np.random.randint(0,1000))
+  sweepcount = ng.configureSweep(0, experiment=&#39;mc&#39;, preset=preset, Start=Start,
+                                popscale=popscale, BaseStim=BaseStim, Choices=Choices,
+                                WrongStim=stim, RightStim=stim, Dynamic=Dynamic,
+                                rampingCTX=True,
+                                conProb=conProb,
+                                conEff=conEff_i)
+
+  ng.compileAndRunSweepALL(batch_size, 0, 1, parallel)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code cell below just defines a helper function that we will use to collect and structure simulation  reaction time and accuracy results into a nice data table.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># code to compile the behavioral data into a dataframe
+
+def readResults(batch_size):
+    results = ng.readAllTrialResults(batch_size,0,1)
+    rtdata = pd.DataFrame(columns=[&#39;rt&#39;,&#39;accuracy&#39;])
+    for result in results[0][:batch_size]:
+        temp = ng.findOutputs(result)[&#39;decision made&#39;]
+        row = pd.Series({&#39;rt&#39;:temp[&#39;delay&#39;], &#39;accuracy&#39;:(1-temp[&#39;pathvals&#39;][0])})
+        rtdata = rtdata.append(row, ignore_index=True)
+    return rtdata
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="section-1-running-the-baseline-network">
+<h2>Section 1 - Running the baseline network<a class="headerlink" href="#section-1-running-the-baseline-network" title="Permalink to this headline">#</a></h2>
+<p>In this section we will run the baseline network, visualize simulated brain region activity patterns, and note interactions to get a sense of how the CGBT network implements decisions.</p>
+<section id="about-this-network-model">
+<h3>About this network model<a class="headerlink" href="#about-this-network-model" title="Permalink to this headline">#</a></h3>
+<p>This simulation has been repackaged from (Dunovan et al., 2019).</p>
+<ul class="simple">
+<li><p>There are two parallel action channels which compete against each other, one for the ‘Left’ action and one for the ‘Right’ action.</p></li>
+<li><p>Each action channel contains its own cortex/striatum/GPe/GPi/thalamus populations.</p></li>
+<li><p>Each trial, stimulation is applied to the cortex, which drives activity in the striatum.</p></li>
+<li><p>Some striatal neurons inhibit the GPe (this is the indirect pathway), while others inhibit the GPi (the direct pathway). The ultimate result is a disinhibition of the thalamus, and the thalamus population (either Left or Right) which rises fastest represents the selected action.</p></li>
+<li><p>The cortico-striatal connections have been tipped slightly in the favor of the Left action (representing the Left action being slightly more rewarding on average). So, a Left decision by the network is considered ‘Correct’ (since the ‘Left’ action has the highest expected reward), while a Right decision by the network is considered ‘Incorrect’.</p></li>
+</ul>
+<p><img alt="" src="https://raw.githubusercontent.com/CoAxLab/BiologicallyIntelligentExploration/main/Labs/CBGT_screenshot.png" /></p>
+</section>
+<section id="how-selection-works-in-this-model">
+<h3>How selection works in this model<a class="headerlink" href="#how-selection-works-in-this-model" title="Permalink to this headline">#</a></h3>
+<p>During the selection process (between choices during decision making), stimulation is applied to the cortex, causing cortical activity to ramp upwards. The cortex then feeds into the direct and indirect populations of the striatum, which then affects the firing rates in other areas of the basal ganglia. The diagram above shows which populations are excitatory (increase activation) and which are inhibitory (reduce activation).</p>
+</section>
+<section id="question-1-1">
+<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this headline">#</a></h3>
+<p>During the selection process, will the activity of the following populations increase or decrease? [Assume that the hyperdirect pathway from the cortex to the subthalamic nucleus (STN) in red is NOT undergoing any changes.]</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Fill in the ... areas below with your answers (&quot;inc&quot; or &quot;dec&quot;)
+
+# |inc/dec| Region
+# +-------+-----------------------------------------------------------------
+# |  inc  | Cortex   - increase, due to applied current
+# |  inc  | Thalamus - increase, this area receives the output of the basal ganglia network
+# |  ...  | dMSN (striatal neurons in green which start the direct pathway)
+# |  ...  | iMSN (striatal neurons in blue which start the indirect pathway)
+# |  ...  | GPe  (external globus pallidus, in blue)
+# |  ...  | GPi  (internal globus pallidus)
+# |  ...  | STN  (subthalamic nucleus)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note: network dynamics can be very complicated and depend on a lot of factors - there’s no way to look at a circuit diagram and tell for certain how populations will behave in response to input. Just make your best guess.</p>
+</section>
+<section id="running-code">
+<h3>Running code<a class="headerlink" href="#running-code" title="Permalink to this headline">#</a></h3>
+<p>Run the code below to perform a single simulation with baseline parameters and plot the firing rates of the brain region cell populations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># set variables
+batch_size = 1
+direct_strength = 1.00
+indirect_strength = 1.00
+# note: pathway strengths are in arbitrary units, where 1.0 = baseline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># run the batch
+runBatch(batch_size, direct_strength, indirect_strength)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># produce a dataframe with reaction times and accuracies
+rt_data = readResults(batch_size)
+rt_data
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># plot the first trial from the batch
+# &#39;Left&#39; channel is &quot;correct&quot;
+vis.plot_trial_rates(t=0)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-1-2-what-behavior-did-the-network-display">
+<h3>Question 1.2: What behavior did the network display?<a class="headerlink" href="#question-1-2-what-behavior-did-the-network-display" title="Permalink to this headline">#</a></h3>
+<p>Did it choose the Left or Right action? Was this choice the correct or incorrect action? What was the reaction time? Hint: look at the graph of thalamic activity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write your answer here, as a python comment
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-1-3-comparing-activity-across-action-channels">
+<h3>Question 1.3: Comparing activity across action channels<a class="headerlink" href="#question-1-3-comparing-activity-across-action-channels" title="Permalink to this headline">#</a></h3>
+<p>Look at the ramping activity in cortex, striatum (dMSN and iMSN), and thalamus. Do the left and right sub-populations change their activity in opposite ways (one ramps up while the other ramps down)? Or do the left and right activities both ramp upwards together?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write your answer here, as a python comment
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-1-4-comparing-predictions-with-results">
+<h3>Question 1.4: Comparing predictions with results<a class="headerlink" href="#question-1-4-comparing-predictions-with-results" title="Permalink to this headline">#</a></h3>
+<p>Looking at the actual firing rates, which populations ramped in which directions? Does this match what you expected?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write your answer here, as a python comment
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="section-2-investigating-the-effects-of-direct-pathway-strength">
+<h2>Section 2 - Investigating the effects of direct pathway strength<a class="headerlink" href="#section-2-investigating-the-effects-of-direct-pathway-strength" title="Permalink to this headline">#</a></h2>
+<section id="question-2-1-predict-effect-on-reaction-time">
+<h3>Question 2.1: Predict effect on reaction time<a class="headerlink" href="#question-2-1-predict-effect-on-reaction-time" title="Permalink to this headline">#</a></h3>
+<p>When the strength of the direct pathway is increased, what will happen to the network’s average reaction time?</p>
+<p>Hint: Reaction time equals the time between the presentation of a stimulus (increased current applied to the cortex) and a decision (thalamic activity crosses a threshold).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write your answer here, as a python comment
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-2-2-predict-effect-on-accuracy">
+<h3>Question 2.2: Predict effect on accuracy<a class="headerlink" href="#question-2-2-predict-effect-on-accuracy" title="Permalink to this headline">#</a></h3>
+<p>When the strength of the direct pathway is increased, what will happen to the network’s decision accuracy?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write your answer here, as a python comment
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="let-s-test-your-predictions-first-run-the-cells-below-to-generate-a-batch-of-baseline-data-for-comparison">
+<h3>Let’s test  your predictions. First, run the cells below to generate a batch of baseline data for comparison.<a class="headerlink" href="#let-s-test-your-predictions-first-run-the-cells-below-to-generate-a-batch-of-baseline-data-for-comparison" title="Permalink to this headline">#</a></h3>
+<p>Note: The reaction time effects should be consistent, but there’s a ton of randomness in network accuracy, so unless you run a large batch (like 100) the accuracy values might not be what you’d expect.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>batch_size = 20 # more runs will take more time
+direct_strength = 1.00
+indirect_strength = 1.00
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>For me, the code block below took a bit over 2 minutes to run on Colab.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># run the batch and produce the dataframe
+# note: if you receive an error while running the sims, you might have made too large of a parameter change.
+runBatch(batch_size, direct_strength, indirect_strength)
+rt_data_baseline = readResults(batch_size)
+rt_data_baseline # check out the data table
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="now-run-the-code-below-where-direct-strength-is-set-to-1-10">
+<h3>Now, run the code below, where direct_strength is set to 1.10.<a class="headerlink" href="#now-run-the-code-below-where-direct-strength-is-set-to-1-10" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>batch_size = 20 # more runs will take more time
+direct_strength = 1.10
+indirect_strength = 1.00
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>For me, the code block below took a bit over 2 minutes to run on Colab.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># run the batch and produce the dataframe
+# note: if you receive an error while running the sims, you might have made too large of a parameter change.
+runBatch(batch_size, direct_strength, indirect_strength)
+rt_data_direct_up = readResults(batch_size)
+#rt_data_direct_up
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># calculate and print the mean values for rt and accuracy
+
+print(&#39;Baseline mean values:&#39;)
+print(rt_data_baseline.mean())
+print()
+
+print(&#39;Increased direct pathway strength mean values:&#39;)
+print(rt_data_direct_up.mean())
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># plot a histogram of reaction times
+
+plt.hist(rt_data_baseline.rt,  bins=np.arange(0,500,20), alpha=0.5, label=&#39;baseline&#39;)
+plt.hist(rt_data_direct_up.rt, bins=np.arange(0,500,20), alpha=0.5, label=&#39;strong direct&#39;)
+plt.xlabel(&#39;Reaction time&#39;)
+plt.ylabel(&#39;Frequency&#39;)
+plt.legend(title=&#39;distribution&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-2-3">
+<h3>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this headline">#</a></h3>
+<p>What was the actual relationship between direct pathway strength and reaction time?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write your answer here, as a python comment
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="section-3-the-effects-of-indirect-pathway-strength">
+<h1>Section 3: The effects of indirect pathway strength<a class="headerlink" href="#section-3-the-effects-of-indirect-pathway-strength" title="Permalink to this headline">#</a></h1>
+<section id="question-3-1-predict-effect-on-reaction-time">
+<h2>Question 3.1: Predict effect on reaction time<a class="headerlink" href="#question-3-1-predict-effect-on-reaction-time" title="Permalink to this headline">#</a></h2>
+<p>When the strength of the indirect pathway is increased, what will happen to the network’s average reaction time?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write your answer here, as a python comment
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-3-2-predict-effect-on-accuracy">
+<h2>Question 3.2: Predict effect on accuracy<a class="headerlink" href="#question-3-2-predict-effect-on-accuracy" title="Permalink to this headline">#</a></h2>
+<p>When the strength of the indirect pathway is increased, what will happen to the network’s decision accuracy?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write your answer here, as a python comment
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-the-code-below-where-indirect-strength-is-set-to-1-10-and-direct-strength-is-set-back-to-1-00">
+<h2>Run the code below, where indirect_strength is set to 1.10 (and direct_strength is set back to 1.00).<a class="headerlink" href="#run-the-code-below-where-indirect-strength-is-set-to-1-10-and-direct-strength-is-set-back-to-1-00" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>batch_size = 20
+direct_strength = 1.00
+indirect_strength = 1.10
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>For me, the code block below took a bit over 2 minutes to run on Colab.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>runBatch(batch_size, direct_strength, indirect_strength)
+rt_data_indirect_up = readResults(batch_size)
+#rt_data_indirect_up
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># calculate and print the mean values for rt and accuracy
+
+print(&#39;Baseline mean values:&#39;)
+print(rt_data_baseline.mean())
+print()
+
+print(&#39;Increased indirect pathway strength mean values:&#39;)
+print(rt_data_indirect_up.mean())
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># plot a histogram of reaction times
+
+plt.hist(rt_data_baseline.rt,  bins=np.arange(0,500,20), alpha=0.5, label=&#39;baseline&#39;)
+plt.hist(rt_data_indirect_up.rt, bins=np.arange(0,500,20), alpha=0.5, label=&#39;strong indirect&#39;)
+plt.xlabel(&#39;Reaction time&#39;)
+plt.ylabel(&#39;Frequency&#39;)
+plt.legend(title=&#39;distribution&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-3-3">
+<h2>Question 3.3:<a class="headerlink" href="#question-3-3" title="Permalink to this headline">#</a></h2>
+<p>What was the actual relationship between indirect pathway strength and reaction time?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write your answer here, as a python comment
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab4-evidence_accumulation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 4 - Evidence Accumulation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab6-predator_prey.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 6 - Predator-prey dynamics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 5 - CBGT pathways</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-setup">Section - Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-in-cbgt-modeling-code-library">Load in CBGT modeling code library</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-running-the-baseline-network">Section 1 - Running the baseline network</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#about-this-network-model">About this network model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-selection-works-in-this-model">How selection works in this model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1">Question 1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-code">Running code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2-what-behavior-did-the-network-display">Question 1.2: What behavior did the network display?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3-comparing-activity-across-action-channels">Question 1.3: Comparing activity across action channels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-4-comparing-predictions-with-results">Question 1.4: Comparing predictions with results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-investigating-the-effects-of-direct-pathway-strength">Section 2 - Investigating the effects of direct pathway strength</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1-predict-effect-on-reaction-time">Question 2.1: Predict effect on reaction time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2-predict-effect-on-accuracy">Question 2.2: Predict effect on accuracy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-test-your-predictions-first-run-the-cells-below-to-generate-a-batch-of-baseline-data-for-comparison">Let’s test  your predictions. First, run the cells below to generate a batch of baseline data for comparison.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-run-the-code-below-where-direct-strength-is-set-to-1-10">Now, run the code below, where direct_strength is set to 1.10.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3">Question 2.3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#section-3-the-effects-of-indirect-pathway-strength">Section 3: The effects of indirect pathway strength</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-1-predict-effect-on-reaction-time">Question 3.1: Predict effect on reaction time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2-predict-effect-on-accuracy">Question 3.2: Predict effect on accuracy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-code-below-where-indirect-strength-is-set-to-1-10-and-direct-strength-is-set-back-to-1-00">Run the code below, where indirect_strength is set to 1.10 (and direct_strength is set back to 1.00).</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-3">Question 3.3:</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Timothy Verstynen, Erik Peterson, Matthew Clapp, Jack Burgess
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

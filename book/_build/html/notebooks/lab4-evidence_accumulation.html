@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 4 - Evidence Accumulation &#8212; Biologically Intelligent eXploration (BIX)</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lab 5 - CBGT pathways" href="lab5-cbgt.html" />
     <link rel="prev" title="Lab 3 - Chemotaxis" href="lab3-chemotaxis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -156,12 +155,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+        <p class="caption"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro-python.html">Introduction to python</a></li>
 
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<p class="caption"><span class="caption-text">Labs</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lab1-information.html">Lab 1- Information theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2-explorelib.html">Lab 2 - Random exploration</a></li>
@@ -173,7 +172,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab7-foraging.html">Lab 7 - Foraging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<p class="caption"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
@@ -414,7 +413,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-4-evidence-accumulation">
-<h1>Lab 4 - Evidence Accumulation<a class="headerlink" href="#lab-4-evidence-accumulation" title="Permalink to this heading">#</a></h1>
+<h1>Lab 4 - Evidence Accumulation<a class="headerlink" href="#lab-4-evidence-accumulation" title="Permalink to this headline">#</a></h1>
 <p>This lab has two main components designed to go over the process of evidence accumulation.</p>
 <ol class="arabic simple">
 <li><p>Visualize the drift-diffusion model and see how parametes change evidence accumulation.</p></li>
@@ -422,36 +421,62 @@ document.write(`
 </ol>
 <p>Note that this lab re-uses agents we had in the last lab, but explores them in much mroe detail.</p>
 <section id="section-setup">
-<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this heading">#</a></h2>
+<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this headline">#</a></h2>
 <p>First let’s set things up for the two parts of the lab.</p>
 <section id="install-admcode-and-explorationlib-libraries">
-<h3>Install ADMCode and explorationlib libraries<a class="headerlink" href="#install-admcode-and-explorationlib-libraries" title="Permalink to this heading">#</a></h3>
+<h3>Install ADMCode and explorationlib libraries<a class="headerlink" href="#install-admcode-and-explorationlib-libraries" title="Permalink to this headline">#</a></h3>
 <p>Install the code for running the DDM simulations (ADMCode) and the evidence accumulation agents (explorelib)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># ADMCode first
-!pip install --upgrade git+https://github.com/coaxlab/AdaptiveDecisionMaking_2018
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ADMCode first</span>
+<span class="c1"># !pip install --upgrade git+https://github.com/coaxlab/AdaptiveDecisionMaking_2018</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># Explorelib second
-!pip install --upgrade git+https://github.com/coaxlab/explorationlib
-!pip install --upgrade git+https://github.com/MattChanTK/gym-maze.git
-!pip install celluloid # for the gifs
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explorelib second</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/coaxlab/explorationlib
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/MattChanTK/gym-maze.git
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>celluloid<span class="w"> </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>gifs
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting git+https://github.com/coaxlab/explorationlib
+  Cloning https://github.com/coaxlab/explorationlib to /private/var/folders/5f/qgnj7zxj3d93s_5ccghgk2_m0000gn/T/pip-req-build-e1tmq294
+  Running command git clone -q https://github.com/coaxlab/explorationlib /private/var/folders/5f/qgnj7zxj3d93s_5ccghgk2_m0000gn/T/pip-req-build-e1tmq294
+Collecting git+https://github.com/MattChanTK/gym-maze.git
+  Cloning https://github.com/MattChanTK/gym-maze.git to /private/var/folders/5f/qgnj7zxj3d93s_5ccghgk2_m0000gn/T/pip-req-build-78i49adn
+  Running command git clone -q https://github.com/MattChanTK/gym-maze.git /private/var/folders/5f/qgnj7zxj3d93s_5ccghgk2_m0000gn/T/pip-req-build-78i49adn
+Requirement already satisfied: gym in /Users/gabrielsarch/anaconda3/lib/python3.8/site-packages (from gym-maze==0.4) (0.26.2)
+Requirement already satisfied: pygame in /Users/gabrielsarch/anaconda3/lib/python3.8/site-packages (from gym-maze==0.4) (2.5.0)
+Requirement already satisfied: numpy in /Users/gabrielsarch/anaconda3/lib/python3.8/site-packages (from gym-maze==0.4) (1.20.3)
+Requirement already satisfied: gym-notices&gt;=0.0.4 in /Users/gabrielsarch/anaconda3/lib/python3.8/site-packages (from gym-&gt;gym-maze==0.4) (0.0.8)
+Requirement already satisfied: importlib-metadata&gt;=4.8.0 in /Users/gabrielsarch/anaconda3/lib/python3.8/site-packages (from gym-&gt;gym-maze==0.4) (4.8.1)
+Requirement already satisfied: cloudpickle&gt;=1.2.0 in /Users/gabrielsarch/anaconda3/lib/python3.8/site-packages (from gym-&gt;gym-maze==0.4) (1.6.0)
+Requirement already satisfied: zipp&gt;=0.5 in /Users/gabrielsarch/anaconda3/lib/python3.8/site-packages (from importlib-metadata&gt;=4.8.0-&gt;gym-&gt;gym-maze==0.4) (3.5.0)
+Requirement already satisfied: celluloid in /Users/gabrielsarch/anaconda3/lib/python3.8/site-packages (0.2.0)
+Requirement already satisfied: matplotlib in /Users/gabrielsarch/anaconda3/lib/python3.8/site-packages (from celluloid) (3.4.2)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /Users/gabrielsarch/anaconda3/lib/python3.8/site-packages (from matplotlib-&gt;celluloid) (1.3.1)
+Requirement already satisfied: cycler&gt;=0.10 in /Users/gabrielsarch/anaconda3/lib/python3.8/site-packages (from matplotlib-&gt;celluloid) (0.10.0)
+Requirement already satisfied: pyparsing&gt;=2.2.1 in /Users/gabrielsarch/anaconda3/lib/python3.8/site-packages (from matplotlib-&gt;celluloid) (2.4.7)
+Requirement already satisfied: pillow&gt;=6.2.0 in /Users/gabrielsarch/anaconda3/lib/python3.8/site-packages (from matplotlib-&gt;celluloid) (8.3.1)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /Users/gabrielsarch/anaconda3/lib/python3.8/site-packages (from matplotlib-&gt;celluloid) (2.8.2)
+Requirement already satisfied: numpy&gt;=1.16 in /Users/gabrielsarch/anaconda3/lib/python3.8/site-packages (from matplotlib-&gt;celluloid) (1.20.3)
+Requirement already satisfied: six in /Users/gabrielsarch/anaconda3/lib/python3.8/site-packages (from cycler&gt;=0.10-&gt;matplotlib-&gt;celluloid) (1.16.0)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="import-modules">
-<h3>Import Modules<a class="headerlink" href="#import-modules" title="Permalink to this heading">#</a></h3>
+<h3>Import Modules<a class="headerlink" href="#import-modules" title="Permalink to this headline">#</a></h3>
 <p>Here we will bring in all the modules and libraries that we will need for this lab.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
 <span class="kn">from</span> <span class="nn">ADMCode</span> <span class="kn">import</span> <span class="n">visualize</span> <span class="k">as</span> <span class="n">vis</span>
 <span class="kn">from</span> <span class="nn">ADMCode</span> <span class="kn">import</span> <span class="n">ddm</span><span class="p">,</span> <span class="n">sdt</span>
 
@@ -465,10 +490,24 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">5</span><span class="n">f</span><span class="o">/</span><span class="n">qgnj7zxj3d93s_5ccghgk2_m0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_10606</span><span class="o">/</span><span class="mf">1280288332.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">ADMCode</span> <span class="kn">import</span> <span class="n">visualize</span> <span class="k">as</span> <span class="n">vis</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">ADMCode</span> <span class="kn">import</span> <span class="n">ddm</span><span class="p">,</span> <span class="n">sdt</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;ADMCode&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import misc</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import misc</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -512,29 +551,35 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/gabrielsarch/anaconda3/lib/python3.8/site-packages/explorationlib/run.py:9: TqdmExperimentalWarning: Using `tqdm.autonotebook.tqdm` in notebook mode. Use `tqdm.tqdm` instead to force console mode (e.g. in jupyter console)
+  from tqdm.autonotebook import tqdm
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="notebook-config">
-<h3>Notebook Config<a class="headerlink" href="#notebook-config" title="Permalink to this heading">#</a></h3>
+<h3>Notebook Config<a class="headerlink" href="#notebook-config" title="Permalink to this headline">#</a></h3>
 <p>Now let’s do some tweaks to get the notebooks to render things nicely.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pretty plots</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pretty plots</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">RankWarning</span><span class="p">)</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="s2">&quot;matplotlib&quot;</span><span class="p">)</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.3</span><span class="p">)</span>
 
-<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-<span class="o">%</span><span class="n">config</span> <span class="n">InlineBackend</span><span class="o">.</span><span class="n">figure_format</span><span class="o">=</span><span class="s1">&#39;retina&#39;</span>
-<span class="o">%</span><span class="n">config</span> <span class="n">IPCompleter</span><span class="o">.</span><span class="n">greedy</span><span class="o">=</span><span class="kc">True</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format=&#39;retina&#39;
+<span class="o">%</span><span class="k">config</span> IPCompleter.greedy=True
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;16&quot;</span>
 
 <span class="c1"># Dev</span>
-<span class="o">%</span><span class="n">load_ext</span> <span class="n">autoreload</span>
-<span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>
+<span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
 </pre></div>
 </div>
 </div>
@@ -542,15 +587,15 @@ document.write(`
 </section>
 </section>
 <section id="section-1-simulating-the-drift-diffusion-model">
-<h2>Section 1 - Simulating the Drift-Diffusion Model<a class="headerlink" href="#section-1-simulating-the-drift-diffusion-model" title="Permalink to this heading">#</a></h2>
+<h2>Section 1 - Simulating the Drift-Diffusion Model<a class="headerlink" href="#section-1-simulating-the-drift-diffusion-model" title="Permalink to this headline">#</a></h2>
 <p>Here, we will visualize the DDM in action and see how changes in its parameters affect the accuracy and reaction times of the decision process.</p>
 <p>First thing first, let’s take a look at the code. It can be found in the Colab virtual machine here: /usr/local/lib/python3.7/dist-packages/ADMCode/ddm.py</p>
 <section id="ddm-parameters">
-<h3>DDM Parameters<a class="headerlink" href="#ddm-parameters" title="Permalink to this heading">#</a></h3>
+<h3>DDM Parameters<a class="headerlink" href="#ddm-parameters" title="Permalink to this headline">#</a></h3>
 <p>Let’s start with a simple set of simulations using the parameters below. The parameters get passed to the DDM agent as a numpy array.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">.05</span> <span class="c1"># boundary height</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">.05</span> <span class="c1"># boundary height</span>
 <span class="n">v</span> <span class="o">=</span> <span class="o">-</span><span class="mf">.05</span> <span class="c1"># strong drift-rate</span>
 <span class="n">tr</span> <span class="o">=</span> <span class="mf">.25</span> <span class="c1"># nondecision time (in seconds)</span>
 <span class="n">z</span> <span class="o">=</span> <span class="mf">.5</span> <span class="c1"># starting point ([0,1], fraction of a)</span>
@@ -568,11 +613,11 @@ document.write(`
 </div>
 </section>
 <section id="generating-data">
-<h3>Generating Data<a class="headerlink" href="#generating-data" title="Permalink to this heading">#</a></h3>
+<h3>Generating Data<a class="headerlink" href="#generating-data" title="Permalink to this headline">#</a></h3>
 <p>The <strong>ddm.sim_ddm_trials</strong> function runs a set of trials (default 500 trials) of a DDM with the parameters specified in your parameters array. Let’s try it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">,</span> <span class="n">traces</span> <span class="o">=</span> <span class="n">ddm</span><span class="o">.</span><span class="n">sim_ddm_trials</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">ntrials</span><span class="p">,</span> <span class="n">deadline</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">,</span> <span class="n">traces</span> <span class="o">=</span> <span class="n">ddm</span><span class="o">.</span><span class="n">sim_ddm_trials</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">ntrials</span><span class="p">,</span> <span class="n">deadline</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -582,10 +627,10 @@ document.write(`
 <p>One important thing to note is that in these simulations the upper bound represents the “correct” choice, while the lower bound represents “errors”. So this is what is known as an accuracy coding for the DDM.</p>
 </section>
 <section id="analyze-simulated-behavior">
-<h3>Analyze simulated behavior<a class="headerlink" href="#analyze-simulated-behavior" title="Permalink to this heading">#</a></h3>
+<h3>Analyze simulated behavior<a class="headerlink" href="#analyze-simulated-behavior" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">choice</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">choice</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">corRT</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">choice</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">rt</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">errRT</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">choice</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">rt</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
@@ -599,11 +644,11 @@ document.write(`
 <p>As we can see, the DDM is biased towards the upper boundary. What parameter defines this bias in the model that we set up?</p>
 </section>
 <section id="plot-evidence-traces">
-<h3>Plot evidence traces<a class="headerlink" href="#plot-evidence-traces" title="Permalink to this heading">#</a></h3>
+<h3>Plot evidence traces<a class="headerlink" href="#plot-evidence-traces" title="Permalink to this headline">#</a></h3>
 <p>The ADMCode library has a set of custom visualization tools that allow us to see the DDM in action. Let’s take a look at one of them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">vis</span><span class="o">.</span><span class="n">plot_ddm_sims</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">traces</span><span class="o">=</span><span class="n">traces</span><span class="p">,</span> <span class="n">plot_v</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">vis</span><span class="o">.</span><span class="n">plot_ddm_sims</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">traces</span><span class="o">=</span><span class="n">traces</span><span class="p">,</span> <span class="n">plot_v</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -611,7 +656,7 @@ document.write(`
 <p>The plot above shows all fo the traces. Let’s see about plotting just the first trial’s trace.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">vis</span><span class="o">.</span><span class="n">plot_ddm_sims</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">traces</span><span class="o">=</span><span class="n">traces</span><span class="p">[:</span><span class="mi">1</span><span class="p">],</span> <span class="n">plot_v</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">vis</span><span class="o">.</span><span class="n">plot_ddm_sims</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">traces</span><span class="o">=</span><span class="n">traces</span><span class="p">[:</span><span class="mi">1</span><span class="p">],</span> <span class="n">plot_v</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -619,7 +664,7 @@ document.write(`
 <p>The example above shows the mean overall drift process trajectory as a solid black line. The single diffusion process plotted is the diffusion process for both trials.</p>
 </section>
 <section id="question-1-1">
-<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this headline">#</a></h3>
 <p>Re-run the simulations above, but with the following parameters:</p>
 <p>a = .15  \
 v = -.05 <br />
@@ -633,14 +678,14 @@ ntrials = 1000</p>
 <p><em>Question</em>: How did the behavior of the model change? Be specific. What does this tell you about the nature of the parameters that were changed?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="question-1-2">
-<h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this headline">#</a></h3>
 <p>Re-run the simulations above, but with the following parameters:</p>
 <p>a = .05  \
 v = -.05 <br />
@@ -654,7 +699,7 @@ ntrials = 1000</p>
 <p><em>Question</em>: What did changing the boundary height do to the model’s behavior? Be specific.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>
@@ -662,12 +707,12 @@ ntrials = 1000</p>
 </section>
 </section>
 <section id="section-2-using-sensory-evidence-to-explore">
-<h2>Section 2 - Using Sensory Evidence To Explore<a class="headerlink" href="#section-2-using-sensory-evidence-to-explore" title="Permalink to this heading">#</a></h2>
+<h2>Section 2 - Using Sensory Evidence To Explore<a class="headerlink" href="#section-2-using-sensory-evidence-to-explore" title="Permalink to this headline">#</a></h2>
 <p>In this section we take on accumulating evidence as a policy for decision making. Our venue is still chemotaxis, but now our sensors are noisy. The presence of this uncertainty makes decisions–of the kind common to decision theory–a necessity.</p>
 <p>The agents we will be using are the same as used in the Chemotaxis lab (Lab 3). Look back there to see the structure of the gradient search. But here we will explore something in more detail that we skipped over in that lab: evidence accumulation.</p>
 </section>
 <section id="accumulation-of-chemosignals">
-<h2>Accumulation of chemosignals<a class="headerlink" href="#accumulation-of-chemosignals" title="Permalink to this heading">#</a></h2>
+<h2>Accumulation of chemosignals<a class="headerlink" href="#accumulation-of-chemosignals" title="Permalink to this headline">#</a></h2>
 <p>Because an accumulator is present, our chemo agent sequentially tries to estimate the scent gradient by sampling the new current location, until the threshold is met.</p>
 <p>Chemo-accumulators have what we can think of as two cognitive or behavioral steps:</p>
 <ol class="arabic simple">
@@ -689,17 +734,17 @@ ntrials = 1000</p>
 <p>We’ll look at a noisy, somewhat target-filled, domain and explore how speed, accuracy, and death rate are influenced by the parameters of our drift-diffusion model.</p>
 <p>The code for this agent can be found here /usr/local/lib/python3.7/dist-packages/explorationlib/agent.py. The <em>AccumulatorGradientGrid</em> agent code can be found on line 1090 of the <em><a class="reference external" href="http://agents.py">agents.py</a></em> library.</p>
 <section id="example-influence-of-drift-rate-on-performance">
-<h3>Example: Influence of drift rate on performance<a class="headerlink" href="#example-influence-of-drift-rate-on-performance" title="Permalink to this heading">#</a></h3>
+<h3>Example: Influence of drift rate on performance<a class="headerlink" href="#example-influence-of-drift-rate-on-performance" title="Permalink to this headline">#</a></h3>
 <p>Based on what you have been told so far, how would you expect increases in the <em>drift rate</em> to affect average rewards, best rewards, and deaths in an open field task, with sparse targets and noisy scents?</p>
 <p>Here, drift rate can be conceptualized as the fidelity of sensory signal, like a sort of signal-to-noise ratio.</p>
 </section>
 <section id="create-environment">
-<h3>Create environment<a class="headerlink" href="#create-environment" title="Permalink to this heading">#</a></h3>
+<h3>Create environment<a class="headerlink" href="#create-environment" title="Permalink to this headline">#</a></h3>
 <p>The name of the env for this section is the <em>ScentGrid</em>. It basically parses up the continuous space into a grid of steps.</p>
 <p>Let’s add some targets and scents to it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shared exp parameters</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shared exp parameters</span>
 <span class="n">num_steps</span> <span class="o">=</span> <span class="mi">200</span>
 <span class="n">max_steps</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">seed_value</span> <span class="o">=</span> <span class="mi">5838</span>
@@ -732,7 +777,7 @@ ntrials = 1000</p>
 <p>First, let’s see how our environment looks. Each point represents a food target.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="n">num_experiment</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plot_targets2d</span><span class="p">(</span>
@@ -749,12 +794,12 @@ ntrials = 1000</p>
 </div>
 </section>
 <section id="drift-rates">
-<h3>Drift rates<a class="headerlink" href="#drift-rates" title="Permalink to this heading">#</a></h3>
+<h3>Drift rates<a class="headerlink" href="#drift-rates" title="Permalink to this headline">#</a></h3>
 <p>Now let us turn to setting up our agents. We’ll play with agents with various rates of evidence accumulation.</p>
 <p>Using the <em>env</em> defined above explore the following drift rates:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Our parameters</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Our parameters</span>
 <span class="n">drift_rates</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]</span>
 
 <span class="c1"># For plotting</span>
@@ -766,23 +811,23 @@ ntrials = 1000</p>
 </div>
 </section>
 <section id="question-2-1">
-<h3>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this headline">#</a></h3>
 <p>In the context of this gradient decision that our wandering agent does, what should <em>increasing</em> the drift rate do to the agent’s behavior?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="run">
-<h3>Run<a class="headerlink" href="#run" title="Permalink to this heading">#</a></h3>
+<h3>Run<a class="headerlink" href="#run" title="Permalink to this headline">#</a></h3>
 <p>Next we will run 100 experiments for each drift rate.</p>
 <p><em>Note:</em> This will take a few minutes to run.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exp params</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exp params</span>
 <span class="n">threshold</span> <span class="o">=</span> <span class="mf">3.0</span>
 <span class="n">accumulate_sigma</span> <span class="o">=</span> <span class="mf">1.0</span>
 
@@ -817,11 +862,11 @@ ntrials = 1000</p>
 </div>
 </section>
 <section id="plot-an-example">
-<h3>Plot an example<a class="headerlink" href="#plot-an-example" title="Permalink to this heading">#</a></h3>
+<h3>Plot an example<a class="headerlink" href="#plot-an-example" title="Permalink to this headline">#</a></h3>
 <p>In order to understand how our different agents, with different drift rates, do we can start with a qualitative analysis. Here we will plot a single trial for each agent.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="n">num_experiment</span> <span class="o">=</span> <span class="mi">40</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
@@ -847,12 +892,12 @@ ntrials = 1000</p>
 </div>
 </section>
 <section id="plot-several-metrics">
-<h3>Plot several metrics<a class="headerlink" href="#plot-several-metrics" title="Permalink to this heading">#</a></h3>
+<h3>Plot several metrics<a class="headerlink" href="#plot-several-metrics" title="Permalink to this headline">#</a></h3>
 <p>Next let us look at differenet metrics of behavior instead, to get a better idea of what changing the drift rate does.</p>
 <p>The metrics we will look at are: distance, death, best reward, average reward.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
     <span class="n">l</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -878,7 +923,7 @@ ntrials = 1000</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
     <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num_death</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
@@ -896,7 +941,7 @@ ntrials = 1000</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Max Score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Max Score</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">total_reward</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
@@ -920,7 +965,7 @@ ntrials = 1000</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">total_reward</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
@@ -955,24 +1000,24 @@ ntrials = 1000</p>
 </div>
 </section>
 <section id="question-2-2">
-<h3>Question 2.2<a class="headerlink" href="#question-2-2" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.2<a class="headerlink" href="#question-2-2" title="Permalink to this headline">#</a></h3>
 <p>Describe how increasing the drift rate changes the overall performance of the agent along the dimensions we just plotted. What does this tell you about how the drift rate is changing behavior?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="question-2-3">
-<h3>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this headline">#</a></h3>
 <p>Re-run the simulations above, instead keeping the drift rate at 1.0, and varying the <em>threshold</em> parameter (aka- boundary height) as:</p>
 <p>thresholds = [2.0, 2.5, 3.0, 3.5, 4.0]</p>
 <p><em>Question</em>: How does changing the threshold impact performance of the agent and how does this differ from the drift rate?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>

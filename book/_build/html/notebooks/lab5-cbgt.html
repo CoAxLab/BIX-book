@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 5 - CBGT pathways &#8212; Biologically Intelligent eXploration (BIX)</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lab 6 - Predator-prey dynamics" href="lab6-predator_prey.html" />
     <link rel="prev" title="Lab 4 - Evidence Accumulation" href="lab4-evidence_accumulation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -156,12 +155,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+        <p class="caption"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro-python.html">Introduction to python</a></li>
 
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<p class="caption"><span class="caption-text">Labs</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lab1-information.html">Lab 1- Information theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2-explorelib.html">Lab 2 - Random exploration</a></li>
@@ -173,7 +172,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab7-foraging.html">Lab 7 - Foraging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<p class="caption"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
@@ -419,7 +418,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-5-cbgt-pathways">
-<h1>Lab 5 - CBGT pathways<a class="headerlink" href="#lab-5-cbgt-pathways" title="Permalink to this heading">#</a></h1>
+<h1>Lab 5 - CBGT pathways<a class="headerlink" href="#lab-5-cbgt-pathways" title="Permalink to this headline">#</a></h1>
 <p>This lab has 3 main components designed to go over how corticobasal ganglia-thalamic (CBGT) circuits make decisions. We will use a model of this sytem to run simulations and investigate the effects of tuning different aspects of the circuit.</p>
 <p>Sections:</p>
 <ol class="arabic simple">
@@ -428,10 +427,10 @@ document.write(`
 <li><p>Investigate the effects of indirect pathway strength.</p></li>
 </ol>
 <section id="section-setup">
-<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this heading">#</a></h2>
+<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this headline">#</a></h2>
 <p>Run all of the following code cells, which set up the environment and define several helper functions that we will use to run CBGT decision simulations.</p>
 <section id="load-in-cbgt-modeling-code-library">
-<h3>Load in CBGT modeling code library<a class="headerlink" href="#load-in-cbgt-modeling-code-library" title="Permalink to this heading">#</a></h3>
+<h3>Load in CBGT modeling code library<a class="headerlink" href="#load-in-cbgt-modeling-code-library" title="Permalink to this headline">#</a></h3>
 <p>The code cell below sets the current working directory for Colab, into which we will load the CBGT library. This is the usual <code class="docutils literal notranslate"><span class="pre">/content</span></code> directory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -672,10 +671,10 @@ def readResults(batch_size):
 </section>
 </section>
 <section id="section-1-running-the-baseline-network">
-<h2>Section 1 - Running the baseline network<a class="headerlink" href="#section-1-running-the-baseline-network" title="Permalink to this heading">#</a></h2>
+<h2>Section 1 - Running the baseline network<a class="headerlink" href="#section-1-running-the-baseline-network" title="Permalink to this headline">#</a></h2>
 <p>In this section we will run the baseline network, visualize simulated brain region activity patterns, and note interactions to get a sense of how the CGBT network implements decisions.</p>
 <section id="about-this-network-model">
-<h3>About this network model<a class="headerlink" href="#about-this-network-model" title="Permalink to this heading">#</a></h3>
+<h3>About this network model<a class="headerlink" href="#about-this-network-model" title="Permalink to this headline">#</a></h3>
 <p>This simulation has been repackaged from (Dunovan et al., 2019).</p>
 <ul class="simple">
 <li><p>There are two parallel action channels which compete against each other, one for the ‘Left’ action and one for the ‘Right’ action.</p></li>
@@ -687,11 +686,11 @@ def readResults(batch_size):
 <p><img alt="" src="https://raw.githubusercontent.com/CoAxLab/BiologicallyIntelligentExploration/main/Labs/CBGT_screenshot.png" /></p>
 </section>
 <section id="how-selection-works-in-this-model">
-<h3>How selection works in this model<a class="headerlink" href="#how-selection-works-in-this-model" title="Permalink to this heading">#</a></h3>
+<h3>How selection works in this model<a class="headerlink" href="#how-selection-works-in-this-model" title="Permalink to this headline">#</a></h3>
 <p>During the selection process (between choices during decision making), stimulation is applied to the cortex, causing cortical activity to ramp upwards. The cortex then feeds into the direct and indirect populations of the striatum, which then affects the firing rates in other areas of the basal ganglia. The diagram above shows which populations are excitatory (increase activation) and which are inhibitory (reduce activation).</p>
 </section>
 <section id="question-1-1">
-<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this headline">#</a></h3>
 <p>During the selection process, will the activity of the following populations increase or decrease? [Assume that the hyperdirect pathway from the cortex to the subthalamic nucleus (STN) in red is NOT undergoing any changes.]</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -713,7 +712,7 @@ def readResults(batch_size):
 <p>Note: network dynamics can be very complicated and depend on a lot of factors - there’s no way to look at a circuit diagram and tell for certain how populations will behave in response to input. Just make your best guess.</p>
 </section>
 <section id="running-code">
-<h3>Running code<a class="headerlink" href="#running-code" title="Permalink to this heading">#</a></h3>
+<h3>Running code<a class="headerlink" href="#running-code" title="Permalink to this headline">#</a></h3>
 <p>Run the code below to perform a single simulation with baseline parameters and plot the firing rates of the brain region cell populations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -754,7 +753,7 @@ vis.plot_trial_rates(t=0)
 </div>
 </section>
 <section id="question-1-2-what-behavior-did-the-network-display">
-<h3>Question 1.2: What behavior did the network display?<a class="headerlink" href="#question-1-2-what-behavior-did-the-network-display" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.2: What behavior did the network display?<a class="headerlink" href="#question-1-2-what-behavior-did-the-network-display" title="Permalink to this headline">#</a></h3>
 <p>Did it choose the Left or Right action? Was this choice the correct or incorrect action? What was the reaction time? Hint: look at the graph of thalamic activity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -765,7 +764,7 @@ vis.plot_trial_rates(t=0)
 </div>
 </section>
 <section id="question-1-3-comparing-activity-across-action-channels">
-<h3>Question 1.3: Comparing activity across action channels<a class="headerlink" href="#question-1-3-comparing-activity-across-action-channels" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.3: Comparing activity across action channels<a class="headerlink" href="#question-1-3-comparing-activity-across-action-channels" title="Permalink to this headline">#</a></h3>
 <p>Look at the ramping activity in cortex, striatum (dMSN and iMSN), and thalamus. Do the left and right sub-populations change their activity in opposite ways (one ramps up while the other ramps down)? Or do the left and right activities both ramp upwards together?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -776,7 +775,7 @@ vis.plot_trial_rates(t=0)
 </div>
 </section>
 <section id="question-1-4-comparing-predictions-with-results">
-<h3>Question 1.4: Comparing predictions with results<a class="headerlink" href="#question-1-4-comparing-predictions-with-results" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.4: Comparing predictions with results<a class="headerlink" href="#question-1-4-comparing-predictions-with-results" title="Permalink to this headline">#</a></h3>
 <p>Looking at the actual firing rates, which populations ramped in which directions? Does this match what you expected?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -788,9 +787,9 @@ vis.plot_trial_rates(t=0)
 </section>
 </section>
 <section id="section-2-investigating-the-effects-of-direct-pathway-strength">
-<h2>Section 2 - Investigating the effects of direct pathway strength<a class="headerlink" href="#section-2-investigating-the-effects-of-direct-pathway-strength" title="Permalink to this heading">#</a></h2>
+<h2>Section 2 - Investigating the effects of direct pathway strength<a class="headerlink" href="#section-2-investigating-the-effects-of-direct-pathway-strength" title="Permalink to this headline">#</a></h2>
 <section id="question-2-1-predict-effect-on-reaction-time">
-<h3>Question 2.1: Predict effect on reaction time<a class="headerlink" href="#question-2-1-predict-effect-on-reaction-time" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.1: Predict effect on reaction time<a class="headerlink" href="#question-2-1-predict-effect-on-reaction-time" title="Permalink to this headline">#</a></h3>
 <p>When the strength of the direct pathway is increased, what will happen to the network’s average reaction time?</p>
 <p>Hint: Reaction time equals the time between the presentation of a stimulus (increased current applied to the cortex) and a decision (thalamic activity crosses a threshold).</p>
 <div class="cell docutils container">
@@ -802,7 +801,7 @@ vis.plot_trial_rates(t=0)
 </div>
 </section>
 <section id="question-2-2-predict-effect-on-accuracy">
-<h3>Question 2.2: Predict effect on accuracy<a class="headerlink" href="#question-2-2-predict-effect-on-accuracy" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.2: Predict effect on accuracy<a class="headerlink" href="#question-2-2-predict-effect-on-accuracy" title="Permalink to this headline">#</a></h3>
 <p>When the strength of the direct pathway is increased, what will happen to the network’s decision accuracy?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -813,7 +812,7 @@ vis.plot_trial_rates(t=0)
 </div>
 </section>
 <section id="let-s-test-your-predictions-first-run-the-cells-below-to-generate-a-batch-of-baseline-data-for-comparison">
-<h3>Let’s test  your predictions. First, run the cells below to generate a batch of baseline data for comparison.<a class="headerlink" href="#let-s-test-your-predictions-first-run-the-cells-below-to-generate-a-batch-of-baseline-data-for-comparison" title="Permalink to this heading">#</a></h3>
+<h3>Let’s test  your predictions. First, run the cells below to generate a batch of baseline data for comparison.<a class="headerlink" href="#let-s-test-your-predictions-first-run-the-cells-below-to-generate-a-batch-of-baseline-data-for-comparison" title="Permalink to this headline">#</a></h3>
 <p>Note: The reaction time effects should be consistent, but there’s a ton of randomness in network accuracy, so unless you run a large batch (like 100) the accuracy values might not be what you’d expect.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -838,7 +837,7 @@ rt_data_baseline # check out the data table
 </div>
 </section>
 <section id="now-run-the-code-below-where-direct-strength-is-set-to-1-10">
-<h3>Now, run the code below, where direct_strength is set to 1.10.<a class="headerlink" href="#now-run-the-code-below-where-direct-strength-is-set-to-1-10" title="Permalink to this heading">#</a></h3>
+<h3>Now, run the code below, where direct_strength is set to 1.10.<a class="headerlink" href="#now-run-the-code-below-where-direct-strength-is-set-to-1-10" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>batch_size = 20 # more runs will take more time
@@ -889,7 +888,7 @@ plt.legend(title=&#39;distribution&#39;)
 </div>
 </section>
 <section id="question-2-3">
-<h3>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this headline">#</a></h3>
 <p>What was the actual relationship between direct pathway strength and reaction time?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -902,9 +901,9 @@ plt.legend(title=&#39;distribution&#39;)
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="section-3-the-effects-of-indirect-pathway-strength">
-<h1>Section 3: The effects of indirect pathway strength<a class="headerlink" href="#section-3-the-effects-of-indirect-pathway-strength" title="Permalink to this heading">#</a></h1>
+<h1>Section 3: The effects of indirect pathway strength<a class="headerlink" href="#section-3-the-effects-of-indirect-pathway-strength" title="Permalink to this headline">#</a></h1>
 <section id="question-3-1-predict-effect-on-reaction-time">
-<h2>Question 3.1: Predict effect on reaction time<a class="headerlink" href="#question-3-1-predict-effect-on-reaction-time" title="Permalink to this heading">#</a></h2>
+<h2>Question 3.1: Predict effect on reaction time<a class="headerlink" href="#question-3-1-predict-effect-on-reaction-time" title="Permalink to this headline">#</a></h2>
 <p>When the strength of the indirect pathway is increased, what will happen to the network’s average reaction time?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -915,7 +914,7 @@ plt.legend(title=&#39;distribution&#39;)
 </div>
 </section>
 <section id="question-3-2-predict-effect-on-accuracy">
-<h2>Question 3.2: Predict effect on accuracy<a class="headerlink" href="#question-3-2-predict-effect-on-accuracy" title="Permalink to this heading">#</a></h2>
+<h2>Question 3.2: Predict effect on accuracy<a class="headerlink" href="#question-3-2-predict-effect-on-accuracy" title="Permalink to this headline">#</a></h2>
 <p>When the strength of the indirect pathway is increased, what will happen to the network’s decision accuracy?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -926,7 +925,7 @@ plt.legend(title=&#39;distribution&#39;)
 </div>
 </section>
 <section id="run-the-code-below-where-indirect-strength-is-set-to-1-10-and-direct-strength-is-set-back-to-1-00">
-<h2>Run the code below, where indirect_strength is set to 1.10 (and direct_strength is set back to 1.00).<a class="headerlink" href="#run-the-code-below-where-indirect-strength-is-set-to-1-10-and-direct-strength-is-set-back-to-1-00" title="Permalink to this heading">#</a></h2>
+<h2>Run the code below, where indirect_strength is set to 1.10 (and direct_strength is set back to 1.00).<a class="headerlink" href="#run-the-code-below-where-indirect-strength-is-set-to-1-10-and-direct-strength-is-set-back-to-1-00" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>batch_size = 20
@@ -975,7 +974,7 @@ plt.legend(title=&#39;distribution&#39;)
 </div>
 </section>
 <section id="question-3-3">
-<h2>Question 3.3:<a class="headerlink" href="#question-3-3" title="Permalink to this heading">#</a></h2>
+<h2>Question 3.3:<a class="headerlink" href="#question-3-3" title="Permalink to this headline">#</a></h2>
 <p>What was the actual relationship between indirect pathway strength and reaction time?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

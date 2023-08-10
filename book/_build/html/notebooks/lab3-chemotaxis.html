@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 3 - Chemotaxis &#8212; Biologically Intelligent eXploration (BIX)</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -61,15 +60,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lab3-chemotaxis';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lab 4 - Evidence Accumulation" href="lab4-evidence_accumulation.html" />
     <link rel="prev" title="Lab 2 - Random exploration" href="lab2-explorelib.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -158,12 +157,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+        <p class="caption"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro-python.html">Introduction to python</a></li>
 
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<p class="caption"><span class="caption-text">Labs</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lab1-information.html">Lab 1- Information theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2-explorelib.html">Lab 2 - Random exploration</a></li>
@@ -175,7 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab7-foraging.html">Lab 7 - Foraging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<p class="caption"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
@@ -413,7 +412,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-3-chemotaxis">
-<h1>Lab 3 - Chemotaxis<a class="headerlink" href="#lab-3-chemotaxis" title="Permalink to this heading">#</a></h1>
+<h1>Lab 3 - Chemotaxis<a class="headerlink" href="#lab-3-chemotaxis" title="Permalink to this headline">#</a></h1>
 <p>This lab is designed to get you familiar with the basics of chemotaxis.  We will compare our random agent with a gradient searcher who operates akin to a simple bacteria agent.</p>
 <p>There are three goals here.</p>
 <ol class="arabic simple">
@@ -422,12 +421,12 @@ document.write(`
 <li><p>Play with a maze.</p></li>
 </ol>
 <section id="background">
-<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
-<p>In this lab we return to <em>taxic explorations</em>. We visit the sniff world (aka <em>ScentGrid</em>) and at what happens when sense signasl are not just noisy, but partially observed. In otherwords, when there is distortion in the channel of information.</p>
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h2>
+<p>In this lab we return to <em>taxic explorations</em>. We visit the sniff world (aka <em>ScentGrid</em>) and at what happens when sense signals are not just noisy, but partially observed. In otherwords, when there is distortion in the channel of information.</p>
 <p>Our environment this times just deletes scent information from the grid, with a probability <span class="math notranslate nohighlight">\((1- p_{scent})\)</span>. The noisy background is of course unaffected by this deletion.</p>
 </section>
 <section id="bacteria-again">
-<h2>Bacteria again?<a class="headerlink" href="#bacteria-again" title="Permalink to this heading">#</a></h2>
+<h2>Bacteria again?<a class="headerlink" href="#bacteria-again" title="Permalink to this headline">#</a></h2>
 <p>Our basic model of bacterial exploration is as simple as can be.</p>
 <ul class="simple">
 <li><p>When the gradient is positive, meaning you are going “up” the gradient, the probability of turning is set to <em>p pos</em>.</p></li>
@@ -438,7 +437,7 @@ document.write(`
 <p><strong>Structured randomness and chemotaxis</strong></p>
 <p>In lab 2 we played with a random search agent that wandered using Brownian motion. Here we will introuce a new random agent that moves according to Levy walks.</p>
 <ul class="simple">
-<li><p>A Levy walk is is a continuing process of random movement where at each “step” of movement, a direction of and distance of movement is chosen randomly. The distance <span class="math notranslate nohighlight">\(\delta_i\)</span> of movement at each time step <span class="math notranslate nohighlight">\(i\)</span> is sampled from the random distribution as follows: <span class="math notranslate nohighlight">\(\delta_i = {u_i}^{-\frac{1}{\gamma}}\)</span>, where <span class="math notranslate nohighlight">\(u_i \sim N(\mu,\sigma)\)</span> and <span class="math notranslate nohighlight">\(\gamma &gt; 1\)</span>.</p></li>
+<li><p>A Levy walk is a continuing process of random movement where at each “step” of movement, a direction of and distance of movement is chosen randomly. The distance <span class="math notranslate nohighlight">\(\delta_i\)</span> of movement at each time step <span class="math notranslate nohighlight">\(i\)</span> is sampled from the random distribution as follows: <span class="math notranslate nohighlight">\(\delta_i = {u_i}^{-\frac{1}{\gamma}}\)</span>, where <span class="math notranslate nohighlight">\(u_i \sim N(\mu,\sigma)\)</span> and <span class="math notranslate nohighlight">\(\gamma &gt; 1\)</span>.</p></li>
 </ul>
 <p>Our <em>chemotaxis</em> agent (<em>AccumulatorGradientDiscrete</em>) tries to directly estimate the gradient of the scent <span class="math notranslate nohighlight">\(\nabla\)</span>  by comparing the level of scent at the last grid position it occupied to the current scent level (<span class="math notranslate nohighlight">\(o\)</span>). By last position here we mean the last position when it moved last.</p>
 <div class="math notranslate nohighlight">
@@ -451,25 +450,25 @@ document.write(`
 <li><p>The length of travel before the next turn decision is sampled from an exponential distribution just like the <em>DiffusionDiscrete</em> evironment.</p></li>
 </ul>
 <section id="costly-cognition">
-<h3>Costly cognition<a class="headerlink" href="#costly-cognition" title="Permalink to this heading">#</a></h3>
-<p>The <em>chemotaxis</em> agents will use an evidence accumulation process that we will explore in more detail later. This uses the iterative accumulation of evidnece from sensory signals to try and make better decisions about the direction of the gradient. These decisions are of course statistical in nature.</p>
+<h3>Costly cognition<a class="headerlink" href="#costly-cognition" title="Permalink to this headline">#</a></h3>
+<p>The <em>chemotaxis</em> agents will use an evidence accumulation process that we will explore in more detail later. This uses the iterative accumulation of evidence from sensory signals to try and make better decisions about the direction of the gradient. These decisions are of course statistical in nature.</p>
 <p>For the <em>randotaxis</em> agent number of steps means the number of steps or actions the agent takes.</p>
 </section>
 </section>
 <section id="section-setup">
-<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this heading">#</a></h2>
+<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this headline">#</a></h2>
 <p>First let’s set things up for the two parts of the lab. You’ve done this before, so we don’t need to specify each installation and module step.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install --upgrade git+https://github.com/coaxlab/explorationlib
-!pip install --upgrade git+https://github.com/MattChanTK/gym-maze.git
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/coaxlab/explorationlib
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/MattChanTK/gym-maze.git
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
@@ -513,38 +512,38 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pretty plots</span>
-<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-<span class="o">%</span><span class="n">config</span> <span class="n">InlineBackend</span><span class="o">.</span><span class="n">figure_format</span><span class="o">=</span><span class="s1">&#39;retina&#39;</span>
-<span class="o">%</span><span class="n">config</span> <span class="n">IPCompleter</span><span class="o">.</span><span class="n">greedy</span><span class="o">=</span><span class="kc">True</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pretty plots</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format=&#39;retina&#39;
+<span class="o">%</span><span class="k">config</span> IPCompleter.greedy=True
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;16&quot;</span>
 
 <span class="c1"># Dev</span>
-<span class="o">%</span><span class="n">load_ext</span> <span class="n">autoreload</span>
-<span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>
+<span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="section-1-simulating-noisy-missing-scents">
-<h2>Section 1 - Simulating noisy &amp; missing scents<a class="headerlink" href="#section-1-simulating-noisy-missing-scents" title="Permalink to this heading">#</a></h2>
+<h2>Section 1 - Simulating noisy &amp; missing scents<a class="headerlink" href="#section-1-simulating-noisy-missing-scents" title="Permalink to this headline">#</a></h2>
 <p>To build some intuition, let’s plot the “scent” emitted by a single target. That same scent corrupts by 1/2 a standard deviation of noise. That same signal, with all but 10 percent of it deleted. That same signal corrupted by noise <em>and</em> all but 10 percent of it deleted.</p>
 <section id="full-scent">
-<h3>Full Scent<a class="headerlink" href="#full-scent" title="Permalink to this heading">#</a></h3>
+<h3>Full Scent<a class="headerlink" href="#full-scent" title="Permalink to this headline">#</a></h3>
 <p>Okay, let’s first visualize what the scent diffusion around each target looks like in the environment using the diffusion parameters we have set up.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">target_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent_patches</span><span class="p">(</span>
         <span class="n">target_boundary</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -556,11 +555,11 @@ document.write(`
 </div>
 </section>
 <section id="noisy-scent">
-<h3>Noisy Scent<a class="headerlink" href="#noisy-scent" title="Permalink to this heading">#</a></h3>
+<h3>Noisy Scent<a class="headerlink" href="#noisy-scent" title="Permalink to this headline">#</a></h3>
 <p>To corrupt the signal we can simply add more Gaussian noise. In this case we will use the <em>add_noise</em> function with a <span class="math notranslate nohighlight">\(\sigma=1\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">noise_sigma</span> <span class="o">=</span> <span class="mf">1.0</span>
 
 <span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent_patches</span><span class="p">(</span><span class="n">target_boundary</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -575,7 +574,7 @@ document.write(`
 <p>In order to confirm that there is signal there, let’s take a look at the average over 100 noisy targets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">noise_sigma</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="n">num_samples</span> <span class="o">=</span> <span class="mi">100</span>
 
@@ -594,12 +593,12 @@ document.write(`
 </div>
 </section>
 <section id="missing-scent">
-<h3>Missing Scent<a class="headerlink" href="#missing-scent" title="Permalink to this heading">#</a></h3>
+<h3>Missing Scent<a class="headerlink" href="#missing-scent" title="Permalink to this headline">#</a></h3>
 <p>We can further distort or corrup the signal by making some of the information simply missing. Imaging we’re in our little agents acquatic environment and currents move some of the sent signal away.</p>
 <p>Here we can control the probability of a scent molecule being detected at any point in space with the <em>p_scent</em> parameter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1000</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.1</span>
 
 <span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent_patches</span><span class="p">(</span><span class="n">target_boundary</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p_scent</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -612,7 +611,7 @@ document.write(`
 <p>Again, let’s average across 100 targets to see what the modal resolvable scent would look like over samples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.1</span>
 <span class="n">num_samples</span> <span class="o">=</span> <span class="mi">100</span>
 
@@ -630,11 +629,11 @@ document.write(`
 </div>
 </section>
 <section id="noisy-and-missing-scent">
-<h3>Noisy <em>and</em> Missing Scent<a class="headerlink" href="#noisy-and-missing-scent" title="Permalink to this heading">#</a></h3>
+<h3>Noisy <em>and</em> Missing Scent<a class="headerlink" href="#noisy-and-missing-scent" title="Permalink to this headline">#</a></h3>
 <p>Now let’s see the most distorted signal we can: one with both Gaussian noise added <em>and</em> partially observed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">noise_sigma</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.1</span>
 
@@ -649,7 +648,7 @@ document.write(`
 <p>And again, let’s look over the average. But given how much noise we have added, we will need to average over more samples to see the pattern. Let’s increase <em>num_samples</em> to 1000.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">noise_sigma</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.1</span>
 <span class="n">num_samples</span> <span class="o">=</span> <span class="mi">1000</span>
@@ -670,23 +669,23 @@ document.write(`
 <p>So, pretty noisy but resolvable.</p>
 </section>
 <section id="question-1-1">
-<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this headline">#</a></h3>
 <p>Adding noise and lowering detection probability both act to increase distortion to the signal channel that will be used by our agents. Will this help or hinder the agents that use sensory signals and/or information to drive their decisions? Explain your answer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="question-1-2">
-<h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this headline">#</a></h3>
 <p>Re-run the Noisy <em>AND</em> Missing simulations above, playing with both of the <em>p_scent</em> and <em>noise_sigma</em> terms. Do this one at a time (i.e., when changing <em>p_scent</em> keep <em>noise_sigma=1</em>, when changign <em>noise_sigma</em> keep <em>p_scent=0.1</em>).</p>
 <p>What are the values for each parameter that lead to a complete loss in the scent signal even when averaging across 1000 samples?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>
@@ -694,11 +693,11 @@ document.write(`
 </section>
 </section>
 <section id="section-2-using-sensory-evidence-to-explore">
-<h2>Section 2 - Using Sensory Evidence To Explore<a class="headerlink" href="#section-2-using-sensory-evidence-to-explore" title="Permalink to this heading">#</a></h2>
+<h2>Section 2 - Using Sensory Evidence To Explore<a class="headerlink" href="#section-2-using-sensory-evidence-to-explore" title="Permalink to this headline">#</a></h2>
 <p>In this section we take on accumulating evidence as a policy for decision making in the form of simple chemotaxis with noisy sensors. The presence of this uncertainty makes decisions–of the kind common to decision theory–a necessity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Noise and missing scents</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Noise and missing scents</span>
 <span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.1</span>
 <span class="n">noise_sigma</span> <span class="o">=</span> <span class="mi">1</span>
 
@@ -738,7 +737,7 @@ document.write(`
 <p>Here’s an example of our environment</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">num_experiment</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plot_targets2d</span><span class="p">(</span>
@@ -766,7 +765,7 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Agents</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Agents</span>
 
 <span class="c1"># Random search agent</span>
 <span class="n">diff</span> <span class="o">=</span> <span class="n">DiffusionGrid</span><span class="p">(</span><span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -791,7 +790,7 @@ document.write(`
 <p>Now let’s run the experiments.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Experiments</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Experiments</span>
 <span class="n">rand_exp</span> <span class="o">=</span> <span class="n">experiment</span><span class="p">(</span>
     <span class="sa">f</span><span class="s2">&quot;rand&quot;</span><span class="p">,</span>
     <span class="n">diff</span><span class="p">,</span>
@@ -819,7 +818,7 @@ document.write(`
 <p>Let’s plot an example experiment. Here I’m choosing the second run for each agent.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 
 <span class="c1"># -</span>
 <span class="n">num_experiment</span> <span class="o">=</span> <span class="mi">2</span>
@@ -856,7 +855,7 @@ document.write(`
 <p>Now let’s evaluate some metrics of performance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
 <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">chemo_exp</span><span class="p">]</span>
 <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemo&quot;</span><span class="p">]</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
@@ -887,7 +886,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
 <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">chemo_exp</span><span class="p">]</span>
 <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemo&quot;</span><span class="p">]</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
@@ -915,7 +914,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
 <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">chemo_exp</span><span class="p">]</span>
 <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemo&quot;</span><span class="p">]</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
@@ -952,22 +951,22 @@ document.write(`
 </div>
 </div>
 <section id="question-2-1">
-<h3>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this headline">#</a></h3>
 <p>How does each of our agents perform across the performance measures we have chosen?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="question-2-2">
-<h3>Question 2.2<a class="headerlink" href="#question-2-2" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.2<a class="headerlink" href="#question-2-2" title="Permalink to this headline">#</a></h3>
 <p>Is having a concept of information (i.e., the Info agent)helpful in these sorts of noisy environments? Why or why not based on how the agents performed? Compare to both Rando and Chemo.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
 </pre></div>
 </div>
 </div>
@@ -975,12 +974,12 @@ document.write(`
 </section>
 </section>
 <section id="section-3-robustness-of-information-searching">
-<h2>Section 3 - Robustness of information searching<a class="headerlink" href="#section-3-robustness-of-information-searching" title="Permalink to this heading">#</a></h2>
+<h2>Section 3 - Robustness of information searching<a class="headerlink" href="#section-3-robustness-of-information-searching" title="Permalink to this headline">#</a></h2>
 <p>In this final section we will see how the distortion in the channel driven by missing signal influences the efficiency of our chemo agent.</p>
 <p>Here we will test a range of <em>p_scent</em> values. Essentially we will be turning <em>down</em> the distortion as <em>p_scent</em> increases. For these experiments we will hold the <em>noise_sigma</em> constant at 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Our parameters</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Our parameters</span>
 <span class="n">p_scents</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">.50</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mf">.95</span><span class="p">]</span>
 
 <span class="c1"># For plotting</span>
@@ -993,7 +992,7 @@ document.write(`
 <p>Let’s run these experiments. All of the parameters for the agent and environment (aside from <em>p_scent</em>) are specified below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the accumulation parameters</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the accumulation parameters</span>
 <span class="n">drift_rate</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">threshold</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">accumulate_sigma</span> <span class="o">=</span> <span class="mf">1.0</span>
@@ -1060,7 +1059,7 @@ document.write(`
 <p>Now let us take a look at the performance of our agent across runs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
     <span class="n">l</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -1086,7 +1085,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
     <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num_death</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
@@ -1104,7 +1103,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Max Score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Max Score</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">total_reward</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
@@ -1128,7 +1127,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">total_reward</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
@@ -1162,22 +1161,22 @@ document.write(`
 </div>
 </div>
 <section id="question-3-1">
-<h3>Question 3.1<a class="headerlink" href="#question-3-1" title="Permalink to this heading">#</a></h3>
+<h3>Question 3.1<a class="headerlink" href="#question-3-1" title="Permalink to this headline">#</a></h3>
 <p>How does increasing <em>p_scent</em> impact our chemo agent’s performance? Explain why this particular pattern emerges in the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="question-3-2">
-<h3>Question 3.2<a class="headerlink" href="#question-3-2" title="Permalink to this heading">#</a></h3>
+<h3>Question 3.2<a class="headerlink" href="#question-3-2" title="Permalink to this headline">#</a></h3>
 <p>Re-run the simulations from this section, but now change the accumulation rate (<em>drift_rate</em>) from 1.0 to 0.75. How and why does this influence the agent’s behavior (compared to the higher accumulation rate)?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
 </pre></div>
 </div>
 </div>

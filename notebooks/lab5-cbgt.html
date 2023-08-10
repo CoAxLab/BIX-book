@@ -434,7 +434,7 @@ document.write(`
 <p>The code cell below sets the current working directory for Colab, into which we will load the CBGT library. This is the usual <code class="docutils literal notranslate"><span class="pre">/content</span></code> directory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /content
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">content</span>
 </pre></div>
 </div>
 </div>
@@ -447,7 +447,7 @@ document.write(`
 <p>Copy the CBGT simulation library from the CoAx lab GitHub to our Colab notebook (in the <code class="docutils literal notranslate"><span class="pre">/content</span></code> directory specified above).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!git clone https://github.com/CoAxLab/CBGT
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/CoAxLab/CBGT
 </pre></div>
 </div>
 </div>
@@ -466,7 +466,7 @@ Resolving deltas: 100% (322/322), done.
 <p>This next code line sets Colab’s working directory to the CGBT library which we’ve just copied in.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /content/CBGT
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">CBGT</span>
 </pre></div>
 </div>
 </div>
@@ -480,33 +480,33 @@ Resolving deltas: 100% (322/322), done.
 <p>The code also sets configurations for a prettier plots.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># import libraries and configure plots
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import libraries and configure plots</span>
 
-import os, sys
-import pandas as pd
-import numpy as np
-import random
-from future.utils import listvalues
-from copy import deepcopy
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">future.utils</span> <span class="kn">import</span> <span class="n">listvalues</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 
-import cbgt.netgen as ng
-import cbgt.analyzefx as afx
-from cbgt import vis, sim
+<span class="kn">import</span> <span class="nn">cbgt.netgen</span> <span class="k">as</span> <span class="nn">ng</span>
+<span class="kn">import</span> <span class="nn">cbgt.analyzefx</span> <span class="k">as</span> <span class="nn">afx</span>
+<span class="kn">from</span> <span class="nn">cbgt</span> <span class="kn">import</span> <span class="n">vis</span><span class="p">,</span> <span class="n">sim</span>
 
-import matplotlib.pyplot as plt
-import seaborn as sns
-import warnings
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 
-warnings.simplefilter(&#39;ignore&#39;, np.RankWarning)
-warnings.filterwarnings(&quot;ignore&quot;, module=&quot;matplotlib&quot;)
-warnings.filterwarnings(&quot;ignore&quot;)
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">RankWarning</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="s2">&quot;matplotlib&quot;</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 
-%matplotlib inline
-clrs = [&#39;#347fff&#39;, &#39;#febe08&#39;]
-eclrs = [&#39;#1657de&#39;, &#39;#f5a005&#39;]
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">clrs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#347fff&#39;</span><span class="p">,</span> <span class="s1">&#39;#febe08&#39;</span><span class="p">]</span>
+<span class="n">eclrs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#1657de&#39;</span><span class="p">,</span> <span class="s1">&#39;#f5a005&#39;</span><span class="p">]</span>
 
-rc = {&#39;lines.solid_capstyle&#39;: u&#39;butt&#39;}
-sns.set(style=&#39;ticks&#39;, rc=rc, font_scale=1.4)
+<span class="n">rc</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;lines.solid_capstyle&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;butt&#39;</span><span class="p">}</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;ticks&#39;</span><span class="p">,</span> <span class="n">rc</span><span class="o">=</span><span class="n">rc</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -517,40 +517,40 @@ sns.set(style=&#39;ticks&#39;, rc=rc, font_scale=1.4)
 <p>Note: in this lab, we will only be using the <code class="docutils literal notranslate"><span class="pre">presetLow</span></code> preset, left and right dMSN weightings are closer (a slightly higher conflict condition).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># specify saving directory
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify saving directory</span>
 
-parentDir = &#39;cbgtDemoTEST&#39;
-savedir = os.path.join(os.path.expanduser(&#39;~&#39;), parentDir)
-if not os.path.isdir(savedir):
-    os.mkdir(savedir)
+<span class="n">parentDir</span> <span class="o">=</span> <span class="s1">&#39;cbgtDemoTEST&#39;</span>
+<span class="n">savedir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">),</span> <span class="n">parentDir</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">savedir</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">savedir</span><span class="p">)</span>
 
-# specify certain model parameters
+<span class="c1"># specify certain model parameters</span>
 
-BaseStim = 0
-Stim = 2.54
-Dynamic = 30.0
-Choices = 2
-rampingCTX = True
-popscale = .3
-Start=200
+<span class="n">BaseStim</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Stim</span> <span class="o">=</span> <span class="mf">2.54</span>
+<span class="n">Dynamic</span> <span class="o">=</span> <span class="mf">30.0</span>
+<span class="n">Choices</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">rampingCTX</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">popscale</span> <span class="o">=</span> <span class="mf">.3</span>
+<span class="n">Start</span><span class="o">=</span><span class="mi">200</span>
 
-# save dMSN/iMSN weight presets for each choice
+<span class="c1"># save dMSN/iMSN weight presets for each choice</span>
 
-presetLow = ng.set_post_learning_weights(dMSN=[1.01, 0.99], iMSN=[1.0,1.0])
-presetHi = ng.set_post_learning_weights(dMSN=[1.03, 0.98], iMSN=[1.0,1.0])
-presets = [presetLow, presetHi]
+<span class="n">presetLow</span> <span class="o">=</span> <span class="n">ng</span><span class="o">.</span><span class="n">set_post_learning_weights</span><span class="p">(</span><span class="n">dMSN</span><span class="o">=</span><span class="p">[</span><span class="mf">1.01</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">],</span> <span class="n">iMSN</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="n">presetHi</span> <span class="o">=</span> <span class="n">ng</span><span class="o">.</span><span class="n">set_post_learning_weights</span><span class="p">(</span><span class="n">dMSN</span><span class="o">=</span><span class="p">[</span><span class="mf">1.03</span><span class="p">,</span> <span class="mf">0.98</span><span class="p">],</span> <span class="n">iMSN</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="n">presets</span> <span class="o">=</span> <span class="p">[</span><span class="n">presetLow</span><span class="p">,</span> <span class="n">presetHi</span><span class="p">]</span>
 
-conds = [&#39;low&#39;, &#39;high&#39;]
-condABC = [&#39;a&#39;, &#39;b&#39;]
-cond12 = [1, 2]
+<span class="n">conds</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">]</span>
+<span class="n">condABC</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]</span>
+<span class="n">cond12</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 
-savedirs = [os.path.join(savedir, c) for c in conds]
-saveLow, saveHi = savedirs
-saveTest=os.path.join(savedir, &#39;test&#39;)
+<span class="n">savedirs</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">savedir</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">conds</span><span class="p">]</span>
+<span class="n">saveLow</span><span class="p">,</span> <span class="n">saveHi</span> <span class="o">=</span> <span class="n">savedirs</span>
+<span class="n">saveTest</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">savedir</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span>
 
-presetDict = dict(zip(conds, presets))
-condOrder = dict(zip(conds, condABC))
-condLevel = dict(zip(conds+[&#39;test&#39;], cond12+[0]))
+<span class="n">presetDict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">conds</span><span class="p">,</span> <span class="n">presets</span><span class="p">))</span>
+<span class="n">condOrder</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">conds</span><span class="p">,</span> <span class="n">condABC</span><span class="p">))</span>
+<span class="n">condLevel</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">conds</span><span class="o">+</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">],</span> <span class="n">cond12</span><span class="o">+</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
@@ -558,61 +558,61 @@ condLevel = dict(zip(conds+[&#39;test&#39;], cond12+[0]))
 <p>This next code cell defines and builds the CBGT network which we will use to run simulations. The code defines distributiuons of background activity for each brain region in the network and specifies connections between the regions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># helper functions to specify connection efficiacies for certain pathways
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># helper functions to specify connection efficiacies for certain pathways</span>
 
-def get_sampling_params(scale, direct_strength, indirect_strength):
+<span class="k">def</span> <span class="nf">get_sampling_params</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">direct_strength</span><span class="p">,</span> <span class="n">indirect_strength</span><span class="p">):</span>
 
-    # set strengths of background inputs/currents
-    CxSTR      =    0.2
-    CxTh       =    0.03
-    CxFSI      =    0.165
-    D1STR_GPi  =    direct_strength * 1.10
-    D2STR_GPeP =    indirect_strength * 1.65
-    STN_GPeP_A =    0.07
-    STN_GPeP_N =    4.01
-    STN_GPi    =    0.0324
-    GPi_Th     =    0.067
-    ThSTR      =    0.34
-    ThCx       =    0.02
+    <span class="c1"># set strengths of background inputs/currents</span>
+    <span class="n">CxSTR</span>      <span class="o">=</span>    <span class="mf">0.2</span>
+    <span class="n">CxTh</span>       <span class="o">=</span>    <span class="mf">0.03</span>
+    <span class="n">CxFSI</span>      <span class="o">=</span>    <span class="mf">0.165</span>
+    <span class="n">D1STR_GPi</span>  <span class="o">=</span>    <span class="n">direct_strength</span> <span class="o">*</span> <span class="mf">1.10</span>
+    <span class="n">D2STR_GPeP</span> <span class="o">=</span>    <span class="n">indirect_strength</span> <span class="o">*</span> <span class="mf">1.65</span>
+    <span class="n">STN_GPeP_A</span> <span class="o">=</span>    <span class="mf">0.07</span>
+    <span class="n">STN_GPeP_N</span> <span class="o">=</span>    <span class="mf">4.01</span>
+    <span class="n">STN_GPi</span>    <span class="o">=</span>    <span class="mf">0.0324</span>
+    <span class="n">GPi_Th</span>     <span class="o">=</span>    <span class="mf">0.067</span>
+    <span class="n">ThSTR</span>      <span class="o">=</span>    <span class="mf">0.34</span>
+    <span class="n">ThCx</span>       <span class="o">=</span>    <span class="mf">0.02</span>
 
-    mu = dict(Cx={&#39;STR&#39;:CxSTR, &#39;Th&#39;:CxTh, &#39;FSI&#39;:CxFSI},
-                Th={&#39;STR&#39;:ThSTR, &#39;Cx&#39;:ThCx},
-                D1STR={&#39;GPi&#39;: D1STR_GPi},
-                D2STR={&#39;GPeP&#39;: D2STR_GPeP},
-                STN={&#39;GPi&#39;: STN_GPi},
-                GPi={&#39;Th&#39;: GPi_Th})
-    sd = {i:{j: mu[i][j]*scale for j in list(mu[i])} for i in list(mu)}
-    return mu, sd
+    <span class="n">mu</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Cx</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;STR&#39;</span><span class="p">:</span><span class="n">CxSTR</span><span class="p">,</span> <span class="s1">&#39;Th&#39;</span><span class="p">:</span><span class="n">CxTh</span><span class="p">,</span> <span class="s1">&#39;FSI&#39;</span><span class="p">:</span><span class="n">CxFSI</span><span class="p">},</span>
+                <span class="n">Th</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;STR&#39;</span><span class="p">:</span><span class="n">ThSTR</span><span class="p">,</span> <span class="s1">&#39;Cx&#39;</span><span class="p">:</span><span class="n">ThCx</span><span class="p">},</span>
+                <span class="n">D1STR</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;GPi&#39;</span><span class="p">:</span> <span class="n">D1STR_GPi</span><span class="p">},</span>
+                <span class="n">D2STR</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;GPeP&#39;</span><span class="p">:</span> <span class="n">D2STR_GPeP</span><span class="p">},</span>
+                <span class="n">STN</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;GPi&#39;</span><span class="p">:</span> <span class="n">STN_GPi</span><span class="p">},</span>
+                <span class="n">GPi</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Th&#39;</span><span class="p">:</span> <span class="n">GPi_Th</span><span class="p">})</span>
+    <span class="n">sd</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:{</span><span class="n">j</span><span class="p">:</span> <span class="n">mu</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">scale</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">mu</span><span class="p">[</span><span class="n">i</span><span class="p">])}</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">mu</span><span class="p">)}</span>
+    <span class="k">return</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sd</span>
 
-# assign the background inputs to each brain region accordingly
-def sample_network_efficacies(muEff, sdEff, N):
-    X = {}
-    nuclei = list(muEff)
-    for i in nuclei:
-        targets = list(muEff[i])
-        X[i] = {}
-        for j in targets:
-            X[i][j] = np.random.normal(muEff[i][j], sdEff[i][j], N)
-    return X
+<span class="c1"># assign the background inputs to each brain region accordingly</span>
+<span class="k">def</span> <span class="nf">sample_network_efficacies</span><span class="p">(</span><span class="n">muEff</span><span class="p">,</span> <span class="n">sdEff</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">nuclei</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">muEff</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nuclei</span><span class="p">:</span>
+        <span class="n">targets</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">muEff</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+            <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">muEff</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">sdEff</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">N</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span>
 
-# build the network with specified connections
-def build_single_network(X, idx=0):
+<span class="c1"># build the network with specified connections</span>
+<span class="k">def</span> <span class="nf">build_single_network</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
 
-    Cx={&#39;STR&#39;: X[&#39;Cx&#39;][&#39;STR&#39;][idx],
-        &#39;Th&#39;: X[&#39;Cx&#39;][&#39;Th&#39;][idx],
-        &#39;FSI&#39;: X[&#39;Cx&#39;][&#39;FSI&#39;][idx]}
+    <span class="n">Cx</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;STR&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Cx&#39;</span><span class="p">][</span><span class="s1">&#39;STR&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span>
+        <span class="s1">&#39;Th&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Cx&#39;</span><span class="p">][</span><span class="s1">&#39;Th&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span>
+        <span class="s1">&#39;FSI&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Cx&#39;</span><span class="p">][</span><span class="s1">&#39;FSI&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]}</span>
 
-    D1STR={&#39;GPi&#39;: X[&#39;D1STR&#39;][&#39;GPi&#39;][idx]}
-    D2STR={&#39;GPeP&#39;: X[&#39;D2STR&#39;][&#39;GPeP&#39;][idx]}
+    <span class="n">D1STR</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;GPi&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;D1STR&#39;</span><span class="p">][</span><span class="s1">&#39;GPi&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]}</span>
+    <span class="n">D2STR</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;GPeP&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;D2STR&#39;</span><span class="p">][</span><span class="s1">&#39;GPeP&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]}</span>
 
-    STN={&#39;GPi&#39;: X[&#39;STN&#39;][&#39;GPi&#39;][idx]}
+    <span class="n">STN</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;GPi&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;STN&#39;</span><span class="p">][</span><span class="s1">&#39;GPi&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]}</span>
 
-    GPi={&#39;Th&#39;: X[&#39;GPi&#39;][&#39;Th&#39;][idx]}
+    <span class="n">GPi</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Th&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;GPi&#39;</span><span class="p">][</span><span class="s1">&#39;Th&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]}</span>
 
-    Th={&#39;STR&#39;: X[&#39;Th&#39;][&#39;STR&#39;][idx],
-        &#39;Cx&#39;: X[&#39;Th&#39;][&#39;Cx&#39;][idx]}
+    <span class="n">Th</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;STR&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Th&#39;</span><span class="p">][</span><span class="s1">&#39;STR&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span>
+        <span class="s1">&#39;Cx&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Th&#39;</span><span class="p">][</span><span class="s1">&#39;Cx&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]}</span>
 
-    return ng.getConEff(Cx=Cx, D1STR=D1STR, D2STR=D2STR, STN=STN, GPi=GPi, Th=Th)
+    <span class="k">return</span> <span class="n">ng</span><span class="o">.</span><span class="n">getConEff</span><span class="p">(</span><span class="n">Cx</span><span class="o">=</span><span class="n">Cx</span><span class="p">,</span> <span class="n">D1STR</span><span class="o">=</span><span class="n">D1STR</span><span class="p">,</span> <span class="n">D2STR</span><span class="o">=</span><span class="n">D2STR</span><span class="p">,</span> <span class="n">STN</span><span class="o">=</span><span class="n">STN</span><span class="p">,</span> <span class="n">GPi</span><span class="o">=</span><span class="n">GPi</span><span class="p">,</span> <span class="n">Th</span><span class="o">=</span><span class="n">Th</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -620,33 +620,33 @@ def build_single_network(X, idx=0):
 <p>This code cell defines a helper function for running a bath of simulations. The number of simulations (runs of the model leading to a single choice) to perform is specified via the <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> parameter. The simulations are independent and do not cause plasticity (learning/changing in weights) - instead they run the network each time with the simulated post-learning weights we specified earlier (specifically using the low preset we defined earlier - see <code class="docutils literal notranslate"><span class="pre">preset</span> <span class="pre">=</span> <span class="pre">presetDict['low']</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># code to run a batch of simulations
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code to run a batch of simulations</span>
 
-def runBatch(batch_size, direct_strength, indirect_strength, parallel = 1):
-  N_subj = 1
-  sdScale = 0
+<span class="k">def</span> <span class="nf">runBatch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">direct_strength</span><span class="p">,</span> <span class="n">indirect_strength</span><span class="p">,</span> <span class="n">parallel</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+  <span class="n">N_subj</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">sdScale</span> <span class="o">=</span> <span class="mi">0</span>
 
-  conProb = ng.getConProb()
-  muEff, sdEff = get_sampling_params(sdScale, direct_strength, indirect_strength)
-  X = sample_network_efficacies(muEff, sdEff, N=N_subj)
-  subj_eff_dicts = [build_single_network(X, idx=i) for i in range(N_subj)]
-  idx = 0
-  conEff_i = subj_eff_dicts[idx]
+  <span class="n">conProb</span> <span class="o">=</span> <span class="n">ng</span><span class="o">.</span><span class="n">getConProb</span><span class="p">()</span>
+  <span class="n">muEff</span><span class="p">,</span> <span class="n">sdEff</span> <span class="o">=</span> <span class="n">get_sampling_params</span><span class="p">(</span><span class="n">sdScale</span><span class="p">,</span> <span class="n">direct_strength</span><span class="p">,</span> <span class="n">indirect_strength</span><span class="p">)</span>
+  <span class="n">X</span> <span class="o">=</span> <span class="n">sample_network_efficacies</span><span class="p">(</span><span class="n">muEff</span><span class="p">,</span> <span class="n">sdEff</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="n">N_subj</span><span class="p">)</span>
+  <span class="n">subj_eff_dicts</span> <span class="o">=</span> <span class="p">[</span><span class="n">build_single_network</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_subj</span><span class="p">)]</span>
+  <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">conEff_i</span> <span class="o">=</span> <span class="n">subj_eff_dicts</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
 
-  stim = 2.5
-  preset = presetDict[&#39;low&#39;]
+  <span class="n">stim</span> <span class="o">=</span> <span class="mf">2.5</span>
+  <span class="n">preset</span> <span class="o">=</span> <span class="n">presetDict</span><span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">]</span>
 
-  ng.setDirectory(saveTest)
+  <span class="n">ng</span><span class="o">.</span><span class="n">setDirectory</span><span class="p">(</span><span class="n">saveTest</span><span class="p">)</span>
 
-  np.random.seed(seed=np.random.randint(0,1000))
-  sweepcount = ng.configureSweep(0, experiment=&#39;mc&#39;, preset=preset, Start=Start,
-                                popscale=popscale, BaseStim=BaseStim, Choices=Choices,
-                                WrongStim=stim, RightStim=stim, Dynamic=Dynamic,
-                                rampingCTX=True,
-                                conProb=conProb,
-                                conEff=conEff_i)
+  <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">))</span>
+  <span class="n">sweepcount</span> <span class="o">=</span> <span class="n">ng</span><span class="o">.</span><span class="n">configureSweep</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">experiment</span><span class="o">=</span><span class="s1">&#39;mc&#39;</span><span class="p">,</span> <span class="n">preset</span><span class="o">=</span><span class="n">preset</span><span class="p">,</span> <span class="n">Start</span><span class="o">=</span><span class="n">Start</span><span class="p">,</span>
+                                <span class="n">popscale</span><span class="o">=</span><span class="n">popscale</span><span class="p">,</span> <span class="n">BaseStim</span><span class="o">=</span><span class="n">BaseStim</span><span class="p">,</span> <span class="n">Choices</span><span class="o">=</span><span class="n">Choices</span><span class="p">,</span>
+                                <span class="n">WrongStim</span><span class="o">=</span><span class="n">stim</span><span class="p">,</span> <span class="n">RightStim</span><span class="o">=</span><span class="n">stim</span><span class="p">,</span> <span class="n">Dynamic</span><span class="o">=</span><span class="n">Dynamic</span><span class="p">,</span>
+                                <span class="n">rampingCTX</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                <span class="n">conProb</span><span class="o">=</span><span class="n">conProb</span><span class="p">,</span>
+                                <span class="n">conEff</span><span class="o">=</span><span class="n">conEff_i</span><span class="p">)</span>
 
-  ng.compileAndRunSweepALL(batch_size, 0, 1, parallel)
+  <span class="n">ng</span><span class="o">.</span><span class="n">compileAndRunSweepALL</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">parallel</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -654,16 +654,16 @@ def runBatch(batch_size, direct_strength, indirect_strength, parallel = 1):
 <p>The code cell below just defines a helper function that we will use to collect and structure simulation  reaction time and accuracy results into a nice data table.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># code to compile the behavioral data into a dataframe
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code to compile the behavioral data into a dataframe</span>
 
-def readResults(batch_size):
-    results = ng.readAllTrialResults(batch_size,0,1)
-    rtdata = pd.DataFrame(columns=[&#39;rt&#39;,&#39;accuracy&#39;])
-    for result in results[0][:batch_size]:
-        temp = ng.findOutputs(result)[&#39;decision made&#39;]
-        row = pd.Series({&#39;rt&#39;:temp[&#39;delay&#39;], &#39;accuracy&#39;:(1-temp[&#39;pathvals&#39;][0])})
-        rtdata = rtdata.append(row, ignore_index=True)
-    return rtdata
+<span class="k">def</span> <span class="nf">readResults</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">ng</span><span class="o">.</span><span class="n">readAllTrialResults</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">rtdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;rt&#39;</span><span class="p">,</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="n">batch_size</span><span class="p">]:</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">ng</span><span class="o">.</span><span class="n">findOutputs</span><span class="p">(</span><span class="n">result</span><span class="p">)[</span><span class="s1">&#39;decision made&#39;</span><span class="p">]</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;rt&#39;</span><span class="p">:</span><span class="n">temp</span><span class="p">[</span><span class="s1">&#39;delay&#39;</span><span class="p">],</span> <span class="s1">&#39;accuracy&#39;</span><span class="p">:(</span><span class="mi">1</span><span class="o">-</span><span class="n">temp</span><span class="p">[</span><span class="s1">&#39;pathvals&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])})</span>
+        <span class="n">rtdata</span> <span class="o">=</span> <span class="n">rtdata</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">rtdata</span>
 </pre></div>
 </div>
 </div>
@@ -694,17 +694,17 @@ def readResults(batch_size):
 <p>During the selection process, will the activity of the following populations increase or decrease? [Assume that the hyperdirect pathway from the cortex to the subthalamic nucleus (STN) in red is NOT undergoing any changes.]</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Fill in the ... areas below with your answers (&quot;inc&quot; or &quot;dec&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fill in the ... areas below with your answers (&quot;inc&quot; or &quot;dec&quot;)</span>
 
-# |inc/dec| Region
-# +-------+-----------------------------------------------------------------
-# |  inc  | Cortex   - increase, due to applied current
-# |  inc  | Thalamus - increase, this area receives the output of the basal ganglia network
-# |  ...  | dMSN (striatal neurons in green which start the direct pathway)
-# |  ...  | iMSN (striatal neurons in blue which start the indirect pathway)
-# |  ...  | GPe  (external globus pallidus, in blue)
-# |  ...  | GPi  (internal globus pallidus)
-# |  ...  | STN  (subthalamic nucleus)
+<span class="c1"># |inc/dec| Region</span>
+<span class="c1"># +-------+-----------------------------------------------------------------</span>
+<span class="c1"># |  inc  | Cortex   - increase, due to applied current</span>
+<span class="c1"># |  inc  | Thalamus - increase, this area receives the output of the basal ganglia network</span>
+<span class="c1"># |  ...  | dMSN (striatal neurons in green which start the direct pathway)</span>
+<span class="c1"># |  ...  | iMSN (striatal neurons in blue which start the indirect pathway)</span>
+<span class="c1"># |  ...  | GPe  (external globus pallidus, in blue)</span>
+<span class="c1"># |  ...  | GPi  (internal globus pallidus)</span>
+<span class="c1"># |  ...  | STN  (subthalamic nucleus)</span>
 </pre></div>
 </div>
 </div>
@@ -716,37 +716,37 @@ def readResults(batch_size):
 <p>Run the code below to perform a single simulation with baseline parameters and plot the firing rates of the brain region cell populations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># set variables
-batch_size = 1
-direct_strength = 1.00
-indirect_strength = 1.00
-# note: pathway strengths are in arbitrary units, where 1.0 = baseline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set variables</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">direct_strength</span> <span class="o">=</span> <span class="mf">1.00</span>
+<span class="n">indirect_strength</span> <span class="o">=</span> <span class="mf">1.00</span>
+<span class="c1"># note: pathway strengths are in arbitrary units, where 1.0 = baseline</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># run the batch
-runBatch(batch_size, direct_strength, indirect_strength)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run the batch</span>
+<span class="n">runBatch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">direct_strength</span><span class="p">,</span> <span class="n">indirect_strength</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># produce a dataframe with reaction times and accuracies
-rt_data = readResults(batch_size)
-rt_data
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># produce a dataframe with reaction times and accuracies</span>
+<span class="n">rt_data</span> <span class="o">=</span> <span class="n">readResults</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+<span class="n">rt_data</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># plot the first trial from the batch
-# &#39;Left&#39; channel is &quot;correct&quot;
-vis.plot_trial_rates(t=0)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the first trial from the batch</span>
+<span class="c1"># &#39;Left&#39; channel is &quot;correct&quot;</span>
+<span class="n">vis</span><span class="o">.</span><span class="n">plot_trial_rates</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -757,7 +757,7 @@ vis.plot_trial_rates(t=0)
 <p>Did it choose the Left or Right action? Was this choice the correct or incorrect action? What was the reaction time? Hint: look at the graph of thalamic activity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write your answer here, as a python comment
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>
@@ -768,7 +768,7 @@ vis.plot_trial_rates(t=0)
 <p>Look at the ramping activity in cortex, striatum (dMSN and iMSN), and thalamus. Do the left and right sub-populations change their activity in opposite ways (one ramps up while the other ramps down)? Or do the left and right activities both ramp upwards together?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write your answer here, as a python comment
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>
@@ -779,7 +779,7 @@ vis.plot_trial_rates(t=0)
 <p>Looking at the actual firing rates, which populations ramped in which directions? Does this match what you expected?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write your answer here, as a python comment
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>
@@ -794,7 +794,7 @@ vis.plot_trial_rates(t=0)
 <p>Hint: Reaction time equals the time between the presentation of a stimulus (increased current applied to the cortex) and a decision (thalamic activity crosses a threshold).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write your answer here, as a python comment
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>
@@ -805,7 +805,7 @@ vis.plot_trial_rates(t=0)
 <p>When the strength of the direct pathway is increased, what will happen to the network’s decision accuracy?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write your answer here, as a python comment
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>
@@ -816,9 +816,9 @@ vis.plot_trial_rates(t=0)
 <p>Note: The reaction time effects should be consistent, but there’s a ton of randomness in network accuracy, so unless you run a large batch (like 100) the accuracy values might not be what you’d expect.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>batch_size = 20 # more runs will take more time
-direct_strength = 1.00
-indirect_strength = 1.00
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># more runs will take more time</span>
+<span class="n">direct_strength</span> <span class="o">=</span> <span class="mf">1.00</span>
+<span class="n">indirect_strength</span> <span class="o">=</span> <span class="mf">1.00</span>
 </pre></div>
 </div>
 </div>
@@ -826,11 +826,11 @@ indirect_strength = 1.00
 <p><em>For me, the code block below took a bit over 2 minutes to run on Colab.</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># run the batch and produce the dataframe
-# note: if you receive an error while running the sims, you might have made too large of a parameter change.
-runBatch(batch_size, direct_strength, indirect_strength)
-rt_data_baseline = readResults(batch_size)
-rt_data_baseline # check out the data table
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run the batch and produce the dataframe</span>
+<span class="c1"># note: if you receive an error while running the sims, you might have made too large of a parameter change.</span>
+<span class="n">runBatch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">direct_strength</span><span class="p">,</span> <span class="n">indirect_strength</span><span class="p">)</span>
+<span class="n">rt_data_baseline</span> <span class="o">=</span> <span class="n">readResults</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+<span class="n">rt_data_baseline</span> <span class="c1"># check out the data table</span>
 </pre></div>
 </div>
 </div>
@@ -840,9 +840,9 @@ rt_data_baseline # check out the data table
 <h3>Now, run the code below, where direct_strength is set to 1.10.<a class="headerlink" href="#now-run-the-code-below-where-direct-strength-is-set-to-1-10" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>batch_size = 20 # more runs will take more time
-direct_strength = 1.10
-indirect_strength = 1.00
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># more runs will take more time</span>
+<span class="n">direct_strength</span> <span class="o">=</span> <span class="mf">1.10</span>
+<span class="n">indirect_strength</span> <span class="o">=</span> <span class="mf">1.00</span>
 </pre></div>
 </div>
 </div>
@@ -850,38 +850,38 @@ indirect_strength = 1.00
 <p><em>For me, the code block below took a bit over 2 minutes to run on Colab.</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># run the batch and produce the dataframe
-# note: if you receive an error while running the sims, you might have made too large of a parameter change.
-runBatch(batch_size, direct_strength, indirect_strength)
-rt_data_direct_up = readResults(batch_size)
-#rt_data_direct_up
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run the batch and produce the dataframe</span>
+<span class="c1"># note: if you receive an error while running the sims, you might have made too large of a parameter change.</span>
+<span class="n">runBatch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">direct_strength</span><span class="p">,</span> <span class="n">indirect_strength</span><span class="p">)</span>
+<span class="n">rt_data_direct_up</span> <span class="o">=</span> <span class="n">readResults</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+<span class="c1">#rt_data_direct_up</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># calculate and print the mean values for rt and accuracy
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate and print the mean values for rt and accuracy</span>
 
-print(&#39;Baseline mean values:&#39;)
-print(rt_data_baseline.mean())
-print()
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Baseline mean values:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rt_data_baseline</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">()</span>
 
-print(&#39;Increased direct pathway strength mean values:&#39;)
-print(rt_data_direct_up.mean())
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Increased direct pathway strength mean values:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rt_data_direct_up</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># plot a histogram of reaction times
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot a histogram of reaction times</span>
 
-plt.hist(rt_data_baseline.rt,  bins=np.arange(0,500,20), alpha=0.5, label=&#39;baseline&#39;)
-plt.hist(rt_data_direct_up.rt, bins=np.arange(0,500,20), alpha=0.5, label=&#39;strong direct&#39;)
-plt.xlabel(&#39;Reaction time&#39;)
-plt.ylabel(&#39;Frequency&#39;)
-plt.legend(title=&#39;distribution&#39;)
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">rt_data_baseline</span><span class="o">.</span><span class="n">rt</span><span class="p">,</span>  <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;baseline&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">rt_data_direct_up</span><span class="o">.</span><span class="n">rt</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;strong direct&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Reaction time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;distribution&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -892,7 +892,7 @@ plt.legend(title=&#39;distribution&#39;)
 <p>What was the actual relationship between direct pathway strength and reaction time?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write your answer here, as a python comment
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>
@@ -907,7 +907,7 @@ plt.legend(title=&#39;distribution&#39;)
 <p>When the strength of the indirect pathway is increased, what will happen to the network’s average reaction time?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write your answer here, as a python comment
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>
@@ -918,7 +918,7 @@ plt.legend(title=&#39;distribution&#39;)
 <p>When the strength of the indirect pathway is increased, what will happen to the network’s decision accuracy?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write your answer here, as a python comment
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>
@@ -928,9 +928,9 @@ plt.legend(title=&#39;distribution&#39;)
 <h2>Run the code below, where indirect_strength is set to 1.10 (and direct_strength is set back to 1.00).<a class="headerlink" href="#run-the-code-below-where-indirect-strength-is-set-to-1-10-and-direct-strength-is-set-back-to-1-00" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>batch_size = 20
-direct_strength = 1.00
-indirect_strength = 1.10
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">direct_strength</span> <span class="o">=</span> <span class="mf">1.00</span>
+<span class="n">indirect_strength</span> <span class="o">=</span> <span class="mf">1.10</span>
 </pre></div>
 </div>
 </div>
@@ -938,36 +938,36 @@ indirect_strength = 1.10
 <p><em>For me, the code block below took a bit over 2 minutes to run on Colab.</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>runBatch(batch_size, direct_strength, indirect_strength)
-rt_data_indirect_up = readResults(batch_size)
-#rt_data_indirect_up
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">runBatch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">direct_strength</span><span class="p">,</span> <span class="n">indirect_strength</span><span class="p">)</span>
+<span class="n">rt_data_indirect_up</span> <span class="o">=</span> <span class="n">readResults</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+<span class="c1">#rt_data_indirect_up</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># calculate and print the mean values for rt and accuracy
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate and print the mean values for rt and accuracy</span>
 
-print(&#39;Baseline mean values:&#39;)
-print(rt_data_baseline.mean())
-print()
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Baseline mean values:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rt_data_baseline</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">()</span>
 
-print(&#39;Increased indirect pathway strength mean values:&#39;)
-print(rt_data_indirect_up.mean())
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Increased indirect pathway strength mean values:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rt_data_indirect_up</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># plot a histogram of reaction times
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot a histogram of reaction times</span>
 
-plt.hist(rt_data_baseline.rt,  bins=np.arange(0,500,20), alpha=0.5, label=&#39;baseline&#39;)
-plt.hist(rt_data_indirect_up.rt, bins=np.arange(0,500,20), alpha=0.5, label=&#39;strong indirect&#39;)
-plt.xlabel(&#39;Reaction time&#39;)
-plt.ylabel(&#39;Frequency&#39;)
-plt.legend(title=&#39;distribution&#39;)
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">rt_data_baseline</span><span class="o">.</span><span class="n">rt</span><span class="p">,</span>  <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;baseline&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">rt_data_indirect_up</span><span class="o">.</span><span class="n">rt</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;strong indirect&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Reaction time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;distribution&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -978,7 +978,7 @@ plt.legend(title=&#39;distribution&#39;)
 <p>What was the actual relationship between indirect pathway strength and reaction time?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write your answer here, as a python comment
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>

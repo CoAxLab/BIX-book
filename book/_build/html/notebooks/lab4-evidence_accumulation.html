@@ -428,8 +428,10 @@ document.write(`
 <p>Install the code for running the DDM simulations (ADMCode) and the evidence accumulation agents (explorelib)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install Explorelib</span>
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>git+https://github.com/coaxlab/explorationlib.git#egg<span class="o">=</span>explorationlib
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install explorationlib &amp; gym-maze</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/coaxlab/explorationlib.git
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/MattChanTK/gym-maze.git
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>celluloid<span class="w"> </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>gifs
 </pre></div>
 </div>
 </div>

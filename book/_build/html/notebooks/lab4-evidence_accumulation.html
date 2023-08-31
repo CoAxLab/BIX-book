@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 4 - Evidence Accumulation &#8212; Biologically Intelligent eXploration (BIX)</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lab 5 - CBGT pathways" href="lab5-cbgt.html" />
     <link rel="prev" title="Lab 3 - Chemotaxis" href="lab3-chemotaxis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -155,12 +156,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p class="caption"><span class="caption-text">Getting started</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro-python.html">Introduction to python</a></li>
 
 </ul>
-<p class="caption"><span class="caption-text">Labs</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lab1-information.html">Lab 1- Information theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2-explorelib.html">Lab 2 - Random exploration</a></li>
@@ -172,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab7-foraging.html">Lab 7 - Foraging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Exercises</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
@@ -413,7 +414,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-4-evidence-accumulation">
-<h1>Lab 4 - Evidence Accumulation<a class="headerlink" href="#lab-4-evidence-accumulation" title="Permalink to this headline">#</a></h1>
+<h1>Lab 4 - Evidence Accumulation<a class="headerlink" href="#lab-4-evidence-accumulation" title="Permalink to this heading">#</a></h1>
 <p>This lab has two main components designed to go over the process of evidence accumulation.</p>
 <ol class="arabic simple">
 <li><p>Visualize the drift-diffusion model and see how parametes change evidence accumulation.</p></li>
@@ -421,10 +422,10 @@ document.write(`
 </ol>
 <p>Note that this lab re-uses agents we had in the last lab, but explores them in much mroe detail.</p>
 <section id="section-setup">
-<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this headline">#</a></h2>
+<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this heading">#</a></h2>
 <p>First let’s set things up for the two parts of the lab.</p>
 <section id="install-admcode-and-explorationlib-libraries">
-<h3>Install ADMCode and explorationlib libraries<a class="headerlink" href="#install-admcode-and-explorationlib-libraries" title="Permalink to this headline">#</a></h3>
+<h3>Install ADMCode and explorationlib libraries<a class="headerlink" href="#install-admcode-and-explorationlib-libraries" title="Permalink to this heading">#</a></h3>
 <p>Install the code for running the DDM simulations (ADMCode) and the evidence accumulation agents (explorelib)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -438,7 +439,7 @@ document.write(`
 </div>
 </section>
 <section id="import-modules">
-<h3>Import Modules<a class="headerlink" href="#import-modules" title="Permalink to this headline">#</a></h3>
+<h3>Import Modules<a class="headerlink" href="#import-modules" title="Permalink to this heading">#</a></h3>
 <p>Here we will bring in all the modules and libraries that we will need for this lab.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -502,7 +503,7 @@ document.write(`
 </div>
 </section>
 <section id="notebook-config">
-<h3>Notebook Config<a class="headerlink" href="#notebook-config" title="Permalink to this headline">#</a></h3>
+<h3>Notebook Config<a class="headerlink" href="#notebook-config" title="Permalink to this heading">#</a></h3>
 <p>Now let’s do some tweaks to get the notebooks to render things nicely.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -529,11 +530,11 @@ document.write(`
 </section>
 </section>
 <section id="section-1-simulating-the-drift-diffusion-model">
-<h2>Section 1 - Simulating the Drift-Diffusion Model<a class="headerlink" href="#section-1-simulating-the-drift-diffusion-model" title="Permalink to this headline">#</a></h2>
+<h2>Section 1 - Simulating the Drift-Diffusion Model<a class="headerlink" href="#section-1-simulating-the-drift-diffusion-model" title="Permalink to this heading">#</a></h2>
 <p>Here, we will visualize the DDM in action and see how changes in its parameters affect the accuracy and reaction times of the decision process.</p>
 <p>First thing first, let’s take a look at the code. It can be found in the Colab virtual machine here: /usr/local/lib/python3.7/dist-packages/ADMCode/ddm.py</p>
 <section id="ddm-parameters">
-<h3>DDM Parameters<a class="headerlink" href="#ddm-parameters" title="Permalink to this headline">#</a></h3>
+<h3>DDM Parameters<a class="headerlink" href="#ddm-parameters" title="Permalink to this heading">#</a></h3>
 <p>Let’s start with a simple set of simulations using the parameters below. The parameters get passed to the DDM agent as a numpy array.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -555,7 +556,7 @@ document.write(`
 </div>
 </section>
 <section id="generating-data">
-<h3>Generating Data<a class="headerlink" href="#generating-data" title="Permalink to this headline">#</a></h3>
+<h3>Generating Data<a class="headerlink" href="#generating-data" title="Permalink to this heading">#</a></h3>
 <p>The <strong>ddm.sim_ddm_trials</strong> function runs a set of trials (default 500 trials) of a DDM with the parameters specified in your parameters array. Let’s try it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -569,7 +570,7 @@ document.write(`
 <p>One important thing to note is that in these simulations the upper bound represents the “correct” choice, while the lower bound represents “errors”. So this is what is known as an accuracy coding for the DDM.</p>
 </section>
 <section id="analyze-simulated-behavior">
-<h3>Analyze simulated behavior<a class="headerlink" href="#analyze-simulated-behavior" title="Permalink to this headline">#</a></h3>
+<h3>Analyze simulated behavior<a class="headerlink" href="#analyze-simulated-behavior" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">choice</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -586,7 +587,7 @@ document.write(`
 <p>As we can see, the DDM is biased towards the upper boundary. What parameter defines this bias in the model that we set up?</p>
 </section>
 <section id="plot-evidence-traces">
-<h3>Plot evidence traces<a class="headerlink" href="#plot-evidence-traces" title="Permalink to this headline">#</a></h3>
+<h3>Plot evidence traces<a class="headerlink" href="#plot-evidence-traces" title="Permalink to this heading">#</a></h3>
 <p>The ADMCode library has a set of custom visualization tools that allow us to see the DDM in action. Let’s take a look at one of them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -606,7 +607,7 @@ document.write(`
 <p>The example above shows the mean overall drift process trajectory as a solid black line. The single diffusion process plotted is the diffusion process for both trials.</p>
 </section>
 <section id="question-1-1">
-<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this headline">#</a></h3>
+<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h3>
 <p>Re-run the simulations above, but with the following parameters:</p>
 <p>a = .15  \
 v = -.05 <br />
@@ -627,7 +628,7 @@ ntrials = 1000</p>
 </div>
 </section>
 <section id="question-1-2">
-<h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this headline">#</a></h3>
+<h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this heading">#</a></h3>
 <p>Re-run the simulations above, but with the following parameters:</p>
 <p>a = .05  \
 v = -.05 <br />
@@ -649,12 +650,12 @@ ntrials = 1000</p>
 </section>
 </section>
 <section id="section-2-using-sensory-evidence-to-explore">
-<h2>Section 2 - Using Sensory Evidence To Explore<a class="headerlink" href="#section-2-using-sensory-evidence-to-explore" title="Permalink to this headline">#</a></h2>
+<h2>Section 2 - Using Sensory Evidence To Explore<a class="headerlink" href="#section-2-using-sensory-evidence-to-explore" title="Permalink to this heading">#</a></h2>
 <p>In this section we take on accumulating evidence as a policy for decision making. Our venue is still chemotaxis, but now our sensors are noisy. The presence of this uncertainty makes decisions–of the kind common to decision theory–a necessity.</p>
 <p>The agents we will be using are the same as used in the Chemotaxis lab (Lab 3). Look back there to see the structure of the gradient search. But here we will explore something in more detail that we skipped over in that lab: evidence accumulation.</p>
 </section>
 <section id="accumulation-of-chemosignals">
-<h2>Accumulation of chemosignals<a class="headerlink" href="#accumulation-of-chemosignals" title="Permalink to this headline">#</a></h2>
+<h2>Accumulation of chemosignals<a class="headerlink" href="#accumulation-of-chemosignals" title="Permalink to this heading">#</a></h2>
 <p>Because an accumulator is present, our chemo agent sequentially tries to estimate the scent gradient by sampling the new current location, until the threshold is met.</p>
 <p>Chemo-accumulators have what we can think of as two cognitive or behavioral steps:</p>
 <ol class="arabic simple">
@@ -676,12 +677,12 @@ ntrials = 1000</p>
 <p>We’ll look at a noisy, somewhat target-filled, domain and explore how speed, accuracy, and death rate are influenced by the parameters of our drift-diffusion model.</p>
 <p>The code for this agent can be found here /usr/local/lib/python3.7/dist-packages/explorationlib/agent.py. The <em>AccumulatorGradientGrid</em> agent code can be found on line 1090 of the <em><a class="reference external" href="http://agents.py">agents.py</a></em> library.</p>
 <section id="example-influence-of-drift-rate-on-performance">
-<h3>Example: Influence of drift rate on performance<a class="headerlink" href="#example-influence-of-drift-rate-on-performance" title="Permalink to this headline">#</a></h3>
+<h3>Example: Influence of drift rate on performance<a class="headerlink" href="#example-influence-of-drift-rate-on-performance" title="Permalink to this heading">#</a></h3>
 <p>Based on what you have been told so far, how would you expect increases in the <em>drift rate</em> to affect average rewards, best rewards, and deaths in an open field task, with sparse targets and noisy scents?</p>
 <p>Here, drift rate can be conceptualized as the fidelity of sensory signal, like a sort of signal-to-noise ratio.</p>
 </section>
 <section id="create-environment">
-<h3>Create environment<a class="headerlink" href="#create-environment" title="Permalink to this headline">#</a></h3>
+<h3>Create environment<a class="headerlink" href="#create-environment" title="Permalink to this heading">#</a></h3>
 <p>The name of the env for this section is the <em>ScentGrid</em>. It basically parses up the continuous space into a grid of steps.</p>
 <p>Let’s add some targets and scents to it.</p>
 <div class="cell docutils container">
@@ -736,7 +737,7 @@ ntrials = 1000</p>
 </div>
 </section>
 <section id="drift-rates">
-<h3>Drift rates<a class="headerlink" href="#drift-rates" title="Permalink to this headline">#</a></h3>
+<h3>Drift rates<a class="headerlink" href="#drift-rates" title="Permalink to this heading">#</a></h3>
 <p>Now let us turn to setting up our agents. We’ll play with agents with various rates of evidence accumulation.</p>
 <p>Using the <em>env</em> defined above explore the following drift rates:</p>
 <div class="cell docutils container">
@@ -753,7 +754,7 @@ ntrials = 1000</p>
 </div>
 </section>
 <section id="question-2-1">
-<h3>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this headline">#</a></h3>
+<h3>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this heading">#</a></h3>
 <p>In the context of this gradient decision that our wandering agent does, what should <em>increasing</em> the drift rate do to the agent’s behavior?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -764,7 +765,7 @@ ntrials = 1000</p>
 </div>
 </section>
 <section id="run">
-<h3>Run<a class="headerlink" href="#run" title="Permalink to this headline">#</a></h3>
+<h3>Run<a class="headerlink" href="#run" title="Permalink to this heading">#</a></h3>
 <p>Next we will run 100 experiments for each drift rate.</p>
 <p><em>Note:</em> This will take a few minutes to run.</p>
 <div class="cell docutils container">
@@ -804,7 +805,7 @@ ntrials = 1000</p>
 </div>
 </section>
 <section id="plot-an-example">
-<h3>Plot an example<a class="headerlink" href="#plot-an-example" title="Permalink to this headline">#</a></h3>
+<h3>Plot an example<a class="headerlink" href="#plot-an-example" title="Permalink to this heading">#</a></h3>
 <p>In order to understand how our different agents, with different drift rates, do we can start with a qualitative analysis. Here we will plot a single trial for each agent.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -834,7 +835,7 @@ ntrials = 1000</p>
 </div>
 </section>
 <section id="plot-several-metrics">
-<h3>Plot several metrics<a class="headerlink" href="#plot-several-metrics" title="Permalink to this headline">#</a></h3>
+<h3>Plot several metrics<a class="headerlink" href="#plot-several-metrics" title="Permalink to this heading">#</a></h3>
 <p>Next let us look at differenet metrics of behavior instead, to get a better idea of what changing the drift rate does.</p>
 <p>The metrics we will look at are: distance, death, best reward, average reward.</p>
 <div class="cell docutils container">
@@ -942,7 +943,7 @@ ntrials = 1000</p>
 </div>
 </section>
 <section id="question-2-2">
-<h3>Question 2.2<a class="headerlink" href="#question-2-2" title="Permalink to this headline">#</a></h3>
+<h3>Question 2.2<a class="headerlink" href="#question-2-2" title="Permalink to this heading">#</a></h3>
 <p>Describe how increasing the drift rate changes the overall performance of the agent along the dimensions we just plotted. What does this tell you about how the drift rate is changing behavior?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -953,7 +954,7 @@ ntrials = 1000</p>
 </div>
 </section>
 <section id="question-2-3">
-<h3>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this headline">#</a></h3>
+<h3>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this heading">#</a></h3>
 <p>Re-run the simulations above, instead keeping the drift rate at 1.0, and varying the <em>threshold</em> parameter (aka- boundary height) as:</p>
 <p>thresholds = [2.0, 2.5, 3.0, 3.5, 4.0]</p>
 <p><em>Question</em>: How does changing the threshold impact performance of the agent and how does this differ from the drift rate?</p>

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Exercise 3: CBGT networks and information concepts &#8212; Biologically Intelligent eXploration (BIX)</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Exercise 4: Foraging and reinforcement learning" href="exercise4-foraging_and_rl.html" />
     <link rel="prev" title="Exercise 2: Signals and decisions" href="exercise2-signals_and_decisions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -155,12 +156,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p class="caption"><span class="caption-text">Getting started</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/intro-python.html">Introduction to python</a></li>
 
 </ul>
-<p class="caption"><span class="caption-text">Labs</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/lab1-information.html">Lab 1- Information theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/lab2-explorelib.html">Lab 2 - Random exploration</a></li>
@@ -172,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/lab7-foraging.html">Lab 7 - Foraging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Exercises</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
@@ -427,9 +428,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-3-cbgt-networks-and-information-concepts">
-<h1><strong>Exercise 3: CBGT networks and information concepts</strong><a class="headerlink" href="#exercise-3-cbgt-networks-and-information-concepts" title="Permalink to this headline">#</a></h1>
+<h1><strong>Exercise 3: CBGT networks and information concepts</strong><a class="headerlink" href="#exercise-3-cbgt-networks-and-information-concepts" title="Permalink to this heading">#</a></h1>
 <section id="getting-started">
-<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">#</a></h2>
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
 <p>This homework will involve concepts from the labs we’ve gone over in class. Feel free to reference them as you complete the assignment.</p>
 <p>This homework contains 2 sections:</p>
 <ol class="arabic simple">
@@ -440,11 +441,11 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="part-1-cbgt-decision-simulations-51-pt">
-<h2>Part 1 - CBGT decision simulations [51 pt]<a class="headerlink" href="#part-1-cbgt-decision-simulations-51-pt" title="Permalink to this headline">#</a></h2>
+<h2>Part 1 - CBGT decision simulations [51 pt]<a class="headerlink" href="#part-1-cbgt-decision-simulations-51-pt" title="Permalink to this heading">#</a></h2>
 <p>Here you will be adapting the Lab 5 code so that you increase the indirect <em>and</em> direct pathways gains by 33% (we did 10% in class). This will give a clearer visualization of how these two pathways control the overall reaction times when you plot their joint histogram.</p>
 <p>In the code cells below, fill in (and run) code according to the text instructions before each one. Refer to lab 5 for help.</p>
 <section id="change-colab-s-working-directory-to-the-content-folder-using-the-cd-command">
-<h3>Change Colab’s working directory to the <code class="docutils literal notranslate"><span class="pre">/content</span></code> folder using the <code class="docutils literal notranslate"><span class="pre">cd</span></code> command<a class="headerlink" href="#change-colab-s-working-directory-to-the-content-folder-using-the-cd-command" title="Permalink to this headline">#</a></h3>
+<h3>Change Colab’s working directory to the <code class="docutils literal notranslate"><span class="pre">/content</span></code> folder using the <code class="docutils literal notranslate"><span class="pre">cd</span></code> command<a class="headerlink" href="#change-colab-s-working-directory-to-the-content-folder-using-the-cd-command" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">content</span>
@@ -454,7 +455,7 @@ document.write(`
 </div>
 </section>
 <section id="clone-in-the-cbgt-library-from-https-github-com-coaxlab-cbgt">
-<h3>Clone in the CBGT library from <a class="github reference external" href="https://github.com/CoAxLab/CBGT">CoAxLab/CBGT</a><a class="headerlink" href="#clone-in-the-cbgt-library-from-https-github-com-coaxlab-cbgt" title="Permalink to this headline">#</a></h3>
+<h3>Clone in the CBGT library from <a class="github reference external" href="https://github.com/CoAxLab/CBGT">CoAxLab/CBGT</a><a class="headerlink" href="#clone-in-the-cbgt-library-from-https-github-com-coaxlab-cbgt" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!git clone https://github.com/CoAxLab/CBGT
@@ -464,7 +465,7 @@ document.write(`
 </div>
 </section>
 <section id="change-colab-s-working-directory-to-the-content-cbgt-folder">
-<h3>Change Colab’s working directory to the <code class="docutils literal notranslate"><span class="pre">/content/CBGT</span></code> folder<a class="headerlink" href="#change-colab-s-working-directory-to-the-content-cbgt-folder" title="Permalink to this headline">#</a></h3>
+<h3>Change Colab’s working directory to the <code class="docutils literal notranslate"><span class="pre">/content/CBGT</span></code> folder<a class="headerlink" href="#change-colab-s-working-directory-to-the-content-cbgt-folder" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">CBGT</span>
@@ -474,7 +475,7 @@ document.write(`
 </div>
 </section>
 <section id="import-the-necessary-modules">
-<h3>Import the necessary modules<a class="headerlink" href="#import-the-necessary-modules" title="Permalink to this headline">#</a></h3>
+<h3>Import the necessary modules<a class="headerlink" href="#import-the-necessary-modules" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import libraries and configure plots</span>
@@ -510,7 +511,7 @@ document.write(`
 </div>
 </section>
 <section id="specify-the-saving-directory-and-set-default-model-parameters-weights-exactly-as-we-did-in-the-cbgt-lab">
-<h3>Specify the saving directory and set default model parameters/weights exactly as we did in the CBGT lab.<a class="headerlink" href="#specify-the-saving-directory-and-set-default-model-parameters-weights-exactly-as-we-did-in-the-cbgt-lab" title="Permalink to this headline">#</a></h3>
+<h3>Specify the saving directory and set default model parameters/weights exactly as we did in the CBGT lab.<a class="headerlink" href="#specify-the-saving-directory-and-set-default-model-parameters-weights-exactly-as-we-did-in-the-cbgt-lab" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify saving directory</span>
@@ -553,7 +554,7 @@ document.write(`
 </div>
 </section>
 <section id="define-the-helping-functions-for-getting-sampling-parameters-sampling-region-activations-and-building-a-single-network">
-<h3>Define the helping functions for getting sampling parameters, sampling region activations, and building a single network.<a class="headerlink" href="#define-the-helping-functions-for-getting-sampling-parameters-sampling-region-activations-and-building-a-single-network" title="Permalink to this headline">#</a></h3>
+<h3>Define the helping functions for getting sampling parameters, sampling region activations, and building a single network.<a class="headerlink" href="#define-the-helping-functions-for-getting-sampling-parameters-sampling-region-activations-and-building-a-single-network" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># helper functions to specify connection efficiacies for certain pathways</span>
@@ -617,7 +618,7 @@ document.write(`
 </div>
 </section>
 <section id="code-for-defining-the-function-for-running-a-batch-of-simulations">
-<h3>Code for defining the function for running a batch of simulations.<a class="headerlink" href="#code-for-defining-the-function-for-running-a-batch-of-simulations" title="Permalink to this headline">#</a></h3>
+<h3>Code for defining the function for running a batch of simulations.<a class="headerlink" href="#code-for-defining-the-function-for-running-a-batch-of-simulations" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># code to run a batch of simulations</span>
@@ -653,7 +654,7 @@ document.write(`
 </div>
 </section>
 <section id="define-the-helper-function-for-compiling-simulated-behavioral-data-into-a-dataframe">
-<h3>Define the helper function for compiling simulated behavioral data into a dataframe.<a class="headerlink" href="#define-the-helper-function-for-compiling-simulated-behavioral-data-into-a-dataframe" title="Permalink to this headline">#</a></h3>
+<h3>Define the helper function for compiling simulated behavioral data into a dataframe.<a class="headerlink" href="#define-the-helper-function-for-compiling-simulated-behavioral-data-into-a-dataframe" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># code to compile the behavioral data into a dataframe</span>
@@ -672,9 +673,9 @@ document.write(`
 </div>
 </section>
 <section id="code-for-running-your-specific-batches-of-simulations">
-<h3>Code for running your specific batches of simulations<a class="headerlink" href="#code-for-running-your-specific-batches-of-simulations" title="Permalink to this headline">#</a></h3>
+<h3>Code for running your specific batches of simulations<a class="headerlink" href="#code-for-running-your-specific-batches-of-simulations" title="Permalink to this heading">#</a></h3>
 <section id="set-up-your-batch-run-parameters-with-a-batch-size-of-20-with-direct-strength-increased-33-from-the-default-1-00-and-with-the-standard-indirect-strength-setting-of-1-00-7-pt">
-<h4>Set up your batch run parameters with a <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> of 20, with <code class="docutils literal notranslate"><span class="pre">direct_strength</span></code> increased 33% from the default 1.00, and with the standard <code class="docutils literal notranslate"><span class="pre">indirect_strength</span></code> setting of 1.00. [7 pt]<a class="headerlink" href="#set-up-your-batch-run-parameters-with-a-batch-size-of-20-with-direct-strength-increased-33-from-the-default-1-00-and-with-the-standard-indirect-strength-setting-of-1-00-7-pt" title="Permalink to this headline">#</a></h4>
+<h4>Set up your batch run parameters with a <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> of 20, with <code class="docutils literal notranslate"><span class="pre">direct_strength</span></code> increased 33% from the default 1.00, and with the standard <code class="docutils literal notranslate"><span class="pre">indirect_strength</span></code> setting of 1.00. [7 pt]<a class="headerlink" href="#set-up-your-batch-run-parameters-with-a-batch-size-of-20-with-direct-strength-increased-33-from-the-default-1-00-and-with-the-standard-indirect-strength-setting-of-1-00-7-pt" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
@@ -684,7 +685,7 @@ document.write(`
 </div>
 </section>
 <section id="run-the-strengthened-direct-pathway-batch-and-produce-a-corresponding-dataframe-7-pt">
-<h4>Run the strengthened direct pathway batch and produce a corresponding dataframe [7 pt]<a class="headerlink" href="#run-the-strengthened-direct-pathway-batch-and-produce-a-corresponding-dataframe-7-pt" title="Permalink to this headline">#</a></h4>
+<h4>Run the strengthened direct pathway batch and produce a corresponding dataframe [7 pt]<a class="headerlink" href="#run-the-strengthened-direct-pathway-batch-and-produce-a-corresponding-dataframe-7-pt" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
@@ -694,7 +695,7 @@ document.write(`
 </div>
 </section>
 <section id="set-up-your-batch-run-parameters-with-a-batch-size-of-20-the-standard-direct-strength-of-1-00-but-with-indirect-strength-increased-by-33-7-pt">
-<h4>Set up your batch run parameters with a <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> of 20, the standard <code class="docutils literal notranslate"><span class="pre">direct_strength</span></code> of 1.00, but with <code class="docutils literal notranslate"><span class="pre">indirect_strength</span></code> increased by 33%. [7 pt]<a class="headerlink" href="#set-up-your-batch-run-parameters-with-a-batch-size-of-20-the-standard-direct-strength-of-1-00-but-with-indirect-strength-increased-by-33-7-pt" title="Permalink to this headline">#</a></h4>
+<h4>Set up your batch run parameters with a <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> of 20, the standard <code class="docutils literal notranslate"><span class="pre">direct_strength</span></code> of 1.00, but with <code class="docutils literal notranslate"><span class="pre">indirect_strength</span></code> increased by 33%. [7 pt]<a class="headerlink" href="#set-up-your-batch-run-parameters-with-a-batch-size-of-20-the-standard-direct-strength-of-1-00-but-with-indirect-strength-increased-by-33-7-pt" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
@@ -704,7 +705,7 @@ document.write(`
 </div>
 </section>
 <section id="run-the-strengthened-indirect-pathway-batch-and-produce-a-corresponding-dataframe-7-pt">
-<h4>Run the strengthened indirect pathway batch and produce a corresponding dataframe [7 pt]<a class="headerlink" href="#run-the-strengthened-indirect-pathway-batch-and-produce-a-corresponding-dataframe-7-pt" title="Permalink to this headline">#</a></h4>
+<h4>Run the strengthened indirect pathway batch and produce a corresponding dataframe [7 pt]<a class="headerlink" href="#run-the-strengthened-indirect-pathway-batch-and-produce-a-corresponding-dataframe-7-pt" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
@@ -714,7 +715,7 @@ document.write(`
 </div>
 </section>
 <section id="for-each-condition-strengthened-direct-vs-indirect-pathway-calculate-and-print-the-mean-values-for-reaction-time-and-percent-of-actions-made-to-the-left-accuracy-5-pt">
-<h4>For each condition (strengthened direct vs indirect pathway), calculate and print the mean values for <em>reaction time</em> and <em>percent of actions made to the left</em> (“accuracy”) [5 pt]<a class="headerlink" href="#for-each-condition-strengthened-direct-vs-indirect-pathway-calculate-and-print-the-mean-values-for-reaction-time-and-percent-of-actions-made-to-the-left-accuracy-5-pt" title="Permalink to this headline">#</a></h4>
+<h4>For each condition (strengthened direct vs indirect pathway), calculate and print the mean values for <em>reaction time</em> and <em>percent of actions made to the left</em> (“accuracy”) [5 pt]<a class="headerlink" href="#for-each-condition-strengthened-direct-vs-indirect-pathway-calculate-and-print-the-mean-values-for-reaction-time-and-percent-of-actions-made-to-the-left-accuracy-5-pt" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
@@ -724,7 +725,7 @@ document.write(`
 </div>
 </section>
 <section id="plot-a-histogram-of-reaction-times-for-the-strengthened-direct-vs-indirect-pathway-conditions-make-sure-to-refer-to-the-correct-data-and-include-the-correct-data-each-time-you-call-the-plt-hist-function-6-pt">
-<h4>Plot a histogram of reaction times for the strengthened direct vs. indirect pathway conditions. Make sure to refer to the correct data and include the correct data each time you call the <code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> function. [6 pt]<a class="headerlink" href="#plot-a-histogram-of-reaction-times-for-the-strengthened-direct-vs-indirect-pathway-conditions-make-sure-to-refer-to-the-correct-data-and-include-the-correct-data-each-time-you-call-the-plt-hist-function-6-pt" title="Permalink to this headline">#</a></h4>
+<h4>Plot a histogram of reaction times for the strengthened direct vs. indirect pathway conditions. Make sure to refer to the correct data and include the correct data each time you call the <code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> function. [6 pt]<a class="headerlink" href="#plot-a-histogram-of-reaction-times-for-the-strengthened-direct-vs-indirect-pathway-conditions-make-sure-to-refer-to-the-correct-data-and-include-the-correct-data-each-time-you-call-the-plt-hist-function-6-pt" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
@@ -735,7 +736,7 @@ document.write(`
 </section>
 </section>
 <section id="question-1-1-6-pt">
-<h3>Question 1.1 [6 pt]<a class="headerlink" href="#question-1-1-6-pt" title="Permalink to this headline">#</a></h3>
+<h3>Question 1.1 [6 pt]<a class="headerlink" href="#question-1-1-6-pt" title="Permalink to this heading">#</a></h3>
 <p>How what does increasing the relative efficacy of the direct and indirect pathways do to the networks’ decision speed? Explain why this occurs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -746,7 +747,7 @@ document.write(`
 </div>
 </section>
 <section id="question-1-2-6-pt">
-<h3>Question 1.2: [6 pt]<a class="headerlink" href="#question-1-2-6-pt" title="Permalink to this headline">#</a></h3>
+<h3>Question 1.2: [6 pt]<a class="headerlink" href="#question-1-2-6-pt" title="Permalink to this heading">#</a></h3>
 <p>Rerun the simulations above but increase the synaptic weight from STN to GPi from 0.0324 to 0.04. How does this influence the outcome of the simulations? Why does this happen?</p>
 <p>(Hint: if you get an error while running the simulations, this is supposed to happen).</p>
 <div class="cell docutils container">
@@ -760,14 +761,14 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="part-2-exploration-agents-in-information-distorted-environments-49-pt">
-<h2>Part 2 - Exploration agents in information-distorted environments [49 pt]<a class="headerlink" href="#part-2-exploration-agents-in-information-distorted-environments-49-pt" title="Permalink to this headline">#</a></h2>
+<h2>Part 2 - Exploration agents in information-distorted environments [49 pt]<a class="headerlink" href="#part-2-exploration-agents-in-information-distorted-environments-49-pt" title="Permalink to this heading">#</a></h2>
 <p>In the last part of Lab 6 we saw how the distortion in the channel driven by <em>missing information</em> influenced the efficiency of our Info agent. In this second part of the homework, you will investigate the effect of distortion driven by <em>sensor noise</em>.</p>
 <p>Here we will test a range of <em>noise_sigma</em> (as opposed to <em>p_scent</em>) values. Essentially we will be turning <em>up</em> the distortion as <em>noise_sigma</em> increases. For these experiments we will hold the <em>p_scent</em> constant at 0.1 (a sparse information environment).</p>
 <section id="coding">
-<h3>Coding<a class="headerlink" href="#coding" title="Permalink to this headline">#</a></h3>
+<h3>Coding<a class="headerlink" href="#coding" title="Permalink to this heading">#</a></h3>
 <p>In the code cells below, fill in (and run) code according to the text instructions before each one. Refer to lab 6 for help.</p>
 <section id="install-relevant-code-libraries">
-<h4>Install relevant code libraries.<a class="headerlink" href="#install-relevant-code-libraries" title="Permalink to this headline">#</a></h4>
+<h4>Install relevant code libraries.<a class="headerlink" href="#install-relevant-code-libraries" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install --upgrade git+https://github.com/coaxlab/explorationlib
@@ -778,7 +779,7 @@ document.write(`
 </div>
 </section>
 <section id="import-relevant-modules">
-<h4>Import relevant modules.<a class="headerlink" href="#import-relevant-modules" title="Permalink to this headline">#</a></h4>
+<h4>Import relevant modules.<a class="headerlink" href="#import-relevant-modules" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
@@ -825,7 +826,7 @@ document.write(`
 </div>
 </section>
 <section id="set-up-pretty-plots">
-<h4>Set up pretty plots.<a class="headerlink" href="#set-up-pretty-plots" title="Permalink to this headline">#</a></h4>
+<h4>Set up pretty plots.<a class="headerlink" href="#set-up-pretty-plots" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pretty plots</span>
@@ -846,7 +847,7 @@ document.write(`
 </section>
 </section>
 <section id="code-for-running-your-experiments">
-<h3>Code for running your experiments<a class="headerlink" href="#code-for-running-your-experiments" title="Permalink to this headline">#</a></h3>
+<h3>Code for running your experiments<a class="headerlink" href="#code-for-running-your-experiments" title="Permalink to this heading">#</a></h3>
 <p>We’ve provided some code below with <em>p_scent</em> set at the sparse-information value of 0.1. We also provide a range of <em>noise_sigma</em> that you will use. The range is on an exponential scale, just because it makes sense given that <em>noise_sigma</em> can only be 0 or greater.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -862,7 +863,7 @@ document.write(`
 </div>
 </div>
 <section id="complete-the-code-below-and-run-your-experiments-we-ve-specified-the-default-parameters-for-the-agent-and-environment-below-fill-in-the-code-for-running-experiments-at-each-noise-sigma-value-within-the-loop-below-add-your-code-where-it-says-add-your-experiment-code-here-be-sure-to-check-indentation-7-pt">
-<h4>Complete the code below and run your experiments. We’ve specified the default parameters for the agent and environment below. Fill in the code for running experiments at each <em>noise_sigma</em> value within the loop below. (Add your code where it says <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">ADD</span> <span class="pre">YOUR</span> <span class="pre">EXPERIMENT</span> <span class="pre">CODE</span> <span class="pre">HERE</span> <span class="pre">-</span> <span class="pre">BE</span> <span class="pre">SURE</span> <span class="pre">TO</span> <span class="pre">CHECK</span> <span class="pre">INDENTATION</span></code>.) [7 pt]<a class="headerlink" href="#complete-the-code-below-and-run-your-experiments-we-ve-specified-the-default-parameters-for-the-agent-and-environment-below-fill-in-the-code-for-running-experiments-at-each-noise-sigma-value-within-the-loop-below-add-your-code-where-it-says-add-your-experiment-code-here-be-sure-to-check-indentation-7-pt" title="Permalink to this headline">#</a></h4>
+<h4>Complete the code below and run your experiments. We’ve specified the default parameters for the agent and environment below. Fill in the code for running experiments at each <em>noise_sigma</em> value within the loop below. (Add your code where it says <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">ADD</span> <span class="pre">YOUR</span> <span class="pre">EXPERIMENT</span> <span class="pre">CODE</span> <span class="pre">HERE</span> <span class="pre">-</span> <span class="pre">BE</span> <span class="pre">SURE</span> <span class="pre">TO</span> <span class="pre">CHECK</span> <span class="pre">INDENTATION</span></code>.) [7 pt]<a class="headerlink" href="#complete-the-code-below-and-run-your-experiments-we-ve-specified-the-default-parameters-for-the-agent-and-environment-below-fill-in-the-code-for-running-experiments-at-each-noise-sigma-value-within-the-loop-below-add-your-code-where-it-says-add-your-experiment-code-here-be-sure-to-check-indentation-7-pt" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the accumulation parameters</span>
@@ -907,7 +908,7 @@ document.write(`
 </div>
 </section>
 <section id="add-in-code-below-to-plot-the-bumber-of-deaths-for-different-values-of-noise-sigma-make-sure-your-x-axis-is-labeled-with-noise-sigma-not-p-scent-6-pt">
-<h4>Add in code below to plot the bumber of deaths for different values of <em>noise_sigma</em>. Make sure your x-axis is labeled with noise_sigma, not p_scent. [6 pt]<a class="headerlink" href="#add-in-code-below-to-plot-the-bumber-of-deaths-for-different-values-of-noise-sigma-make-sure-your-x-axis-is-labeled-with-noise-sigma-not-p-scent-6-pt" title="Permalink to this headline">#</a></h4>
+<h4>Add in code below to plot the bumber of deaths for different values of <em>noise_sigma</em>. Make sure your x-axis is labeled with noise_sigma, not p_scent. [6 pt]<a class="headerlink" href="#add-in-code-below-to-plot-the-bumber-of-deaths-for-different-values-of-noise-sigma-make-sure-your-x-axis-is-labeled-with-noise-sigma-not-p-scent-6-pt" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
@@ -917,7 +918,7 @@ document.write(`
 </div>
 </section>
 <section id="add-in-code-below-to-plot-max-score-for-different-values-of-noise-sigma-make-sure-your-x-axis-is-labeled-with-noise-sigma-not-p-scent-6-pt">
-<h4>Add in code below to plot max score for different values of <em>noise_sigma</em>. Make sure your x-axis is labeled with noise_sigma, not p_scent. [6 pt]<a class="headerlink" href="#add-in-code-below-to-plot-max-score-for-different-values-of-noise-sigma-make-sure-your-x-axis-is-labeled-with-noise-sigma-not-p-scent-6-pt" title="Permalink to this headline">#</a></h4>
+<h4>Add in code below to plot max score for different values of <em>noise_sigma</em>. Make sure your x-axis is labeled with noise_sigma, not p_scent. [6 pt]<a class="headerlink" href="#add-in-code-below-to-plot-max-score-for-different-values-of-noise-sigma-make-sure-your-x-axis-is-labeled-with-noise-sigma-not-p-scent-6-pt" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
@@ -927,7 +928,7 @@ document.write(`
 </div>
 </section>
 <section id="add-in-code-below-to-plot-average-score-and-score-frequency-distributions-for-different-values-of-noise-sigma-make-sure-your-x-axes-are-labeled-with-noise-sigma-not-p-scent-6-pt">
-<h4>Add in code below to plot average score and score frequency distributions for different values of <em>noise_sigma</em>. Make sure your x-axes are labeled with noise_sigma, not p_scent. [6 pt]<a class="headerlink" href="#add-in-code-below-to-plot-average-score-and-score-frequency-distributions-for-different-values-of-noise-sigma-make-sure-your-x-axes-are-labeled-with-noise-sigma-not-p-scent-6-pt" title="Permalink to this headline">#</a></h4>
+<h4>Add in code below to plot average score and score frequency distributions for different values of <em>noise_sigma</em>. Make sure your x-axes are labeled with noise_sigma, not p_scent. [6 pt]<a class="headerlink" href="#add-in-code-below-to-plot-average-score-and-score-frequency-distributions-for-different-values-of-noise-sigma-make-sure-your-x-axes-are-labeled-with-noise-sigma-not-p-scent-6-pt" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
@@ -938,7 +939,7 @@ document.write(`
 </section>
 </section>
 <section id="question-2-1-8-pt">
-<h3>Question 2.1 [8 pt]<a class="headerlink" href="#question-2-1-8-pt" title="Permalink to this headline">#</a></h3>
+<h3>Question 2.1 [8 pt]<a class="headerlink" href="#question-2-1-8-pt" title="Permalink to this heading">#</a></h3>
 <p>How does increasing <em>noise_sigma</em> impact our Info agent’s performance? Explain why this particular pattern emerges in the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -949,7 +950,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-2-8-pt">
-<h3>Question 2.2 [8 pt]<a class="headerlink" href="#question-2-2-8-pt" title="Permalink to this headline">#</a></h3>
+<h3>Question 2.2 [8 pt]<a class="headerlink" href="#question-2-2-8-pt" title="Permalink to this heading">#</a></h3>
 <p>Re-run the simulations from this section, but now change the drift-rate from 1.0 to 0.75. How and why does this influence the agent’s behavior (compared to the higher drift-rate)?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -960,7 +961,7 @@ document.write(`
 </div>
 </section>
 <section id="question-3-3-8-pt">
-<h3>Question 3.3 [8 pt]<a class="headerlink" href="#question-3-3-8-pt" title="Permalink to this headline">#</a></h3>
+<h3>Question 3.3 [8 pt]<a class="headerlink" href="#question-3-3-8-pt" title="Permalink to this heading">#</a></h3>
 <p>Now set the drift-rate back to 1.0 and reduce the boundary height from 3.0 to 1.5. Re-run the simulations in again. How and why does this influence the agent’s behavior (compared to the higher boundary height)?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Exercise 1: Github &amp; Colab &#8212; Biologically Intelligent eXploration (BIX)</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Exercise 2: Signals and decisions" href="exercise2-signals_and_decisions.html" />
     <link rel="prev" title="Lab 9 - Reward seeking" href="../notebooks/lab9-reward_seeking.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -155,12 +156,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p class="caption"><span class="caption-text">Getting started</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/intro-python.html">Introduction to python</a></li>
 
 </ul>
-<p class="caption"><span class="caption-text">Labs</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/lab1-information.html">Lab 1- Information theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/lab2-explorelib.html">Lab 2 - Random exploration</a></li>
@@ -172,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/lab7-foraging.html">Lab 7 - Foraging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Exercises</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
@@ -390,14 +391,14 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-1-github-colab">
-<h1><strong>Exercise 1: Github &amp; Colab</strong><a class="headerlink" href="#exercise-1-github-colab" title="Permalink to this headline">#</a></h1>
+<h1><strong>Exercise 1: Github &amp; Colab</strong><a class="headerlink" href="#exercise-1-github-colab" title="Permalink to this heading">#</a></h1>
 <p>This first homework is simple: it is designed to get you set up and started with GitHub and Jupyter notebooks (via Google Colab).</p>
 <p><strong>Github</strong> is a website used for version control (i.e., keeping track of file changes over time). When writing code, version control is essential for saving progress and retaining a history of updates. In this class we will be using GitHub for uploading homeworks and other assignments for submission. As you may already know, this course has a GitHub page for hosting class materials (<a class="github reference external" href="https://github.com/CoAxLab/BiologicallyIntelligentExploration">CoAxLab/BiologicallyIntelligentExploration</a>).</p>
 <p><strong>Colab</strong> (formally “Google Colaboratoy”) is a website for writing and running code in a convenient, interactive, and visually-useful fashion. Specifically, the format of code used on Colab is a “Jupyter Notebook” (see more info <a class="reference external" href="https://jupyter.org">here</a> if you are interested). This lab is actually built as a Jupyter notebook. You can run Jupyter notebooks on your own machine if you like, but for ease, we will be using Colab to run and write code in this class.</p>
 <p>This will all become more clear as you get set up through the steps below.</p>
 <hr class="docutils" />
 <section id="step-1-set-up-a-github-repository">
-<h2><strong>Step 1: Set up a GitHub repository</strong><a class="headerlink" href="#step-1-set-up-a-github-repository" title="Permalink to this headline">#</a></h2>
+<h2><strong>Step 1: Set up a GitHub repository</strong><a class="headerlink" href="#step-1-set-up-a-github-repository" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Create a <a class="reference external" href="https://github.com">GitHub</a> account if you do not have one. It is recommended, though not required, that you use your Andrew account for this as it will give you more features to work with.</p></li>
 <li><p>Create a <em>private</em> reposity with the name &lt;your_last_name&gt;_BIX_F22 (e.g., <code class="docutils literal notranslate"><span class="pre">Burgess_BIX_F22</span></code>).</p></li>
@@ -406,7 +407,7 @@ document.write(`
 </ul>
 </section>
 <section id="step-2-set-up-colab-and-connect-with-github">
-<h2><strong>Step 2: Set up Colab and connect with GitHub</strong><a class="headerlink" href="#step-2-set-up-colab-and-connect-with-github" title="Permalink to this headline">#</a></h2>
+<h2><strong>Step 2: Set up Colab and connect with GitHub</strong><a class="headerlink" href="#step-2-set-up-colab-and-connect-with-github" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Navigate to the <a class="reference external" href="https://colab.research.google.com">Google Colaboratory website</a> and sign in with a Google account (you may want to use your school account to keep your class notebooks separate from your personal ones, but this is up to you).</p></li>
 <li><p>In the starting menu, select the “GitHub” tab.</p></li>
@@ -419,7 +420,7 @@ document.write(`
 </ul>
 </section>
 <section id="step-3-load-the-interactive-homework-template-notebook-into-colab">
-<h2><strong>Step 3: Load the interactive Homework template notebook into Colab</strong><a class="headerlink" href="#step-3-load-the-interactive-homework-template-notebook-into-colab" title="Permalink to this headline">#</a></h2>
+<h2><strong>Step 3: Load the interactive Homework template notebook into Colab</strong><a class="headerlink" href="#step-3-load-the-interactive-homework-template-notebook-into-colab" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>In the Colab menu GitHub tab (you should still be there), enter the course GitHub link (<code class="docutils literal notranslate"><span class="pre">https://github.com/CoAxLab/BiologicallyIntelligentExploration</span></code>) into the search bar.</p></li>
 <li><p>Select the path <code class="docutils literal notranslate"><span class="pre">Homework/Homework1_GitHub_and_Colab_intro.ipynb</span></code>.</p></li>
@@ -428,7 +429,7 @@ document.write(`
 </ul>
 </section>
 <section id="step-4-save-your-notebook-to-github">
-<h2><strong>Step 4: Save your notebook to GitHub</strong><a class="headerlink" href="#step-4-save-your-notebook-to-github" title="Permalink to this headline">#</a></h2>
+<h2><strong>Step 4: Save your notebook to GitHub</strong><a class="headerlink" href="#step-4-save-your-notebook-to-github" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>When you save a notebook on Colab, it will be saved to your Google account (it won’t automatically be saved to GitHub).</p></li>
 <li><p>To save your notebook to GitHub, click “File” and select the “Save a copy in GitHub” option.</p></li>
@@ -438,7 +439,7 @@ document.write(`
 </ul>
 </section>
 <section id="step-5-submit-your-github-hosted-notebook">
-<h2><strong>Step 5: Submit your GitHub-hosted notebook</strong><a class="headerlink" href="#step-5-submit-your-github-hosted-notebook" title="Permalink to this headline">#</a></h2>
+<h2><strong>Step 5: Submit your GitHub-hosted notebook</strong><a class="headerlink" href="#step-5-submit-your-github-hosted-notebook" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Follow these steps to submit a GitHub link of your notebook via Canvas email.</p></li>
 <li><p>Log in to your school <a class="reference external" href="http://canvas.cmu.edu">Canvas</a> account.</p></li>

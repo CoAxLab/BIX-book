@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="lab6-predator_prey.html">Lab 6 - Predator-prey dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab7-foraging.html">Lab 7 - Foraging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8-infotaxis.html">Lab 8 - Infotaxis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
@@ -466,6 +467,61 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting git+https://github.com/coaxlab/explorationlib
+  Cloning https://github.com/coaxlab/explorationlib to /tmp/pip-req-build-wfw6xyt9
+  Running command git clone --filter=blob:none --quiet https://github.com/coaxlab/explorationlib /tmp/pip-req-build-wfw6xyt9
+  Resolved https://github.com/coaxlab/explorationlib to commit 3053a7fbc0e2389e0e8d3951ad6bc2b41dfd45a0
+  Preparing metadata (setup.py) ... ?25l?25hdone
+Requirement already satisfied: numpy in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (1.23.5)
+Requirement already satisfied: scipy in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (1.10.1)
+Requirement already satisfied: pandas in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (1.5.3)
+Requirement already satisfied: matplotlib in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (3.7.1)
+Requirement already satisfied: seaborn in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (0.12.2)
+Requirement already satisfied: scikit-learn in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (1.2.2)
+Requirement already satisfied: numba in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (0.56.4)
+Requirement already satisfied: future in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (0.18.3)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (1.1.0)
+Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (0.11.0)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (4.42.1)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (1.4.4)
+Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (23.1)
+Requirement already satisfied: pillow&gt;=6.2.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (9.4.0)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (3.1.1)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (2.8.2)
+Requirement already satisfied: llvmlite&lt;0.40,&gt;=0.39.0dev0 in /usr/local/lib/python3.10/dist-packages (from numba-&gt;explorationlib==0.0.1) (0.39.1)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.10/dist-packages (from numba-&gt;explorationlib==0.0.1) (67.7.2)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.10/dist-packages (from pandas-&gt;explorationlib==0.0.1) (2023.3)
+Requirement already satisfied: joblib&gt;=1.1.1 in /usr/local/lib/python3.10/dist-packages (from scikit-learn-&gt;explorationlib==0.0.1) (1.3.2)
+Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.10/dist-packages (from scikit-learn-&gt;explorationlib==0.0.1) (3.2.0)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;explorationlib==0.0.1) (1.16.0)
+Building wheels for collected packages: explorationlib
+  Building wheel for explorationlib (setup.py) ... ?25l?25hdone
+  Created wheel for explorationlib: filename=explorationlib-0.0.1-py3-none-any.whl size=40833 sha256=dc4bd216e00fc0374cbfb946a681780c7b9fd82a0f19b67fc79d64861dcab4df
+  Stored in directory: /tmp/pip-ephem-wheel-cache-6kbwiavv/wheels/71/57/e8/88c93e85ce02efaef024038b2ddcb6c6dec8a1a212f712bb05
+Successfully built explorationlib
+Installing collected packages: explorationlib
+Successfully installed explorationlib-0.0.1
+Collecting git+https://github.com/MattChanTK/gym-maze.git
+  Cloning https://github.com/MattChanTK/gym-maze.git to /tmp/pip-req-build-wtggwuup
+  Running command git clone --filter=blob:none --quiet https://github.com/MattChanTK/gym-maze.git /tmp/pip-req-build-wtggwuup
+  Resolved https://github.com/MattChanTK/gym-maze.git to commit 83176811b49b5538a6213520612f44fb1bc49114
+  Preparing metadata (setup.py) ... ?25l?25hdone
+Requirement already satisfied: gym in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (0.25.2)
+Requirement already satisfied: pygame in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (2.5.1)
+Requirement already satisfied: numpy in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (1.23.5)
+Requirement already satisfied: cloudpickle&gt;=1.2.0 in /usr/local/lib/python3.10/dist-packages (from gym-&gt;gym-maze==0.4) (2.2.1)
+Requirement already satisfied: gym-notices&gt;=0.0.4 in /usr/local/lib/python3.10/dist-packages (from gym-&gt;gym-maze==0.4) (0.0.8)
+Building wheels for collected packages: gym-maze
+  Building wheel for gym-maze (setup.py) ... ?25l?25hdone
+  Created wheel for gym-maze: filename=gym_maze-0.4-py3-none-any.whl size=14214 sha256=dae817fb39c08079ad20ed3c01188be8da63253a5316abd417bde536db739ce1
+  Stored in directory: /tmp/pip-ephem-wheel-cache-_sc30wbs/wheels/b0/53/2e/e282706624110bc964538d7840bef68fef2bc1865a87e3016e
+Successfully built gym-maze
+Installing collected packages: gym-maze
+Successfully installed gym-maze-0.4
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -553,6 +609,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7b9c47084940&gt;
+</pre></div>
+</div>
+<img alt="../_images/81c5355c4c4d150aa7b71c9f7a03b5e4c2c7524c958a869cb553f379c605bf1f.png" src="../_images/81c5355c4c4d150aa7b71c9f7a03b5e4c2c7524c958a869cb553f379c605bf1f.png" />
+</div>
 </div>
 </section>
 <section id="noisy-scent">
@@ -569,6 +631,12 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">scent</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7b9c46fbdba0&gt;
+</pre></div>
+</div>
+<img alt="../_images/cd12a53cacebdb8eae6a1edae3576f54461a5d0999d22fafc9ed8486d834cbea.png" src="../_images/cd12a53cacebdb8eae6a1edae3576f54461a5d0999d22fafc9ed8486d834cbea.png" />
 </div>
 </div>
 <p>Doesn’t look resolvable does it? If you squint, maybe you can see it?</p>
@@ -591,6 +659,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7b9c44e38d00&gt;
+</pre></div>
+</div>
+<img alt="../_images/795ffc67e221b7e96c4cef397cb551804f439c6eb6c794ba16442409c1780205.png" src="../_images/795ffc67e221b7e96c4cef397cb551804f439c6eb6c794ba16442409c1780205.png" />
+</div>
 </div>
 </section>
 <section id="missing-scent">
@@ -607,6 +681,12 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">scent</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7b9c44ec4dc0&gt;
+</pre></div>
+</div>
+<img alt="../_images/fdb920e113200ed9bd9535482ba6623dc322e4148d4d427ca263a3bb30556842.png" src="../_images/fdb920e113200ed9bd9535482ba6623dc322e4148d4d427ca263a3bb30556842.png" />
 </div>
 </div>
 <p>Again, let’s average across 100 targets to see what the modal resolvable scent would look like over samples.</p>
@@ -627,6 +707,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7b9c44d31210&gt;
+</pre></div>
+</div>
+<img alt="../_images/6e7bd4ef9df1af31fbd7d51937cba18d29900bb93de081fe2511e41ee8a5bc8a.png" src="../_images/6e7bd4ef9df1af31fbd7d51937cba18d29900bb93de081fe2511e41ee8a5bc8a.png" />
+</div>
 </div>
 </section>
 <section id="noisy-and-missing-scent">
@@ -644,6 +730,12 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">scent</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7b9c44db0460&gt;
+</pre></div>
+</div>
+<img alt="../_images/5608211c8aaa7b91f54f1ea671a0fa52e395fcecbb8f7dd00f543c1522b99529.png" src="../_images/5608211c8aaa7b91f54f1ea671a0fa52e395fcecbb8f7dd00f543c1522b99529.png" />
 </div>
 </div>
 <p>And again, let’s look over the average. But given how much noise we have added, we will need to average over more samples to see the pattern. Let’s increase <em>num_samples</em> to 1000.</p>
@@ -665,6 +757,12 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">scent</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7b9c44c348b0&gt;
+</pre></div>
+</div>
+<img alt="../_images/886be99c65802eb35c2781b33a8a70cfc27e51e7c029ec854d88547c8d2f9d9a.png" src="../_images/886be99c65802eb35c2781b33a8a70cfc27e51e7c029ec854d88547c8d2f9d9a.png" />
 </div>
 </div>
 <p>So, pretty noisy but resolvable.</p>
@@ -752,6 +850,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/e0e7f949966f916add08befb56207e01364c228120963e35a36755b2592d05be.png" src="../_images/e0e7f949966f916add08befb56207e01364c228120963e35a36755b2592d05be.png" />
+</div>
 </div>
 <p>We will use 2 agents in these sims:</p>
 <ul class="simple">
@@ -787,6 +888,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5838]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now let’s run the experiments.</p>
 <div class="cell docutils container">
@@ -815,6 +921,8 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "8fcfb82687f34deca47f33e3b928ecc6"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "3f90979fb3df40dca3c105fd9dfd8c13"}</script></div>
 </div>
 <p>Let’s plot an example experiment. Here I’m choosing the second run for each agent.</p>
 <div class="cell docutils container">
@@ -851,6 +959,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/3caef6ed81a51ffc167fe8d9bb0b84abcf579e3930ba7b6edd06b6ab56eb5473.png" src="../_images/3caef6ed81a51ffc167fe8d9bb0b84abcf579e3930ba7b6edd06b6ab56eb5473.png" />
+</div>
 </div>
 <p>Hard to distinguish their individual behaviors, but our agents seem to be exploring.</p>
 <p>Now let’s evaluate some metrics of performance.</p>
@@ -884,6 +995,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/06e2b4a0446bc8b78d6a795fe13ce7a2279b84a3e619026cf4b9aa7a008b1d63.png" src="../_images/06e2b4a0446bc8b78d6a795fe13ce7a2279b84a3e619026cf4b9aa7a008b1d63.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -911,6 +1025,9 @@ document.write(`
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "d7e2017078204223ad743928317d055e"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "77b491701aaa4d9581f2b07ea5c44cea"}</script><img alt="../_images/7f6c1902129eb4d1e2f4bc332a31a72d610574a141995c3081ba292aebe3b5ed.png" src="../_images/7f6c1902129eb4d1e2f4bc332a31a72d610574a141995c3081ba292aebe3b5ed.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -949,6 +1066,10 @@ document.write(`
     <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "a8e5d385517348dca703ff6cb63dfeb3"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "4372c1166f18432aa1f5c81dc65ad5d3"}</script><img alt="../_images/07e80e57ff1967b155c111aee366e032e8771c1fe2b62845b6f21970bc4bfdcb.png" src="../_images/07e80e57ff1967b155c111aee366e032e8771c1fe2b62845b6f21970bc4bfdcb.png" />
+<img alt="../_images/59e48e2c20d97f7465cd5e280970d69cdcf478e831db9e7c1395f04f8e707c17.png" src="../_images/59e48e2c20d97f7465cd5e280970d69cdcf478e831db9e7c1395f04f8e707c17.png" />
 </div>
 </div>
 <section id="question-2-1">
@@ -1056,6 +1177,8 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "5fea189f546749449a05a2959364fdb0"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "44077e95746c499ea9bc27689ad7d67a"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "763e1aee3df04f7db92709b0c80f4db1"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "7c5eeac29c574c8cb20463ea84282a99"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "8996aec3ee3146918767f4858e613ae6"}</script></div>
 </div>
 <p>Now let us take a look at the performance of our agent across runs.</p>
 <div class="cell docutils container">
@@ -1083,6 +1206,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/5a30993fdb570c768cd6e38372cfe8dc8f38a6a38cc7a8f6d4fb5a59ae96839a.png" src="../_images/5a30993fdb570c768cd6e38372cfe8dc8f38a6a38cc7a8f6d4fb5a59ae96839a.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1100,6 +1226,9 @@ document.write(`
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "d7bfea9a25324df2a255d3b65d253b91"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "1570fb45323a4b9a9a57b6db0bf5625d"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "dc8d466d527445769e574e9b078a3202"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "c8d1c157a6ad440597dd43acad130c77"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b3238105bd1347ae9ffc8e560d381ba5"}</script><img alt="../_images/338a015cb74d352068b30715296e8f3e0114d3dc36729a4e9b68616a782d8525.png" src="../_images/338a015cb74d352068b30715296e8f3e0114d3dc36729a4e9b68616a782d8525.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1124,6 +1253,9 @@ document.write(`
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b64520e58ff0439184cd4ddaa5d2e3a1"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ded81c1cc50e48f2b440448fde284589"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ce29dfb99b1348b5ad6cafc7bf868ca1"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "c23e43a1d029490196075b91e378c1e9"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "6dc5844885dc44d1bd8fc6aecd3e5300"}</script><img alt="../_images/432932c8dd098f5f0eaa11de4b7df39979f7f49eeac2d8a188806a19ae9fd60e.png" src="../_images/432932c8dd098f5f0eaa11de4b7df39979f7f49eeac2d8a188806a19ae9fd60e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1159,6 +1291,10 @@ document.write(`
     <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "6a3df5b83f644b708c7286fb514bece4"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "6a0f39453e60476ebfb9e1b756849b44"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "1164854f1736471bb32ed4864e99c2e2"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "a67990a0b3b8416a81a48d97b11c261f"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "eefeb006a2644863a7e5efad8e95ada8"}</script><img alt="../_images/e3b8667e835d5b977c51bad3b0e151d479b73b2d377042ad783891c76c32de2a.png" src="../_images/e3b8667e835d5b977c51bad3b0e151d479b73b2d377042ad783891c76c32de2a.png" />
+<img alt="../_images/af6360c2b4adcadf63115da101a98531b42047cb198a8f196a5ad06816ceec4b.png" src="../_images/af6360c2b4adcadf63115da101a98531b42047cb198a8f196a5ad06816ceec4b.png" />
 </div>
 </div>
 <section id="question-3-1">

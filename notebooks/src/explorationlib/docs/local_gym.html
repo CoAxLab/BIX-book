@@ -1,0 +1,1142 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>explorationlib.local_gym &#8212; Biologically Intelligent eXploration (BIX)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/src/explorationlib/docs/local_gym';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/levy-flight.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../_static/levy-flight.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Biologically Intelligent eXploration (BIX)
+                </a>
+            </li>
+        </ul>
+        <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../intro-python.html">Introduction to python</a></li>
+
+</ul>
+<p class="caption"><span class="caption-text">Labs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../lab1-information.html">Lab 1- Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lab2-explorelib.html">Lab 2 - Random exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lab3-chemotaxis.html">Lab 3 - Chemotaxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lab4-evidence_accumulation.html">Lab 4 - Evidence Accumulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lab5-cbgt.html">Lab 5 - CBGT pathways</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../../lab6-predator_prey.html">Lab 6 - Predator-prey dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lab7-foraging.html">Lab 7 - Foraging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lab8-infotaxis.html">Lab 8 - Infotaxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../exercises/exercise3-cbgt_and_info.html"><strong>Exercise 3: CBGT networks and information concepts</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../exercises/exercise4-foraging_and_rl.html"><strong>Exercise 4: Foraging and reinforcement learning</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/CoAxLab/BIX-book/main?urlpath=tree/book/notebooks/src/explorationlib/docs/local_gym.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/CoAxLab/BIX-book/blob/main/book/notebooks/src/explorationlib/docs/local_gym.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/notebooks/src/explorationlib/docs/local_gym.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>explorationlib.local_gym</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-setup">Notebook setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explorationlib-gym-field"><code class="docutils literal notranslate"><span class="pre">explorationlib.gym.Field</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explorationlib-local-gym-bounded"><code class="docutils literal notranslate"><span class="pre">explorationlib.local_gym.Bounded</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explorationlib-gym-grid"><code class="docutils literal notranslate"><span class="pre">explorationlib.gym.Grid</span></code></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="explorationlib-local-gym">
+<h1><code class="docutils literal notranslate"><span class="pre">explorationlib.local_gym</span></code><a class="headerlink" href="#explorationlib-local-gym" title="Permalink to this headline">#</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/parenthetical-e/explorationlib/blob/main/explorationlib/docs/local_gym.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<section id="notebook-setup">
+<h2>Notebook setup<a class="headerlink" href="#notebook-setup" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Notebook stuff</span>
+<span class="o">%</span><span class="k">load_ext</span> nb_black
+<span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+
+<span class="c1"># Pretty plots</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format=&#39;retina&#39;
+<span class="o">%</span><span class="k">config</span> IPCompleter.greedy=True
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;16&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The nb_black extension is already loaded. To reload it, use:
+  %reload_ext nb_black
+The autoreload extension is already loaded. To reload it, use:
+  %reload_ext autoreload
+</pre></div>
+</div>
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 59;
+                var nbb_unformatted_code = "import matplotlib.pyplot as plt\n\n# Notebook stuff\n%load_ext nb_black\n%load_ext autoreload\n%autoreload 2\n\n# Pretty plots\n%matplotlib inline\n%config InlineBackend.figure_format='retina'\n%config IPCompleter.greedy=True\n\nplt.rcParams[\"axes.facecolor\"] = \"white\"\nplt.rcParams[\"figure.facecolor\"] = \"white\"\nplt.rcParams[\"font.size\"] = \"16\"";
+                var nbb_formatted_code = "import matplotlib.pyplot as plt\n\n# Notebook stuff\n%load_ext nb_black\n%load_ext autoreload\n%autoreload 2\n\n# Pretty plots\n%matplotlib inline\n%config InlineBackend.figure_format='retina'\n%config IPCompleter.greedy=True\n\nplt.rcParams[\"axes.facecolor\"] = \"white\"\nplt.rcParams[\"figure.facecolor\"] = \"white\"\nplt.rcParams[\"font.size\"] = \"16\"";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script></div>
+</div>
+<p>The gym is where we come to get environments to explore. It is called a “gym” because the interface closely follows the OpenAI <a class="reference external" href="https://gym.openai.com">gym</a>, a library often used to study exploration for reward and reinforcment learning.</p>
+<p>To make the environments useful for exploration, we will often need to add targets, from <code class="docutils literal notranslate"><span class="pre">explorationlib.targets</span></code>.</p>
+</section>
+<section id="explorationlib-gym-field">
+<h2><code class="docutils literal notranslate"><span class="pre">explorationlib.gym.Field</span></code><a class="headerlink" href="#explorationlib-gym-field" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>An open-field to explore, with no boundries.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">Field</span>
+Field<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 60;
+                var nbb_unformatted_code = "from explorationlib.local_gym import Field\nField?";
+                var nbb_formatted_code = "from explorationlib.local_gym import Field\n\nField?";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Init signature:</span> Field<span class=" -Color -Color-Blue">()</span>
+<span class=" -Color -Color-Red">Docstring:</span>      An open-field to explore, with no boundries.
+<span class=" -Color -Color-Red">File:</span>           ~/Code/explorationlib/explorationlib/local_gym.py
+<span class=" -Color -Color-Red">Type:</span>           type
+<span class=" -Color -Color-Red">Subclasses:</span>     Grid, Bounded
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Field.step<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 61;
+                var nbb_unformatted_code = "Field.step?";
+                var nbb_formatted_code = "Field.step?";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> Field<span class=" -Color -Color-Blue">.</span>step<span class=" -Color -Color-Blue">(</span>self<span class=" -Color -Color-Blue">,</span> action<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Run one timestep of the environment&#39;s dynamics. When end of
+episode is reached, you are responsible for calling `reset()`
+to reset this environment&#39;s state.
+
+Accepts an action and returns a tuple (observation, reward, done, info).
+
+Args:
+    action (object): an action provided by the agent
+
+Returns:
+    observation (object): agent&#39;s observation of the current environment
+    reward (float) : amount of reward returned after previous action
+    done (bool): whether the episode has ended, in which case further step() calls will return undefined results
+    info (dict): contains auxiliary diagnostic information (helpful for debugging, and sometimes learning)
+<span class=" -Color -Color-Red">File:</span>      ~/Code/explorationlib/explorationlib/local_gym.py
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Field.last<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 62;
+                var nbb_unformatted_code = "Field.last?";
+                var nbb_formatted_code = "Field.last?";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> Field<span class=" -Color -Color-Blue">.</span>last<span class=" -Color -Color-Blue">(</span>self<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Return the last transition: (state, reward, done, info)
+        
+<span class=" -Color -Color-Red">File:</span>      ~/Code/explorationlib/explorationlib/local_gym.py
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># To make targets and values, see `explorationlib.targets`</span>
+Field.add_targets<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 63;
+                var nbb_unformatted_code = "# To make targets and values, see `explorationlib.targets`\nField.add_targets?";
+                var nbb_formatted_code = "# To make targets and values, see `explorationlib.targets`\nField.add_targets?";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span>
+Field<span class=" -Color -Color-Blue">.</span>add_targets<span class=" -Color -Color-Blue">(</span>
+    self<span class=" -Color -Color-Blue">,</span>
+    targets<span class=" -Color -Color-Blue">,</span>
+    values<span class=" -Color -Color-Blue">,</span>
+    detection_radius<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">1</span><span class=" -Color -Color-Blue">,</span>
+    kd_kwargs<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span> Add targets and their values
+<span class=" -Color -Color-Red">File:</span>      ~/Code/explorationlib/explorationlib/local_gym.py
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Field.check_targets<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 64;
+                var nbb_unformatted_code = "Field.check_targets?";
+                var nbb_formatted_code = "Field.check_targets?";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> Field<span class=" -Color -Color-Blue">.</span>check_targets<span class=" -Color -Color-Blue">(</span>self<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Check for targets, and update self.reward if
+some are found in the given detection_radius.
+
+Note: the deault d_func is the euclidian distance. 
+To override provide a func(x, y) -&gt; distance.
+<span class=" -Color -Color-Red">File:</span>      ~/Code/explorationlib/explorationlib/local_gym.py
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Field.reset<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 65;
+                var nbb_unformatted_code = "Field.reset?";
+                var nbb_formatted_code = "Field.reset?";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> Field<span class=" -Color -Color-Blue">.</span>reset<span class=" -Color -Color-Blue">(</span>self<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Resets the state of the environment and returns an initial observation.
+
+Returns:
+    observation (object): the initial observation.
+<span class=" -Color -Color-Red">File:</span>      ~/Code/explorationlib/explorationlib/local_gym.py
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># To make targets and values, see `explorationlib.targets`</span>
+Field.close<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 66;
+                var nbb_unformatted_code = "# To make targets and values, see `explorationlib.targets`\nField.close?";
+                var nbb_formatted_code = "# To make targets and values, see `explorationlib.targets`\nField.close?";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> Field<span class=" -Color -Color-Blue">.</span>close<span class=" -Color -Color-Blue">(</span>self<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Override close in your subclass to perform any necessary cleanup.
+
+Environments will automatically close() themselves when
+garbage collected or when the program exits.
+<span class=" -Color -Color-Red">File:</span>      ~/anaconda3/envs/py3.6/lib/python3.6/site-packages/gym/core.py
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Field.seed<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 67;
+                var nbb_unformatted_code = "Field.seed?";
+                var nbb_formatted_code = "Field.seed?";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> Field<span class=" -Color -Color-Blue">.</span>seed<span class=" -Color -Color-Blue">(</span>self<span class=" -Color -Color-Blue">,</span> seed<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Sets the seed for this env&#39;s random number generator(s).
+
+Note:
+    Some environments use multiple pseudorandom number generators.
+    We want to capture all such seeds used in order to ensure that
+    there aren&#39;t accidental correlations between multiple generators.
+
+Returns:
+    list&lt;bigint&gt;: Returns the list of seeds used in this env&#39;s random
+      number generators. The first value in the list should be the
+      &quot;main&quot; seed, or the value which a reproducer should pass to
+      &#39;seed&#39;. Often, the main seed equals the provided &#39;seed&#39;, but
+      this won&#39;t be true if seed=None, for example.
+<span class=" -Color -Color-Red">File:</span>      ~/Code/explorationlib/explorationlib/local_gym.py
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Field.render<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 68;
+                var nbb_unformatted_code = "Field.render?";
+                var nbb_formatted_code = "Field.render?";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> Field<span class=" -Color -Color-Blue">.</span>render<span class=" -Color -Color-Blue">(</span>self<span class=" -Color -Color-Blue">,</span> mode<span class=" -Color -Color-Blue">=&#39;human&#39;,</span> close<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Renders the environment.
+
+The set of supported modes varies per environment. (And some
+environments do not support rendering at all.) By convention,
+if mode is:
+
+- human: render to the current display or terminal and
+  return nothing. Usually for human consumption.
+- rgb_array: Return an numpy.ndarray with shape (x, y, 3),
+  representing RGB values for an x-by-y pixel image, suitable
+  for turning into a video.
+- ansi: Return a string (str) or StringIO.StringIO containing a
+  terminal-style text representation. The text can include newlines
+  and ANSI escape sequences (e.g. for colors).
+
+Note:
+    Make sure that your class&#39;s metadata &#39;render.modes&#39; key includes
+      the list of supported modes. It&#39;s recommended to call super()
+      in implementations to use the functionality of this method.
+
+Args:
+    mode (str): the mode to render with
+
+Example:
+
+class MyEnv(Env):
+    metadata = {&#39;render.modes&#39;: [&#39;human&#39;, &#39;rgb_array&#39;]}
+
+    def render(self, mode=&#39;human&#39;):
+        if mode == &#39;rgb_array&#39;:
+            return np.array(...) # return RGB frame suitable for video
+        elif mode == &#39;human&#39;:
+            ... # pop up a window and render
+        else:
+            super(MyEnv, self).render(mode=mode) # just raise an exception
+<span class=" -Color -Color-Red">File:</span>      ~/Code/explorationlib/explorationlib/local_gym.py
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load, env and target creation</span>
+<span class="kn">from</span> <span class="nn">explorationlib.targets</span> <span class="kn">import</span> <span class="n">uniform_targets</span>
+<span class="kn">from</span> <span class="nn">explorationlib.targets</span> <span class="kn">import</span> <span class="n">constant_values</span>
+<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">Field</span>
+
+<span class="c1"># Load an random explorer</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">Diffusion2d</span>
+
+<span class="c1"># Put the targets in a finite domain, to make visualization easier.</span>
+<span class="n">target_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> 
+<span class="n">targets</span> <span class="o">=</span> <span class="n">uniform_targets</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="n">target_boundary</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">constant_values</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Create a Field, and give it targets with values</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">Field</span><span class="p">()</span>
+<span class="n">env</span><span class="o">.</span><span class="n">add_targets</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">detection_radius</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Create a random walker</span>
+<span class="n">brown</span> <span class="o">=</span> <span class="n">Diffusion2d</span><span class="p">(</span><span class="n">min_length</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                          <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                          <span class="n">detection_radius</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Run an experiment, to see how the walker moves in the Field</span>
+<span class="kn">from</span> <span class="nn">explorationlib.run</span> <span class="kn">import</span> <span class="n">experiment</span>
+<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">load</span>
+
+<span class="n">exp_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;data/local_gym_field_1.pkl&quot;</span>
+<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">num_experiments</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">experiment</span><span class="p">(</span>
+    <span class="n">exp_name</span><span class="p">,</span>
+    <span class="n">brown</span><span class="p">,</span>
+    <span class="n">env</span><span class="p">,</span>
+    <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">,</span>
+    <span class="n">num_experiments</span><span class="o">=</span><span class="n">num_experiments</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Load the data from the exp</span>
+<span class="n">exp_data</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">exp_name</span><span class="p">)</span>
+
+<span class="c1"># Plot the targets, and the walkers path on the field</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_targets2d</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_position2d</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_targets2d</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Env&quot;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_position2d</span><span class="p">(</span>
+    <span class="n">exp_data</span><span class="p">,</span>
+    <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Brownian&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>local_gym_field_1: 100%|██████████| 1/1 [00:01&lt;00:00,  1.23s/it]
+</pre></div>
+</div>
+<img alt="../../../../_images/b92d9708ffd98114e8ce276b808a495e846dbd32bd17f1855849fd7fd88427c0.png" src="../../../../_images/b92d9708ffd98114e8ce276b808a495e846dbd32bd17f1855849fd7fd88427c0.png" />
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 86;
+                var nbb_unformatted_code = "# Load, env and target creation\nfrom explorationlib.targets import uniform_targets\nfrom explorationlib.targets import constant_values\nfrom explorationlib.local_gym import Field\n\n# Load an random explorer\nfrom explorationlib.agent import Diffusion2d\n\n# Put the targets in a finite domain, to make visualization easier.\ntarget_boundary = (50, 50) \ntargets = uniform_targets(500, target_boundary)\nvalues = constant_values(targets, 1)\n\n# Create a Field, and give it targets with values\nenv = Field()\nenv.add_targets(targets, values, detection_radius=1)\n\n# Create a random walker\nbrown = Diffusion2d(min_length=0.1,\n                          scale=1,\n                          detection_radius=1)\n\n# Run an experiment, to see how the walker moves in the Field\nfrom explorationlib.run import experiment\nfrom explorationlib.util import load\n\nexp_name = f\"data/local_gym_field_1.pkl\"\nnum_steps = 10000\nnum_experiments = 1\nexperiment(\n    exp_name,\n    brown,\n    env,\n    num_steps=num_steps,\n    num_experiments=num_experiments,\n)\n\n# Load the data from the exp\nexp_data = load(exp_name)\n\n# Plot the targets, and the walkers path on the field\nfrom explorationlib.plot import plot_targets2d\nfrom explorationlib.plot import plot_position2d\n\nax = plot_targets2d(env, boundary=plot_boundary, title=\"Env\")\nax = plot_position2d(\n    exp_data,\n    boundary=plot_boundary,\n    label=\"Brownian\",\n    color=\"black\",\n    alpha=0.9,\n    ax=ax,\n)";
+                var nbb_formatted_code = "# Load, env and target creation\nfrom explorationlib.targets import uniform_targets\nfrom explorationlib.targets import constant_values\nfrom explorationlib.local_gym import Field\n\n# Load an random explorer\nfrom explorationlib.agent import Diffusion2d\n\n# Put the targets in a finite domain, to make visualization easier.\ntarget_boundary = (50, 50)\ntargets = uniform_targets(500, target_boundary)\nvalues = constant_values(targets, 1)\n\n# Create a Field, and give it targets with values\nenv = Field()\nenv.add_targets(targets, values, detection_radius=1)\n\n# Create a random walker\nbrown = Diffusion2d(min_length=0.1, scale=1, detection_radius=1)\n\n# Run an experiment, to see how the walker moves in the Field\nfrom explorationlib.run import experiment\nfrom explorationlib.util import load\n\nexp_name = f\"data/local_gym_field_1.pkl\"\nnum_steps = 10000\nnum_experiments = 1\nexperiment(\n    exp_name,\n    brown,\n    env,\n    num_steps=num_steps,\n    num_experiments=num_experiments,\n)\n\n# Load the data from the exp\nexp_data = load(exp_name)\n\n# Plot the targets, and the walkers path on the field\nfrom explorationlib.plot import plot_targets2d\nfrom explorationlib.plot import plot_position2d\n\nax = plot_targets2d(env, boundary=plot_boundary, title=\"Env\")\nax = plot_position2d(\n    exp_data,\n    boundary=plot_boundary,\n    label=\"Brownian\",\n    color=\"black\",\n    alpha=0.9,\n    ax=ax,\n)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script></div>
+</div>
+</section>
+<section id="explorationlib-local-gym-bounded">
+<h2><code class="docutils literal notranslate"><span class="pre">explorationlib.local_gym.Bounded</span></code><a class="headerlink" href="#explorationlib-local-gym-bounded" title="Permalink to this headline">#</a></h2>
+<p><em>Note:</em> Usage is the same as <code class="docutils literal notranslate"><span class="pre">Field</span></code>. See above for interface docs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">Bounded</span>
+Bounded<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Init signature:</span> Bounded<span class=" -Color -Color-Blue">(</span>boundary<span class=" -Color -Color-Blue">,</span> mode<span class=" -Color -Color-Blue">=&#39;stopping&#39;)</span>
+<span class=" -Color -Color-Red">Docstring:</span>     
+An open-field to explore, with boundries.
+
+Parameters
+----------
+boundary : 2-tuple (x, y)
+    The absolute value of the 2d boundary.
+mode: str
+    How to handle collisions with the boundary. 
+    - stopping: stop movement
+    - absorbing: stop movement and end the run
+    - periodic: loop back around, aka pacman mode
+                (not yet implemented).
+    
+<span class=" -Color -Color-Red">File:</span>           ~/Code/explorationlib/explorationlib/local_gym.py
+<span class=" -Color -Color-Red">Type:</span>           type
+<span class=" -Color -Color-Red">Subclasses:</span>     
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h2>Example<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load, env and target creation</span>
+<span class="kn">from</span> <span class="nn">explorationlib.targets</span> <span class="kn">import</span> <span class="n">uniform_targets</span>
+<span class="kn">from</span> <span class="nn">explorationlib.targets</span> <span class="kn">import</span> <span class="n">constant_values</span>
+<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">Bounded</span>
+
+<span class="c1"># Load an random explorer</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">Diffusion2d</span>
+
+<span class="c1"># Put the targets in a finite domain, to make visualization easier.</span>
+<span class="n">target_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> 
+<span class="n">targets</span> <span class="o">=</span> <span class="n">uniform_targets</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="n">target_boundary</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">constant_values</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Create a Bounded, and give it targets with values</span>
+<span class="c1"># Use stopping mode to see how th agent gets</span>
+<span class="c1"># stuck against the walls.</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">Bounded</span><span class="p">(</span><span class="n">boundary</span><span class="o">=</span><span class="n">target_boundary</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;stopping&quot;</span><span class="p">)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">add_targets</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">detection_radius</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Create a random walker</span>
+<span class="n">brown</span> <span class="o">=</span> <span class="n">Diffusion2d</span><span class="p">(</span><span class="n">min_length</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                          <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                          <span class="n">detection_radius</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Run an experiment, to see how the walker moves in the Field</span>
+<span class="kn">from</span> <span class="nn">explorationlib.run</span> <span class="kn">import</span> <span class="n">experiment</span>
+<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">load</span>
+
+<span class="n">exp_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;data/local_gym_bounded_1.pkl&quot;</span>
+<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">num_experiments</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">experiment</span><span class="p">(</span>
+    <span class="n">exp_name</span><span class="p">,</span>
+    <span class="n">brown</span><span class="p">,</span>
+    <span class="n">env</span><span class="p">,</span>
+    <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">,</span>
+    <span class="n">num_experiments</span><span class="o">=</span><span class="n">num_experiments</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Load the data from the exp</span>
+<span class="n">exp_data</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">exp_name</span><span class="p">)</span>
+
+<span class="c1"># Plot the targets, and the walkers path on the field</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_targets2d</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_position2d</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_targets2d</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Env&quot;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_position2d</span><span class="p">(</span>
+    <span class="n">exp_data</span><span class="p">,</span>
+    <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Brownian&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>local_gym_bounded_1: 100%|██████████| 1/1 [00:02&lt;00:00,  2.21s/it]
+</pre></div>
+</div>
+<img alt="../../../../_images/d83daf3f5b91d09f30457e10bfe1c8c25c2c917ed7c24f6aa5ff4fd47f31515b.png" src="../../../../_images/d83daf3f5b91d09f30457e10bfe1c8c25c2c917ed7c24f6aa5ff4fd47f31515b.png" />
+<script type="application/javascript">
+            setTimeout(function() {
+                var nbb_cell_id = 85;
+                var nbb_unformatted_code = "# Load, env and target creation\nfrom explorationlib.targets import uniform_targets\nfrom explorationlib.targets import constant_values\nfrom explorationlib.local_gym import Bounded\n\n# Load an random explorer\nfrom explorationlib.agent import Diffusion2d\n\n# Put the targets in a finite domain, to make visualization easier.\ntarget_boundary = (50, 50) \ntargets = uniform_targets(500, target_boundary)\nvalues = constant_values(targets, 1)\n\n# Create a Bounded, and give it targets with values\n# Use stopping mode to see how th agent gets\n# stuck against the walls.\nenv = Bounded(boundary=target_boundary, mode=\"stopping\")\nenv.add_targets(targets, values, detection_radius=1)\n\n# Create a random walker\nbrown = Diffusion2d(min_length=0.1,\n                          scale=1,\n                          detection_radius=1)\n\n# Run an experiment, to see how the walker moves in the Field\nfrom explorationlib.run import experiment\nfrom explorationlib.util import load\n\nexp_name = f\"data/local_gym_bounded_1.pkl\"\nnum_steps = 10000\nnum_experiments = 1\nexperiment(\n    exp_name,\n    brown,\n    env,\n    num_steps=num_steps,\n    num_experiments=num_experiments,\n)\n\n# Load the data from the exp\nexp_data = load(exp_name)\n\n# Plot the targets, and the walkers path on the field\nfrom explorationlib.plot import plot_targets2d\nfrom explorationlib.plot import plot_position2d\n\nax = plot_targets2d(env, boundary=plot_boundary, title=\"Env\")\nax = plot_position2d(\n    exp_data,\n    boundary=plot_boundary,\n    label=\"Brownian\",\n    color=\"black\",\n    alpha=0.9,\n    ax=ax,\n)";
+                var nbb_formatted_code = "# Load, env and target creation\nfrom explorationlib.targets import uniform_targets\nfrom explorationlib.targets import constant_values\nfrom explorationlib.local_gym import Bounded\n\n# Load an random explorer\nfrom explorationlib.agent import Diffusion2d\n\n# Put the targets in a finite domain, to make visualization easier.\ntarget_boundary = (50, 50)\ntargets = uniform_targets(500, target_boundary)\nvalues = constant_values(targets, 1)\n\n# Create a Bounded, and give it targets with values\n# Use stopping mode to see how th agent gets\n# stuck against the walls.\nenv = Bounded(boundary=target_boundary, mode=\"stopping\")\nenv.add_targets(targets, values, detection_radius=1)\n\n# Create a random walker\nbrown = Diffusion2d(min_length=0.1, scale=1, detection_radius=1)\n\n# Run an experiment, to see how the walker moves in the Field\nfrom explorationlib.run import experiment\nfrom explorationlib.util import load\n\nexp_name = f\"data/local_gym_bounded_1.pkl\"\nnum_steps = 10000\nnum_experiments = 1\nexperiment(\n    exp_name,\n    brown,\n    env,\n    num_steps=num_steps,\n    num_experiments=num_experiments,\n)\n\n# Load the data from the exp\nexp_data = load(exp_name)\n\n# Plot the targets, and the walkers path on the field\nfrom explorationlib.plot import plot_targets2d\nfrom explorationlib.plot import plot_position2d\n\nax = plot_targets2d(env, boundary=plot_boundary, title=\"Env\")\nax = plot_position2d(\n    exp_data,\n    boundary=plot_boundary,\n    label=\"Brownian\",\n    color=\"black\",\n    alpha=0.9,\n    ax=ax,\n)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            </script></div>
+</div>
+</section>
+<section id="explorationlib-gym-grid">
+<h2><code class="docutils literal notranslate"><span class="pre">explorationlib.gym.Grid</span></code><a class="headerlink" href="#explorationlib-gym-grid" title="Permalink to this headline">#</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">Grid</span></code> is <code class="docutils literal notranslate"><span class="pre">Field</span></code> with only integer positions, which are forced by calling <code class="docutils literal notranslate"><span class="pre">int(.)</span></code> if necessary.</p>
+<p><em>Note:</em> Usage is the same as <code class="docutils literal notranslate"><span class="pre">Field</span></code>. See above for interface docs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">Grid</span>
+Grid<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Init signature:</span> Grid<span class=" -Color -Color-Blue">()</span>
+<span class=" -Color -Color-Red">Docstring:</span>      An open-grid to explore, with no boundries.
+<span class=" -Color -Color-Red">File:</span>           ~/Code/explorationlib/explorationlib/local_gym.py
+<span class=" -Color -Color-Red">Type:</span>           type
+<span class=" -Color -Color-Red">Subclasses:</span>     
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/src/explorationlib/docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-setup">Notebook setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explorationlib-gym-field"><code class="docutils literal notranslate"><span class="pre">explorationlib.gym.Field</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explorationlib-local-gym-bounded"><code class="docutils literal notranslate"><span class="pre">explorationlib.local_gym.Bounded</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explorationlib-gym-grid"><code class="docutils literal notranslate"><span class="pre">explorationlib.gym.Grid</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Timothy Verstynen, Erik Peterson, Matthew Clapp, Jack Burgess
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

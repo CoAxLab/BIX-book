@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 2 - Random exploration &#8212; Biologically Intelligent eXploration (BIX)</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -61,15 +60,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lab2-explorelib';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lab 3 - Chemotaxis" href="lab3-chemotaxis.html" />
     <link rel="prev" title="Lab 1- Information theory" href="lab1-information.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -158,12 +157,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+        <p class="caption"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro-python.html">Introduction to python</a></li>
 
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<p class="caption"><span class="caption-text">Labs</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lab1-information.html">Lab 1- Information theory</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 2 - Random exploration</a></li>
@@ -176,7 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab8-infotaxis.html">Lab 8 - Infotaxis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<p class="caption"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
@@ -411,7 +410,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-2-random-exploration">
-<h1>Lab 2 - Random exploration<a class="headerlink" href="#lab-2-random-exploration" title="Permalink to this heading">#</a></h1>
+<h1>Lab 2 - Random exploration<a class="headerlink" href="#lab-2-random-exploration" title="Permalink to this headline">#</a></h1>
 <p>This section has two goals.</p>
 <ol class="arabic simple">
 <li><p>To get you familiar with the python library we will be using for most of the semester to simulate and explore exploration.</p></li>
@@ -419,28 +418,28 @@ document.write(`
 </ol>
 <p>Google Colab is a simple free way to run python code. See the <em>python</em> chapter for more on it. Most of the chapters and assignments in this book have a button to open in Colab (see the rocket button at the top).</p>
 <section id="background">
-<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h2>
 <p>The <em>explorationlib</em> library has three primary parts for running simulations. Here we will outline the three and give a brief explanation for how they work.</p>
 <section id="agents">
-<h3><strong>Agents</strong><a class="headerlink" href="#agents" title="Permalink to this heading">#</a></h3>
+<h3><strong>Agents</strong><a class="headerlink" href="#agents" title="Permalink to this headline">#</a></h3>
 <p><em>Agents</em> are functions that have a specific set of 1) inputs, 2) computations, and 3) outputs. The input-outut form is defined by the environment (see below). For example, in the bacterial foraging environments the inputs are scent signals reflecting “food” and the ouputs are direction of movement along a 2-dimensional grid. For the bandit environments, the inputs are feedback signals (e.g., rewards) and the outputs are <span class="math notranslate nohighlight">\(n\)</span> actions, where <span class="math notranslate nohighlight">\(n\)</span> is the number of possible choice options. Agents have an internal <em>state</em> object that is updated according to various algorithms that we will play with in class.</p>
 </section>
 <section id="environments">
-<h3><strong>Environments</strong><a class="headerlink" href="#environments" title="Permalink to this heading">#</a></h3>
+<h3><strong>Environments</strong><a class="headerlink" href="#environments" title="Permalink to this headline">#</a></h3>
 <p><em>Environments</em> define the contingencies that agents act on. Here we use the <em>gym</em> library for most of our simulations. There are two classes of environments we will work with: foraging grids and bandits. These will be explained in detail later.</p>
 </section>
 <section id="experiment">
-<h3><strong>Experiment</strong><a class="headerlink" href="#experiment" title="Permalink to this heading">#</a></h3>
+<h3><strong>Experiment</strong><a class="headerlink" href="#experiment" title="Permalink to this headline">#</a></h3>
 <p>The <em>experiment</em> function takes an agent, an environment, and a set of relevant parameters and executes the simulations.</p>
 </section>
 </section>
 <section id="section-setup">
-<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this heading">#</a></h2>
+<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this headline">#</a></h2>
 <p>Use the button to open this assignment in a colab. Once it is open, if it is open, run all the cells. Read each cell, then run it, that is. This simple test of the colab is also a good but basic introduction to <em>explorationlib</em>, which is the basis for all the experiments and assignments you will see.</p>
 <p>If there are no errors, celebrate and consider <em>this</em> assignment complete.</p>
 <p><em>Note:</em> I assume that you, reader, are familiar with python programming already. If you are not, see the <em>Introduction to python</em> assignment.</p>
 <section id="install-explorationlib">
-<h3>Install <em>explorationlib</em><a class="headerlink" href="#install-explorationlib" title="Permalink to this heading">#</a></h3>
+<h3>Install <em>explorationlib</em><a class="headerlink" href="#install-explorationlib" title="Permalink to this headline">#</a></h3>
 <p>Colab comes with many of the libraries we will need. It does not come with <em>explorationlib</em>. It’s a module we will be using, and was written to support this book. Let’s Install it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -453,7 +452,7 @@ document.write(`
 </div>
 </section>
 <section id="import-some-modules">
-<h3>Import some modules<a class="headerlink" href="#import-some-modules" title="Permalink to this heading">#</a></h3>
+<h3>Import some modules<a class="headerlink" href="#import-some-modules" title="Permalink to this headline">#</a></h3>
 <p>Let us begin by importing some modules from the standard library. These are just some general purpose tools we will use.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -539,7 +538,7 @@ document.write(`
 </div>
 </section>
 <section id="make-a-space-for-the-data">
-<h3>Make a space for the data<a class="headerlink" href="#make-a-space-for-the-data" title="Permalink to this heading">#</a></h3>
+<h3>Make a space for the data<a class="headerlink" href="#make-a-space-for-the-data" title="Permalink to this headline">#</a></h3>
 <p>Make a folder called “data” to keep experimental data in. We will use it for all our examples.</p>
 <p><strong>WARNING</strong> When running in a colab, anything you save to “data/” will be lost as soon as you shutdown the colab. This is ok for now. We will cover ways to save your data permanently later on.</p>
 <div class="cell docutils container">
@@ -553,7 +552,7 @@ document.write(`
 </section>
 </section>
 <section id="section-1-let-s-make-some-bacteria">
-<h2>Section 1 - Let’s make some bacteria!<a class="headerlink" href="#section-1-let-s-make-some-bacteria" title="Permalink to this heading">#</a></h2>
+<h2>Section 1 - Let’s make some bacteria!<a class="headerlink" href="#section-1-let-s-make-some-bacteria" title="Permalink to this headline">#</a></h2>
 <p>We want to run a simple experiment using <em>explorationlib</em>. We will simulate a simple bacteria agent wandering a small environment with “food” resources that are detectable by scents (though our toy animal has no sensory abilities yet).</p>
 <ol class="arabic simple">
 <li><p>Instantiate a random walker, in a small 2d box environment, with walls and a lot of targets to find when exploring. Each target should have a value of ‘1’.</p></li>
@@ -563,7 +562,7 @@ document.write(`
 <li><p>Score the agent, and reward (targets), and its efficiency.</p></li>
 </ol>
 <section id="instantiate">
-<h3>Instantiate<a class="headerlink" href="#instantiate" title="Permalink to this heading">#</a></h3>
+<h3>Instantiate<a class="headerlink" href="#instantiate" title="Permalink to this headline">#</a></h3>
 <p>First we get things ready by specifying all of the relevaant parameters and objects.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -594,7 +593,7 @@ document.write(`
 </div>
 </section>
 <section id="run">
-<h3>Run<a class="headerlink" href="#run" title="Permalink to this heading">#</a></h3>
+<h3>Run<a class="headerlink" href="#run" title="Permalink to this headline">#</a></h3>
 <p>We use the <em>experiment</em> function to exeucte the simulations.</p>
 <p>(If you’ve been playing with this notebook for a while, then clear the old output first.)</p>
 <div class="cell docutils container">
@@ -624,7 +623,7 @@ document.write(`
 </div>
 </section>
 <section id="plot">
-<h3>Plot<a class="headerlink" href="#plot" title="Permalink to this heading">#</a></h3>
+<h3>Plot<a class="headerlink" href="#plot" title="Permalink to this headline">#</a></h3>
 <p><em>explorationlib</em> has a set of built in visualization functions that we loaded at the beginning. We’ll use a few here to see how our agents are doing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -672,7 +671,7 @@ document.write(`
 </div>
 </section>
 <section id="score">
-<h3>Score<a class="headerlink" href="#score" title="Permalink to this heading">#</a></h3>
+<h3>Score<a class="headerlink" href="#score" title="Permalink to this headline">#</a></h3>
 <p>Now we can quantify our animal’s behavior.</p>
 <p>First we will look at <em>total_reward</em>, which counts how many times the bacteria ran into a food target.</p>
 <div class="cell docutils container">
@@ -694,11 +693,11 @@ document.write(`
 </div>
 </section>
 <section id="play">
-<h3>Play<a class="headerlink" href="#play" title="Permalink to this heading">#</a></h3>
+<h3>Play<a class="headerlink" href="#play" title="Permalink to this headline">#</a></h3>
 <p>Go back to the top of this section, change the random seed number in the cell where we ran the experiment, and run it again. Each time you do you should generate a new exploration. You’ll get different rewards and efficiency each time as well.</p>
 </section>
 <section id="question-1-1">
-<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this headline">#</a></h3>
 <p>How much variation do you see from run to run? More to the point, if this was how you <em>had</em> to explore the world, how well do you think you’d do?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -709,7 +708,7 @@ document.write(`
 </div>
 </section>
 <section id="question-1-2">
-<h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this headline">#</a></h3>
 <p>Run the simulations as is a few more times, changing the random seed. Keep track of the two outcome measures, <em>total reward</em> and <em>search efficiency</em>. Now change the number of steps in each simulation (the <em>num_steps</em> parameter) to 400. How do the two outcome measures change?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

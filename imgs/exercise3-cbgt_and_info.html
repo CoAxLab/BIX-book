@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Exercise 3: CBGT networks and information concepts &#8212; Biologically Intelligent eXploration (BIX)</title>
+    <title>Exercise 3: CBGT networks and predator-prey dynamics &#8212; Biologically Intelligent eXploration (BIX)</title>
   
   
   
@@ -60,11 +60,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercise3-cbgt_and_info';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'imgs/exercise3-cbgt_and_info';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Exercise 4: Foraging and reinforcement learning" href="exercise4-foraging_and_rl.html" />
-    <link rel="prev" title="Exercise 2: Signals and decisions" href="exercise2-signals_and_decisions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -174,11 +172,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Exercises</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Exercise 3: CBGT networks and information concepts</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercise4-foraging_and_rl.html"><strong>Exercise 4: Foraging and reinforcement learning</strong></a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise4-foraging_and_rl.html"><strong>Exercise 4: Foraging and reinforcement learning</strong></a></li>
 </ul>
 
     </div>
@@ -233,7 +230,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/CoAxLab/BIX-book/main?urlpath=tree/book/exercises/exercise3-cbgt_and_info.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/CoAxLab/BIX-book/main?urlpath=tree/book/imgs/exercise3-cbgt_and_info.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -251,7 +248,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/CoAxLab/BIX-book/blob/main/book/exercises/exercise3-cbgt_and_info.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/CoAxLab/BIX-book/blob/main/book/imgs/exercise3-cbgt_and_info.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -282,7 +279,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/exercises/exercise3-cbgt_and_info.ipynb" target="_blank"
+      <li><a href="../_sources/imgs/exercise3-cbgt_and_info.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -364,7 +361,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise 3: CBGT networks and information concepts</h1>
+    <h1>Exercise 3: CBGT networks and predator-prey dynamics</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -397,7 +394,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2-6-pt">Question 1.2: [6 pt]</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-exploration-agents-in-information-distorted-environments-49-pt">Part 2 - Exploration agents in information-distorted environments [49 pt]</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-predator-prey-dynamics-49-pt">Part 2 - Predator-prey dynamics [49 pt]</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding">Coding</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-relevant-code-libraries">Install relevant code libraries.</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#import-relevant-modules">Import relevant modules.</a></li>
@@ -427,15 +424,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercise-3-cbgt-networks-and-information-concepts">
-<h1><strong>Exercise 3: CBGT networks and information concepts</strong><a class="headerlink" href="#exercise-3-cbgt-networks-and-information-concepts" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-3-cbgt-networks-and-predator-prey-dynamics">
+<h1><strong>Exercise 3: CBGT networks and predator-prey dynamics</strong><a class="headerlink" href="#exercise-3-cbgt-networks-and-predator-prey-dynamics" title="Permalink to this headline">#</a></h1>
 <section id="getting-started">
 <h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">#</a></h2>
 <p>This homework will involve concepts from the labs we’ve gone over in class. Feel free to reference them as you complete the assignment.</p>
 <p>This homework contains 2 sections:</p>
 <ol class="arabic simple">
 <li><p>Simulating decisions in the CBGT network uner stronger direct vs indirect pathway gain.</p></li>
-<li><p>Investigating information-seeking agents in environments of varying information noise.</p></li>
+<li><p>Simulating predator-prey dynamics under different prey behavior.</p></li>
 </ol>
 <p>Fill out the code cells below and answer the questions to complete the assignment. Most of the programming is quite straightforward, as it is all based on code from the labs, which you can use/modify in this notebook.</p>
 </section>
@@ -448,7 +445,7 @@ document.write(`
 <h3>Change Colab’s working directory to the <code class="docutils literal notranslate"><span class="pre">/content</span></code> folder using the <code class="docutils literal notranslate"><span class="pre">cd</span></code> command<a class="headerlink" href="#change-colab-s-working-directory-to-the-content-folder-using-the-cd-command" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">content</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">content</span>
 </pre></div>
 </div>
 </div>
@@ -458,7 +455,7 @@ document.write(`
 <h3>Clone in the CBGT library from <a class="github reference external" href="https://github.com/CoAxLab/CBGT">CoAxLab/CBGT</a><a class="headerlink" href="#clone-in-the-cbgt-library-from-https-github-com-coaxlab-cbgt" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!git clone https://github.com/CoAxLab/CBGT
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/CoAxLab/CBGT
 </pre></div>
 </div>
 </div>
@@ -468,7 +465,7 @@ document.write(`
 <h3>Change Colab’s working directory to the <code class="docutils literal notranslate"><span class="pre">/content/CBGT</span></code> folder<a class="headerlink" href="#change-colab-s-working-directory-to-the-content-cbgt-folder" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">CBGT</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">CBGT</span>
 </pre></div>
 </div>
 </div>
@@ -478,7 +475,7 @@ document.write(`
 <h3>Import the necessary modules<a class="headerlink" href="#import-the-necessary-modules" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import libraries and configure plots</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import libraries and configure plots</span>
 
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -499,7 +496,7 @@ document.write(`
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="s2">&quot;matplotlib&quot;</span><span class="p">)</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 
-<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="n">clrs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#347fff&#39;</span><span class="p">,</span> <span class="s1">&#39;#febe08&#39;</span><span class="p">]</span>
 <span class="n">eclrs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#1657de&#39;</span><span class="p">,</span> <span class="s1">&#39;#f5a005&#39;</span><span class="p">]</span>
 
@@ -514,7 +511,7 @@ document.write(`
 <h3>Specify the saving directory and set default model parameters/weights exactly as we did in the CBGT lab.<a class="headerlink" href="#specify-the-saving-directory-and-set-default-model-parameters-weights-exactly-as-we-did-in-the-cbgt-lab" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify saving directory</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify saving directory</span>
 
 <span class="n">parentDir</span> <span class="o">=</span> <span class="s1">&#39;cbgtDemoTEST&#39;</span>
 <span class="n">savedir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">),</span> <span class="n">parentDir</span><span class="p">)</span>
@@ -557,7 +554,7 @@ document.write(`
 <h3>Define the helping functions for getting sampling parameters, sampling region activations, and building a single network.<a class="headerlink" href="#define-the-helping-functions-for-getting-sampling-parameters-sampling-region-activations-and-building-a-single-network" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># helper functions to specify connection efficiacies for certain pathways</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># helper functions to specify connection efficiacies for certain pathways</span>
 
 <span class="k">def</span> <span class="nf">get_sampling_params</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">direct_strength</span><span class="p">,</span> <span class="n">indirect_strength</span><span class="p">):</span>
     
@@ -621,7 +618,7 @@ document.write(`
 <h3>Code for defining the function for running a batch of simulations.<a class="headerlink" href="#code-for-defining-the-function-for-running-a-batch-of-simulations" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># code to run a batch of simulations</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code to run a batch of simulations</span>
 
 <span class="k">def</span> <span class="nf">runBatch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">direct_strength</span><span class="p">,</span> <span class="n">indirect_strength</span><span class="p">,</span> <span class="n">parallel</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
   <span class="n">N_subj</span> <span class="o">=</span> <span class="mi">1</span>
@@ -657,7 +654,7 @@ document.write(`
 <h3>Define the helper function for compiling simulated behavioral data into a dataframe.<a class="headerlink" href="#define-the-helper-function-for-compiling-simulated-behavioral-data-into-a-dataframe" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># code to compile the behavioral data into a dataframe</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code to compile the behavioral data into a dataframe</span>
 
 <span class="k">def</span> <span class="nf">readResults</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">ng</span><span class="o">.</span><span class="n">readAllTrialResults</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
@@ -678,7 +675,7 @@ document.write(`
 <h4>Set up your batch run parameters with a <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> of 20, with <code class="docutils literal notranslate"><span class="pre">direct_strength</span></code> increased 33% from the default 1.00, and with the standard <code class="docutils literal notranslate"><span class="pre">indirect_strength</span></code> setting of 1.00. [7 pt]<a class="headerlink" href="#set-up-your-batch-run-parameters-with-a-batch-size-of-20-with-direct-strength-increased-33-from-the-default-1-00-and-with-the-standard-indirect-strength-setting-of-1-00-7-pt" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -688,7 +685,7 @@ document.write(`
 <h4>Run the strengthened direct pathway batch and produce a corresponding dataframe [7 pt]<a class="headerlink" href="#run-the-strengthened-direct-pathway-batch-and-produce-a-corresponding-dataframe-7-pt" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -698,7 +695,7 @@ document.write(`
 <h4>Set up your batch run parameters with a <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> of 20, the standard <code class="docutils literal notranslate"><span class="pre">direct_strength</span></code> of 1.00, but with <code class="docutils literal notranslate"><span class="pre">indirect_strength</span></code> increased by 33%. [7 pt]<a class="headerlink" href="#set-up-your-batch-run-parameters-with-a-batch-size-of-20-the-standard-direct-strength-of-1-00-but-with-indirect-strength-increased-by-33-7-pt" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -708,7 +705,7 @@ document.write(`
 <h4>Run the strengthened indirect pathway batch and produce a corresponding dataframe [7 pt]<a class="headerlink" href="#run-the-strengthened-indirect-pathway-batch-and-produce-a-corresponding-dataframe-7-pt" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -718,7 +715,7 @@ document.write(`
 <h4>For each condition (strengthened direct vs indirect pathway), calculate and print the mean values for <em>reaction time</em> and <em>percent of actions made to the left</em> (“accuracy”) [5 pt]<a class="headerlink" href="#for-each-condition-strengthened-direct-vs-indirect-pathway-calculate-and-print-the-mean-values-for-reaction-time-and-percent-of-actions-made-to-the-left-accuracy-5-pt" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -728,7 +725,7 @@ document.write(`
 <h4>Plot a histogram of reaction times for the strengthened direct vs. indirect pathway conditions. Make sure to refer to the correct data and include the correct data each time you call the <code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> function. [6 pt]<a class="headerlink" href="#plot-a-histogram-of-reaction-times-for-the-strengthened-direct-vs-indirect-pathway-conditions-make-sure-to-refer-to-the-correct-data-and-include-the-correct-data-each-time-you-call-the-plt-hist-function-6-pt" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -740,7 +737,7 @@ document.write(`
 <p>How what does increasing the relative efficacy of the direct and indirect pathways do to the networks’ decision speed? Explain why this occurs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>
@@ -752,7 +749,7 @@ document.write(`
 <p>(Hint: if you get an error while running the simulations, this is supposed to happen).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>
@@ -760,8 +757,8 @@ document.write(`
 </section>
 </section>
 <hr class="docutils" />
-<section id="part-2-exploration-agents-in-information-distorted-environments-49-pt">
-<h2>Part 2 - Exploration agents in information-distorted environments [49 pt]<a class="headerlink" href="#part-2-exploration-agents-in-information-distorted-environments-49-pt" title="Permalink to this headline">#</a></h2>
+<section id="part-2-predator-prey-dynamics-49-pt">
+<h2>Part 2 - Predator-prey dynamics [49 pt]<a class="headerlink" href="#part-2-predator-prey-dynamics-49-pt" title="Permalink to this headline">#</a></h2>
 <p>In the last part of Lab 6 we saw how the distortion in the channel driven by <em>missing information</em> influenced the efficiency of our Info agent. In this second part of the homework, you will investigate the effect of distortion driven by <em>sensor noise</em>.</p>
 <p>Here we will test a range of <em>noise_sigma</em> (as opposed to <em>p_scent</em>) values. Essentially we will be turning <em>up</em> the distortion as <em>noise_sigma</em> increases. For these experiments we will hold the <em>p_scent</em> constant at 0.1 (a sparse information environment).</p>
 <section id="coding">
@@ -771,8 +768,8 @@ document.write(`
 <h4>Install relevant code libraries.<a class="headerlink" href="#install-relevant-code-libraries" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install --upgrade git+https://github.com/coaxlab/explorationlib
-!pip install --upgrade git+https://github.com/MattChanTK/gym-maze.git
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/CoAxLab/explorationlib
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/MattChanTK/gym-maze.git
 </pre></div>
 </div>
 </div>
@@ -782,7 +779,7 @@ document.write(`
 <h4>Import relevant modules.<a class="headerlink" href="#import-relevant-modules" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
@@ -790,36 +787,34 @@ document.write(`
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 
 <span class="kn">import</span> <span class="nn">explorationlib</span>
-<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">ScentGrid</span>
-
 <span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">DiffusionGrid</span>
-<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">AccumulatorGradientGrid</span>
-<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">AccumulatorInfoGrid</span>
-
-<span class="kn">from</span> <span class="nn">explorationlib.run</span> <span class="kn">import</span> <span class="n">experiment</span>
-<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">select_exp</span>
-<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">load</span>
-<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">save</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">LevyGrid</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">FreezeLevyGrid</span>
 
 <span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">uniform_targets</span>
 <span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">constant_values</span>
-<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">ScentGrid</span>
-<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">create_grid_scent</span>
-<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">add_noise</span>
-<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">create_grid_scent_patches</span>
+<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">CompetitiveGrid</span>
+
+<span class="kn">from</span> <span class="nn">explorationlib.run</span> <span class="kn">import</span> <span class="n">multi_experiment</span>
+<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">select_exp</span>
+<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">select_agent</span>
+<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">load</span>
+<span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">save</span>
 
 <span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_position2d</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_positions2d</span>
 <span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_length_hist</span>
 <span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_length</span>
 <span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_targets2d</span>
-<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_scent_grid</span>
-<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_targets2d</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">show_gif</span>
 
-<span class="kn">from</span> <span class="nn">explorationlib.score</span> <span class="kn">import</span> <span class="n">total_reward</span>
+<span class="kn">from</span> <span class="nn">explorationlib</span> <span class="kn">import</span> <span class="n">score</span>
 <span class="kn">from</span> <span class="nn">explorationlib.score</span> <span class="kn">import</span> <span class="n">num_death</span>
+<span class="c1"># from explorationlib.score import average_reward</span>
+<span class="kn">from</span> <span class="nn">explorationlib.score</span> <span class="kn">import</span> <span class="n">total_reward</span>
+<span class="kn">from</span> <span class="nn">explorationlib.score</span> <span class="kn">import</span> <span class="n">first_reward</span>
 </pre></div>
 </div>
 </div>
@@ -829,17 +824,17 @@ document.write(`
 <h4>Set up pretty plots.<a class="headerlink" href="#set-up-pretty-plots" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pretty plots</span>
-<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-<span class="o">%</span><span class="n">config</span> <span class="n">InlineBackend</span><span class="o">.</span><span class="n">figure_format</span><span class="o">=</span><span class="s1">&#39;retina&#39;</span>
-<span class="o">%</span><span class="n">config</span> <span class="n">IPCompleter</span><span class="o">.</span><span class="n">greedy</span><span class="o">=</span><span class="kc">True</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pretty plots</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format=&#39;retina&#39;
+<span class="o">%</span><span class="k">config</span> IPCompleter.greedy=True
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;16&quot;</span>
 
 <span class="c1"># Dev</span>
-<span class="o">%</span><span class="n">load_ext</span> <span class="n">autoreload</span>
-<span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>
+<span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
 </pre></div>
 </div>
 </div>
@@ -851,13 +846,15 @@ document.write(`
 <p>We’ve provided some code below with <em>p_scent</em> set at the sparse-information value of 0.1. We also provide a range of <em>noise_sigma</em> that you will use. The range is on an exponential scale, just because it makes sense given that <em>noise_sigma</em> can only be 0 or greater.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Our parameters </span>
-<span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">noise_sigmas</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5625</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.33</span><span class="p">,</span> <span class="mf">1.77</span><span class="p">]</span> <span class="c1"># range of values on an exp. scale</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shared env params</span>
+<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">num_experiments</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1">#500</span>
+<span class="n">seed_value</span> <span class="o">=</span> <span class="mi">559</span>
 
-<span class="c1"># For plotting</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;darkgreen&quot;</span><span class="p">,</span> <span class="s2">&quot;seagreen&quot;</span><span class="p">,</span> <span class="s2">&quot;cadetblue&quot;</span><span class="p">,</span> <span class="s2">&quot;steelblue&quot;</span><span class="p">,</span> <span class="s2">&quot;mediumpurple&quot;</span><span class="p">]</span>
-<span class="n">names</span> <span class="o">=</span> <span class="n">noise_sigmas</span> <span class="c1"># list(range(5))</span>
+<span class="n">step_size</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">min_length</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">detection_radius</span> <span class="o">=</span>  <span class="mi">1</span>
+<span class="n">scale</span> <span class="o">=</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -866,42 +863,93 @@ document.write(`
 <h4>Complete the code below and run your experiments. We’ve specified the default parameters for the agent and environment below. Fill in the code for running experiments at each <em>noise_sigma</em> value within the loop below. (Add your code where it says <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">ADD</span> <span class="pre">YOUR</span> <span class="pre">EXPERIMENT</span> <span class="pre">CODE</span> <span class="pre">HERE</span> <span class="pre">-</span> <span class="pre">BE</span> <span class="pre">SURE</span> <span class="pre">TO</span> <span class="pre">CHECK</span> <span class="pre">INDENTATION</span></code>.) [7 pt]<a class="headerlink" href="#complete-the-code-below-and-run-your-experiments-we-ve-specified-the-default-parameters-for-the-agent-and-environment-below-fill-in-the-code-for-running-experiments-at-each-noise-sigma-value-within-the-loop-below-add-your-code-where-it-says-add-your-experiment-code-here-be-sure-to-check-indentation-7-pt" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the accumulation parameters</span>
-<span class="n">drift_rate</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="n">threshold</span> <span class="o">=</span> <span class="mf">3.0</span>
-<span class="n">accumulate_sigma</span> <span class="o">=</span> <span class="mf">1.0</span>
-
-<span class="c1"># Shared </span>
-<span class="n">num_experiments</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">400</span>
-<span class="n">seed_value</span> <span class="o">=</span> <span class="mi">5838</span>
-
-<span class="c1"># Define non-scent probability values</span>
-<span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">detection_radius</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">max_steps</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">min_length</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">num_targets</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">target_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-
-<span class="c1"># How many experiments to run</span>
-<span class="n">num_experiments</span> <span class="o">=</span> <span class="mi">100</span>
-
-<span class="c1"># Infotaxis agent</span>
-<span class="n">info</span> <span class="o">=</span> <span class="n">AccumulatorInfoGrid</span><span class="p">(</span>
-    <span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span> 
-    <span class="n">max_steps</span><span class="o">=</span><span class="n">max_steps</span><span class="p">,</span> 
-    <span class="n">drift_rate</span><span class="o">=</span><span class="n">drift_rate</span><span class="p">,</span> 
-    <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span>
-    <span class="n">accumulate_sigma</span><span class="o">=</span><span class="mi">1</span>
-<span class="p">)</span>
-<span class="n">info</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
-
-<span class="c1"># Run</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_codes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">noise_sigma</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">noise_sigmas</span><span class="p">):</span>
-  <span class="c1"># ADD YOUR EXPERIMENT CODE HERE - BE SURE TO CHECK INDENTATION</span>
+<span class="c1"># Intial targets</span>
+<span class="n">env</span><span class="o">.</span><span class="n">add_targets</span><span class="p">(</span>
+    <span class="n">target_index</span><span class="p">,</span> 
+    <span class="n">targets</span><span class="p">,</span> 
+    <span class="n">values</span><span class="p">,</span> 
+    <span class="n">detection_radius</span><span class="o">=</span><span class="n">detection_radius</span><span class="p">,</span> 
+    <span class="n">p_target</span><span class="o">=</span><span class="n">p_target</span>
+<span class="p">)</span>
+
+<span class="c1"># Preds</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">DiffusionGrid</span><span class="p">(</span>
+        <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> 
+        <span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span> 
+        <span class="n">step_size</span><span class="o">=</span><span class="n">step_size</span>
+    <span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1"># Preys</span>
+<span class="c1"># prey = [</span>
+<span class="c1">#     DiffusionGrid(</span>
+<span class="c1">#         scale=scale, </span>
+<span class="c1">#         min_length=min_length, </span>
+<span class="c1">#         step_size=step_size,</span>
+<span class="c1">#     )</span>
+<span class="c1"># ] </span>
+<span class="n">prey</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># Fast</span>
+    <span class="n">DiffusionGrid</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="n">step_size</span><span class="o">*</span><span class="mi">2</span><span class="p">),</span>
+    <span class="n">DiffusionGrid</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="n">step_size</span><span class="o">*</span><span class="mi">2</span><span class="p">),</span>
+    <span class="n">DiffusionGrid</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="n">step_size</span><span class="o">*</span><span class="mi">2</span><span class="p">),</span>
+    <span class="n">DiffusionGrid</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="n">step_size</span><span class="o">*</span><span class="mi">2</span><span class="p">),</span>
+    <span class="c1"># Flight</span>
+    <span class="n">LevyGrid</span><span class="p">(</span><span class="n">exponent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="n">step_size</span><span class="p">),</span>
+    <span class="n">LevyGrid</span><span class="p">(</span><span class="n">exponent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="n">step_size</span><span class="p">),</span>
+    <span class="n">LevyGrid</span><span class="p">(</span><span class="n">exponent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="n">step_size</span><span class="p">),</span>
+    <span class="n">LevyGrid</span><span class="p">(</span><span class="n">exponent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="n">step_size</span><span class="p">),</span>
+    <span class="c1"># Freeze</span>
+    <span class="n">FreezeLevyGrid</span><span class="p">(</span><span class="n">p_freeze</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">step_size</span><span class="o">=</span><span class="n">step_size</span><span class="p">),</span>
+    <span class="n">FreezeLevyGrid</span><span class="p">(</span><span class="n">p_freeze</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">step_size</span><span class="o">=</span><span class="n">step_size</span><span class="p">),</span>
+    <span class="n">FreezeLevyGrid</span><span class="p">(</span><span class="n">p_freeze</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">step_size</span><span class="o">=</span><span class="n">step_size</span><span class="p">),</span>
+    <span class="n">FreezeLevyGrid</span><span class="p">(</span><span class="n">p_freeze</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">step_size</span><span class="o">=</span><span class="n">step_size</span><span class="p">)</span>
+<span class="p">]</span> 
+
+<span class="c1"># All agents</span>
+<span class="n">agents</span> <span class="o">=</span> <span class="n">prey</span> <span class="o">+</span> <span class="n">pred</span>
+
+<span class="n">num_predators</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+<span class="n">num_targets</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">prey</span><span class="p">)</span>
+<span class="n">target_index</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_targets</span><span class="p">))</span>
+<span class="n">num_agents</span> <span class="o">=</span> <span class="n">num_predators</span> <span class="o">+</span> <span class="n">num_targets</span>
+
+<span class="n">p_target</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">target_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+
+<span class="c1"># Create env </span>
+<span class="n">prng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">CompetitiveGrid</span><span class="p">(</span><span class="n">num_agents</span><span class="o">=</span><span class="n">num_agents</span><span class="p">)</span>
+<span class="n">targets</span> <span class="o">=</span> <span class="n">uniform_targets</span><span class="p">(</span><span class="n">num_targets</span><span class="p">,</span> <span class="n">target_boundary</span><span class="p">,</span> <span class="n">prng</span><span class="o">=</span><span class="n">prng</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">constant_values</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># Intial targets</span>
+<span class="n">env</span><span class="o">.</span><span class="n">add_targets</span><span class="p">(</span>
+    <span class="n">target_index</span><span class="p">,</span> 
+    <span class="n">targets</span><span class="p">,</span> 
+    <span class="n">values</span><span class="p">,</span> 
+    <span class="n">detection_radius</span><span class="o">=</span><span class="n">detection_radius</span><span class="p">,</span> 
+    <span class="n">p_target</span><span class="o">=</span><span class="n">p_target</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># !</span>
+<span class="n">comp_exp</span> <span class="o">=</span> <span class="n">multi_experiment</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;base&quot;</span><span class="p">,</span>
+    <span class="n">agents</span><span class="p">,</span> 
+    <span class="n">env</span><span class="p">,</span>
+    <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">,</span>
+    <span class="n">num_experiments</span><span class="o">=</span><span class="n">num_experiments</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="n">seed_value</span><span class="p">,</span>
+    <span class="n">split_state</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">dump</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="c1"># -</span>
+<span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">comp_exp</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -911,7 +959,28 @@ document.write(`
 <h4>Add in code below to plot the bumber of deaths for different values of <em>noise_sigma</em>. Make sure your x-axis is labeled with noise_sigma, not p_scent. [6 pt]<a class="headerlink" href="#add-in-code-below-to-plot-the-bumber-of-deaths-for-different-values-of-noise-sigma-make-sure-your-x-axis-is-labeled-with-noise-sigma-not-p-scent-6-pt" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="c1"># Example bout</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plot_positions2d</span><span class="p">(</span>
+        <span class="n">select_exp</span><span class="p">(</span><span class="n">comp_exp</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
+        <span class="n">num_agents</span><span class="p">,</span>
+        <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span>
+        <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Prey</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">target_index</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;Pred&quot;</span><span class="p">],</span>
+        <span class="n">colors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plot_targets2d</span><span class="p">(</span>
+        <span class="n">env</span><span class="p">,</span>
+        <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Intial target&quot;</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -921,7 +990,7 @@ document.write(`
 <h4>Add in code below to plot max score for different values of <em>noise_sigma</em>. Make sure your x-axis is labeled with noise_sigma, not p_scent. [6 pt]<a class="headerlink" href="#add-in-code-below-to-plot-max-score-for-different-values-of-noise-sigma-make-sure-your-x-axis-is-labeled-with-noise-sigma-not-p-scent-6-pt" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -931,7 +1000,7 @@ document.write(`
 <h4>Add in code below to plot average score and score frequency distributions for different values of <em>noise_sigma</em>. Make sure your x-axes are labeled with noise_sigma, not p_scent. [6 pt]<a class="headerlink" href="#add-in-code-below-to-plot-average-score-and-score-frequency-distributions-for-different-values-of-noise-sigma-make-sure-your-x-axes-are-labeled-with-noise-sigma-not-p-scent-6-pt" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -943,7 +1012,7 @@ document.write(`
 <p>How does increasing <em>noise_sigma</em> impact our Info agent’s performance? Explain why this particular pattern emerges in the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>
@@ -954,7 +1023,7 @@ document.write(`
 <p>Re-run the simulations from this section, but now change the drift-rate from 1.0 to 0.75. How and why does this influence the agent’s behavior (compared to the higher drift-rate)?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>
@@ -965,7 +1034,7 @@ document.write(`
 <p>Now set the drift-rate back to 1.0 and reduce the boundary height from 3.0 to 1.5. Re-run the simulations in again. How and why does this influence the agent’s behavior (compared to the higher boundary height)?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
 </pre></div>
 </div>
 </div>
@@ -992,7 +1061,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./exercises"
+            path: "./imgs"
         },
         predefinedOutput: true
     }
@@ -1010,24 +1079,6 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="exercise2-signals_and_decisions.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><strong>Exercise 2: Signals and decisions</strong></p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="exercise4-foraging_and_rl.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><strong>Exercise 4: Foraging and reinforcement learning</strong></p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>
@@ -1069,7 +1120,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2-6-pt">Question 1.2: [6 pt]</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-exploration-agents-in-information-distorted-environments-49-pt">Part 2 - Exploration agents in information-distorted environments [49 pt]</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-predator-prey-dynamics-49-pt">Part 2 - Predator-prey dynamics [49 pt]</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding">Coding</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-relevant-code-libraries">Install relevant code libraries.</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#import-relevant-modules">Import relevant modules.</a></li>

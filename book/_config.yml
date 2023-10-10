@@ -9,6 +9,7 @@ title                       : Biologically Intelligent eXploration (BIX)
 author                      : Timothy Verstynen, Erik Peterson, Matthew Clapp, Jack Burgess
 copyright                   : "2023"  
 logo                        : imgs/levy-flight.png
+
 # Don't execute.
 execute:
   execute_notebooks         : off

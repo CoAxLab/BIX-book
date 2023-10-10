@@ -1,0 +1,1088 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Global Params &#8212; Biologically Intelligent eXploration (BIX)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/CBGT/demos/CBGT_PLOSCompBio2019_Demo';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/levy-flight.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/levy-flight.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Biologically Intelligent eXploration (BIX)
+                </a>
+            </li>
+        </ul>
+        <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../notebooks/intro-python.html">Introduction to python</a></li>
+
+</ul>
+<p class="caption"><span class="caption-text">Labs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../notebooks/lab1-information.html">Lab 1- Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notebooks/lab2-explorelib.html">Lab 2 - Random exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notebooks/lab3-chemotaxis.html">Lab 3 - Chemotaxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notebooks/lab4-evidence_accumulation.html">Lab 4 - Evidence Accumulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notebooks/lab5-cbgt.html">Lab 5 - CBGT pathways</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../../notebooks/lab6-predator_prey.html">Lab 6 - Predator-prey dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notebooks/lab7-foraging.html">Lab 7 - Foraging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notebooks/lab8-infotaxis.html">Lab 8 - Infotaxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notebooks/lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercise3-cbgt_and_pred_prey.html"><strong>Exercise 3: CBGT networks and predator-prey dynamics</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercise4-foraging_and_rl.html"><strong>Exercise 4: Foraging and reinforcement learning</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/CoAxLab/BIX-book/main?urlpath=tree/book/exercises/CBGT/demos/CBGT_PLOSCompBio2019_Demo.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/CoAxLab/BIX-book/blob/main/book/exercises/CBGT/demos/CBGT_PLOSCompBio2019_Demo.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/exercises/CBGT/demos/CBGT_PLOSCompBio2019_Demo.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Global Params</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Global Params</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#efficacy-sampling-f-x-for-individual-networks">Efficacy sampling f(x) for individual networks</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-3-individual-networks">Sample 3 individual networks</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simulate-example-trial">Simulate example trial</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-population-firing-rates">Plot population firing rates</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-stimulus-intensity-across-trials">Sample stimulus intensity across trials</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simulate-full-dataset">Simulate full dataset</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">future.utils</span> <span class="kn">import</span> <span class="n">listvalues</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+
+<span class="kn">import</span> <span class="nn">cbgt.netgen</span> <span class="k">as</span> <span class="nn">ng</span>
+<span class="kn">import</span> <span class="nn">cbgt.analyzefx</span> <span class="k">as</span> <span class="nn">afx</span>
+<span class="kn">from</span> <span class="nn">cbgt</span> <span class="kn">import</span> <span class="n">vis</span><span class="p">,</span> <span class="n">sim</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">RankWarning</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="s2">&quot;matplotlib&quot;</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">clrs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#347fff&#39;</span><span class="p">,</span> <span class="s1">&#39;#febe08&#39;</span><span class="p">]</span>
+<span class="n">eclrs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#1657de&#39;</span><span class="p">,</span> <span class="s1">&#39;#f5a005&#39;</span><span class="p">]</span>
+
+<span class="n">rc</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;font.family&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;sans-serif&#39;</span><span class="p">,</span>
+<span class="s1">&#39;font.sans-serif&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">u</span><span class="s1">&#39;Helvetica&#39;</span><span class="p">,</span>  <span class="sa">u</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;sans-serif&#39;</span><span class="p">],</span>
+<span class="s1">&#39;lines.solid_capstyle&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;butt&#39;</span><span class="p">}</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;ticks&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="s1">&#39;Helvetica&#39;</span><span class="p">,</span> <span class="n">rc</span><span class="o">=</span><span class="n">rc</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.4</span><span class="p">)</span>
+<span class="c1"># splot.style(theme=&#39;safari-day&#39;, grid=True, spines=True, fscale=1.4, figsize=(6., 3.5))</span>
+<span class="c1"># bdf = pd.read_csv(&quot;/Users/kyle/demo_cbgt_bdf.csv&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="global-params">
+<h1>Global Params<a class="headerlink" href="#global-params" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parentDir</span> <span class="o">=</span> <span class="s1">&#39;cbgtDemoTEST&#39;</span>
+<span class="n">savedir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">),</span> <span class="n">parentDir</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">savedir</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">savedir</span><span class="p">)</span>
+
+<span class="n">BaseStim</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Stim</span> <span class="o">=</span> <span class="mf">2.54</span>
+<span class="n">Dynamic</span> <span class="o">=</span> <span class="mf">30.0</span>
+<span class="n">Choices</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">rampingCTX</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">popscale</span> <span class="o">=</span> <span class="mf">.3</span>
+<span class="n">Start</span><span class="o">=</span><span class="mi">200</span>
+
+
+<span class="n">presetLow</span> <span class="o">=</span> <span class="n">ng</span><span class="o">.</span><span class="n">set_post_learning_weights</span><span class="p">(</span><span class="n">dMSN</span><span class="o">=</span><span class="p">[</span><span class="mf">1.01</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">],</span> <span class="n">iMSN</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="n">presetHi</span> <span class="o">=</span> <span class="n">ng</span><span class="o">.</span><span class="n">set_post_learning_weights</span><span class="p">(</span><span class="n">dMSN</span><span class="o">=</span><span class="p">[</span><span class="mf">1.03</span><span class="p">,</span> <span class="mf">0.98</span><span class="p">],</span> <span class="n">iMSN</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="n">presets</span> <span class="o">=</span> <span class="p">[</span><span class="n">presetLow</span><span class="p">,</span> <span class="n">presetHi</span><span class="p">]</span>
+
+<span class="n">conds</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">]</span>
+<span class="n">condABC</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]</span>
+<span class="n">cond12</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="n">savedirs</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">savedir</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">conds</span><span class="p">]</span>
+<span class="n">saveLow</span><span class="p">,</span> <span class="n">saveHi</span> <span class="o">=</span> <span class="n">savedirs</span>
+<span class="n">saveTest</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">savedir</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span>
+
+<span class="n">presetDict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">conds</span><span class="p">,</span> <span class="n">presets</span><span class="p">))</span>
+<span class="n">condOrder</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">conds</span><span class="p">,</span> <span class="n">condABC</span><span class="p">))</span>
+<span class="n">condLevel</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">conds</span><span class="o">+</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">],</span> <span class="n">cond12</span><span class="o">+</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="efficacy-sampling-f-x-for-individual-networks">
+<h1>Efficacy sampling f(x) for individual networks<a class="headerlink" href="#efficacy-sampling-f-x-for-individual-networks" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_sampling_params</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">.05</span><span class="p">):</span>
+    
+    <span class="n">CxSTR</span>      <span class="o">=</span>    <span class="mf">0.2</span>
+    <span class="n">CxTh</span>       <span class="o">=</span>    <span class="mf">0.03</span>
+    <span class="n">CxFSI</span>      <span class="o">=</span>    <span class="mf">0.165</span>
+    <span class="n">D1STR_GPi</span>  <span class="o">=</span>    <span class="mf">1.10</span> <span class="c1">#1.07</span>
+    <span class="n">D2STR_GPeP</span> <span class="o">=</span>    <span class="mf">1.65</span>
+    <span class="n">STN_GPeP_A</span> <span class="o">=</span>    <span class="mf">0.07</span>
+    <span class="n">STN_GPeP_N</span> <span class="o">=</span>    <span class="mf">4.01</span>
+    <span class="n">STN_GPi</span>    <span class="o">=</span>    <span class="mf">0.0324</span>
+    <span class="n">GPi_Th</span>     <span class="o">=</span>    <span class="mf">0.067</span>
+    <span class="n">ThSTR</span>      <span class="o">=</span>    <span class="mf">0.34</span>
+    <span class="n">ThCx</span>       <span class="o">=</span>    <span class="mf">0.02</span>
+
+    <span class="n">mu</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Cx</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;STR&#39;</span><span class="p">:</span><span class="n">CxSTR</span><span class="p">,</span> <span class="s1">&#39;Th&#39;</span><span class="p">:</span><span class="n">CxTh</span><span class="p">,</span> <span class="s1">&#39;FSI&#39;</span><span class="p">:</span><span class="n">CxFSI</span><span class="p">},</span> 
+                <span class="n">Th</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;STR&#39;</span><span class="p">:</span><span class="n">ThSTR</span><span class="p">,</span> <span class="s1">&#39;Cx&#39;</span><span class="p">:</span><span class="n">ThCx</span><span class="p">},</span>
+                <span class="n">D1STR</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;GPi&#39;</span><span class="p">:</span> <span class="n">D1STR_GPi</span><span class="p">},</span>
+                <span class="n">D2STR</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;GPeP&#39;</span><span class="p">:</span> <span class="n">D2STR_GPeP</span><span class="p">},</span>
+                <span class="n">STN</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;GPi&#39;</span><span class="p">:</span> <span class="n">STN_GPi</span><span class="p">},</span>
+                <span class="n">GPi</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Th&#39;</span><span class="p">:</span> <span class="n">GPi_Th</span><span class="p">})</span>
+    <span class="n">sd</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:{</span><span class="n">j</span><span class="p">:</span> <span class="n">mu</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">scale</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">mu</span><span class="p">[</span><span class="n">i</span><span class="p">])}</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">mu</span><span class="p">)}</span>
+    <span class="k">return</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sd</span>
+
+
+<span class="k">def</span> <span class="nf">sample_network_efficacies</span><span class="p">(</span><span class="n">muEff</span><span class="p">,</span> <span class="n">sdEff</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">nuclei</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">muEff</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nuclei</span><span class="p">:</span>
+        <span class="n">targets</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">muEff</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+            <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">muEff</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">sdEff</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">N</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span>
+
+
+<span class="k">def</span> <span class="nf">build_single_network</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    
+    <span class="n">Cx</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;STR&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Cx&#39;</span><span class="p">][</span><span class="s1">&#39;STR&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span> 
+        <span class="s1">&#39;Th&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Cx&#39;</span><span class="p">][</span><span class="s1">&#39;Th&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span> 
+        <span class="s1">&#39;FSI&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Cx&#39;</span><span class="p">][</span><span class="s1">&#39;FSI&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]}</span>
+    
+    <span class="n">D1STR</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;GPi&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;D1STR&#39;</span><span class="p">][</span><span class="s1">&#39;GPi&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]}</span>
+    <span class="n">D2STR</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;GPeP&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;D2STR&#39;</span><span class="p">][</span><span class="s1">&#39;GPeP&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]}</span>
+    
+    <span class="n">STN</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;GPi&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;STN&#39;</span><span class="p">][</span><span class="s1">&#39;GPi&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]}</span>
+    
+    <span class="n">GPi</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Th&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;GPi&#39;</span><span class="p">][</span><span class="s1">&#39;Th&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]}</span>
+    
+    <span class="n">Th</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;STR&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Th&#39;</span><span class="p">][</span><span class="s1">&#39;STR&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span> 
+        <span class="s1">&#39;Cx&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Th&#39;</span><span class="p">][</span><span class="s1">&#39;Cx&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]}</span>
+
+    <span class="k">return</span> <span class="n">ng</span><span class="o">.</span><span class="n">getConEff</span><span class="p">(</span><span class="n">Cx</span><span class="o">=</span><span class="n">Cx</span><span class="p">,</span> <span class="n">D1STR</span><span class="o">=</span><span class="n">D1STR</span><span class="p">,</span> <span class="n">D2STR</span><span class="o">=</span><span class="n">D2STR</span><span class="p">,</span> <span class="n">STN</span><span class="o">=</span><span class="n">STN</span><span class="p">,</span> <span class="n">GPi</span><span class="o">=</span><span class="n">GPi</span><span class="p">,</span> <span class="n">Th</span><span class="o">=</span><span class="n">Th</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="sample-3-individual-networks">
+<h1>Sample 3 individual networks<a class="headerlink" href="#sample-3-individual-networks" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N_subj</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">sdScale</span> <span class="o">=</span> <span class="mf">.05</span>
+
+<span class="n">conProb</span> <span class="o">=</span> <span class="n">ng</span><span class="o">.</span><span class="n">getConProb</span><span class="p">()</span>
+<span class="n">muEff</span><span class="p">,</span> <span class="n">sdEff</span> <span class="o">=</span> <span class="n">get_sampling_params</span><span class="p">(</span><span class="n">sdScale</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sample_network_efficacies</span><span class="p">(</span><span class="n">muEff</span><span class="p">,</span> <span class="n">sdEff</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="n">N_subj</span><span class="p">)</span>
+<span class="n">subj_eff_dicts</span> <span class="o">=</span> <span class="p">[</span><span class="n">build_single_network</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_subj</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="simulate-example-trial">
+<h1>Simulate example trial<a class="headerlink" href="#simulate-example-trial" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get conn. efficacies for 1st subject network (idx=0)</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">conEff_i</span> <span class="o">=</span> <span class="n">subj_eff_dicts</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+<span class="c1"># set stimulus strength</span>
+<span class="n">stim</span> <span class="o">=</span> <span class="mf">2.5</span>
+<span class="c1"># get preset for &quot;high&quot; reward condition</span>
+<span class="c1"># (e.g., Cx-dMSN weight scalars)</span>
+<span class="n">preset</span> <span class="o">=</span> <span class="n">presetDict</span><span class="p">[</span><span class="s1">&#39;high&#39;</span><span class="p">]</span>
+
+<span class="c1"># set save directory</span>
+<span class="n">ng</span><span class="o">.</span><span class="n">setDirectory</span><span class="p">(</span><span class="n">saveTest</span><span class="p">)</span>
+
+<span class="c1"># configure trial and network parameters</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">))</span>
+<span class="n">sweepcount</span> <span class="o">=</span> <span class="n">ng</span><span class="o">.</span><span class="n">configureSweep</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">experiment</span><span class="o">=</span><span class="s1">&#39;mc&#39;</span><span class="p">,</span> <span class="n">preset</span><span class="o">=</span><span class="n">preset</span><span class="p">,</span> <span class="n">Start</span><span class="o">=</span><span class="n">Start</span><span class="p">,</span>
+                               <span class="n">popscale</span><span class="o">=</span><span class="n">popscale</span><span class="p">,</span> <span class="n">BaseStim</span><span class="o">=</span><span class="n">BaseStim</span><span class="p">,</span> <span class="n">Choices</span><span class="o">=</span><span class="n">Choices</span><span class="p">,</span> 
+                               <span class="n">WrongStim</span><span class="o">=</span><span class="n">stim</span><span class="p">,</span> <span class="n">RightStim</span><span class="o">=</span><span class="n">stim</span><span class="p">,</span> <span class="n">Dynamic</span><span class="o">=</span><span class="n">Dynamic</span><span class="p">,</span>
+                               <span class="n">rampingCTX</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                               <span class="n">conProb</span><span class="o">=</span><span class="n">conProb</span><span class="p">,</span> 
+                               <span class="n">conEff</span><span class="o">=</span><span class="n">conEff_i</span><span class="p">)</span>
+
+<span class="c1"># compile current configuration and simulate trial</span>
+<span class="n">ng</span><span class="o">.</span><span class="n">compileAndRunSweepALL</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="plot-population-firing-rates">
+<h1>Plot population firing rates<a class="headerlink" href="#plot-population-firing-rates" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vis</span><span class="o">.</span><span class="n">plot_trial_rates</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RT:	476.01ms
+Acc:	Correct
+</pre></div>
+</div>
+<img alt="../../../_images/f858ebefb0d3e3cbdb13c3ddb34b2a46ff93f31b7e75a1c1c6b51c7e6f5cdc9d.png" src="../../../_images/f858ebefb0d3e3cbdb13c3ddb34b2a46ff93f31b7e75a1c1c6b51c7e6f5cdc9d.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="sample-stimulus-intensity-across-trials">
+<h1>Sample stimulus intensity across trials<a class="headerlink" href="#sample-stimulus-intensity-across-trials" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ntrials</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">stimArray</span> <span class="o">=</span> <span class="n">vis</span><span class="o">.</span><span class="n">plot_stim_dist</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">.075</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="p">(</span><span class="mf">2.45</span><span class="p">,</span> <span class="mf">2.6</span><span class="p">),</span> <span class="n">ntrials</span><span class="o">=</span><span class="n">ntrials</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/4c6be5f66889d12af040c371a0d686799e70984a160f6ae87239da7d50d97be3.png" src="../../../_images/4c6be5f66889d12af040c371a0d686799e70984a160f6ae87239da7d50d97be3.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="simulate-full-dataset">
+<h1>Simulate full dataset<a class="headerlink" href="#simulate-full-dataset" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p>5 sampled CBGT networks</p></li>
+<li><p>3 conditions (Low, Medium, and High reward)</p></li>
+<li><p>20 trials / condition (see cell above)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bdf_list</span><span class="p">,</span> <span class="n">rdf_list</span><span class="p">,</span> <span class="n">ardf_list</span>  <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">msn_idx_list</span><span class="p">,</span> <span class="n">msn_cond_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">msn_pops</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dMSN0&#39;</span><span class="p">,</span> <span class="s1">&#39;dMSN1&#39;</span><span class="p">,</span> <span class="s1">&#39;iMSN0&#39;</span><span class="p">,</span> <span class="s1">&#39;iMSN1&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">cond_ix</span><span class="p">,</span> <span class="n">cond</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">conds</span><span class="p">):</span>
+    
+    <span class="n">bdf_list_c</span><span class="p">,</span> <span class="n">rdf_list_c</span><span class="p">,</span> <span class="n">ardf_list_c</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="n">preset_c</span> <span class="o">=</span> <span class="n">presets</span><span class="p">[</span><span class="n">cond_ix</span><span class="p">]</span>
+    
+    <span class="n">savedir_c</span> <span class="o">=</span> <span class="n">savedirs</span><span class="p">[</span><span class="n">cond_ix</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">savedir_c</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">savedir_c</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">subject_eff</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">subj_eff_dicts</span><span class="p">):</span>
+        
+        <span class="n">savedir_ci</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">savedir_c</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> 
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">savedir_ci</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">savedir_ci</span><span class="p">)</span>
+            
+        <span class="n">res_ci</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run_cbgt_sweeps</span><span class="p">(</span><span class="n">stimArray</span><span class="p">,</span> <span class="n">preset</span><span class="o">=</span><span class="n">preset_c</span><span class="p">,</span> 
+                                    <span class="n">rampingCTX</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">savedir</span><span class="o">=</span><span class="n">savedir_ci</span><span class="p">,</span> 
+                                    <span class="n">cond</span><span class="o">=</span><span class="n">cond</span><span class="p">,</span> <span class="n">ntrials</span><span class="o">=</span><span class="n">ntrials</span><span class="p">,</span> <span class="n">Start</span><span class="o">=</span><span class="n">Start</span><span class="p">,</span> 
+                                    <span class="n">popscale</span><span class="o">=</span><span class="n">popscale</span><span class="p">,</span> <span class="n">BaseStim</span><span class="o">=</span><span class="n">BaseStim</span><span class="p">,</span> 
+                                    <span class="n">Dynamic</span><span class="o">=</span><span class="n">Dynamic</span><span class="p">,</span> <span class="n">Choices</span><span class="o">=</span><span class="n">Choices</span><span class="p">,</span> 
+                                    <span class="n">conEff</span><span class="o">=</span><span class="n">subject_eff</span><span class="p">,</span> <span class="n">conProb</span><span class="o">=</span><span class="n">conProb</span><span class="p">)</span>
+
+        <span class="n">bdf_ci</span> <span class="o">=</span> <span class="n">afx</span><span class="o">.</span><span class="n">analyze_network_behavior</span><span class="p">(</span><span class="n">res_ci</span><span class="p">,</span> <span class="n">preset_c</span><span class="p">,</span> 
+                                              <span class="n">stimArray</span><span class="p">,</span> <span class="n">cond</span><span class="p">,</span> 
+                                              <span class="n">savedir_ci</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">i</span><span class="p">,</span>
+                                              <span class="n">conEff</span><span class="o">=</span><span class="n">subject_eff</span><span class="p">)</span>
+
+        <span class="n">ratedf_ci</span><span class="p">,</span> <span class="n">avg_ratedf_ci</span> <span class="o">=</span> <span class="n">vis</span><span class="o">.</span><span class="n">save_and_plot</span><span class="p">(</span><span class="n">res_ci</span><span class="p">,</span> <span class="n">bdf_ci</span><span class="p">,</span> 
+                                                    <span class="n">cond</span><span class="o">=</span><span class="n">cond</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> 
+                                                    <span class="n">savedir</span><span class="o">=</span><span class="n">savedir_ci</span><span class="p">,</span> 
+                                                    <span class="n">window</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">Start</span><span class="o">=</span><span class="n">Start</span><span class="p">,</span> 
+                                                    <span class="n">trials</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">getdfs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        
+        <span class="n">vis</span><span class="o">.</span><span class="n">plot_cond_rtdist</span><span class="p">(</span><span class="n">bdf_ci</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> 
+                             <span class="n">cond</span><span class="o">=</span><span class="n">cond</span><span class="p">,</span> <span class="n">outdir</span><span class="o">=</span><span class="n">savedir_ci</span><span class="p">,</span> 
+                             <span class="n">norm_hist</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">vis</span><span class="o">.</span><span class="n">plot_cor_err_rts</span><span class="p">(</span><span class="n">bdf_ci</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> 
+                             <span class="n">outdir</span><span class="o">=</span><span class="n">savedir_ci</span><span class="p">,</span> 
+                             <span class="n">norm_hist</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+        
+        <span class="n">msnDF</span> <span class="o">=</span> <span class="n">ratedf_ci</span><span class="p">[</span><span class="n">ratedf_ci</span><span class="o">.</span><span class="n">population</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">msn_pops</span><span class="p">)]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">msnDF_fname</span> <span class="o">=</span> <span class="s1">&#39;msnRates_allTrials_</span><span class="si">{}</span><span class="s1">_idx</span><span class="si">{}</span><span class="s1">.csv&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="n">msnDF</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">savedir_ci</span><span class="p">,</span> <span class="n">msnDF_fname</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">bdf_list_c</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bdf_ci</span><span class="p">)</span>
+        <span class="n">rdf_list_c</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ratedf_ci</span><span class="p">)</span>
+        <span class="n">ardf_list_c</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">avg_ratedf_ci</span><span class="p">)</span>
+        <span class="n">msn_idx_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msnDF</span><span class="p">)</span>
+        
+    <span class="n">bdf_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">bdf_list_c</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="n">rdf_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">rdf_list_c</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="n">ardf_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">ardf_list_c</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="n">msn_cond_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">msn_idx_list</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="n">msnAll</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">msn_cond_list</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">bdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">bdf_list</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ratedf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">rdf_list</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ardf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">ardf_list</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cond: LOW
+	Mean CorRT:	394.01 (28.78)
+	Med CorRT:	371.00
+	Avg ErrRT:	394.38 (31.60)
+	P(Left):	0.6522
+Cond: LOW
+	Mean CorRT:	470.46 (31.01)
+	Med CorRT:	453.01
+	Avg ErrRT:	483.01 (194.32)
+	P(Left):	0.8696
+Cond: LOW
+	Mean CorRT:	407.24 (24.69)
+	Med CorRT:	396.01
+	Avg ErrRT:	417.01 (34.86)
+	P(Left):	0.7391
+Cond: HIGH
+	Mean CorRT:	388.96 (21.92)
+	Med CorRT:	371.00
+	Avg ErrRT:	400.51 (79.00)
+	P(Left):	0.9130
+Cond: HIGH
+	Mean CorRT:	449.55 (25.58)
+	Med CorRT:	421.01
+	Avg ErrRT:	999.99 (0.00)
+	P(Left):	1.0000
+Cond: HIGH
+	Mean CorRT:	408.37 (22.47)
+	Med CorRT:	394.01
+	Avg ErrRT:	410.01 (74.00)
+	P(Left):	0.9167
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vis</span><span class="o">.</span><span class="n">plot_mean_acc_rt</span><span class="p">(</span><span class="n">bdf</span><span class="p">,</span> <span class="n">conds</span><span class="o">=</span><span class="n">conds</span><span class="p">,</span> <span class="n">subject_mean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">clrs</span><span class="o">=</span><span class="n">clrs</span><span class="p">,</span> <span class="n">eclrs</span><span class="o">=</span><span class="n">eclrs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/9890cb4e2c2b8fb4c631d89c5c2d45349dffa61855b09dce97c5a52b75a18157.png" src="../../../_images/9890cb4e2c2b8fb4c631d89c5c2d45349dffa61855b09dce97c5a52b75a18157.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bdfx</span> <span class="o">=</span> <span class="n">bdf</span><span class="p">[</span><span class="n">bdf</span><span class="o">.</span><span class="n">acc</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])]</span>
+<span class="n">gf</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">bdfx</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;acc&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="s1">&#39;subj_idx&#39;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;cond&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s1">&#39;g&#39;</span><span class="p">},</span> <span class="n">legend_out</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">gf</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">,</span> <span class="s1">&#39;rtms&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">hist</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">kde_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">bw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shade</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">gf</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/d8d8f4a8f9aab97e65b4b078feecd4320e1e5a9fffcf264f97f73d05324bb630.png" src="../../../_images/d8d8f4a8f9aab97e65b4b078feecd4320e1e5a9fffcf264f97f73d05324bb630.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bdf</span> <span class="o">=</span> <span class="n">afx</span><span class="o">.</span><span class="n">get_cbgt_covariates</span><span class="p">(</span><span class="n">bdf</span><span class="p">,</span> <span class="n">msnAll</span><span class="p">,</span> <span class="n">conds</span><span class="o">=</span><span class="n">conds</span><span class="p">)</span>
+<span class="n">bdf</span> <span class="o">=</span> <span class="n">afx</span><span class="o">.</span><span class="n">norm_covariates</span><span class="p">(</span><span class="n">bdf</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vis</span><span class="o">.</span><span class="n">plot_striatal_regressors</span><span class="p">(</span><span class="n">bdf</span><span class="p">,</span> <span class="n">msn_type</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">subject_mean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">conds</span><span class="o">=</span><span class="n">conds</span><span class="p">,</span> <span class="n">clrs</span><span class="o">=</span><span class="n">clrs</span><span class="p">,</span> <span class="n">eclrs</span><span class="o">=</span><span class="n">eclrs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/d941f3a7adab96969d547c3c4c62cdf00163cc8e687b1b3eaf89d53081989071.png" src="../../../_images/d941f3a7adab96969d547c3c4c62cdf00163cc8e687b1b3eaf89d53081989071.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vis</span><span class="o">.</span><span class="n">plot_striatal_regressors</span><span class="p">(</span><span class="n">bdf</span><span class="p">,</span> <span class="n">msn_type</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">subject_mean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">conds</span><span class="o">=</span><span class="n">conds</span><span class="p">,</span> <span class="n">clrs</span><span class="o">=</span><span class="n">clrs</span><span class="p">,</span> <span class="n">eclrs</span><span class="o">=</span><span class="n">eclrs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/ad5b0b8461d52e5d79481435c55544d0548c0242b7d82bbdf86a86ccf062ca26.png" src="../../../_images/ad5b0b8461d52e5d79481435c55544d0548c0242b7d82bbdf86a86ccf062ca26.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msnPad</span> <span class="o">=</span> <span class="n">msnAll</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;pad&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">convert_objects</span><span class="p">(</span><span class="n">convert_numeric</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">msnDFs</span> <span class="o">=</span> <span class="p">[</span><span class="n">msnPad</span><span class="p">[</span><span class="n">msnPad</span><span class="o">.</span><span class="n">population</span><span class="o">==</span><span class="n">pop</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">pop</span> <span class="ow">in</span> <span class="n">msn_pops</span><span class="p">]</span>
+<span class="n">ys</span><span class="p">,</span> <span class="n">ysErr</span> <span class="o">=</span> <span class="n">afx</span><span class="o">.</span><span class="n">get_avgMSN_traces</span><span class="p">(</span><span class="n">msnDFs</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">vis</span><span class="o">.</span><span class="n">plot_average_msn_rates</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span> <span class="n">ysErr</span><span class="p">,</span> <span class="n">bdf</span><span class="p">,</span> <span class="n">ntime</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">48</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.8</span><span class="p">,</span> <span class="n">plotRT</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">conds</span><span class="o">=</span><span class="n">conds</span><span class="p">,</span> <span class="n">clrs</span><span class="o">=</span><span class="n">clrs</span><span class="p">,</span> <span class="n">eclrs</span><span class="o">=</span><span class="n">eclrs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/2ae5e399f1fcf86309d685a993b66024e8f688cc2584f3e4c7acc6d90079f41d.png" src="../../../_images/2ae5e399f1fcf86309d685a993b66024e8f688cc2584f3e4c7acc6d90079f41d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">save_hddm_params</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">hddm_savedir</span><span class="p">,</span> <span class="n">mname</span><span class="o">=</span><span class="s1">&#39;va&#39;</span><span class="p">):</span>
+
+    <span class="n">mname</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_stats&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mname</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">hddm_savedir</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">hddm_savedir</span><span class="p">)</span>
+    
+    <span class="n">m</span><span class="o">.</span><span class="n">print_stats</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hddm_savedir</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">.txt&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mname</span><span class="p">)))</span>
+    <span class="n">statdf</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">gen_stats</span><span class="p">()</span>
+    <span class="n">statdf</span> <span class="o">=</span> <span class="n">statdf</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">statdf</span> <span class="o">=</span> <span class="n">statdf</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;param&#39;</span><span class="p">})</span>
+    <span class="n">statdf</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hddm_savedir</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_df.csv&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mname</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hddm</span>
+<span class="n">hddm_savedir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">),</span> <span class="s1">&#39;hddm_fits&#39;</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">bdf</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">bias</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">inform</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">incl</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
+<span class="n">dependsCol</span> <span class="o">=</span> <span class="s1">&#39;level&#39;</span>
+<span class="n">nsamples</span> <span class="o">=</span> <span class="mi">2500</span>
+<span class="n">nburn</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">nullm</span> <span class="o">=</span> <span class="n">hddm</span><span class="o">.</span><span class="n">HDDM</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">,</span> <span class="n">include</span><span class="o">=</span><span class="n">incl</span><span class="p">,</span> <span class="n">informative</span><span class="o">=</span><span class="n">inform</span><span class="p">)</span>
+
+<span class="n">freep</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;va&#39;</span><span class="p">,</span> <span class="s1">&#39;vt&#39;</span><span class="p">,</span> <span class="s1">&#39;vz&#39;</span><span class="p">]</span>
+<span class="n">models</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">freep</span><span class="p">:</span>
+    <span class="n">plist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">nfree</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">plist</span><span class="p">)</span>
+    <span class="n">depends</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">plist</span><span class="p">,</span> <span class="p">[</span><span class="n">dependsCol</span><span class="p">]</span><span class="o">*</span><span class="n">nfree</span><span class="p">))</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">hddm</span><span class="o">.</span><span class="n">HDDM</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">depends_on</span><span class="o">=</span><span class="n">depends</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">,</span> 
+                  <span class="n">include</span><span class="o">=</span><span class="n">incl</span><span class="p">,</span> <span class="n">informative</span><span class="o">=</span><span class="n">inform</span><span class="p">)</span>
+    <span class="n">models</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nullm</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">nsamples</span><span class="p">,</span> <span class="n">burn</span><span class="o">=</span><span class="n">nburn</span><span class="p">)</span>
+<span class="n">save_hddm_params</span><span class="p">(</span><span class="n">nullm</span><span class="p">,</span> <span class="n">hddm_savedir</span><span class="p">,</span> <span class="s1">&#39;null&#39;</span><span class="p">)</span>
+<span class="n">nullm</span><span class="o">.</span><span class="n">dic_info</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [-----------------100%-----------------] 500 of 500 complete in 8.0 sec
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;DIC&#39;: -300.33993876360842,
+ &#39;deviance&#39;: -308.8700764342064,
+ &#39;pD&#39;: 8.5301376705979806}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dics</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">mname</span> <span class="ow">in</span> <span class="n">freep</span><span class="p">:</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">models</span><span class="p">[</span><span class="n">mname</span><span class="p">]</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">nsamples</span><span class="p">,</span> <span class="n">burn</span><span class="o">=</span><span class="n">nburn</span><span class="p">)</span>
+    <span class="n">save_hddm_params</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">hddm_savedir</span><span class="p">,</span> <span class="n">mname</span><span class="p">)</span>
+    <span class="n">dics</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">dic</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [-----------------100%-----------------] 2500 of 2500 complete in 69.0 sec
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">splot</span><span class="o">.</span><span class="n">style</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">freep</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;va&#39;</span><span class="p">,</span> <span class="s1">&#39;vt&#39;</span><span class="p">,</span> <span class="s1">&#39;vz&#39;</span><span class="p">]</span>
+<span class="n">singles</span> <span class="o">=</span> <span class="p">[</span><span class="n">models</span><span class="p">[</span><span class="n">mname</span><span class="p">]</span> <span class="k">for</span> <span class="n">mname</span> <span class="ow">in</span> <span class="n">freep</span><span class="p">[:</span><span class="mi">4</span><span class="p">]]</span>
+<span class="n">duals</span> <span class="o">=</span> <span class="p">[</span><span class="n">models</span><span class="p">[</span><span class="n">mname</span><span class="p">]</span> <span class="k">for</span> <span class="n">mname</span> <span class="ow">in</span> <span class="n">freep</span><span class="p">[</span><span class="mi">4</span><span class="p">:]]</span>
+<span class="n">dics1</span> <span class="o">=</span> <span class="n">dics</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">dics2</span> <span class="o">=</span> <span class="n">dics</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span>
+<span class="n">bestSingle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">dics1</span><span class="p">)</span>
+<span class="n">bestDual</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">dics2</span><span class="p">)</span>
+
+<span class="c1"># uncomment for delta DIC</span>
+<span class="c1"># dics1 = [mm.dic - nullm.dic for mm in singles]</span>
+<span class="c1"># dics2 = [mm.dic - nullm.dic for mm in duals]</span>
+
+<span class="n">lbls1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Bound ($a$)&#39;</span><span class="p">,</span><span class="s1">&#39;Onset ($tr$)&#39;</span><span class="p">,</span><span class="s1">&#39;Drift ($v$)&#39;</span><span class="p">,</span><span class="s1">&#39;Bias ($z$)&#39;</span><span class="p">]</span>
+<span class="n">lbls2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$v,a$&#39;</span><span class="p">,</span> <span class="s1">&#39;$v,tr$&#39;</span><span class="p">,</span> <span class="s1">&#39;$v,z$&#39;</span><span class="p">]</span>
+<span class="n">clrs1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Gray&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span>
+<span class="n">clrs2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Gray&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span>
+<span class="n">clrs1</span><span class="p">[</span><span class="n">bestSingle</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;g&#39;</span>
+<span class="n">clrs2</span><span class="p">[</span><span class="n">bestDual</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;g&#39;</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">width_ratios</span><span class="o">=</span><span class="p">[</span><span class="mf">1.35</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">.24</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">.8</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">dics1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">clrs1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">dics2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">clrs2</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">lbls1</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">lbls2</span><span class="p">)</span>
+
+<span class="n">ymax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">dics</span><span class="p">)</span><span class="o">*</span><span class="mf">.0001</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">10000</span> <span class="o">+</span> <span class="mi">30</span>
+<span class="n">ymin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">dics</span><span class="p">)</span><span class="o">*</span><span class="mf">.0001</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">10000</span> <span class="o">-</span> <span class="mi">10</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ymax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_label_position</span><span class="p">(</span><span class="s2">&quot;top&quot;</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Model DIC&#39;</span><span class="p">)</span>
+<span class="c1"># ax1.set_ylabel(&#39;$\Delta$ DIC&#39;)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Single Parameter&#39;</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Dual Parameters&#39;</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="c1"># fname = os.path.join(savedir, &#39;hddm/modelDICs.png&#39;)</span>
+<span class="c1"># plt.savefig(fname, dpi=600)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/23fbafa46b29f1546c05d9292e207fea471c0b5c673581a2abc069a20ab0bd7f.png" src="../../../_images/23fbafa46b29f1546c05d9292e207fea471c0b5c673581a2abc069a20ab0bd7f.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">itertools</span>
+<span class="n">Xs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nD_lrdiff_sum&#39;</span><span class="p">,</span> <span class="s1">&#39;nDI_ldiff_sum&#39;</span><span class="p">,</span> <span class="s1">&#39;nI_LR_mean&#39;</span><span class="p">]</span>
+<span class="n">combos</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span> <span class="mi">2</span><span class="p">))]</span>
+<span class="n">formulas</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;v ~ </span><span class="si">{}</span><span class="s2">:C(level)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X1</span><span class="p">),</span> <span class="s1">&#39;a ~ </span><span class="si">{}</span><span class="s1">:C(level)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X2</span><span class="p">)]</span> <span class="k">for</span> <span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">)</span> <span class="ow">in</span> <span class="n">combos</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">bdf</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">interact</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">group_reg</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">bias</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">incl</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
+<span class="n">bias</span><span class="o">=</span><span class="kc">True</span>
+    
+<span class="n">model_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">models</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">mID</span> <span class="ow">in</span> <span class="n">model_ids</span><span class="p">:</span>
+    <span class="n">reg_formula</span> <span class="o">=</span> <span class="n">formulas</span><span class="p">[</span><span class="n">mID</span><span class="p">]</span>
+    <span class="n">models</span><span class="p">[</span><span class="n">mID</span><span class="p">]</span> <span class="o">=</span> <span class="n">hddm</span><span class="o">.</span><span class="n">HDDMRegressor</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">reg_formula</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">,</span> <span class="n">include</span><span class="o">=</span><span class="n">incl</span><span class="p">,</span> 
+                                     <span class="n">keep_regressor_trace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                                     <span class="n">group_only_regressors</span><span class="o">=</span><span class="n">group_reg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">mID</span> <span class="ow">in</span> <span class="n">model_ids</span><span class="p">:</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Model ID: </span><span class="si">{}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mID</span><span class="p">))</span>
+    
+    <span class="n">m</span> <span class="o">=</span> <span class="n">models</span><span class="p">[</span><span class="n">mID</span><span class="p">]</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="n">burn</span><span class="o">=</span><span class="mi">1200</span><span class="p">)</span>
+
+    <span class="n">statdf</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">gen_stats</span><span class="p">()</span>
+    <span class="n">statdf</span><span class="p">[</span><span class="s1">&#39;modelID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mID</span>
+    <span class="n">statdf</span><span class="p">[</span><span class="s1">&#39;DIC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">dic_info</span><span class="p">[</span><span class="s1">&#39;DIC&#39;</span><span class="p">]</span>
+    <span class="n">statdf</span><span class="p">[</span><span class="s1">&#39;deviance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">dic_info</span><span class="p">[</span><span class="s1">&#39;deviance&#39;</span><span class="p">]</span>
+    <span class="n">statdf</span><span class="p">[</span><span class="s1">&#39;pD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">dic_info</span><span class="p">[</span><span class="s1">&#39;pD&#39;</span><span class="p">]</span>
+    <span class="n">statdf</span> <span class="o">=</span> <span class="n">statdf</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">statdf</span> <span class="o">=</span> <span class="n">statdf</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span><span class="s1">&#39;param&#39;</span><span class="p">})</span>
+    <span class="c1">#statdf = split_param_col(statdf, param_reg)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">M</span><span class="si">{}</span><span class="s1"> DIC: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mID</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">dic_info</span><span class="p">[</span><span class="s1">&#39;DIC&#39;</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./exercises/CBGT/demos"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Global Params</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#efficacy-sampling-f-x-for-individual-networks">Efficacy sampling f(x) for individual networks</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-3-individual-networks">Sample 3 individual networks</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simulate-example-trial">Simulate example trial</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-population-firing-rates">Plot population firing rates</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-stimulus-intensity-across-trials">Sample stimulus intensity across trials</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simulate-full-dataset">Simulate full dataset</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Timothy Verstynen, Erik Peterson, Matthew Clapp, Jack Burgess
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

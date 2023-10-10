@@ -19,6 +19,6 @@ parts:
     chapters:
     - file: exercises/exercise1-getting-started
     - file: exercises/exercise2-signals_and_decisions
-    - file: exercises/exercise3-cbgt_and_info
+    - file: exercises/exercise3-cbgt_and_pred_prey
     - file: exercises/exercise4-foraging_and_rl
 

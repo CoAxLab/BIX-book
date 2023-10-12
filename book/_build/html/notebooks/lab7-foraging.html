@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 7 - Foraging &#8212; Biologically Intelligent eXploration (BIX)</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lab 8 - Infotaxis" href="lab8-infotaxis.html" />
     <link rel="prev" title="Lab 6 - Predator-prey dynamics" href="lab6-predator_prey.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -155,12 +156,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p class="caption"><span class="caption-text">Getting started</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro-python.html">Introduction to python</a></li>
 
 </ul>
-<p class="caption"><span class="caption-text">Labs</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lab1-information.html">Lab 1- Information theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2-explorelib.html">Lab 2 - Random exploration</a></li>
@@ -173,7 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab8-infotaxis.html">Lab 8 - Infotaxis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Exercises</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
@@ -415,7 +416,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-7-foraging">
-<h1>Lab 7 - Foraging<a class="headerlink" href="#lab-7-foraging" title="Permalink to this headline">#</a></h1>
+<h1>Lab 7 - Foraging<a class="headerlink" href="#lab-7-foraging" title="Permalink to this heading">#</a></h1>
 <p>This lab has 4 main components designed to give provide an theoretical and experiental/interactive understanding of foraging in patchy environments.</p>
 <p>Sections:</p>
 <ol class="arabic simple">
@@ -424,9 +425,9 @@ document.write(`
 <li><p>Predict and evaluate how agents’ behavior &amp; performance will change as characteristics of the patchy environment change.</p></li>
 </ol>
 <section id="background">
-<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h2>
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
 <section id="real-environments-are-patchy">
-<h3>Real environments are “patchy”.<a class="headerlink" href="#real-environments-are-patchy" title="Permalink to this headline">#</a></h3>
+<h3>Real environments are “patchy”.<a class="headerlink" href="#real-environments-are-patchy" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>So far, we’ve been playing around with simulated environments where food (“targets”) are spread uniformly over space.</p></li>
 <li><p>In reality, environments are often “patchy”. For example, berries or flowers may be concentrated on isolated bushes, which are spaced apart from one another (see the natural environment below).
@@ -434,7 +435,7 @@ document.write(`
 </ul>
 </section>
 <section id="patchy-environments-define-the-foraging-problem">
-<h3>Patchy environments define the foraging problem.<a class="headerlink" href="#patchy-environments-define-the-foraging-problem" title="Permalink to this headline">#</a></h3>
+<h3>Patchy environments define the foraging problem.<a class="headerlink" href="#patchy-environments-define-the-foraging-problem" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The problem of foraging requires that an organism navigate through an environment to find food, balancing the metabolic costs of movement with the energy provided by collected morsels.</p></li>
 <li><p>In an environment where targets are dispersed uniformly, foraging is rather simple - moving around from via some form of random walk, collecting targets, perhaps with behavior imformed by scent cues.</p></li>
@@ -442,7 +443,7 @@ document.write(`
 </ul>
 </section>
 <section id="we-can-think-of-optimal-foraging-in-terms-of-a-simplified-model">
-<h3>We can think of optimal foraging in terms of a simplified model.<a class="headerlink" href="#we-can-think-of-optimal-foraging-in-terms-of-a-simplified-model" title="Permalink to this headline">#</a></h3>
+<h3>We can think of optimal foraging in terms of a simplified model.<a class="headerlink" href="#we-can-think-of-optimal-foraging-in-terms-of-a-simplified-model" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Charnov (1976) proposed a model of optimal foraging.</p></li>
 <li><p>Charnov’s model formulates foraging space as divided into sections (patches) of different types, and the inter-patch space between them. See the illustration of this from his paper below (and consider how this simple model matches the real environment above so much better than uniformly distributed targets!).
@@ -455,7 +456,7 @@ document.write(`
 </section>
 </section>
 <section id="section-setup">
-<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this headline">#</a></h2>
+<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this heading">#</a></h2>
 <p>We need to load the usual explorationlib library and supporting functions. For this lab specifically, we will be loading a certain <em>branch</em> of exploration library - one where I have coded functions for the creation and evaluation of behavior in patchy environments.</p>
 <p>Change the directory to where we want to clone in the specific explorationlib code library branch.</p>
 <div class="cell docutils container">
@@ -545,7 +546,7 @@ document.write(`
 </div>
 </section>
 <section id="section-1-building-a-simulated-patchy-environment">
-<h2>Section 1 - Building a simulated patchy environment<a class="headerlink" href="#section-1-building-a-simulated-patchy-environment" title="Permalink to this headline">#</a></h2>
+<h2>Section 1 - Building a simulated patchy environment<a class="headerlink" href="#section-1-building-a-simulated-patchy-environment" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Below is some environment setup code that should look pretty standard compared to the previous labs you’ve seen in this class.</p></li>
 <li><p>The key difference is the generation of targets using a new function, <code class="docutils literal notranslate"><span class="pre">uniform_patch_targets()</span></code> - in other labs we’ve only used <code class="docutils literal notranslate"><span class="pre">uniform_targets()</span></code>.</p></li>
@@ -596,7 +597,7 @@ document.write(`
 </div>
 </div>
 <section id="visualizing-this-environment">
-<h3>Visualizing this environment<a class="headerlink" href="#visualizing-this-environment" title="Permalink to this headline">#</a></h3>
+<h3>Visualizing this environment<a class="headerlink" href="#visualizing-this-environment" title="Permalink to this heading">#</a></h3>
 <p>Run the code below to visualize the patchy environment that you just built!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -618,7 +619,7 @@ document.write(`
 </section>
 </section>
 <section id="section-2-different-exploration-strategies-in-the-patchy-environment">
-<h2>Section 2 - Different exploration strategies in the patchy environment<a class="headerlink" href="#section-2-different-exploration-strategies-in-the-patchy-environment" title="Permalink to this headline">#</a></h2>
+<h2>Section 2 - Different exploration strategies in the patchy environment<a class="headerlink" href="#section-2-different-exploration-strategies-in-the-patchy-environment" title="Permalink to this heading">#</a></h2>
 <p>Now we will predict and evaluate the behavior of agents with different exploration strategies in the patcy environment. These are agents that we have used in pervious labs. See those labs to remember how these agents work.</p>
 <p>Here we will generate 3 different types of agents - one that moves randomly (diffusion on the grid), one that follows chemical signals emitted by targets (chemotaxis), and one that follows information gain (infotaxis).</p>
 <div class="cell docutils container">
@@ -659,7 +660,7 @@ document.write(`
 </div>
 <p><strong>Note:</strong> you may like to start the next experiments running as you answer these questions.</p>
 <section id="question-2-1">
-<h3>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this headline">#</a></h3>
+<h3>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this heading">#</a></h3>
 <p>Which agent do you think will spend the most time in patches? Which agent do you think will spend the least time in patches? Why?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -670,7 +671,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-2">
-<h3>Question 2.2<a class="headerlink" href="#question-2-2" title="Permalink to this headline">#</a></h3>
+<h3>Question 2.2<a class="headerlink" href="#question-2-2" title="Permalink to this heading">#</a></h3>
 <p>Which agent do you think will accumulate the most reward (spend the most time next to targets?). Which do you think will spend the least? Why?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -681,7 +682,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-3">
-<h3>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this headline">#</a></h3>
+<h3>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this heading">#</a></h3>
 <p>Which agent do you think will have the most deaths? Which do you think will have the least? Why?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -774,7 +775,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-4">
-<h3>Question 2.4<a class="headerlink" href="#question-2-4" title="Permalink to this headline">#</a></h3>
+<h3>Question 2.4<a class="headerlink" href="#question-2-4" title="Permalink to this heading">#</a></h3>
 <p>Describe the behavior of each agent type in the experiment visualization above. Does the behavior match what you expected? Why do you think you see the specific pattern of behavior for each agent?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -785,7 +786,7 @@ document.write(`
 </div>
 </section>
 <section id="quantify-time-on-patches-for-each-agent-type">
-<h3>Quantify time on-patches for each agent type<a class="headerlink" href="#quantify-time-on-patches-for-each-agent-type" title="Permalink to this headline">#</a></h3>
+<h3>Quantify time on-patches for each agent type<a class="headerlink" href="#quantify-time-on-patches-for-each-agent-type" title="Permalink to this heading">#</a></h3>
 <p>The code below makes use of a new scoring function, <code class="docutils literal notranslate"><span class="pre">on_off_patch_time()</span></code>. This function takes experiment results data and analyzes it to see how many time steps were spent on vs. off patches. Run the code block below to measure and plot the proportion of total time steps each agent spends on patches. See if the results match your predictions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -828,7 +829,7 @@ document.write(`
 </div>
 </section>
 <section id="quantify-total-reward-for-each-agent-type">
-<h3>Quantify total reward for each agent type<a class="headerlink" href="#quantify-total-reward-for-each-agent-type" title="Permalink to this headline">#</a></h3>
+<h3>Quantify total reward for each agent type<a class="headerlink" href="#quantify-total-reward-for-each-agent-type" title="Permalink to this heading">#</a></h3>
 <p>Check if your predictions were correct.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -870,7 +871,7 @@ document.write(`
 </div>
 </section>
 <section id="quantify-deaths-for-each-agent-type">
-<h3>Quantify deaths for each agent type<a class="headerlink" href="#quantify-deaths-for-each-agent-type" title="Permalink to this headline">#</a></h3>
+<h3>Quantify deaths for each agent type<a class="headerlink" href="#quantify-deaths-for-each-agent-type" title="Permalink to this heading">#</a></h3>
 <p>Check if your predictions were correct.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -902,7 +903,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-5">
-<h3>Question 2.5<a class="headerlink" href="#question-2-5" title="Permalink to this headline">#</a></h3>
+<h3>Question 2.5<a class="headerlink" href="#question-2-5" title="Permalink to this heading">#</a></h3>
 <p>Were any of your predictions wrong? If so, what do you think caused the unexpected results?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -913,7 +914,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-6">
-<h3>Question 2.6<a class="headerlink" href="#question-2-6" title="Permalink to this headline">#</a></h3>
+<h3>Question 2.6<a class="headerlink" href="#question-2-6" title="Permalink to this heading">#</a></h3>
 <p>Compare time on patch, total rewards, and deaths for the Chemo agent. What does this pattern tell you about the influence of a simple chemotaxis strategy for foraging?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -925,10 +926,10 @@ document.write(`
 </section>
 </section>
 <section id="section-3-exploration-strategies-in-different-patchy-environments">
-<h2>Section 3 - Exploration strategies in different patchy environments<a class="headerlink" href="#section-3-exploration-strategies-in-different-patchy-environments" title="Permalink to this headline">#</a></h2>
+<h2>Section 3 - Exploration strategies in different patchy environments<a class="headerlink" href="#section-3-exploration-strategies-in-different-patchy-environments" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="question-3-1">
-<h2>Question 3.1<a class="headerlink" href="#question-3-1" title="Permalink to this headline">#</a></h2>
+<h2>Question 3.1<a class="headerlink" href="#question-3-1" title="Permalink to this heading">#</a></h2>
 <p>Next, try creating a new patch environment just like our first one, but with only two patches of 20 targets each. Make predictions as to how the performance of each agent type will change and why. Make predictions for on-patch-proportion, total reward, and death.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1138,7 +1139,7 @@ document.write(`
 </div>
 </div>
 <section id="question-3-2">
-<h3>Question 3.2<a class="headerlink" href="#question-3-2" title="Permalink to this headline">#</a></h3>
+<h3>Question 3.2<a class="headerlink" href="#question-3-2" title="Permalink to this heading">#</a></h3>
 <p>Did the results match your predictions? If not, why do you think you saw the results that came up?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1149,7 +1150,7 @@ document.write(`
 </div>
 </section>
 <section id="question-3-3">
-<h3>Question 3.3<a class="headerlink" href="#question-3-3" title="Permalink to this headline">#</a></h3>
+<h3>Question 3.3<a class="headerlink" href="#question-3-3" title="Permalink to this heading">#</a></h3>
 <p>Re-run the above simulations in Section 3, but change the seed value for the random number generator. Do this four different times, once each with the following values: 2074, 3074, 4074, 5074.</p>
 <p>What do you see in the performance of the agents with each new seed value (which specifies different unique environments)? What does this tell you about the the difference between the Info and Chemo agents in particular?</p>
 <div class="cell docutils container">

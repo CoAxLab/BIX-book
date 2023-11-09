@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Exercise 4: Foraging and reinforcement learning &#8212; Biologically Intelligent eXploration (BIX)</title>
+    <title>Homework 4: Foraging and reinforcement learning &#8212; Biologically Intelligent eXploration (BIX)</title>
   
   
   
@@ -60,9 +60,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercise4-foraging_and_rl';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercise4-foraging_and_rl_and_info';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Exercise 3: CBGT networks and predator-prey dynamics" href="exercise3-cbgt_and_pred_prey.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -172,11 +173,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Exercises</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise3-cbgt_and_pred_prey.html"><strong>Exercise 3: CBGT networks and predator-prey dynamics</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercise4-foraging_and_rl_and_info.html"><strong>Homework 4: Foraging and reinforcement learning</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Homework 4: Foraging and reinforcement learning</strong></a></li>
 </ul>
 
     </div>
@@ -231,7 +232,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/CoAxLab/BIX-book/main?urlpath=tree/book/exercises/exercise4-foraging_and_rl.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/CoAxLab/BIX-book/main?urlpath=tree/book/exercises/exercise4-foraging_and_rl_and_info.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -249,7 +250,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/CoAxLab/BIX-book/blob/main/book/exercises/exercise4-foraging_and_rl.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/CoAxLab/BIX-book/blob/main/book/exercises/exercise4-foraging_and_rl_and_info.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -280,7 +281,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/exercises/exercise4-foraging_and_rl.ipynb" target="_blank"
+      <li><a href="../_sources/exercises/exercise4-foraging_and_rl_and_info.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -362,7 +363,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise 4: Foraging and reinforcement learning</h1>
+    <h1>Homework 4: Foraging and reinforcement learning</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -373,29 +374,48 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-foraging-57-pt">Section 1 - Foraging [57 pt]</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1-6-pt">Question 1.1 [6 pt]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-foraging-30-pt">Section 1 - Foraging [30 pt]</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1-4-pt">Question 1.1 [4 pt]</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-code-cells-below-run-and-fill-in-code-as-needed-according-to-the-text-instructions-before-each-one-feel-free-to-refer-to-lab-7-for-help">In the code cells below, run and fill in code as needed according to the text instructions before each one. Feel free to refer to lab 7 for help.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-patchy-environment-5-pt">Create a new patchy environment [5 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-patchy-environment-3-pt">Visualize the patchy environment [3 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-agents-3-pt">Create the agents [3 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-experiments-5-pt">Run the experiments [5 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-proportion-of-time-spent-on-patches-4-pt">Visualize proportion of time spent on patches [4 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-total-reward-4-pt">Visualize total reward [4 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-agent-deaths-4-pt">Visualize agent deaths [4 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2-7-pt">Question 1.2 [7 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3-1-8-pt">Question 1.3.1 [8 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3-2-8-pt">Question 1.3.2 [8 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-patchy-environment-2-pt">Create a new patchy environment [2 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-patchy-environment-2-pt">Visualize the patchy environment [2 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-agents-2-pt">Create the agents [2 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-experiments-2-pt">Run the experiments [2 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-proportion-of-time-spent-on-patches-2-pt">Visualize proportion of time spent on patches [2 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-total-reward-2-pt">Visualize total reward [2 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-agent-deaths-2-pt">Visualize agent deaths [2 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2-4-pt">Question 1.2 [4 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3-1-4-pt">Question 1.3.1 [4 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3-2-4-pt">Question 1.3.2 [4 pt]</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-reinforcement-learning-43-pt">Section 2 - Reinforcement learning [43 pt]</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-this-new-changing-bandit-environment-6-pt">Create this new changing bandit environment [6 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1-7-pt">Question 2.1 [7 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-reinforcement-learning-agents-4-pt">Creating the reinforcement learning agents [4 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-experiments-6-pt">Run the experiments [6 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-total-rewards-4-pt">Visualize total rewards [4 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2-8-pt">Question 2.2 [8 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3-8-pt">Question 2.3 [8 pt]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-reinforcement-learning-24-pt">Section 2 - Reinforcement learning [24 pt]</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-this-new-changing-bandit-environment-3-pt">Create this new changing bandit environment [3 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1-4-pt">Question 2.1 [4 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-reinforcement-learning-agents-2-pt">Creating the reinforcement learning agents [2 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-experiments-3-pt">Run the experiments [3 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-total-rewards-3-pt">Visualize total rewards [3 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2-4-pt">Question 2.2 [4 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3-4-pt">Question 2.3 [4 pt]</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-exploration-agents-in-information-distorted-environments-26-pt">Part 3 - Exploration agents in information-distorted environments [26 pt]</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding">Coding</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-relevant-code-libraries">Install relevant code libraries.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#import-relevant-modules">Import relevant modules.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-code-for-setting-up-pretty-plots">Add code for setting up pretty plots.</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-for-running-your-experiments">Code for running your experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-the-code-below-and-run-your-experiments-we-ve-specified-the-default-parameters-for-the-agent-and-environment-below-fill-in-the-code-for-running-experiments-at-each-noise-sigma-value-within-the-loop-below-add-your-code-where-it-says-add-your-experiment-code-here-be-sure-to-check-indentation-5-pt">Complete the code below and run your experiments. We’ve specified the default parameters for the agent and environment below. Fill in the code for running experiments at each <em>noise_sigma</em> value within the loop below. (Add your code where it says <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">ADD</span> <span class="pre">YOUR</span> <span class="pre">EXPERIMENT</span> <span class="pre">CODE</span> <span class="pre">HERE</span> <span class="pre">-</span> <span class="pre">BE</span> <span class="pre">SURE</span> <span class="pre">TO</span> <span class="pre">CHECK</span> <span class="pre">INDENTATION</span></code>.) [5 pt]</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-in-code-below-to-plot-the-bumber-of-deaths-for-different-values-of-noise-sigma-make-sure-your-x-axis-is-labeled-with-noise-sigma-not-p-scent-3-pt">Add in code below to plot the bumber of deaths for different values of <em>noise_sigma</em>. Make sure your x-axis is labeled with noise_sigma, not p_scent. [3 pt]</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-in-code-below-to-plot-max-score-for-different-values-of-noise-sigma-make-sure-your-x-axis-is-labeled-with-noise-sigma-not-p-scent-3-pt">Add in code below to plot max score for different values of <em>noise_sigma</em>. Make sure your x-axis is labeled with noise_sigma, not p_scent. [3 pt]</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-in-code-below-to-plot-average-score-and-score-frequency-distributions-for-different-values-of-noise-sigma-make-sure-your-x-axes-are-labeled-with-noise-sigma-not-p-scent-3-pt">Add in code below to plot average score and score frequency distributions for different values of <em>noise_sigma</em>. Make sure your x-axes are labeled with noise_sigma, not p_scent. [3 pt]</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-1-4-pt">Question 3.1 [4 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2-4-pt">Question 3.2 [4 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-3-4-pt">Question 3.3 [4 pt]</a></li>
 </ul>
 </li>
 </ul>
@@ -409,8 +429,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercise-4-foraging-and-reinforcement-learning">
-<h1><strong>Exercise 4: Foraging and reinforcement learning</strong><a class="headerlink" href="#exercise-4-foraging-and-reinforcement-learning" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="homework-4-foraging-and-reinforcement-learning">
+<h1><strong>Homework 4: Foraging and reinforcement learning</strong><a class="headerlink" href="#homework-4-foraging-and-reinforcement-learning" title="Permalink to this headline">#</a></h1>
 <section id="getting-started">
 <h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">#</a></h2>
 <p>This homework will involve concepts from the labs we’ve gone over in class. Feel free to reference them as you complete the assignment.</p>
@@ -422,12 +442,12 @@ document.write(`
 <p>Fill out the code cells below and answer the questions to complete the assignment. Most of the programming is quite straightforward, as it is all based on code from the labs, which you can use/modify in this notebook.</p>
 </section>
 <hr class="docutils" />
-<section id="section-1-foraging-57-pt">
-<h2>Section 1 - Foraging [57 pt]<a class="headerlink" href="#section-1-foraging-57-pt" title="Permalink to this headline">#</a></h2>
+<section id="section-1-foraging-30-pt">
+<h2>Section 1 - Foraging [30 pt]<a class="headerlink" href="#section-1-foraging-30-pt" title="Permalink to this headline">#</a></h2>
 <p>In Lab 7, you investigated how random search, chemotaxis, and infotaxis agents behaved in a “patchy” foraging environment. We didn’t get to testing out the effects of random initializations in class. In this section of the homework you will carry out that analysis.</p>
 <p>Following the environment patches as bushes metaphor, different random seeds determine where the random bushes grow.</p>
-<section id="question-1-1-6-pt">
-<h3>Question 1.1 [6 pt]<a class="headerlink" href="#question-1-1-6-pt" title="Permalink to this headline">#</a></h3>
+<section id="question-1-1-4-pt">
+<h3>Question 1.1 [4 pt]<a class="headerlink" href="#question-1-1-4-pt" title="Permalink to this headline">#</a></h3>
 <p>Why is it important to check multiple random seeds when comparing foraging strategies in patchy environments?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -526,8 +546,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="create-a-new-patchy-environment-5-pt">
-<h3>Create a new patchy environment [5 pt]<a class="headerlink" href="#create-a-new-patchy-environment-5-pt" title="Permalink to this headline">#</a></h3>
+<section id="create-a-new-patchy-environment-2-pt">
+<h3>Create a new patchy environment [2 pt]<a class="headerlink" href="#create-a-new-patchy-environment-2-pt" title="Permalink to this headline">#</a></h3>
 <p>In the code block below, set up a new patch environment like our foraging lab in the following way:</p>
 <ul class="simple">
 <li><p>Have there be 4 patches of 15 targets each.</p></li>
@@ -542,8 +562,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="visualize-the-patchy-environment-3-pt">
-<h3>Visualize the patchy environment [3 pt]<a class="headerlink" href="#visualize-the-patchy-environment-3-pt" title="Permalink to this headline">#</a></h3>
+<section id="visualize-the-patchy-environment-2-pt">
+<h3>Visualize the patchy environment [2 pt]<a class="headerlink" href="#visualize-the-patchy-environment-2-pt" title="Permalink to this headline">#</a></h3>
 <p>In the code cell below, make a plot of the patchy environment you just made.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -553,8 +573,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="create-the-agents-3-pt">
-<h3>Create the agents [3 pt]<a class="headerlink" href="#create-the-agents-3-pt" title="Permalink to this headline">#</a></h3>
+<section id="create-the-agents-2-pt">
+<h3>Create the agents [2 pt]<a class="headerlink" href="#create-the-agents-2-pt" title="Permalink to this headline">#</a></h3>
 <p>In the code cell below, create a random search, chemotaxis, and infotaxis agent like we did in Lab 7.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -564,8 +584,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="run-the-experiments-5-pt">
-<h3>Run the experiments [5 pt]<a class="headerlink" href="#run-the-experiments-5-pt" title="Permalink to this headline">#</a></h3>
+<section id="run-the-experiments-2-pt">
+<h3>Run the experiments [2 pt]<a class="headerlink" href="#run-the-experiments-2-pt" title="Permalink to this headline">#</a></h3>
 <p>In the code cell below, run 50 experiments of 400 steps each for each of the agents. Note - you may have set the number of experiments and steps earlier during your environment setup code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -575,8 +595,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="visualize-proportion-of-time-spent-on-patches-4-pt">
-<h3>Visualize proportion of time spent on patches [4 pt]<a class="headerlink" href="#visualize-proportion-of-time-spent-on-patches-4-pt" title="Permalink to this headline">#</a></h3>
+<section id="visualize-proportion-of-time-spent-on-patches-2-pt">
+<h3>Visualize proportion of time spent on patches [2 pt]<a class="headerlink" href="#visualize-proportion-of-time-spent-on-patches-2-pt" title="Permalink to this headline">#</a></h3>
 <p>In the code cell below:</p>
 <ul class="simple">
 <li><p>Plot bar plots with error bars for the proportion of time spent on patches for each agent.</p></li>
@@ -590,8 +610,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="visualize-total-reward-4-pt">
-<h3>Visualize total reward [4 pt]<a class="headerlink" href="#visualize-total-reward-4-pt" title="Permalink to this headline">#</a></h3>
+<section id="visualize-total-reward-2-pt">
+<h3>Visualize total reward [2 pt]<a class="headerlink" href="#visualize-total-reward-2-pt" title="Permalink to this headline">#</a></h3>
 <p>In the code cell below:</p>
 <ul class="simple">
 <li><p>Plot bar plots with error bars for the total reward for each agent.</p></li>
@@ -605,8 +625,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="visualize-agent-deaths-4-pt">
-<h3>Visualize agent deaths [4 pt]<a class="headerlink" href="#visualize-agent-deaths-4-pt" title="Permalink to this headline">#</a></h3>
+<section id="visualize-agent-deaths-2-pt">
+<h3>Visualize agent deaths [2 pt]<a class="headerlink" href="#visualize-agent-deaths-2-pt" title="Permalink to this headline">#</a></h3>
 <p>In the code cell below, plot a bar plot of the number of deaths for each agent type.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -616,8 +636,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="question-1-2-7-pt">
-<h3>Question 1.2 [7 pt]<a class="headerlink" href="#question-1-2-7-pt" title="Permalink to this headline">#</a></h3>
+<section id="question-1-2-4-pt">
+<h3>Question 1.2 [4 pt]<a class="headerlink" href="#question-1-2-4-pt" title="Permalink to this headline">#</a></h3>
 <p>Describe the performance of each agent type according to each of the metrics (on-patch proportion, total reward, deaths). Why do you think this pattern of performance occured?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -627,8 +647,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="question-1-3-1-8-pt">
-<h3>Question 1.3.1 [8 pt]<a class="headerlink" href="#question-1-3-1-8-pt" title="Permalink to this headline">#</a></h3>
+<section id="question-1-3-1-4-pt">
+<h3>Question 1.3.1 [4 pt]<a class="headerlink" href="#question-1-3-1-4-pt" title="Permalink to this headline">#</a></h3>
 <p>Re-run your simulations above, but change the seed value for the random number generator. Do this four different times, once each with the following values: 2257, 3257, 4257, 5257.</p>
 <p>What do you see in each performance metric of the agents with each new seed value (which specifies different unique environments)?</p>
 <div class="cell docutils container">
@@ -650,8 +670,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="question-1-3-2-8-pt">
-<h3>Question 1.3.2 [8 pt]<a class="headerlink" href="#question-1-3-2-8-pt" title="Permalink to this headline">#</a></h3>
+<section id="question-1-3-2-4-pt">
+<h3>Question 1.3.2 [4 pt]<a class="headerlink" href="#question-1-3-2-4-pt" title="Permalink to this headline">#</a></h3>
 <p>What does this (your results recorded in Question 1.3.1) tell you about the the difference between the Info and Chemo agents in particular in environments of this type.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -663,8 +683,8 @@ document.write(`
 </section>
 </section>
 <hr class="docutils" />
-<section id="section-2-reinforcement-learning-43-pt">
-<h2>Section 2 - Reinforcement learning [43 pt]<a class="headerlink" href="#section-2-reinforcement-learning-43-pt" title="Permalink to this headline">#</a></h2>
+<section id="section-2-reinforcement-learning-24-pt">
+<h2>Section 2 - Reinforcement learning [24 pt]<a class="headerlink" href="#section-2-reinforcement-learning-24-pt" title="Permalink to this headline">#</a></h2>
 <p>In the last part of lab 9, you investigated the performance of different reinforcement learnign agents in a changing bandit task, where an arm that used to give the most reward suddenly dropped in reward probability.</p>
 <p>In this section of the homework, you will build and test reinforcement learning agents in a different changing bandit task - one where an arm that gave zero reward for most of the experiment changes to being rewarding at a very high probability near the end of each experiment.</p>
 <p>Import necessary modules</p>
@@ -746,8 +766,8 @@ document.write(`
 </div>
 </div>
 </div>
-<section id="create-this-new-changing-bandit-environment-6-pt">
-<h3>Create this new changing bandit environment [6 pt]<a class="headerlink" href="#create-this-new-changing-bandit-environment-6-pt" title="Permalink to this headline">#</a></h3>
+<section id="create-this-new-changing-bandit-environment-3-pt">
+<h3>Create this new changing bandit environment [3 pt]<a class="headerlink" href="#create-this-new-changing-bandit-environment-3-pt" title="Permalink to this headline">#</a></h3>
 <p>To make the environment described above, set up a BanditChange4 environment with the following parameters:</p>
 <ul class="simple">
 <li><p>Have the number of trials before the change be 150.</p></li>
@@ -764,8 +784,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="question-2-1-7-pt">
-<h3>Question 2.1 [7 pt]<a class="headerlink" href="#question-2-1-7-pt" title="Permalink to this headline">#</a></h3>
+<section id="question-2-1-4-pt">
+<h3>Question 2.1 [4 pt]<a class="headerlink" href="#question-2-1-4-pt" title="Permalink to this headline">#</a></h3>
 <p>When testing later on, we will have each experiment last for 175 steps. What makes this a tricky problem? What would an agent have to do to succeed in this task?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -775,8 +795,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="creating-the-reinforcement-learning-agents-4-pt">
-<h3>Creating the reinforcement learning agents [4 pt]<a class="headerlink" href="#creating-the-reinforcement-learning-agents-4-pt" title="Permalink to this headline">#</a></h3>
+<section id="creating-the-reinforcement-learning-agents-2-pt">
+<h3>Creating the reinforcement learning agents [2 pt]<a class="headerlink" href="#creating-the-reinforcement-learning-agents-2-pt" title="Permalink to this headline">#</a></h3>
 <p>In the code cell below, fill in the code for creating each agent. Use the settings from the lab (repeated here for ease):</p>
 <ul class="simple">
 <li><p>Random agent: no settings needed</p></li>
@@ -788,22 +808,22 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ran</span> <span class="o">=</span> <span class="n">BanditActorCritic</span><span class="p">(</span>
     <span class="c1"># Fill in random agent code here</span>
-    
+
 <span class="p">)</span>
 
 <span class="n">epy</span> <span class="o">=</span> <span class="n">BanditActorCritic</span><span class="p">(</span>
     <span class="c1"># Fill in epsilon greedy agent code here</span>
-    
+
 <span class="p">)</span>
 
 <span class="n">ucb</span> <span class="o">=</span> <span class="n">BanditActorCritic</span><span class="p">(</span>
     <span class="c1"># Fill in upper confidence bound agent code here</span>
-    
+
 <span class="p">)</span>
 
 <span class="n">sft</span> <span class="o">=</span> <span class="n">BanditActorCritic</span><span class="p">(</span>
     <span class="c1"># Fill in softmax agent code here</span>
-    
+
 <span class="p">)</span>
 
 
@@ -815,8 +835,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="run-the-experiments-6-pt">
-<h3>Run the experiments [6 pt]<a class="headerlink" href="#run-the-experiments-6-pt" title="Permalink to this headline">#</a></h3>
+<section id="run-the-experiments-3-pt">
+<h3>Run the experiments [3 pt]<a class="headerlink" href="#run-the-experiments-3-pt" title="Permalink to this headline">#</a></h3>
 <p>Fill in the code cell below to run 500 experiments for each agent, each with 175 steps. Set the seed to 5030 (have a code line for <code class="docutils literal notranslate"><span class="pre">seed=5030,</span></code> after the code line that sets the number of experiments).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -826,8 +846,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="visualize-total-rewards-4-pt">
-<h3>Visualize total rewards [4 pt]<a class="headerlink" href="#visualize-total-rewards-4-pt" title="Permalink to this headline">#</a></h3>
+<section id="visualize-total-rewards-3-pt">
+<h3>Visualize total rewards [3 pt]<a class="headerlink" href="#visualize-total-rewards-3-pt" title="Permalink to this headline">#</a></h3>
 <p>In the code cell below, add code to plot the total reward for each agent type in the experiements.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -837,8 +857,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="question-2-2-8-pt">
-<h3>Question 2.2 [8 pt]<a class="headerlink" href="#question-2-2-8-pt" title="Permalink to this headline">#</a></h3>
+<section id="question-2-2-4-pt">
+<h3>Question 2.2 [4 pt]<a class="headerlink" href="#question-2-2-4-pt" title="Permalink to this headline">#</a></h3>
 <p>How did each of the agents do, compared to one another? Why do you think this is the case?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -848,8 +868,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="question-2-3-8-pt">
-<h3>Question 2.3 [8 pt]<a class="headerlink" href="#question-2-3-8-pt" title="Permalink to this headline">#</a></h3>
+<section id="question-2-3-4-pt">
+<h3>Question 2.3 [4 pt]<a class="headerlink" href="#question-2-3-4-pt" title="Permalink to this headline">#</a></h3>
 <p>Re-run just the experiments and reward plotting with the following random seeds: 6030, 7030, 8030, and 9030. Make sure you are just changing the seed for the experiments, not for the bandit task itself.</p>
 <p>How consistent are the results you see? What does this tell you about the stability of the patterns you described in Question 2.2? Why do you think this is the case?</p>
 <div class="cell docutils container">
@@ -859,11 +879,176 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="part-3-exploration-agents-in-information-distorted-environments-26-pt">
+<h2>Part 3 - Exploration agents in information-distorted environments [26 pt]<a class="headerlink" href="#part-3-exploration-agents-in-information-distorted-environments-26-pt" title="Permalink to this headline">#</a></h2>
+<p>In the last part of lab 8 we saw how the distortion in the channel driven by <em>missing information</em> influenced the efficiency of our Info agent. In this second part of the homework, you will investigate the effect of distortion driven by <em>sensor noise</em>.</p>
+<p>Here we will test a range of <em>noise_sigma</em> (as opposed to <em>p_scent</em>) values. Essentially we will be turning <em>up</em> the distortion as <em>noise_sigma</em> increases. For these experiments we will hold the <em>p_scent</em> constant at 0.1 (a sparse information environment).</p>
+<section id="coding">
+<h3>Coding<a class="headerlink" href="#coding" title="Permalink to this headline">#</a></h3>
+<p>In the code cells below, fill in (and run) code according to the text instructions before each one. Refer to lab 8 for help.</p>
+<section id="install-relevant-code-libraries">
+<h4>Install relevant code libraries.<a class="headerlink" href="#install-relevant-code-libraries" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="import-relevant-modules">
+<h4>Import relevant modules.<a class="headerlink" href="#import-relevant-modules" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="add-code-for-setting-up-pretty-plots">
+<h4>Add code for setting up pretty plots.<a class="headerlink" href="#add-code-for-setting-up-pretty-plots" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="code-for-running-your-experiments">
+<h3>Code for running your experiments<a class="headerlink" href="#code-for-running-your-experiments" title="Permalink to this headline">#</a></h3>
+<p>We’ve provided some code below with <em>p_scent</em> set at the sparse-information value of 0.1. We also provide a range of <em>noise_sigma</em> that you will use. The range is on an exponential scale, just because it makes sense given that <em>noise_sigma</em> can only be 0 or greater.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Our parameters</span>
+<span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">noise_sigmas</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5625</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.33</span><span class="p">,</span> <span class="mf">1.77</span><span class="p">]</span> <span class="c1"># range of values on an exp. scale</span>
+
+<span class="c1"># For plotting</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;darkgreen&quot;</span><span class="p">,</span> <span class="s2">&quot;seagreen&quot;</span><span class="p">,</span> <span class="s2">&quot;cadetblue&quot;</span><span class="p">,</span> <span class="s2">&quot;steelblue&quot;</span><span class="p">,</span> <span class="s2">&quot;mediumpurple&quot;</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">noise_sigmas</span> <span class="c1"># list(range(5))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="complete-the-code-below-and-run-your-experiments-we-ve-specified-the-default-parameters-for-the-agent-and-environment-below-fill-in-the-code-for-running-experiments-at-each-noise-sigma-value-within-the-loop-below-add-your-code-where-it-says-add-your-experiment-code-here-be-sure-to-check-indentation-5-pt">
+<h4>Complete the code below and run your experiments. We’ve specified the default parameters for the agent and environment below. Fill in the code for running experiments at each <em>noise_sigma</em> value within the loop below. (Add your code where it says <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">ADD</span> <span class="pre">YOUR</span> <span class="pre">EXPERIMENT</span> <span class="pre">CODE</span> <span class="pre">HERE</span> <span class="pre">-</span> <span class="pre">BE</span> <span class="pre">SURE</span> <span class="pre">TO</span> <span class="pre">CHECK</span> <span class="pre">INDENTATION</span></code>.) [5 pt]<a class="headerlink" href="#complete-the-code-below-and-run-your-experiments-we-ve-specified-the-default-parameters-for-the-agent-and-environment-below-fill-in-the-code-for-running-experiments-at-each-noise-sigma-value-within-the-loop-below-add-your-code-where-it-says-add-your-experiment-code-here-be-sure-to-check-indentation-5-pt" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the accumulation parameters</span>
+<span class="n">drift_rate</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="n">accumulate_sigma</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1"># Shared</span>
+<span class="n">num_experiments</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">400</span>
+<span class="n">seed_value</span> <span class="o">=</span> <span class="mi">5838</span>
+
+<span class="c1"># Define non-scent probability values</span>
+<span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">detection_radius</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">max_steps</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">min_length</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">num_targets</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">target_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># How many experiments to run</span>
+<span class="n">num_experiments</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># Infotaxis agent</span>
+<span class="n">info</span> <span class="o">=</span> <span class="n">AccumulatorInfoGrid</span><span class="p">(</span>
+    <span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span>
+    <span class="n">max_steps</span><span class="o">=</span><span class="n">max_steps</span><span class="p">,</span>
+    <span class="n">drift_rate</span><span class="o">=</span><span class="n">drift_rate</span><span class="p">,</span>
+    <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span>
+    <span class="n">accumulate_sigma</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+<span class="n">info</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
+
+<span class="c1"># Run</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">noise_sigma</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">noise_sigmas</span><span class="p">):</span>
+  <span class="c1"># ADD YOUR EXPERIMENT CODE HERE - BE SURE TO CHECK INDENTATION</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="add-in-code-below-to-plot-the-bumber-of-deaths-for-different-values-of-noise-sigma-make-sure-your-x-axis-is-labeled-with-noise-sigma-not-p-scent-3-pt">
+<h4>Add in code below to plot the bumber of deaths for different values of <em>noise_sigma</em>. Make sure your x-axis is labeled with noise_sigma, not p_scent. [3 pt]<a class="headerlink" href="#add-in-code-below-to-plot-the-bumber-of-deaths-for-different-values-of-noise-sigma-make-sure-your-x-axis-is-labeled-with-noise-sigma-not-p-scent-3-pt" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="add-in-code-below-to-plot-max-score-for-different-values-of-noise-sigma-make-sure-your-x-axis-is-labeled-with-noise-sigma-not-p-scent-3-pt">
+<h4>Add in code below to plot max score for different values of <em>noise_sigma</em>. Make sure your x-axis is labeled with noise_sigma, not p_scent. [3 pt]<a class="headerlink" href="#add-in-code-below-to-plot-max-score-for-different-values-of-noise-sigma-make-sure-your-x-axis-is-labeled-with-noise-sigma-not-p-scent-3-pt" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="add-in-code-below-to-plot-average-score-and-score-frequency-distributions-for-different-values-of-noise-sigma-make-sure-your-x-axes-are-labeled-with-noise-sigma-not-p-scent-3-pt">
+<h4>Add in code below to plot average score and score frequency distributions for different values of <em>noise_sigma</em>. Make sure your x-axes are labeled with noise_sigma, not p_scent. [3 pt]<a class="headerlink" href="#add-in-code-below-to-plot-average-score-and-score-frequency-distributions-for-different-values-of-noise-sigma-make-sure-your-x-axes-are-labeled-with-noise-sigma-not-p-scent-3-pt" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="question-3-1-4-pt">
+<h3>Question 3.1 [4 pt]<a class="headerlink" href="#question-3-1-4-pt" title="Permalink to this headline">#</a></h3>
+<p>How does increasing <em>noise_sigma</em> impact our Info agent’s performance? Explain why this particular pattern emerges in the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-3-2-4-pt">
+<h3>Question 3.2 [4 pt]<a class="headerlink" href="#question-3-2-4-pt" title="Permalink to this headline">#</a></h3>
+<p>Re-run the simulations from this section, but now change the drift-rate from 1.0 to 0.75. How and why does this influence the agent’s behavior (compared to the higher drift-rate)?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-3-3-4-pt">
+<h3>Question 3.3 [4 pt]<a class="headerlink" href="#question-3-3-4-pt" title="Permalink to this headline">#</a></h3>
+<p>Now set the drift-rate back to 1.0 and reduce the boundary height from 3.0 to 1.5. Re-run the simulations in again. How and why does this influence the agent’s behavior (compared to the higher boundary height)?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>IMPORTANT</strong> Did you collaborate with anyone on this assignment? If so, list their names here.</p>
 <blockquote>
 <div><p><em>Write Name(s) here</em></p>
 </div></blockquote>
-<p><strong>DUE:</strong> 5pm ET, Dec. 9, 2022. Email the link to the completed notebook on your Github repository to the TA and me via Canvas.</p>
+<p><strong>DUE:</strong> 5pm ET, Dec., 2023. Email the link to the completed notebook on your Github repository to the TA and me via Canvas.</p>
 </section>
 </section>
 </section>
@@ -899,6 +1084,15 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="exercise3-cbgt_and_pred_prey.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Exercise 3: CBGT networks and predator-prey dynamics</strong></p>
+      </div>
+    </a>
 </div></div>
   
 </div>
@@ -918,29 +1112,48 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-foraging-57-pt">Section 1 - Foraging [57 pt]</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1-6-pt">Question 1.1 [6 pt]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-foraging-30-pt">Section 1 - Foraging [30 pt]</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1-4-pt">Question 1.1 [4 pt]</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-code-cells-below-run-and-fill-in-code-as-needed-according-to-the-text-instructions-before-each-one-feel-free-to-refer-to-lab-7-for-help">In the code cells below, run and fill in code as needed according to the text instructions before each one. Feel free to refer to lab 7 for help.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-patchy-environment-5-pt">Create a new patchy environment [5 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-patchy-environment-3-pt">Visualize the patchy environment [3 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-agents-3-pt">Create the agents [3 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-experiments-5-pt">Run the experiments [5 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-proportion-of-time-spent-on-patches-4-pt">Visualize proportion of time spent on patches [4 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-total-reward-4-pt">Visualize total reward [4 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-agent-deaths-4-pt">Visualize agent deaths [4 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2-7-pt">Question 1.2 [7 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3-1-8-pt">Question 1.3.1 [8 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3-2-8-pt">Question 1.3.2 [8 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-patchy-environment-2-pt">Create a new patchy environment [2 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-patchy-environment-2-pt">Visualize the patchy environment [2 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-agents-2-pt">Create the agents [2 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-experiments-2-pt">Run the experiments [2 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-proportion-of-time-spent-on-patches-2-pt">Visualize proportion of time spent on patches [2 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-total-reward-2-pt">Visualize total reward [2 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-agent-deaths-2-pt">Visualize agent deaths [2 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2-4-pt">Question 1.2 [4 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3-1-4-pt">Question 1.3.1 [4 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3-2-4-pt">Question 1.3.2 [4 pt]</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-reinforcement-learning-43-pt">Section 2 - Reinforcement learning [43 pt]</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-this-new-changing-bandit-environment-6-pt">Create this new changing bandit environment [6 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1-7-pt">Question 2.1 [7 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-reinforcement-learning-agents-4-pt">Creating the reinforcement learning agents [4 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-experiments-6-pt">Run the experiments [6 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-total-rewards-4-pt">Visualize total rewards [4 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2-8-pt">Question 2.2 [8 pt]</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3-8-pt">Question 2.3 [8 pt]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-reinforcement-learning-24-pt">Section 2 - Reinforcement learning [24 pt]</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-this-new-changing-bandit-environment-3-pt">Create this new changing bandit environment [3 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1-4-pt">Question 2.1 [4 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-reinforcement-learning-agents-2-pt">Creating the reinforcement learning agents [2 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-experiments-3-pt">Run the experiments [3 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-total-rewards-3-pt">Visualize total rewards [3 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2-4-pt">Question 2.2 [4 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3-4-pt">Question 2.3 [4 pt]</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-exploration-agents-in-information-distorted-environments-26-pt">Part 3 - Exploration agents in information-distorted environments [26 pt]</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding">Coding</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-relevant-code-libraries">Install relevant code libraries.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#import-relevant-modules">Import relevant modules.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-code-for-setting-up-pretty-plots">Add code for setting up pretty plots.</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-for-running-your-experiments">Code for running your experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-the-code-below-and-run-your-experiments-we-ve-specified-the-default-parameters-for-the-agent-and-environment-below-fill-in-the-code-for-running-experiments-at-each-noise-sigma-value-within-the-loop-below-add-your-code-where-it-says-add-your-experiment-code-here-be-sure-to-check-indentation-5-pt">Complete the code below and run your experiments. We’ve specified the default parameters for the agent and environment below. Fill in the code for running experiments at each <em>noise_sigma</em> value within the loop below. (Add your code where it says <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">ADD</span> <span class="pre">YOUR</span> <span class="pre">EXPERIMENT</span> <span class="pre">CODE</span> <span class="pre">HERE</span> <span class="pre">-</span> <span class="pre">BE</span> <span class="pre">SURE</span> <span class="pre">TO</span> <span class="pre">CHECK</span> <span class="pre">INDENTATION</span></code>.) [5 pt]</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-in-code-below-to-plot-the-bumber-of-deaths-for-different-values-of-noise-sigma-make-sure-your-x-axis-is-labeled-with-noise-sigma-not-p-scent-3-pt">Add in code below to plot the bumber of deaths for different values of <em>noise_sigma</em>. Make sure your x-axis is labeled with noise_sigma, not p_scent. [3 pt]</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-in-code-below-to-plot-max-score-for-different-values-of-noise-sigma-make-sure-your-x-axis-is-labeled-with-noise-sigma-not-p-scent-3-pt">Add in code below to plot max score for different values of <em>noise_sigma</em>. Make sure your x-axis is labeled with noise_sigma, not p_scent. [3 pt]</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-in-code-below-to-plot-average-score-and-score-frequency-distributions-for-different-values-of-noise-sigma-make-sure-your-x-axes-are-labeled-with-noise-sigma-not-p-scent-3-pt">Add in code below to plot average score and score frequency distributions for different values of <em>noise_sigma</em>. Make sure your x-axes are labeled with noise_sigma, not p_scent. [3 pt]</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-1-4-pt">Question 3.1 [4 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2-4-pt">Question 3.2 [4 pt]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-3-4-pt">Question 3.3 [4 pt]</a></li>
 </ul>
 </li>
 </ul>

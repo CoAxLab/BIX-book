@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Exercise 3: CBGT networks and predator-prey dynamics &#8212; Biologically Intelligent eXploration (BIX)</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -64,10 +63,10 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercise3-cbgt_and_pred_prey';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Exercise 4: Foraging and reinforcement learning" href="exercise4-foraging_and_rl.html" />
+    <link rel="next" title="Homework 4: Foraging and reinforcement learning" href="exercise4-foraging_and_rl_and_info.html" />
     <link rel="prev" title="Exercise 2: Signals and decisions" href="exercise2-signals_and_decisions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -156,12 +155,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+        <p class="caption"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/intro-python.html">Introduction to python</a></li>
 
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<p class="caption"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/lab1-information.html">Lab 1- Information theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/lab2-explorelib.html">Lab 2 - Random exploration</a></li>
@@ -174,12 +173,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/lab8-infotaxis.html">Lab 8 - Infotaxis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<p class="caption"><span class="caption-text">Exercises</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Exercise 3: CBGT networks and predator-prey dynamics</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercise4-foraging_and_rl.html"><strong>Exercise 4: Foraging and reinforcement learning</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercise4-foraging_and_rl_and_info.html"><strong>Homework 4: Foraging and reinforcement learning</strong></a></li>
 </ul>
 
     </div>
@@ -441,9 +440,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-3-cbgt-networks-and-predator-prey-dynamics">
-<h1><strong>Exercise 3: CBGT networks and predator-prey dynamics</strong><a class="headerlink" href="#exercise-3-cbgt-networks-and-predator-prey-dynamics" title="Permalink to this heading">#</a></h1>
+<h1><strong>Exercise 3: CBGT networks and predator-prey dynamics</strong><a class="headerlink" href="#exercise-3-cbgt-networks-and-predator-prey-dynamics" title="Permalink to this headline">#</a></h1>
 <section id="getting-started">
-<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">#</a></h2>
 <p>This homework will involve concepts from the labs we’ve gone over in class. Feel free to reference them as you complete the assignment.</p>
 <p>This homework contains 2 sections:</p>
 <ol class="arabic simple">
@@ -454,11 +453,11 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="part-1-cbgt-decision-simulations-51-pt">
-<h2>Part 1 - CBGT decision simulations [51 pt]<a class="headerlink" href="#part-1-cbgt-decision-simulations-51-pt" title="Permalink to this heading">#</a></h2>
+<h2>Part 1 - CBGT decision simulations [51 pt]<a class="headerlink" href="#part-1-cbgt-decision-simulations-51-pt" title="Permalink to this headline">#</a></h2>
 <p>Here you will be adapting the Lab 5 code so that you increase the indirect <em>and</em> direct pathways gains by 33% (we did 10% in class). This will give a clearer visualization of how these two pathways control the overall reaction times when you plot their joint histogram.</p>
 <p>In the code cells below, fill in (and run) code according to the text instructions before each one. Refer to lab 5 for help.</p>
 <section id="change-colab-s-working-directory-to-the-content-folder-using-the-cd-command">
-<h3>Change Colab’s working directory to the <code class="docutils literal notranslate"><span class="pre">/content</span></code> folder using the <code class="docutils literal notranslate"><span class="pre">cd</span></code> command<a class="headerlink" href="#change-colab-s-working-directory-to-the-content-folder-using-the-cd-command" title="Permalink to this heading">#</a></h3>
+<h3>Change Colab’s working directory to the <code class="docutils literal notranslate"><span class="pre">/content</span></code> folder using the <code class="docutils literal notranslate"><span class="pre">cd</span></code> command<a class="headerlink" href="#change-colab-s-working-directory-to-the-content-folder-using-the-cd-command" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">content</span>
@@ -468,7 +467,7 @@ document.write(`
 </div>
 </section>
 <section id="clone-in-the-cbgt-library-from-https-github-com-coaxlab-cbgt">
-<h3>Clone in the CBGT library from <a class="github reference external" href="https://github.com/CoAxLab/CBGT">CoAxLab/CBGT</a><a class="headerlink" href="#clone-in-the-cbgt-library-from-https-github-com-coaxlab-cbgt" title="Permalink to this heading">#</a></h3>
+<h3>Clone in the CBGT library from <a class="github reference external" href="https://github.com/CoAxLab/CBGT">CoAxLab/CBGT</a><a class="headerlink" href="#clone-in-the-cbgt-library-from-https-github-com-coaxlab-cbgt" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/CoAxLab/CBGT
@@ -478,7 +477,7 @@ document.write(`
 </div>
 </section>
 <section id="change-colab-s-working-directory-to-the-content-cbgt-folder">
-<h3>Change Colab’s working directory to the <code class="docutils literal notranslate"><span class="pre">/content/CBGT</span></code> folder<a class="headerlink" href="#change-colab-s-working-directory-to-the-content-cbgt-folder" title="Permalink to this heading">#</a></h3>
+<h3>Change Colab’s working directory to the <code class="docutils literal notranslate"><span class="pre">/content/CBGT</span></code> folder<a class="headerlink" href="#change-colab-s-working-directory-to-the-content-cbgt-folder" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">CBGT</span>
@@ -488,7 +487,7 @@ document.write(`
 </div>
 </section>
 <section id="import-the-necessary-modules">
-<h3>Import the necessary modules<a class="headerlink" href="#import-the-necessary-modules" title="Permalink to this heading">#</a></h3>
+<h3>Import the necessary modules<a class="headerlink" href="#import-the-necessary-modules" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import libraries and configure plots</span>
@@ -524,7 +523,7 @@ document.write(`
 </div>
 </section>
 <section id="specify-the-saving-directory-and-set-default-model-parameters-weights-exactly-as-we-did-in-the-cbgt-lab">
-<h3>Specify the saving directory and set default model parameters/weights exactly as we did in the CBGT lab.<a class="headerlink" href="#specify-the-saving-directory-and-set-default-model-parameters-weights-exactly-as-we-did-in-the-cbgt-lab" title="Permalink to this heading">#</a></h3>
+<h3>Specify the saving directory and set default model parameters/weights exactly as we did in the CBGT lab.<a class="headerlink" href="#specify-the-saving-directory-and-set-default-model-parameters-weights-exactly-as-we-did-in-the-cbgt-lab" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify saving directory</span>
@@ -567,7 +566,7 @@ document.write(`
 </div>
 </section>
 <section id="define-the-helping-functions-for-getting-sampling-parameters-sampling-region-activations-and-building-a-single-network">
-<h3>Define the helping functions for getting sampling parameters, sampling region activations, and building a single network.<a class="headerlink" href="#define-the-helping-functions-for-getting-sampling-parameters-sampling-region-activations-and-building-a-single-network" title="Permalink to this heading">#</a></h3>
+<h3>Define the helping functions for getting sampling parameters, sampling region activations, and building a single network.<a class="headerlink" href="#define-the-helping-functions-for-getting-sampling-parameters-sampling-region-activations-and-building-a-single-network" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># helper functions to specify connection efficiacies for certain pathways</span>
@@ -631,7 +630,7 @@ document.write(`
 </div>
 </section>
 <section id="code-for-defining-the-function-for-running-a-batch-of-simulations">
-<h3>Code for defining the function for running a batch of simulations.<a class="headerlink" href="#code-for-defining-the-function-for-running-a-batch-of-simulations" title="Permalink to this heading">#</a></h3>
+<h3>Code for defining the function for running a batch of simulations.<a class="headerlink" href="#code-for-defining-the-function-for-running-a-batch-of-simulations" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code to run a batch of simulations</span>
@@ -667,7 +666,7 @@ document.write(`
 </div>
 </section>
 <section id="define-the-helper-function-for-compiling-simulated-behavioral-data-into-a-dataframe">
-<h3>Define the helper function for compiling simulated behavioral data into a dataframe.<a class="headerlink" href="#define-the-helper-function-for-compiling-simulated-behavioral-data-into-a-dataframe" title="Permalink to this heading">#</a></h3>
+<h3>Define the helper function for compiling simulated behavioral data into a dataframe.<a class="headerlink" href="#define-the-helper-function-for-compiling-simulated-behavioral-data-into-a-dataframe" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code to compile the behavioral data into a dataframe</span>
@@ -686,9 +685,9 @@ document.write(`
 </div>
 </section>
 <section id="code-for-running-your-specific-batches-of-simulations">
-<h3>Code for running your specific batches of simulations<a class="headerlink" href="#code-for-running-your-specific-batches-of-simulations" title="Permalink to this heading">#</a></h3>
+<h3>Code for running your specific batches of simulations<a class="headerlink" href="#code-for-running-your-specific-batches-of-simulations" title="Permalink to this headline">#</a></h3>
 <section id="set-up-your-batch-run-parameters-with-a-batch-size-of-20-with-direct-strength-increased-33-from-the-default-1-00-and-with-the-standard-indirect-strength-setting-of-1-00-7-pt">
-<h4>Set up your batch run parameters with a <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> of 20, with <code class="docutils literal notranslate"><span class="pre">direct_strength</span></code> increased 33% from the default 1.00, and with the standard <code class="docutils literal notranslate"><span class="pre">indirect_strength</span></code> setting of 1.00. [7 pt]<a class="headerlink" href="#set-up-your-batch-run-parameters-with-a-batch-size-of-20-with-direct-strength-increased-33-from-the-default-1-00-and-with-the-standard-indirect-strength-setting-of-1-00-7-pt" title="Permalink to this heading">#</a></h4>
+<h4>Set up your batch run parameters with a <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> of 20, with <code class="docutils literal notranslate"><span class="pre">direct_strength</span></code> increased 33% from the default 1.00, and with the standard <code class="docutils literal notranslate"><span class="pre">indirect_strength</span></code> setting of 1.00. [7 pt]<a class="headerlink" href="#set-up-your-batch-run-parameters-with-a-batch-size-of-20-with-direct-strength-increased-33-from-the-default-1-00-and-with-the-standard-indirect-strength-setting-of-1-00-7-pt" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
@@ -698,7 +697,7 @@ document.write(`
 </div>
 </section>
 <section id="run-the-strengthened-direct-pathway-batch-and-produce-a-corresponding-dataframe-7-pt">
-<h4>Run the strengthened direct pathway batch and produce a corresponding dataframe [7 pt]<a class="headerlink" href="#run-the-strengthened-direct-pathway-batch-and-produce-a-corresponding-dataframe-7-pt" title="Permalink to this heading">#</a></h4>
+<h4>Run the strengthened direct pathway batch and produce a corresponding dataframe [7 pt]<a class="headerlink" href="#run-the-strengthened-direct-pathway-batch-and-produce-a-corresponding-dataframe-7-pt" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
@@ -708,7 +707,7 @@ document.write(`
 </div>
 </section>
 <section id="set-up-your-batch-run-parameters-with-a-batch-size-of-20-the-standard-direct-strength-of-1-00-but-with-indirect-strength-increased-by-33-7-pt">
-<h4>Set up your batch run parameters with a <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> of 20, the standard <code class="docutils literal notranslate"><span class="pre">direct_strength</span></code> of 1.00, but with <code class="docutils literal notranslate"><span class="pre">indirect_strength</span></code> increased by 33%. [7 pt]<a class="headerlink" href="#set-up-your-batch-run-parameters-with-a-batch-size-of-20-the-standard-direct-strength-of-1-00-but-with-indirect-strength-increased-by-33-7-pt" title="Permalink to this heading">#</a></h4>
+<h4>Set up your batch run parameters with a <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> of 20, the standard <code class="docutils literal notranslate"><span class="pre">direct_strength</span></code> of 1.00, but with <code class="docutils literal notranslate"><span class="pre">indirect_strength</span></code> increased by 33%. [7 pt]<a class="headerlink" href="#set-up-your-batch-run-parameters-with-a-batch-size-of-20-the-standard-direct-strength-of-1-00-but-with-indirect-strength-increased-by-33-7-pt" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
@@ -718,7 +717,7 @@ document.write(`
 </div>
 </section>
 <section id="run-the-strengthened-indirect-pathway-batch-and-produce-a-corresponding-dataframe-7-pt">
-<h4>Run the strengthened indirect pathway batch and produce a corresponding dataframe [7 pt]<a class="headerlink" href="#run-the-strengthened-indirect-pathway-batch-and-produce-a-corresponding-dataframe-7-pt" title="Permalink to this heading">#</a></h4>
+<h4>Run the strengthened indirect pathway batch and produce a corresponding dataframe [7 pt]<a class="headerlink" href="#run-the-strengthened-indirect-pathway-batch-and-produce-a-corresponding-dataframe-7-pt" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
@@ -728,7 +727,7 @@ document.write(`
 </div>
 </section>
 <section id="for-each-condition-strengthened-direct-vs-indirect-pathway-calculate-and-print-the-mean-values-for-reaction-time-and-percent-of-actions-made-to-the-left-accuracy-5-pt">
-<h4>For each condition (strengthened direct vs indirect pathway), calculate and print the mean values for <em>reaction time</em> and <em>percent of actions made to the left</em> (“accuracy”) [5 pt]<a class="headerlink" href="#for-each-condition-strengthened-direct-vs-indirect-pathway-calculate-and-print-the-mean-values-for-reaction-time-and-percent-of-actions-made-to-the-left-accuracy-5-pt" title="Permalink to this heading">#</a></h4>
+<h4>For each condition (strengthened direct vs indirect pathway), calculate and print the mean values for <em>reaction time</em> and <em>percent of actions made to the left</em> (“accuracy”) [5 pt]<a class="headerlink" href="#for-each-condition-strengthened-direct-vs-indirect-pathway-calculate-and-print-the-mean-values-for-reaction-time-and-percent-of-actions-made-to-the-left-accuracy-5-pt" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
@@ -738,7 +737,7 @@ document.write(`
 </div>
 </section>
 <section id="plot-a-histogram-of-reaction-times-for-the-strengthened-direct-vs-indirect-pathway-conditions-make-sure-to-refer-to-the-correct-data-and-include-the-correct-data-each-time-you-call-the-plt-hist-function-6-pt">
-<h4>Plot a histogram of reaction times for the strengthened direct vs. indirect pathway conditions. Make sure to refer to the correct data and include the correct data each time you call the <code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> function. [6 pt]<a class="headerlink" href="#plot-a-histogram-of-reaction-times-for-the-strengthened-direct-vs-indirect-pathway-conditions-make-sure-to-refer-to-the-correct-data-and-include-the-correct-data-each-time-you-call-the-plt-hist-function-6-pt" title="Permalink to this heading">#</a></h4>
+<h4>Plot a histogram of reaction times for the strengthened direct vs. indirect pathway conditions. Make sure to refer to the correct data and include the correct data each time you call the <code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> function. [6 pt]<a class="headerlink" href="#plot-a-histogram-of-reaction-times-for-the-strengthened-direct-vs-indirect-pathway-conditions-make-sure-to-refer-to-the-correct-data-and-include-the-correct-data-each-time-you-call-the-plt-hist-function-6-pt" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
@@ -749,7 +748,7 @@ document.write(`
 </section>
 </section>
 <section id="question-1-1-6-pt">
-<h3>Question 1.1 [6 pt]<a class="headerlink" href="#question-1-1-6-pt" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.1 [6 pt]<a class="headerlink" href="#question-1-1-6-pt" title="Permalink to this headline">#</a></h3>
 <p>How what does increasing the relative efficacy of the direct and indirect pathways do to the networks’ decision speed? Explain why this occurs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -760,7 +759,7 @@ document.write(`
 </div>
 </section>
 <section id="question-1-2-6-pt">
-<h3>Question 1.2: [6 pt]<a class="headerlink" href="#question-1-2-6-pt" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.2: [6 pt]<a class="headerlink" href="#question-1-2-6-pt" title="Permalink to this headline">#</a></h3>
 <p>Rerun the simulations above but increase the synaptic weight from STN to GPi from 0.0324 to 0.04. How does this influence the outcome of the simulations? Why does this happen?</p>
 <p>(Hint: if you get an error while running the simulations, this is supposed to happen).</p>
 <div class="cell docutils container">
@@ -774,7 +773,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="part-2-predator-prey-dynamics-49-pt">
-<h2>Part 2 - Predator-prey dynamics [49 pt]<a class="headerlink" href="#part-2-predator-prey-dynamics-49-pt" title="Permalink to this heading">#</a></h2>
+<h2>Part 2 - Predator-prey dynamics [49 pt]<a class="headerlink" href="#part-2-predator-prey-dynamics-49-pt" title="Permalink to this headline">#</a></h2>
 <p>In this part, you will investigate how different prey behavior effects predator fitness when the predator moves actively towards the prey.</p>
 <p>In lab 6, we saw how the predator and prey variables can effect their fitness metrics when both followed random movements. Here, we will investigate:</p>
 <ol class="arabic simple">
@@ -795,10 +794,10 @@ document.write(`
 </ol>
 <p>Please see the <em>explorationlib/agents.py</em> file for more information.</p>
 <section id="coding">
-<h3>Coding<a class="headerlink" href="#coding" title="Permalink to this heading">#</a></h3>
+<h3>Coding<a class="headerlink" href="#coding" title="Permalink to this headline">#</a></h3>
 <p>In the code cells below, fill in (and run) code according to the text instructions before each one. Refer to lab 6 for help.</p>
 <section id="install-relevant-code-libraries">
-<h4>Install relevant code libraries.<a class="headerlink" href="#install-relevant-code-libraries" title="Permalink to this heading">#</a></h4>
+<h4>Install relevant code libraries.<a class="headerlink" href="#install-relevant-code-libraries" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>--no-cache-dir<span class="w"> </span>git+https://github.com/CoAxLab/explorationlib
@@ -809,7 +808,7 @@ document.write(`
 </div>
 </section>
 <section id="import-relevant-modules">
-<h4>Import relevant modules.<a class="headerlink" href="#import-relevant-modules" title="Permalink to this heading">#</a></h4>
+<h4>Import relevant modules.<a class="headerlink" href="#import-relevant-modules" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
@@ -855,7 +854,7 @@ document.write(`
 </div>
 </section>
 <section id="set-up-pretty-plots">
-<h4>Set up pretty plots.<a class="headerlink" href="#set-up-pretty-plots" title="Permalink to this heading">#</a></h4>
+<h4>Set up pretty plots.<a class="headerlink" href="#set-up-pretty-plots" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pretty plots</span>
@@ -878,10 +877,10 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="part-2-1-prey-with-different-behavior-traits">
-<h2>Part 2.1 - Prey with different behavior traits<a class="headerlink" href="#part-2-1-prey-with-different-behavior-traits" title="Permalink to this heading">#</a></h2>
+<h2>Part 2.1 - Prey with different behavior traits<a class="headerlink" href="#part-2-1-prey-with-different-behavior-traits" title="Permalink to this headline">#</a></h2>
 <p>In this part we will investigate how agents with differing movement behaviors effect fitness scores.</p>
 <section id="investigating-prey-with-different-behaviors">
-<h3>2.1.1 Investigating prey with different behaviors<a class="headerlink" href="#investigating-prey-with-different-behaviors" title="Permalink to this heading">#</a></h3>
+<h3>2.1.1 Investigating prey with different behaviors<a class="headerlink" href="#investigating-prey-with-different-behaviors" title="Permalink to this headline">#</a></h3>
 <p>First, we will investigate how three different types of prey compare against a single type of predator that moves towards the prey.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -914,7 +913,7 @@ document.write(`
 </div>
 </div>
 <section id="complete-the-code-below-to-initialize-the-prey-input-variables-refer-to-lab-6-for-reference-fast-diffusiongrid-flight-levygrid-freeze-freezelevygrid-the-predator-code-is-given-to-you-5-pt">
-<h4>Complete the code below to initialize the prey input variables. Refer to Lab 6 for reference. Fast=<em>DiffusionGrid</em>, Flight=<em>LevyGrid</em>, Freeze=<em>FreezeLevyGrid</em>. The predator code is given to you. [5 pt]<a class="headerlink" href="#complete-the-code-below-to-initialize-the-prey-input-variables-refer-to-lab-6-for-reference-fast-diffusiongrid-flight-levygrid-freeze-freezelevygrid-the-predator-code-is-given-to-you-5-pt" title="Permalink to this heading">#</a></h4>
+<h4>Complete the code below to initialize the prey input variables. Refer to Lab 6 for reference. Fast=<em>DiffusionGrid</em>, Flight=<em>LevyGrid</em>, Freeze=<em>FreezeLevyGrid</em>. The predator code is given to you. [5 pt]<a class="headerlink" href="#complete-the-code-below-to-initialize-the-prey-input-variables-refer-to-lab-6-for-reference-fast-diffusiongrid-flight-levygrid-freeze-freezelevygrid-the-predator-code-is-given-to-you-5-pt" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define 9 prey of differing behavior types (Fast=DiffusionGrid, Flight=LevyGrid, Freeze=FreezeLevyGrid). Use the parameters above to define the agents. Refer to Lab 6 for reference.</span>
@@ -947,7 +946,7 @@ document.write(`
 </div>
 </section>
 <section id="run-the-experiments-for-each-prey-type-nothing-to-code-here">
-<h4>Run the experiments for each prey type (nothing to code here)<a class="headerlink" href="#run-the-experiments-for-each-prey-type-nothing-to-code-here" title="Permalink to this heading">#</a></h4>
+<h4>Run the experiments for each prey type (nothing to code here)<a class="headerlink" href="#run-the-experiments-for-each-prey-type-nothing-to-code-here" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conditions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Fast&#39;</span><span class="p">,</span> <span class="s1">&#39;Flight&#39;</span><span class="p">,</span> <span class="s1">&#39;Freeze&#39;</span><span class="p">]</span>
@@ -1010,7 +1009,7 @@ document.write(`
 </div>
 </section>
 <section id="plot-the-movement-behavior-of-the-agents-nothing-to-code-here">
-<h4>Plot the movement behavior of the agents (nothing to code here).<a class="headerlink" href="#plot-the-movement-behavior-of-the-agents-nothing-to-code-here" title="Permalink to this heading">#</a></h4>
+<h4>Plot the movement behavior of the agents (nothing to code here).<a class="headerlink" href="#plot-the-movement-behavior-of-the-agents-nothing-to-code-here" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
@@ -1033,7 +1032,7 @@ document.write(`
 </div>
 </section>
 <section id="obtain-the-metrics-for-each-condition-nothing-to-code-here">
-<h4>Obtain the metrics for each condition (nothing to code here).<a class="headerlink" href="#obtain-the-metrics-for-each-condition-nothing-to-code-here" title="Permalink to this heading">#</a></h4>
+<h4>Obtain the metrics for each condition (nothing to code here).<a class="headerlink" href="#obtain-the-metrics-for-each-condition-nothing-to-code-here" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_metrics</span><span class="p">():</span>
@@ -1083,7 +1082,7 @@ document.write(`
 </section>
 </section>
 <section id="question-2-1-1-8-pt">
-<h3>Question 2.1.1 [8 pt]<a class="headerlink" href="#question-2-1-1-8-pt" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.1.1 [8 pt]<a class="headerlink" href="#question-2-1-1-8-pt" title="Permalink to this headline">#</a></h3>
 <p>What were fitness scores and prey deaths for each condition? Which prey was the most successful and why? Which prey was least successful and why? Which prey was in the middle and why? Refer to the movement behavior and metric plots in justifying your answer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1094,7 +1093,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-1-2-8-pt">
-<h3>Question 2.1.2 [8 pt]<a class="headerlink" href="#question-2-1-2-8-pt" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.1.2 [8 pt]<a class="headerlink" href="#question-2-1-2-8-pt" title="Permalink to this headline">#</a></h3>
 <p>The predator is of type GreedyPredatorGrid that moves towards the nearest prey at each time step. What is a different movement pattern from a predator that would likely change the relative survival ranking of the three prey types?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1105,7 +1104,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-1-3-8-pt">
-<h3>Question 2.1.3 [8 pt]<a class="headerlink" href="#question-2-1-3-8-pt" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.1.3 [8 pt]<a class="headerlink" href="#question-2-1-3-8-pt" title="Permalink to this headline">#</a></h3>
 <p>How would you predict each prey type to perform if the prey and predator emitted a scent and the predator moved by moving along the positive prey scent gradient (towards the prey), and the predators moved along the negative predator scent gradient (away from the predator)? Assume the prey and predators emit the same radius and magnitude of scent, and agent parameters are the default ones defined above for all agents.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1118,10 +1117,10 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="part-2-2-introducing-a-new-predator">
-<h2>Part 2.2 - Introducing a new predator<a class="headerlink" href="#part-2-2-introducing-a-new-predator" title="Permalink to this heading">#</a></h2>
+<h2>Part 2.2 - Introducing a new predator<a class="headerlink" href="#part-2-2-introducing-a-new-predator" title="Permalink to this headline">#</a></h2>
 <p>In part 2.2, you will experiment with how the prey would need to adapt if a superior predator is introduced into an environment.</p>
 <section id="define-a-new-super-predator-that-has-the-parameters-minimally-changed-from-the-default-values-such-that-the-predator-has-fitness-20-for-each-prey-2-pt">
-<h3>Define a new super predator that has the parameters (minimally) changed from the default values such that the predator has fitness &gt;= 20 for each prey [2 pt].<a class="headerlink" href="#define-a-new-super-predator-that-has-the-parameters-minimally-changed-from-the-default-values-such-that-the-predator-has-fitness-20-for-each-prey-2-pt" title="Permalink to this heading">#</a></h3>
+<h3>Define a new super predator that has the parameters (minimally) changed from the default values such that the predator has fitness &gt;= 20 for each prey [2 pt].<a class="headerlink" href="#define-a-new-super-predator-that-has-the-parameters-minimally-changed-from-the-default-values-such-that-the-predator-has-fitness-20-for-each-prey-2-pt" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predator default parameters. Minimally change them (can be more than one if desired) to cause the predator to to have &gt;= 20 fitness for each prey.</span>
@@ -1147,7 +1146,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-2-1-8-pt">
-<h3>Question 2.2.1 [8 pt]<a class="headerlink" href="#question-2-2-1-8-pt" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.2.1 [8 pt]<a class="headerlink" href="#question-2-2-1-8-pt" title="Permalink to this headline">#</a></h3>
 <p>What parameters did you change and why did alter the metrics? Refer to specific aspects of the predator’s behavior and the metrics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1157,7 +1156,7 @@ document.write(`
 </div>
 </div>
 <section id="mutation-define-a-change-in-one-of-the-preys-variables-scale-min-length-step-size-p-freeze-such-that-it-enables-one-of-the-prey-types-to-survive-the-new-super-prey-with-predator-fitness-0-for-the-changed-prey-you-should-only-change-one-parameter-in-one-of-the-prey-types-2-pt">
-<h4>Mutation: define a change in one of the preys’ variables (scale, min_length, step_size, p_freeze) such that it enables one of the prey types to survive the new super prey with predator fitness &lt;= 0 for the changed prey. You should only change one parameter in one of the prey types. [2 pt]<a class="headerlink" href="#mutation-define-a-change-in-one-of-the-preys-variables-scale-min-length-step-size-p-freeze-such-that-it-enables-one-of-the-prey-types-to-survive-the-new-super-prey-with-predator-fitness-0-for-the-changed-prey-you-should-only-change-one-parameter-in-one-of-the-prey-types-2-pt" title="Permalink to this heading">#</a></h4>
+<h4>Mutation: define a change in one of the preys’ variables (scale, min_length, step_size, p_freeze) such that it enables one of the prey types to survive the new super prey with predator fitness &lt;= 0 for the changed prey. You should only change one parameter in one of the prey types. [2 pt]<a class="headerlink" href="#mutation-define-a-change-in-one-of-the-preys-variables-scale-min-length-step-size-p-freeze-such-that-it-enables-one-of-the-prey-types-to-survive-the-new-super-prey-with-predator-fitness-0-for-the-changed-prey-you-should-only-change-one-parameter-in-one-of-the-prey-types-2-pt" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change only a single parameter here to reach fitness &lt;=0 for one prey!</span>
@@ -1203,7 +1202,7 @@ document.write(`
 </section>
 </section>
 <section id="question-2-2-2-8-pt">
-<h3>Question 2.2.2 [8 pt]<a class="headerlink" href="#question-2-2-2-8-pt" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.2.2 [8 pt]<a class="headerlink" href="#question-2-2-2-8-pt" title="Permalink to this headline">#</a></h3>
 <p>Which parameter did you change, and how did it enable the prey to survive the new super predator?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1262,11 +1261,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="exercise4-foraging_and_rl.html"
+       href="exercise4-foraging_and_rl_and_info.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><strong>Exercise 4: Foraging and reinforcement learning</strong></p>
+        <p class="prev-next-title"><strong>Homework 4: Foraging and reinforcement learning</strong></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

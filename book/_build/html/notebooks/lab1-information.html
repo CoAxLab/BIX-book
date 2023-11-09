@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 1- Information theory &#8212; Biologically Intelligent eXploration (BIX)</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -61,15 +60,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lab1-information';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lab 2 - Random exploration" href="lab2-explorelib.html" />
     <link rel="prev" title="Introduction to python" href="intro-python.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -158,12 +157,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+        <p class="caption"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro-python.html">Introduction to python</a></li>
 
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<p class="caption"><span class="caption-text">Labs</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 1- Information theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2-explorelib.html">Lab 2 - Random exploration</a></li>
@@ -176,12 +175,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab8-infotaxis.html">Lab 8 - Infotaxis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<p class="caption"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise3-cbgt_and_pred_prey.html"><strong>Exercise 3: CBGT networks and predator-prey dynamics</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise4-foraging_and_rl.html"><strong>Exercise 4: Foraging and reinforcement learning</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise4-foraging_and_rl_and_info.html"><strong>Homework 4: Foraging and reinforcement learning</strong></a></li>
 </ul>
 
     </div>
@@ -409,7 +408,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-1-information-theory">
-<h1>Lab 1- Information theory<a class="headerlink" href="#lab-1-information-theory" title="Permalink to this heading">#</a></h1>
+<h1>Lab 1- Information theory<a class="headerlink" href="#lab-1-information-theory" title="Permalink to this headline">#</a></h1>
 <p>This lab has a few goals designed to get you comfortable with working with python and playing with the basiscs of information theory.</p>
 <p>Sections:</p>
 <ol class="arabic simple">
@@ -417,11 +416,11 @@ document.write(`
 <li><p>Mutual information</p></li>
 </ol>
 <section id="background">
-<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h2>
 <p>We are going to assume a basic familiarity with python. If you need an introduction, see the introduction notebook at the beginning of this book. That should get you enough familiarity to get started.</p>
 <p>For this lab we won’t be working with our main library, <em>explorationlib</em>. We’ll use a few standard libraries to both get more comfortable with python and to refresh the concepts of information theory discussed in class.</p>
 <section id="what-is-entropy-again">
-<h3><strong>What is entropy again?</strong><a class="headerlink" href="#what-is-entropy-again" title="Permalink to this heading">#</a></h3>
+<h3><strong>What is entropy again?</strong><a class="headerlink" href="#what-is-entropy-again" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>According to Shannon’s definition, the entropy <span class="math notranslate nohighlight">\(H(X)\)</span> of a discrete random variable is: <span class="math notranslate nohighlight">\(H(X)= \sum_{x \in X} p(x) \log _2 p(x)^{-1}\)</span>.</p></li>
 <li><p>Here we are assuming that the discrete variable is binary, hence the use of <span class="math notranslate nohighlight">\(\log _2\)</span></p></li>
@@ -429,7 +428,7 @@ document.write(`
 </ul>
 </section>
 <section id="entropy-between-variables">
-<h3><strong>Entropy between variables</strong>.<a class="headerlink" href="#entropy-between-variables" title="Permalink to this heading">#</a></h3>
+<h3><strong>Entropy between variables</strong>.<a class="headerlink" href="#entropy-between-variables" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>The <em>joint entropy</em> between two discrete random variables, <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, is just an expansion of the regular concept of entropy: <span class="math notranslate nohighlight">\(H(X, Y)= \sum_{x \in X} p(x,y) \log _2 p(x,y)^{-1}\)</span>.</p></li>
 <li><p>Note that in here, <span class="math notranslate nohighlight">\(p(x,y)\)</span> is the joint probability distribution between the variables.</p></li>
@@ -437,7 +436,7 @@ document.write(`
 </ul>
 </section>
 <section id="mutual-information-between-variables">
-<h3><strong>Mutual information between variables</strong>.<a class="headerlink" href="#mutual-information-between-variables" title="Permalink to this heading">#</a></h3>
+<h3><strong>Mutual information between variables</strong>.<a class="headerlink" href="#mutual-information-between-variables" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Sticking with the idea of joint entropy, the <em>conditional entropy</em> <span class="math notranslate nohighlight">\(H(X|Y)\)</span> reflects the residual entropy of <span class="math notranslate nohighlight">\(X\)</span> after you have knowledge about <span class="math notranslate nohighlight">\(Y\)</span>. This is expressed as: <span class="math notranslate nohighlight">\(H(X|Y)=H(X)-I(X;Y)\)</span>.</p></li>
 <li><p>We call this second term, <span class="math notranslate nohighlight">\(I(X;Y)\)</span> the <em>mutual information</em> between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>. It is the information provided by Y about X. If you were in statistics and working with continuous variables, this would be the correlation (or covariance).</p></li>
@@ -445,7 +444,7 @@ document.write(`
 </ul>
 </section>
 <section id="transfer-entropy-between-variables">
-<h3><strong>Transfer entropy between variables</strong>.<a class="headerlink" href="#transfer-entropy-between-variables" title="Permalink to this heading">#</a></h3>
+<h3><strong>Transfer entropy between variables</strong>.<a class="headerlink" href="#transfer-entropy-between-variables" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>In statistics (including information theory), causality follows Humeian logic: cause temporally preceeds effect. Thus, the term ‘causality’ in a statistical sense really just looks at the asymmetry in cross-correlations between two or more time series.</p></li>
 <li><p>Information theory relies on <em>transfer entropy</em> <span class="math notranslate nohighlight">\(T(X \rightarrow Y)\)</span> to estimate this statistical relationship.</p></li>
@@ -454,7 +453,7 @@ document.write(`
 </section>
 </section>
 <section id="section-setup">
-<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this heading">#</a></h2>
+<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this headline">#</a></h2>
 <p>Use the rocket-shaped button to open this assignment in a colab. Once it is open, if it is open, run all the cells. Read each cell, then run it, that is. It’s that simple.</p>
 <p>We will discuss a different way to work with notebooks for the Exercises, but for now just load in Colab.</p>
 <p>For this lab we’ll load some standard libraries for working with mutual information.</p>
@@ -469,7 +468,7 @@ document.write(`
 </div>
 </section>
 <section id="section-1-entropy">
-<h2>Section 1 - Entropy<a class="headerlink" href="#section-1-entropy" title="Permalink to this heading">#</a></h2>
+<h2>Section 1 - Entropy<a class="headerlink" href="#section-1-entropy" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>For this section we will simulate two cells, a presynaptic and postsynaptic cell. The data will consist of spikes. We will vary the degree of dependency between the neurons and look at their relative entropies.</p></li>
 <li><p>One way to achieve this is to use a Poisson process to simulate the neurons. Here, the firing of each neuron at each time step is modeled as a binary event that occurs with some probability. The influence of the first neuron on the second is represented by increasing the firing probability of the second neuron when the first one fires.</p></li>
@@ -521,7 +520,7 @@ document.write(`
 <p>Each time step is a binary event where 1 represents a spike and 0 represents no spike. The base firing probability is 2%, but this is modified by two factors: the influence of the first neuron on the second, and some independent noise.</p>
 <p>The <em>influence</em> parameter controls how much the first neuron affects the second: whenever the first neuron fires, the firing probability of the second neuron is increased by the influence factor. The <em>noise level</em> parameter controls the amount of independent noise in the firing probabilities. This noise is modeled as Gaussian noise and is independent for each neuron and each time step.</p>
 <section id="visualizing-our-two-neurons">
-<h3>Visualizing our two neurons<a class="headerlink" href="#visualizing-our-two-neurons" title="Permalink to this heading">#</a></h3>
+<h3>Visualizing our two neurons<a class="headerlink" href="#visualizing-our-two-neurons" title="Permalink to this headline">#</a></h3>
 <p>We can use a raster plot to visualize the spike times of our neurons. For this we will use matplotlib.</p>
 <p>In a raster plot, each row corresponds to a different repetition of the experiment (a different neuron in this case), and the x-axis represents time. Each small vertical line (marker) represents a spike.</p>
 <div class="cell docutils container">
@@ -593,7 +592,7 @@ document.write(`
 </div>
 </section>
 <section id="question-1-1">
-<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this headline">#</a></h3>
 <p>Increase the baseline firing rate parameter, <em>base_firing_prob</em>, by a factor of 10 to 0.2. What happens to the entropies of the neurons? Explain why this effect may or may not occur.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -604,7 +603,7 @@ document.write(`
 </div>
 </section>
 <section id="question-1-2">
-<h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this headline">#</a></h3>
 <p>Put the baseline firing rate parameter back to 0.02. Increase the influence parameter, from neuron 1 to neuron 2, by a factor of 10 to 0.3. What happens to the entropies of the neurons? Explain why this effect may or may not occur.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -616,7 +615,7 @@ document.write(`
 </section>
 </section>
 <section id="section-2-mutual-information">
-<h2>Section 2 - Mutual information<a class="headerlink" href="#section-2-mutual-information" title="Permalink to this heading">#</a></h2>
+<h2>Section 2 - Mutual information<a class="headerlink" href="#section-2-mutual-information" title="Permalink to this headline">#</a></h2>
 <p>We have our two happy little neurons firing. We’ve played with the parameters to see how it impacts their relative entropy. Now let’s go back to the original parameter settings and see about estimating the mutual information between our neurons.</p>
 <p>Recall that to estimate the mutual information, we need to estimate the conditional entropy for <span class="math notranslate nohighlight">\(X\)</span> on <span class="math notranslate nohighlight">\(Y\)</span>. For binary variables things are a bit easier because <span class="math notranslate nohighlight">\(H(X|Y) = H(Y) - H(X,Y)\)</span>. Which means we only need to get both independnet entropies and the joint entropy. This leaves us with this simple and beautiful equation: <span class="math notranslate nohighlight">\(I(X; Y) = H(X) + H(Y) - H(X, Y)\)</span>.</p>
 <p>We can easily write a function to do this.</p>
@@ -689,7 +688,7 @@ document.write(`
 </div>
 <p>This reflects the mutual dependence between the two neurons. You can probably guess what questions we will ask about this.</p>
 <section id="question-2-1">
-<h3>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this headline">#</a></h3>
 <p>Increase the baseline firing rate parameter, <em>base_firing_prob</em>, by a factor of 10 to 0.2. What happens to the mutual information of the neurons? Explain why this effect may or may not occur.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -700,7 +699,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-2">
-<h3>Question 2.2<a class="headerlink" href="#question-2-2" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.2<a class="headerlink" href="#question-2-2" title="Permalink to this headline">#</a></h3>
 <p>Put the baseline firing rate parameter back to 0.02. Increase the influence parameter, from neuron 1 to neuron 2, by a factor of 10 to 0.3. What happens to the mutual information of the neurons? Explain why this effect may or may not occur.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -711,7 +710,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-3">
-<h3>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this headline">#</a></h3>
 <p>Take the last set of simulations that you ran (with the influence set at 0.3) and switch the order of the neurons in the calculation of mutual information. What does or does not happen to the mutual information estimate? Why?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

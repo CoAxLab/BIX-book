@@ -20,5 +20,5 @@ parts:
     - file: exercises/exercise1-getting-started
     - file: exercises/exercise2-signals_and_decisions
     - file: exercises/exercise3-cbgt_and_pred_prey
-    - file: exercises/exercise4-foraging_and_rl
+    - file: exercises/exercise4-foraging_and_rl_and_info
 

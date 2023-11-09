@@ -464,21 +464,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/content
-</pre></div>
-</div>
-</div>
 </div>
 <p>Clone in the <code class="docutils literal notranslate"><span class="pre">target-patch-dev</span></code> explorationlib branch (the branch that has our new patchy environment functions).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>target-patch-dev<span class="w"> </span>https://github.com/coaxlab/explorationlib
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fatal: destination path &#39;explorationlib&#39; already exists and is not an empty directory.
 </pre></div>
 </div>
 </div>
@@ -490,43 +480,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/content/explorationlib
-</pre></div>
-</div>
-</div>
 </div>
 <p>Install some other supporting code libraries, like gym-maze, which some explorationlib simulated environment code relies on.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/MattChanTK/gym-maze.git
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>celluloid<span class="w"> </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>gifs
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting git+https://github.com/MattChanTK/gym-maze.git
-  Cloning https://github.com/MattChanTK/gym-maze.git to /tmp/pip-req-build-xm8b7jvu
-  Running command git clone --filter=blob:none --quiet https://github.com/MattChanTK/gym-maze.git /tmp/pip-req-build-xm8b7jvu
-  Resolved https://github.com/MattChanTK/gym-maze.git to commit 83176811b49b5538a6213520612f44fb1bc49114
-  Preparing metadata (setup.py) ... ?25l?25hdone
-Requirement already satisfied: gym in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (0.25.2)
-Requirement already satisfied: pygame in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (2.5.2)
-Requirement already satisfied: numpy in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (1.23.5)
-Requirement already satisfied: cloudpickle&gt;=1.2.0 in /usr/local/lib/python3.10/dist-packages (from gym-&gt;gym-maze==0.4) (2.2.1)
-Requirement already satisfied: gym-notices&gt;=0.0.4 in /usr/local/lib/python3.10/dist-packages (from gym-&gt;gym-maze==0.4) (0.0.8)
-Requirement already satisfied: celluloid in /usr/local/lib/python3.10/dist-packages (0.2.0)
-Requirement already satisfied: matplotlib in /usr/local/lib/python3.10/dist-packages (from celluloid) (3.7.1)
-Requirement already satisfied: contourpy&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (1.1.1)
-Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (4.43.1)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (1.4.5)
-Requirement already satisfied: numpy&gt;=1.20 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (1.23.5)
-Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (23.2)
-Requirement already satisfied: pillow&gt;=6.2.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (9.4.0)
-Requirement already satisfied: pyparsing&gt;=2.3.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (3.1.1)
-Requirement already satisfied: python-dateutil&gt;=2.7 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (2.8.2)
-Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;celluloid) (1.16.0)
 </pre></div>
 </div>
 </div>
@@ -594,7 +553,7 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 <li><p>To specify the characteristics of the patchy environment we want to generate, we supply information about how many patches we want (<code class="docutils literal notranslate"><span class="pre">n_patches</span></code>), how many targets we want per patch (<code class="docutils literal notranslate"><span class="pre">n_per_patch</span></code>), and how large we want each patch to be (<code class="docutils literal notranslate"><span class="pre">radius</span></code>).</p></li>
 <li><p>To be clear, our simulation won’t be perfect - this function can create overlapping patches, and our simulations don’t take into account the depletion of patches over time.</p></li>
 </ul>
-<p>Fill in the code below and run to create a patch environmet with <em>7 patches</em> of <em>10 targets each</em>. Make each patch have a <em>radius of 2 units</em>.</p>
+<p>We will create a patch environmet with <em>7 patches</em> of <em>10 targets each</em>. Make each patch have a <em>radius of 2 units</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Noise and missing scents</span>
@@ -610,9 +569,9 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 <span class="n">detection_radius</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">max_steps</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">min_length</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">n_patches</span> <span class="o">=</span> <span class="mi">7</span> <span class="c1"># FILL IN         # number of patches</span>
-<span class="n">n_per_patch</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># FILL IN      # number targets per patch</span>
-<span class="n">radius</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># FILL IN            # radius of each patch</span>
+<span class="n">n_patches</span> <span class="o">=</span> <span class="mi">7</span> <span class="c1">#         # number of patches</span>
+<span class="n">n_per_patch</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1">#      # number targets per patch</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">#            # radius of each patch</span>
 <span class="n">target_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="c1"># Generate patches of argets</span>
@@ -655,9 +614,6 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/1aef362397d78a85646d6b54e2f8d0323a04c9d1dbb1e2218a0278062c408804.png" src="../_images/1aef362397d78a85646d6b54e2f8d0323a04c9d1dbb1e2218a0278062c408804.png" />
-</div>
 </div>
 </section>
 </section>
@@ -685,11 +641,6 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
     <span class="n">accumulate_sigma</span><span class="o">=</span><span class="mi">1</span>
 <span class="p">)</span>
 <span class="n">chemo</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[6074]
 </pre></div>
 </div>
 </div>
@@ -754,8 +705,6 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "82629d9c31c74926b7eae287ef28b05f"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "73e7cee3f5a34365bf70ca69b80005ff"}</script></div>
 </div>
 <p>Run the code below to plot behavior of each agent type during one experiment example.</p>
 <div class="cell docutils container">
@@ -791,9 +740,6 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/2a3f1ebb42412472ed2d25c0965e3487e62faf2e54e693e6b5873d7dd3d3f2bf.png" src="../_images/2a3f1ebb42412472ed2d25c0965e3487e62faf2e54e693e6b5873d7dd3d3f2bf.png" />
 </div>
 </div>
 </section>
@@ -849,10 +795,6 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ad556dee392f44e4b7e3614c0ad22022"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b1f8caee22f44573ae1c0931b9ddfe8f"}</script><img alt="../_images/e1c8d6502d774a4971bc1d4642c104e9ea268b3a93e9c2291990f05fc2cce125.png" src="../_images/e1c8d6502d774a4971bc1d4642c104e9ea268b3a93e9c2291990f05fc2cce125.png" />
-<img alt="../_images/c2bd3706640aa8b32323036acdcbd936436c45e00ef8bbe0541d16828e2ec810.png" src="../_images/c2bd3706640aa8b32323036acdcbd936436c45e00ef8bbe0541d16828e2ec810.png" />
-</div>
 </div>
 </section>
 <section id="quantify-total-reward-for-each-agent-type">
@@ -895,10 +837,6 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "73ae5049165f4fd783b137057a346a05"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "bacf25e8a85c491d96d1b543439997f7"}</script><img alt="../_images/4ea947f35564e498164cecd53d1fc036f8f8fb57c5df503e6c7c6eddf49a632f.png" src="../_images/4ea947f35564e498164cecd53d1fc036f8f8fb57c5df503e6c7c6eddf49a632f.png" />
-<img alt="../_images/66460d8e0500edb10e4b93caef4a15ab31f3c4bd1a503d73caedf6d8cd358307.png" src="../_images/66460d8e0500edb10e4b93caef4a15ab31f3c4bd1a503d73caedf6d8cd358307.png" />
-</div>
 </div>
 </section>
 <section id="quantify-deaths-for-each-agent-type">
@@ -931,9 +869,6 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b4a68ef171bb47afa876e1858909aad5"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "0a8cdfab6ecb434a944487242cd0dd8f"}</script><img alt="../_images/fc2ae1559346241eaf8b9a2fa6cdecbf702b342d6dc5dbfe82c1230fc7751d6d.png" src="../_images/fc2ae1559346241eaf8b9a2fa6cdecbf702b342d6dc5dbfe82c1230fc7751d6d.png" />
-</div>
 </div>
 </section>
 <section id="question-2-5">
@@ -964,7 +899,7 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </section>
 <section id="question-3-1">
 <h2>Question 3.1<a class="headerlink" href="#question-3-1" title="Permalink to this headline">#</a></h2>
-<p>Next, try creating a new patch environment just like our first one, but with only two patches of 20 targets each. Make predictions as to how the performance of each agent type will change and why. Make predictions for on-patch-proportion, total reward, and death.</p>
+<p>Next, we will try creating a new patch environment just like our first one, but with only two patches of 20 targets each. Make predictions as to how the performance of each agent type will change and why. Make predictions for on-patch-proportion, total reward, and death.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add your predictions here, as a python comment in this cell below.</span>
@@ -987,9 +922,9 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 <span class="n">detection_radius</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">max_steps</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">min_length</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">n_patches</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># FILL IN         # number of patches</span>
-<span class="n">n_per_patch</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># FILL IN      # number targets per patch</span>
-<span class="n">radius</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># FILL IN            # radius of each patch</span>
+<span class="n">n_patches</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">#          # number of patches</span>
+<span class="n">n_per_patch</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1">#       # number targets per patch</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">#             # radius of each patch</span>
 <span class="n">target_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="c1"># Generate patches of argets</span>
@@ -1029,9 +964,6 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/e0be95a67f2d8a5f05c8290d68f1227983f775caa693490291ab47fb6cc5c978.png" src="../_images/e0be95a67f2d8a5f05c8290d68f1227983f775caa693490291ab47fb6cc5c978.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1059,8 +991,6 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "215f50594aa44366acf338389091c349"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ca5ee69c2a144a1aa80359989ca9010e"}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1100,10 +1030,6 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "030da6fe031f495585c1bcc73e2b694c"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "f89d432d5d494136851475b5183606aa"}</script><img alt="../_images/c8645cee82ff5229648211608fa74b751ce0aa1094e4538745c3c870798aa8f5.png" src="../_images/c8645cee82ff5229648211608fa74b751ce0aa1094e4538745c3c870798aa8f5.png" />
-<img alt="../_images/2d81da558ac857b0827b97ffa84d89083e3bfcfabea2f1f94dd355981f2fa7e3.png" src="../_images/2d81da558ac857b0827b97ffa84d89083e3bfcfabea2f1f94dd355981f2fa7e3.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1142,10 +1068,6 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ea82f39dc99d409abf5f5f3b573caaab"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "257604895a104d7b8b0bf07485144ea8"}</script><img alt="../_images/6846fd0f054ef2c0cc0049add463a1dae2f9b48910ef5f883461330fa61bfff9.png" src="../_images/6846fd0f054ef2c0cc0049add463a1dae2f9b48910ef5f883461330fa61bfff9.png" />
-<img alt="../_images/6adb32e1c9cf7330929aaf0d7debf502e183555271cac3cc57cbce876e2550bd.png" src="../_images/6adb32e1c9cf7330929aaf0d7debf502e183555271cac3cc57cbce876e2550bd.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1173,9 +1095,6 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "10710a3b5bea4257ab621b0508c6e0d2"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "82a7dc459d1041fd9de256ee3f2a4761"}</script><img alt="../_images/b7a19a1e14a324c2a5c171c38833b40f692238c424d32187c765a61b03636883.png" src="../_images/b7a19a1e14a324c2a5c171c38833b40f692238c424d32187c765a61b03636883.png" />
 </div>
 </div>
 <section id="question-3-2">

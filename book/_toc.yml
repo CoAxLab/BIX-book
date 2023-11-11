@@ -15,6 +15,7 @@ parts:
     - file: notebooks/lab7-foraging
     - file: notebooks/lab8-infotaxis
     - file: notebooks/lab9-reward_seeking
+    - file: notebooks/lab10-curiosity_driven_learning
   - caption: Exercises
     chapters:
     - file: exercises/exercise1-getting-started

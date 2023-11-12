@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 3 - Chemotaxis &#8212; Biologically Intelligent eXploration (BIX)</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -61,15 +60,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lab3-chemotaxis';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lab 4 - Evidence Accumulation" href="lab4-evidence_accumulation.html" />
     <link rel="prev" title="Lab 2 - Random exploration" href="lab2-explorelib.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -158,12 +157,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+        <p class="caption"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro-python.html">Introduction to python</a></li>
 
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<p class="caption"><span class="caption-text">Labs</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lab1-information.html">Lab 1- Information theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2-explorelib.html">Lab 2 - Random exploration</a></li>
@@ -177,7 +176,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab10-curiosity_driven_learning.html">Lab 10 - Curiosity-driven exploration</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<p class="caption"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
@@ -414,7 +413,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-3-chemotaxis">
-<h1>Lab 3 - Chemotaxis<a class="headerlink" href="#lab-3-chemotaxis" title="Permalink to this heading">#</a></h1>
+<h1>Lab 3 - Chemotaxis<a class="headerlink" href="#lab-3-chemotaxis" title="Permalink to this headline">#</a></h1>
 <p>This lab is designed to get you familiar with the basics of chemotaxis.  We will compare our random agent with a gradient searcher who operates akin to a simple bacteria agent.</p>
 <p>There are three goals here.</p>
 <ol class="arabic simple">
@@ -423,12 +422,12 @@ document.write(`
 <li><p>Look at the robustness of chemotaxis to noise.</p></li>
 </ol>
 <section id="background">
-<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h2>
 <p>In this lab we return to <em>taxic explorations</em>. We visit the sniff world (aka <em>ScentGrid</em>) and at what happens when sense signals are not just noisy, but partially observed. In otherwords, when there is distortion in the channel of information.</p>
 <p>Our environment this times just deletes scent information from the grid, with a probability <span class="math notranslate nohighlight">\((1- p_{scent})\)</span>. The noisy background is of course unaffected by this deletion.</p>
 </section>
 <section id="bacteria-again">
-<h2>Bacteria again?<a class="headerlink" href="#bacteria-again" title="Permalink to this heading">#</a></h2>
+<h2>Bacteria again?<a class="headerlink" href="#bacteria-again" title="Permalink to this headline">#</a></h2>
 <p>Our basic model of bacterial exploration is as simple as can be.</p>
 <ul class="simple">
 <li><p>When the gradient is positive, meaning you are going “up” the gradient, the probability of turning is set to <em>p pos</em>.</p></li>
@@ -452,13 +451,13 @@ document.write(`
 <li><p>The length of travel before the next turn decision is sampled from an exponential distribution just like the <em>DiffusionDiscrete</em> evironment.</p></li>
 </ul>
 <section id="costly-cognition">
-<h3>Costly cognition<a class="headerlink" href="#costly-cognition" title="Permalink to this heading">#</a></h3>
+<h3>Costly cognition<a class="headerlink" href="#costly-cognition" title="Permalink to this headline">#</a></h3>
 <p>The <em>chemotaxis</em> agents will use an evidence accumulation process that we will explore in more detail later. This uses the iterative accumulation of evidence from sensory signals to try and make better decisions about the direction of the gradient. These decisions are of course statistical in nature.</p>
 <p>For the <em>randotaxis</em> agent number of steps means the number of steps or actions the agent takes.</p>
 </section>
 </section>
 <section id="section-setup">
-<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this heading">#</a></h2>
+<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this headline">#</a></h2>
 <p>First let’s set things up for the two parts of the lab. You’ve done this before, so we don’t need to specify each installation and module step.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -531,10 +530,10 @@ document.write(`
 </div>
 </section>
 <section id="section-1-simulating-noisy-missing-scents">
-<h2>Section 1 - Simulating noisy &amp; missing scents<a class="headerlink" href="#section-1-simulating-noisy-missing-scents" title="Permalink to this heading">#</a></h2>
+<h2>Section 1 - Simulating noisy &amp; missing scents<a class="headerlink" href="#section-1-simulating-noisy-missing-scents" title="Permalink to this headline">#</a></h2>
 <p>To build some intuition, let’s plot the “scent” emitted by a single target. That same scent corrupts by 1/2 a standard deviation of noise. That same signal, with all but 10 percent of it deleted. That same signal corrupted by noise <em>and</em> all but 10 percent of it deleted.</p>
 <section id="full-scent">
-<h3>Full Scent<a class="headerlink" href="#full-scent" title="Permalink to this heading">#</a></h3>
+<h3>Full Scent<a class="headerlink" href="#full-scent" title="Permalink to this headline">#</a></h3>
 <p>Okay, let’s first visualize what the scent diffusion around each target looks like in the environment using the diffusion parameters we have set up.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -557,7 +556,7 @@ document.write(`
 </div>
 </section>
 <section id="noisy-scent">
-<h3>Noisy Scent<a class="headerlink" href="#noisy-scent" title="Permalink to this heading">#</a></h3>
+<h3>Noisy Scent<a class="headerlink" href="#noisy-scent" title="Permalink to this headline">#</a></h3>
 <p>To corrupt the signal we can simply add more Gaussian noise. In this case we will use the <em>add_noise</em> function with a <span class="math notranslate nohighlight">\(\sigma=1\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -595,7 +594,7 @@ document.write(`
 </div>
 </section>
 <section id="missing-scent">
-<h3>Missing Scent<a class="headerlink" href="#missing-scent" title="Permalink to this heading">#</a></h3>
+<h3>Missing Scent<a class="headerlink" href="#missing-scent" title="Permalink to this headline">#</a></h3>
 <p>We can further distort or corrup the signal by making some of the information simply missing. Imaging we’re in our little agents acquatic environment and currents move some of the sent signal away.</p>
 <p>Here we can control the probability of a scent molecule being detected at any point in space with the <em>p_scent</em> parameter.</p>
 <div class="cell docutils container">
@@ -631,7 +630,7 @@ document.write(`
 </div>
 </section>
 <section id="noisy-and-missing-scent">
-<h3>Noisy <em>and</em> Missing Scent<a class="headerlink" href="#noisy-and-missing-scent" title="Permalink to this heading">#</a></h3>
+<h3>Noisy <em>and</em> Missing Scent<a class="headerlink" href="#noisy-and-missing-scent" title="Permalink to this headline">#</a></h3>
 <p>Now let’s see the most distorted signal we can: one with both Gaussian noise added <em>and</em> partially observed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -671,7 +670,7 @@ document.write(`
 <p>So, pretty noisy but resolvable.</p>
 </section>
 <section id="question-1-1">
-<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this headline">#</a></h3>
 <p>Adding noise and lowering detection probability both act to increase distortion to the signal channel that will be used by our agents. Will this help or hinder the agents that use sensory signals and/or information to drive their decisions? Explain your answer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -682,7 +681,7 @@ document.write(`
 </div>
 </section>
 <section id="question-1-2">
-<h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this headline">#</a></h3>
 <p>Re-run the Noisy <em>AND</em> Missing simulations above, playing with both of the <em>p_scent</em> and <em>noise_sigma</em> terms. Do this one at a time (i.e., when changing <em>p_scent</em> keep <em>noise_sigma=1</em>, when changign <em>noise_sigma</em> keep <em>p_scent=0.1</em>).</p>
 <p>What are the values for each parameter that lead to a complete loss in the scent signal even when averaging across 1000 samples?</p>
 <div class="cell docutils container">
@@ -695,7 +694,7 @@ document.write(`
 </section>
 </section>
 <section id="section-2-using-sensory-evidence-to-explore">
-<h2>Section 2 - Using Sensory Evidence To Explore<a class="headerlink" href="#section-2-using-sensory-evidence-to-explore" title="Permalink to this heading">#</a></h2>
+<h2>Section 2 - Using Sensory Evidence To Explore<a class="headerlink" href="#section-2-using-sensory-evidence-to-explore" title="Permalink to this headline">#</a></h2>
 <p>In this section we take on accumulating evidence as a policy for decision making in the form of simple chemotaxis with noisy sensors. The presence of this uncertainty makes decisions–of the kind common to decision theory–a necessity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -953,7 +952,7 @@ document.write(`
 </div>
 </div>
 <section id="question-2-1">
-<h3>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this headline">#</a></h3>
 <p>How do each of our agents perform across the performance measures we have chosen?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -965,7 +964,7 @@ document.write(`
 </section>
 </section>
 <section id="section-3-robustness-of-information-searching">
-<h2>Section 3 - Robustness of information searching<a class="headerlink" href="#section-3-robustness-of-information-searching" title="Permalink to this heading">#</a></h2>
+<h2>Section 3 - Robustness of information searching<a class="headerlink" href="#section-3-robustness-of-information-searching" title="Permalink to this headline">#</a></h2>
 <p>In this final section we will see how the distortion in the channel driven by missing signal influences the efficiency of our chemo agent.</p>
 <p>Here we will test a range of <em>p_scent</em> values. Essentially we will be turning <em>down</em> the distortion as <em>p_scent</em> increases. For these experiments we will hold the <em>noise_sigma</em> constant at 1.</p>
 <div class="cell docutils container">
@@ -1152,7 +1151,7 @@ document.write(`
 </div>
 </div>
 <section id="question-3-1">
-<h3>Question 3.1<a class="headerlink" href="#question-3-1" title="Permalink to this heading">#</a></h3>
+<h3>Question 3.1<a class="headerlink" href="#question-3-1" title="Permalink to this headline">#</a></h3>
 <p>How does increasing <em>p_scent</em> impact our chemo agent’s performance? Explain why this particular pattern emerges in the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1163,7 +1162,7 @@ document.write(`
 </div>
 </section>
 <section id="question-3-2">
-<h3>Question 3.2<a class="headerlink" href="#question-3-2" title="Permalink to this heading">#</a></h3>
+<h3>Question 3.2<a class="headerlink" href="#question-3-2" title="Permalink to this headline">#</a></h3>
 <p>Re-run the simulations from this section, but now change the accumulation rate (<em>drift_rate</em>) from 1.0 to 0.75. How and why does this influence the agent’s behavior (compared to the higher accumulation rate)?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

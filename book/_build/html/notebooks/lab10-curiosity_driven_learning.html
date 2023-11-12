@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 10 - Curiosity-driven exploration &#8212; Biologically Intelligent eXploration (BIX)</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -61,15 +60,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lab10-curiosity_driven_learning';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Exercise 1: Github &amp; Colab" href="../exercises/exercise1-getting-started.html" />
     <link rel="prev" title="Lab 9 - Reward seeking" href="lab9-reward_seeking.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -158,12 +157,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+        <p class="caption"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro-python.html">Introduction to python</a></li>
 
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<p class="caption"><span class="caption-text">Labs</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lab1-information.html">Lab 1- Information theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2-explorelib.html">Lab 2 - Random exploration</a></li>
@@ -177,7 +176,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 10 - Curiosity-driven exploration</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<p class="caption"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
@@ -457,7 +456,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-10-curiosity-driven-exploration">
-<h1>Lab 10 - Curiosity-driven exploration<a class="headerlink" href="#lab-10-curiosity-driven-exploration" title="Permalink to this heading">#</a></h1>
+<h1>Lab 10 - Curiosity-driven exploration<a class="headerlink" href="#lab-10-curiosity-driven-exploration" title="Permalink to this headline">#</a></h1>
 <p>This lab will exlore how the win-stay, lose-switch (WSLS) approach to the exploration-exploitation dilemma boosts curious exploration in our little bacteria friends.</p>
 <p>Sections:</p>
 <ol class="arabic simple">
@@ -466,7 +465,7 @@ document.write(`
 <li><p>Comparing all the methods we have learned so far.</p></li>
 </ol>
 <section id="background">
-<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h2>
 <p>In this final lab we take on all the agents that we have studied so far and some new ones too.</p>
 <p><em>The decisions to be made this week are the exact opposite of every other lab</em>.</p>
 <p>I am giving you six tuned agents, and three “levers” which control the environment. The now familiar scent grid. Your job this week is to see how curiosity and reward learning bias our search.</p>
@@ -477,7 +476,7 @@ document.write(`
 </ul>
 <p>Once again, on final time it’s time for <em>taxic explorations</em>. We revisit the sniff world (aka <em>ScentGrid</em>) with a familiar twist. We look again at what happens when sense information is not just noisy, but suddenly missing altogether. A concrete, cheap to simulate, case of this is turbulent flows.</p>
 <section id="our-agents-this-time">
-<h3>Our agents, this time<a class="headerlink" href="#our-agents-this-time" title="Permalink to this heading">#</a></h3>
+<h3>Our agents, this time<a class="headerlink" href="#our-agents-this-time" title="Permalink to this headline">#</a></h3>
 <p>We will study six agents. They are,</p>
 <ul class="simple">
 <li><p>A diffusion walker (aka rando-taxis) (aka <em>DiffusionGrid</em>)</p></li>
@@ -490,7 +489,7 @@ document.write(`
 <p>The goal is, as I said, to <em>the change the world</em> – until each agent “wins” (defined above).</p>
 </section>
 <section id="our-agents-in-review">
-<h3>Our agents, in review<a class="headerlink" href="#our-agents-in-review" title="Permalink to this heading">#</a></h3>
+<h3>Our agents, in review<a class="headerlink" href="#our-agents-in-review" title="Permalink to this headline">#</a></h3>
 <p><strong>Random search</strong> (rando-taxis): Actions are sampled from an exponential distribution. For the <em>randotaxis</em> agent number of steps means the number of steps or actions the agent takes.</p>
 <p><strong>Sniff!</strong> (chemo-taxis): Recall our basic model of E. Coli exploration is as simple as can be.</p>
 <ul class="simple">
@@ -519,7 +518,7 @@ document.write(`
 </section>
 </section>
 <section id="install-and-import-needed-modules">
-<h2>Install and import needed modules<a class="headerlink" href="#install-and-import-needed-modules" title="Permalink to this heading">#</a></h2>
+<h2>Install and import needed modules<a class="headerlink" href="#install-and-import-needed-modules" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install explorationlib?</span>
@@ -597,12 +596,12 @@ document.write(`
 </div>
 </section>
 <section id="section-1-rl-as-a-search-strategy">
-<h2>Section 1 -  RL as a search strategy<a class="headerlink" href="#section-1-rl-as-a-search-strategy" title="Permalink to this heading">#</a></h2>
+<h2>Section 1 -  RL as a search strategy<a class="headerlink" href="#section-1-rl-as-a-search-strategy" title="Permalink to this headline">#</a></h2>
 <section id="rl">
-<h3>RL<a class="headerlink" href="#rl" title="Permalink to this heading">#</a></h3>
+<h3>RL<a class="headerlink" href="#rl" title="Permalink to this headline">#</a></h3>
 <p>To build some intuition, let’s plot the the behavoir of our RL agent as it learns where the rewards are in a (fixed) ScentGrid env. The noise level is 2 standard deviaions, all but 10 percent of it deleted.</p>
 <section id="question-1-1">
-<h4>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h4>
+<h4>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this headline">#</a></h4>
 <p>Does the fact that the noise level of the scents is 2 standard deviaions, and all but 10 percent of it deleted matter for the RL agent?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -614,7 +613,7 @@ document.write(`
 </section>
 </section>
 <section id="shared-params-and-env">
-<h3>Shared params and env<a class="headerlink" href="#shared-params-and-env" title="Permalink to this heading">#</a></h3>
+<h3>Shared params and env<a class="headerlink" href="#shared-params-and-env" title="Permalink to this headline">#</a></h3>
 <p>Okay, let’s get started by setting up our environment. his is the standard scent grid we have used in prior labs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -657,7 +656,7 @@ document.write(`
 </div>
 </section>
 <section id="getting-to-know-you-rl">
-<h3>Getting to know you, RL<a class="headerlink" href="#getting-to-know-you-rl" title="Permalink to this heading">#</a></h3>
+<h3>Getting to know you, RL<a class="headerlink" href="#getting-to-know-you-rl" title="Permalink to this headline">#</a></h3>
 <p>For this demo we will set up two agents:</p>
 <ul class="simple">
 <li><p>Rando: random walker</p></li>
@@ -703,7 +702,7 @@ document.write(`
 </div>
 </section>
 <section id="rando-search">
-<h3>Rando search<a class="headerlink" href="#rando-search" title="Permalink to this heading">#</a></h3>
+<h3>Rando search<a class="headerlink" href="#rando-search" title="Permalink to this headline">#</a></h3>
 <p>Just one example of the movement of our random agent, for comparison with the cells below</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -734,7 +733,7 @@ document.write(`
 </div>
 </section>
 <section id="search-behavior-and-learning">
-<h3>Search behavior and learning<a class="headerlink" href="#search-behavior-and-learning" title="Permalink to this heading">#</a></h3>
+<h3>Search behavior and learning<a class="headerlink" href="#search-behavior-and-learning" title="Permalink to this headline">#</a></h3>
 <p>We will now look at the performance of our RL agent at three time points (N=0, early; N=50, middle; N=99, late)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -783,7 +782,7 @@ document.write(`
 </div>
 </section>
 <section id="reward-value-in-time">
-<h3>Reward value, in time<a class="headerlink" href="#reward-value-in-time" title="Permalink to this heading">#</a></h3>
+<h3>Reward value, in time<a class="headerlink" href="#reward-value-in-time" title="Permalink to this headline">#</a></h3>
 <p>Now let’s look at the value (<span class="math notranslate nohighlight">\(Q\)</span>-value in this case) of the optimal value (i.e., <span class="math notranslate nohighlight">\(max(Q(a))\)</span>) across time for each of these three stages of learning.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -799,7 +798,7 @@ document.write(`
 </div>
 </div>
 <section id="question-1-2">
-<h4>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this heading">#</a></h4>
+<h4>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this headline">#</a></h4>
 <p>What do you see in this behavior of the RL agent over time?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -811,11 +810,11 @@ document.write(`
 </section>
 </section>
 <section id="looking-across-simulations">
-<h3>Looking across simulations<a class="headerlink" href="#looking-across-simulations" title="Permalink to this heading">#</a></h3>
+<h3>Looking across simulations<a class="headerlink" href="#looking-across-simulations" title="Permalink to this headline">#</a></h3>
 <p>Now let’s plot our metrics and see how the two agents did.</p>
 </section>
 <section id="death">
-<h3>Death<a class="headerlink" href="#death" title="Permalink to this heading">#</a></h3>
+<h3>Death<a class="headerlink" href="#death" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
@@ -846,7 +845,7 @@ document.write(`
 </div>
 </section>
 <section id="total-reward">
-<h3>Total reward<a class="headerlink" href="#total-reward" title="Permalink to this heading">#</a></h3>
+<h3>Total reward<a class="headerlink" href="#total-reward" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
@@ -886,7 +885,7 @@ document.write(`
 </div>
 </div>
 <section id="question-1-3">
-<h4>Question 1.3<a class="headerlink" href="#question-1-3" title="Permalink to this heading">#</a></h4>
+<h4>Question 1.3<a class="headerlink" href="#question-1-3" title="Permalink to this headline">#</a></h4>
 <p>How does the performance of the RL agent compare, across all performance metrics, to the random agent? Is this a fair comparison? Why or why not?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -899,9 +898,9 @@ document.write(`
 </section>
 </section>
 <section id="section-2-wsls-as-a-search-strategy">
-<h2>Section 2 -  WSLS as a search strategy<a class="headerlink" href="#section-2-wsls-as-a-search-strategy" title="Permalink to this heading">#</a></h2>
+<h2>Section 2 -  WSLS as a search strategy<a class="headerlink" href="#section-2-wsls-as-a-search-strategy" title="Permalink to this headline">#</a></h2>
 <section id="wsls">
-<h3>WSLS<a class="headerlink" href="#wsls" title="Permalink to this heading">#</a></h3>
+<h3>WSLS<a class="headerlink" href="#wsls" title="Permalink to this headline">#</a></h3>
 <p>Now let’s include our curious agent. Remember, this agent tracks the value of information as well as the value of rewards. It is basically two agents acting as one: the RL agent and an info-taxis agent.</p>
 <p>The WSLS agnet makes a choice to go after whatever action has the highest value (<span class="math notranslate nohighlight">\(R\)</span> or <span class="math notranslate nohighlight">\(E\)</span>), swtiching back and forth between seeking rewards (i.e., targets) and information.</p>
 <div class="cell docutils container">
@@ -986,7 +985,7 @@ document.write(`
 </div>
 </section>
 <section id="reward-and-information-value-across-learning">
-<h3>Reward AND Information value across learning<a class="headerlink" href="#reward-and-information-value-across-learning" title="Permalink to this heading">#</a></h3>
+<h3>Reward AND Information value across learning<a class="headerlink" href="#reward-and-information-value-across-learning" title="Permalink to this headline">#</a></h3>
 <p>Just like before, let’s see how the behavior of our WSLS agent changes across repeated exposures to the same environment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1034,7 +1033,7 @@ document.write(`
 </div>
 </div>
 <section id="question-2-1">
-<h4>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this heading">#</a></h4>
+<h4>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this headline">#</a></h4>
 <p>Based off of the behavior of our WSLS agent, how well do you think it will perform after repeated runs (compared to the Rando agent)?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1046,7 +1045,7 @@ document.write(`
 </section>
 </section>
 <section id="value-over-time">
-<h3>Value over time<a class="headerlink" href="#value-over-time" title="Permalink to this heading">#</a></h3>
+<h3>Value over time<a class="headerlink" href="#value-over-time" title="Permalink to this headline">#</a></h3>
 <p>Again let’s look at the optional Value driving the action (<span class="math notranslate nohighlight">\(R\)</span> or <span class="math notranslate nohighlight">\(E\)</span>) of our agent.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1063,7 +1062,7 @@ document.write(`
 </div>
 </section>
 <section id="id1">
-<h3>Death<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>Death<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
@@ -1094,7 +1093,7 @@ document.write(`
 </div>
 </section>
 <section id="id2">
-<h3>Total reward<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>Total reward<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
@@ -1134,7 +1133,7 @@ document.write(`
 </div>
 </div>
 <section id="question-2-2">
-<h4>Question 2.2<a class="headerlink" href="#question-2-2" title="Permalink to this heading">#</a></h4>
+<h4>Question 2.2<a class="headerlink" href="#question-2-2" title="Permalink to this headline">#</a></h4>
 <p>Based on the performance you have seen above, is it better to be curious and greedy, or greedy and noisy?
 Compare the RL agent to the WSLS agent (and Rando for control).</p>
 <div class="cell docutils container">
@@ -1148,9 +1147,9 @@ Compare the RL agent to the WSLS agent (and Rando for control).</p>
 </section>
 </section>
 <section id="now-let-s-compare-the-agents-directly">
-<h2>Now let’s compare the agents directly.<a class="headerlink" href="#now-let-s-compare-the-agents-directly" title="Permalink to this heading">#</a></h2>
+<h2>Now let’s compare the agents directly.<a class="headerlink" href="#now-let-s-compare-the-agents-directly" title="Permalink to this headline">#</a></h2>
 <section id="id3">
-<h3>Death<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3>Death<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
@@ -1181,7 +1180,7 @@ Compare the RL agent to the WSLS agent (and Rando for control).</p>
 </div>
 </section>
 <section id="id4">
-<h3>Total reward<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>Total reward<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
@@ -1221,7 +1220,7 @@ Compare the RL agent to the WSLS agent (and Rando for control).</p>
 </div>
 </div>
 <section id="question-2-3">
-<h4>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this heading">#</a></h4>
+<h4>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this headline">#</a></h4>
 <p>The WSLS approach should have generated more total reward. It may also have had a few (&lt; 10) deaths. (If it did not, try running the WSLS cells again).</p>
 <p>Likewise, if you study WSLS search behavior and value learning time courses, you’ll see it “settles down” to one rewarding spot and can stay there.</p>
 <p>In other words, WSLS is a method with very high inductive bias.</p>
@@ -1239,10 +1238,10 @@ Compare the RL agent to the WSLS agent (and Rando for control).</p>
 </section>
 </section>
 <section id="section-3-the-battle-royal-of-our-bacteria-agents">
-<h2>Section 3 - The battle royal of our bacteria agents<a class="headerlink" href="#section-3-the-battle-royal-of-our-bacteria-agents" title="Permalink to this heading">#</a></h2>
+<h2>Section 3 - The battle royal of our bacteria agents<a class="headerlink" href="#section-3-the-battle-royal-of-our-bacteria-agents" title="Permalink to this headline">#</a></h2>
 <p>Now let’s run all of our agents on the same world from Sections 1 and 2.</p>
 <section id="keep-our-environment-the-same">
-<h3>Keep our environment the same<a class="headerlink" href="#keep-our-environment-the-same" title="Permalink to this heading">#</a></h3>
+<h3>Keep our environment the same<a class="headerlink" href="#keep-our-environment-the-same" title="Permalink to this headline">#</a></h3>
 <p>Just resetting here in case we tweaked parameters above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1285,7 +1284,7 @@ Compare the RL agent to the WSLS agent (and Rando for control).</p>
 </div>
 </section>
 <section id="run-em-all">
-<h3>Run ‘em all!<a class="headerlink" href="#run-em-all" title="Permalink to this heading">#</a></h3>
+<h3>Run ‘em all!<a class="headerlink" href="#run-em-all" title="Permalink to this headline">#</a></h3>
 <p>Now we can run all 6 of our agent types in the environment, the same way, and see how well they did.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1417,7 +1416,7 @@ Compare the RL agent to the WSLS agent (and Rando for control).</p>
 </div>
 </section>
 <section id="search-behavior">
-<h3>Search behavior<a class="headerlink" href="#search-behavior" title="Permalink to this heading">#</a></h3>
+<h3>Search behavior<a class="headerlink" href="#search-behavior" title="Permalink to this headline">#</a></h3>
 <p>Let’s just take a look at the movements of each agent at the last run of the repeated tests.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1452,7 +1451,7 @@ Compare the RL agent to the WSLS agent (and Rando for control).</p>
 </div>
 </div>
 <section id="question-3-1">
-<h4>Question 3.1<a class="headerlink" href="#question-3-1" title="Permalink to this heading">#</a></h4>
+<h4>Question 3.1<a class="headerlink" href="#question-3-1" title="Permalink to this headline">#</a></h4>
 <p>What do you see in the different agents’ behavior? Who moved more and who moved less?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1465,9 +1464,9 @@ Compare the RL agent to the WSLS agent (and Rando for control).</p>
 </section>
 </section>
 <section id="now-let-s-run-one-final-evaluation-to-test-them-all">
-<h2>Now let’s run one final evaluation to test them all<a class="headerlink" href="#now-let-s-run-one-final-evaluation-to-test-them-all" title="Permalink to this heading">#</a></h2>
+<h2>Now let’s run one final evaluation to test them all<a class="headerlink" href="#now-let-s-run-one-final-evaluation-to-test-them-all" title="Permalink to this headline">#</a></h2>
 <section id="id5">
-<h3>Death<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3>Death<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
@@ -1498,7 +1497,7 @@ Compare the RL agent to the WSLS agent (and Rando for control).</p>
 </div>
 </section>
 <section id="id6">
-<h3>Total reward<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3>Total reward<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
@@ -1539,7 +1538,7 @@ Compare the RL agent to the WSLS agent (and Rando for control).</p>
 </div>
 </div>
 <section id="question-3-2">
-<h4>Question 3.2<a class="headerlink" href="#question-3-2" title="Permalink to this heading">#</a></h4>
+<h4>Question 3.2<a class="headerlink" href="#question-3-2" title="Permalink to this headline">#</a></h4>
 <p>In the same environment, we scaled up th ecomplexity of the decisions of our little bacteria friends. What pattern did you see across agents? Who did the best, who did worse, and who was most variable?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1550,7 +1549,7 @@ Compare the RL agent to the WSLS agent (and Rando for control).</p>
 </div>
 </section>
 <section id="question-3-3">
-<h4>Question 3.3<a class="headerlink" href="#question-3-3" title="Permalink to this heading">#</a></h4>
+<h4>Question 3.3<a class="headerlink" href="#question-3-3" title="Permalink to this headline">#</a></h4>
 <p>Remember from the prior labs that sometimes the Rando agent outperformed agents with more directed decisions in their search. What changes in the environment would provide an edge for the simpler (and more random) agents?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 9 - Reward seeking &#8212; Biologically Intelligent eXploration (BIX)</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -61,15 +60,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lab9-reward_seeking';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lab 10 - Curiosity-driven exploration" href="lab10-curiosity_driven_learning.html" />
     <link rel="prev" title="Lab 8 - Infotaxis" href="lab8-infotaxis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -158,12 +157,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+        <p class="caption"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro-python.html">Introduction to python</a></li>
 
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<p class="caption"><span class="caption-text">Labs</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lab1-information.html">Lab 1- Information theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2-explorelib.html">Lab 2 - Random exploration</a></li>
@@ -177,7 +176,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 9 - Reward seeking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab10-curiosity_driven_learning.html">Lab 10 - Curiosity-driven exploration</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<p class="caption"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
@@ -430,7 +429,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-9-reward-seeking">
-<h1>Lab 9 - Reward seeking<a class="headerlink" href="#lab-9-reward-seeking" title="Permalink to this heading">#</a></h1>
+<h1>Lab 9 - Reward seeking<a class="headerlink" href="#lab-9-reward-seeking" title="Permalink to this headline">#</a></h1>
 <p>This lab has 3 main components designed to give you an interactive understanding of core reinforcement learning concepts and the <span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy reinforcement learning algorithm.</p>
 <p>Sections:
 0. Background on essential reinforcement concepts that we will be engagning with hands-on.</p>
@@ -439,9 +438,9 @@ document.write(`
 <li><p>Investigating the effect of different parameters in the <span class="math notranslate nohighlight">\(\epsilon\)</span> greedy algorithm.</p></li>
 </ol>
 <section id="background">
-<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h2>
 <section id="the-bandit-task">
-<h3>The bandit task<a class="headerlink" href="#the-bandit-task" title="Permalink to this heading">#</a></h3>
+<h3>The bandit task<a class="headerlink" href="#the-bandit-task" title="Permalink to this headline">#</a></h3>
 <p>In this assignment we study exploration in the very abstract <span class="math notranslate nohighlight">\(k\)</span>-armed bandit task.</p>
 <ul class="simple">
 <li><p>In this there are <span class="math notranslate nohighlight">\(k\)</span> actions to take.</p></li>
@@ -451,7 +450,7 @@ document.write(`
 </ul>
 </section>
 <section id="action-value-learning">
-<h3>Action-value learning<a class="headerlink" href="#action-value-learning" title="Permalink to this heading">#</a></h3>
+<h3>Action-value learning<a class="headerlink" href="#action-value-learning" title="Permalink to this headline">#</a></h3>
 <p>Our agents are really learning, at last. Reinforcement Learning (RL), to be precise.</p>
 <p>The reward value <span class="math notranslate nohighlight">\(Q\)</span> update rule for all agents (below) and arm is the same:</p>
 <p><span class="math notranslate nohighlight">\( Q \leftarrow Q + \alpha * (R - Q) \)</span> [1]</p>
@@ -465,14 +464,14 @@ document.write(`
 <p><em>Note</em>: We are not going to really play with <span class="math notranslate nohighlight">\(\alpha\)</span> here. Just giving you some intuition.</p>
 </section>
 <section id="basic-exploration-strategies">
-<h3>Basic exploration strategies<a class="headerlink" href="#basic-exploration-strategies" title="Permalink to this heading">#</a></h3>
+<h3>Basic exploration strategies<a class="headerlink" href="#basic-exploration-strategies" title="Permalink to this headline">#</a></h3>
 <p>Our exploration strategies are a random one, a sequential one, or <span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy (aka ‘e’-greedy).</p>
 <p>The <span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy method is not the best known solution to trading off exploration with exploitation. Then again, it is widely used to this day. It’s a place to start.</p>
 <p>Our metric is <em>total reward</em>. Maximizing that is the goal of all RL, afterall.</p>
 </section>
 </section>
 <section id="section-setup">
-<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this heading">#</a></h2>
+<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install explorationlib?</span>
@@ -537,10 +536,10 @@ document.write(`
 </div>
 </section>
 <section id="section-1-the-bandit-task">
-<h2>Section 1 - The bandit task<a class="headerlink" href="#section-1-the-bandit-task" title="Permalink to this heading">#</a></h2>
+<h2>Section 1 - The bandit task<a class="headerlink" href="#section-1-the-bandit-task" title="Permalink to this headline">#</a></h2>
 <p>In this section we’ll study three explorers getting to know one bandit, with four arms.</p>
 <section id="creating-a-bandit-task">
-<h3>Creating a bandit task<a class="headerlink" href="#creating-a-bandit-task" title="Permalink to this heading">#</a></h3>
+<h3>Creating a bandit task<a class="headerlink" href="#creating-a-bandit-task" title="Permalink to this headline">#</a></h3>
 <p>Let’s make a 4-armed bandit and then plot its values. (Expected value is the term used in the literature, so we use it here).</p>
 <p><em>Note</em>: The random seed is fixed. If you change the see and run the cell below, some of the reward probabilities will change. The probability of the best arm, the optimal value arm is fixed however. It is set to 0.35, and located at arm 2. Try it! Rerun the cell below with different seeds, a few times, to get a sense of how the non-optimal arms can vary. When you are done, return to the orginal seed value and re-run.</p>
 <div class="cell docutils container">
@@ -561,7 +560,7 @@ document.write(`
 </div>
 </section>
 <section id="question-1-1">
-<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this headline">#</a></h3>
 <p>Given the reward probabilities (expected values) in this bandit task, how “easy” or “difficult” do you think this task would be to learn from a simple update rule like we showed above? Why?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -572,7 +571,7 @@ document.write(`
 </div>
 </section>
 <section id="our-three-agents">
-<h3>Our three agents<a class="headerlink" href="#our-three-agents" title="Permalink to this heading">#</a></h3>
+<h3>Our three agents<a class="headerlink" href="#our-three-agents" title="Permalink to this headline">#</a></h3>
 <p>A word about the code. Our agents this week work in what gets called an ActorCritic desgin. This breaks reinforcement learning algorithms into two parts: the Actor does action selection, and the Critic estimates the value of each action.</p>
 <p>Now in normal reinforcement learning, aka not pure exploration, the <em>Actor</em> uses the <span class="math notranslate nohighlight">\(Q\)</span> value estimates from the <em>Critic</em> to, in part, make its decisions. Be it explore or exploit. This is indeed the case for how the <span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy agent, <em>EpsilonActor</em>, works.</p>
 <p>…But…</p>
@@ -625,7 +624,7 @@ document.write(`
 </div>
 </div>
 <section id="plot-action-choices">
-<h4>Plot action choices<a class="headerlink" href="#plot-action-choices" title="Permalink to this heading">#</a></h4>
+<h4>Plot action choices<a class="headerlink" href="#plot-action-choices" title="Permalink to this headline">#</a></h4>
 <p>with time (aka steps).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -646,7 +645,7 @@ document.write(`
 </section>
 </section>
 <section id="question-1-2">
-<h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this headline">#</a></h3>
 <p>Describe the coice behavior of each agent type.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -657,7 +656,7 @@ document.write(`
 </div>
 </section>
 <section id="question-1-3">
-<h3>Question 1.3<a class="headerlink" href="#question-1-3" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.3<a class="headerlink" href="#question-1-3" title="Permalink to this headline">#</a></h3>
 <p>Re-run the simulations above a few times. What range of choice patterns does epsilon-greedy agent exhibit? What do you think leads to these patterns?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -668,7 +667,7 @@ document.write(`
 </div>
 </section>
 <section id="question-1-4">
-<h3>Question 1.4<a class="headerlink" href="#question-1-4" title="Permalink to this heading">#</a></h3>
+<h3>Question 1.4<a class="headerlink" href="#question-1-4" title="Permalink to this headline">#</a></h3>
 <p>Now change the ϵ value for the ϵ-greedy agent to <span class="math notranslate nohighlight">\(0.01\)</span> and re-run the simulations a few times. How does the behavior of this agent change? What does this tell you about the utility of greediness in this particular form of the bandit task?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -678,7 +677,7 @@ document.write(`
 </div>
 </div>
 <section id="histograms-of-action-probability-aka-arm-choice">
-<h4>Histograms of action probability (aka arm choice).<a class="headerlink" href="#histograms-of-action-probability-aka-arm-choice" title="Permalink to this heading">#</a></h4>
+<h4>Histograms of action probability (aka arm choice).<a class="headerlink" href="#histograms-of-action-probability-aka-arm-choice" title="Permalink to this headline">#</a></h4>
 <p><em>Fun fact</em>: The flatter these plots are, the closer they are to what is called <em>maximum entropy</em> exploration behavior.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -703,9 +702,9 @@ document.write(`
 </section>
 </section>
 <section id="section-2-investigating-the-epsilon-greedy-algorithm">
-<h2>Section 2 - Investigating the epsilon-greedy algorithm<a class="headerlink" href="#section-2-investigating-the-epsilon-greedy-algorithm" title="Permalink to this heading">#</a></h2>
+<h2>Section 2 - Investigating the epsilon-greedy algorithm<a class="headerlink" href="#section-2-investigating-the-epsilon-greedy-algorithm" title="Permalink to this headline">#</a></h2>
 <section id="meet-our-dilemma">
-<h3>Meet our dilemma<a class="headerlink" href="#meet-our-dilemma" title="Permalink to this heading">#</a></h3>
+<h3>Meet our dilemma<a class="headerlink" href="#meet-our-dilemma" title="Permalink to this headline">#</a></h3>
 <p>I’ve been learning Q-value estimates.</p>
 <ul class="simple">
 <li><p>Should I explore (keep sampling the options to get more data points to update Q-value estimates)?</p></li>
@@ -718,7 +717,7 @@ document.write(`
 <p>Let’s play with <span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy, on our base case bandit task.</p>
 </section>
 <section id="question-2-1">
-<h3>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this headline">#</a></h3>
 <p>We will run three differnt epsilon-greedy agents, each with a different epsilon value (0.05, 0.5, and 0.95). What do you expect each agent’s stepwise behavior to “look like”? Why?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -776,7 +775,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-2">
-<h3>Question 2.2<a class="headerlink" href="#question-2-2" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.2<a class="headerlink" href="#question-2-2" title="Permalink to this headline">#</a></h3>
 <p>Did the behavior match what you expected? If not, describe the actual behavior and explain what you think is behind it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -787,7 +786,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-3">
-<h3>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this headline">#</a></h3>
 <p>Re-run the stepwise choice behavior visualization at different <code class="docutils literal notranslate"><span class="pre">num_experiment</span></code> settings to view what happens in different experiments. Find a case when epsilon=0.05 agent didn’t select the best arm (Arm 2) very much. How do you think this happened?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -798,7 +797,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-4">
-<h3>Question 2.4<a class="headerlink" href="#question-2-4" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.4<a class="headerlink" href="#question-2-4" title="Permalink to this headline">#</a></h3>
 <p>We will visualize the average total reward for each agent next. Which agent do you think will collect the most reward and which one the least? Why?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -809,7 +808,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-5">
-<h3>Question 2.5<a class="headerlink" href="#question-2-5" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.5<a class="headerlink" href="#question-2-5" title="Permalink to this headline">#</a></h3>
 <p>Which agent do you think will exhibit the most variance in total reward across experiments? Why?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -819,7 +818,7 @@ document.write(`
 </div>
 </div>
 <section id="visualize-total-reward">
-<h4>Visualize total reward<a class="headerlink" href="#visualize-total-reward" title="Permalink to this heading">#</a></h4>
+<h4>Visualize total reward<a class="headerlink" href="#visualize-total-reward" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
@@ -848,7 +847,7 @@ document.write(`
 </section>
 </section>
 <section id="question-2-6">
-<h3>Question 2.6<a class="headerlink" href="#question-2-6" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.6<a class="headerlink" href="#question-2-6" title="Permalink to this headline">#</a></h3>
 <p>Were your predictions in questions 2.4 and 2.5 correct? If not, describe the actual results and explain what you think led to them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -858,7 +857,7 @@ document.write(`
 </div>
 </div>
 <section id="visualizing-a-histogram-of-average-choice-reward-across-experiments">
-<h4>Visualizing a histogram of average choice reward across experiments<a class="headerlink" href="#visualizing-a-histogram-of-average-choice-reward-across-experiments" title="Permalink to this heading">#</a></h4>
+<h4>Visualizing a histogram of average choice reward across experiments<a class="headerlink" href="#visualizing-a-histogram-of-average-choice-reward-across-experiments" title="Permalink to this headline">#</a></h4>
 <p>To get average choice reward for each experiment, we divide the total reward for the experiment by the number of steps (choices) taken to collect that total reward.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -877,7 +876,7 @@ document.write(`
 </section>
 </section>
 <section id="question-2-7">
-<h3>Question 2.7<a class="headerlink" href="#question-2-7" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.7<a class="headerlink" href="#question-2-7" title="Permalink to this headline">#</a></h3>
 <p>If instead of 400 steps in each experiment we let each agent run to near infinity, what would the above histogram look like and why?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -888,7 +887,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-8">
-<h3>Question 2.8<a class="headerlink" href="#question-2-8" title="Permalink to this heading">#</a></h3>
+<h3>Question 2.8<a class="headerlink" href="#question-2-8" title="Permalink to this headline">#</a></h3>
 <p>Based on what you’ve seen here today, if you were to follow an ϵ-greedy policy for choices in your own life, what value of ϵ would you choose? Why?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

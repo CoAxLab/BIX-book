@@ -6,9 +6,8 @@ parts:
     - file: notebooks/intro-python
   - caption: Labs
     chapters:
-    - file: notebooks/lab1-information
-    - file: notebooks/lab2-explorelib
-    - file: notebooks/lab3-chemotaxis
+    - file: notebooks/lab1-randomsearch
+    - file: notebooks/lab2-chemotaxis
     - file: notebooks/lab4-evidence_accumulation
     - file: notebooks/lab5-cbgt
     - file: notebooks/lab6-predator_prey

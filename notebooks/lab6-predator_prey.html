@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 6 - Predator-prey dynamics &#8212; Biologically Intelligent eXploration (BIX)</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lab 7 - Foraging" href="lab7-foraging.html" />
     <link rel="prev" title="Lab 5 - CBGT pathways" href="lab5-cbgt.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -155,16 +156,15 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p class="caption"><span class="caption-text">Getting started</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro-python.html">Introduction to python</a></li>
 
 </ul>
-<p class="caption"><span class="caption-text">Labs</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="lab1-information.html">Lab 1- Information theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab2-explorelib.html">Lab 2 - Random exploration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab3-chemotaxis.html">Lab 3 - Chemotaxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1-randomsearch.html">Lab 1 - Random exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2-chemotaxis.html">Lab 2 - Simple Chemotaxis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4-evidence_accumulation.html">Lab 4 - Evidence Accumulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab5-cbgt.html">Lab 5 - CBGT pathways</a></li>
 
@@ -174,7 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab10-curiosity_driven_learning.html">Lab 10 - Curiosity-driven exploration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Exercises</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
@@ -427,7 +427,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-6-predator-prey-dynamics">
-<h1>Lab 6 - Predator-prey dynamics<a class="headerlink" href="#lab-6-predator-prey-dynamics" title="Permalink to this headline">#</a></h1>
+<h1>Lab 6 - Predator-prey dynamics<a class="headerlink" href="#lab-6-predator-prey-dynamics" title="Permalink to this heading">#</a></h1>
 <p>In this assignment we study exploration for targets that can move. Prey, in other words. We also add uncertainty to their capture, with a probability of escape term, <em>p escape</em>. Think of this as a successful fleeing.</p>
 <p>Our exploration strategies are once again random. We have no scent or memory as an aide.</p>
 <p>The world is a grid world.</p>
@@ -443,7 +443,7 @@ document.write(`
 <li><p><em>Prey deaths - Predator deaths</em>: We’ll call this last value, the difference between deaths, the <em>fitness score</em>. More positive values are better. More negative values are worse.</p></li>
 </ul>
 <section id="install-and-import-needed-modules">
-<h2>Install and import needed modules<a class="headerlink" href="#install-and-import-needed-modules" title="Permalink to this headline">#</a></h2>
+<h2>Install and import needed modules<a class="headerlink" href="#install-and-import-needed-modules" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install explorationlib?</span>
@@ -514,10 +514,10 @@ document.write(`
 </div>
 </section>
 <section id="section-1-a-lone-hungry-coyote">
-<h2>Section 1 - A lone, hungry coyote<a class="headerlink" href="#section-1-a-lone-hungry-coyote" title="Permalink to this headline">#</a></h2>
+<h2>Section 1 - A lone, hungry coyote<a class="headerlink" href="#section-1-a-lone-hungry-coyote" title="Permalink to this heading">#</a></h2>
 <p>In this section we’ll study one explorer (predator) and one target (prey) noisy, as a base case. Both will be diffusion models, to start with anyway. They will start with the same movement scale, detection radius and speed. From there we’ll try some changes, to see what helps predators and <em>how much it helps.</em> We’ll see what helps the prey, and <em>how much</em>.</p>
 <section id="the-base-case">
-<h3>The base case<a class="headerlink" href="#the-base-case" title="Permalink to this headline">#</a></h3>
+<h3>The base case<a class="headerlink" href="#the-base-case" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shared env params</span>
@@ -550,7 +550,7 @@ document.write(`
 </div>
 </div>
 <section id="question-1-1">
-<h4>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this headline">#</a></h4>
+<h4>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h4>
 <p>We start with an equal match, scale, speed, number, on a small domain, with a detection radius that’s about 10 percent of the domain. Make a guess. Will the fitness score be a positive number on average, or a negative one? Explain yourself.</p>
 <p>That is, does it even make sense to hunt alone when you don’t have any advantage?</p>
 <div class="cell docutils container">
@@ -624,7 +624,7 @@ document.write(`
 </section>
 </section>
 <section id="examples">
-<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h3>
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h3>
 <p>Plot 5 example experiments of a predator search, prey evasion. Both are random walks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -656,7 +656,7 @@ document.write(`
 </div>
 </section>
 <section id="analysis">
-<h3>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">#</a></h3>
+<h3>Analysis<a class="headerlink" href="#analysis" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Est. death</span>
@@ -703,7 +703,7 @@ document.write(`
 </div>
 </div>
 <section id="question-1-2">
-<h4>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this headline">#</a></h4>
+<h4>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this heading">#</a></h4>
 <p>Was you answer to Q 1.1 correct? Were you close? If you were wrong, or way off, please try an explain why. In what way did your intuition betray you?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -715,10 +715,10 @@ document.write(`
 </section>
 </section>
 <section id="eagle-eyes">
-<h3>Eagle eyes<a class="headerlink" href="#eagle-eyes" title="Permalink to this headline">#</a></h3>
+<h3>Eagle eyes<a class="headerlink" href="#eagle-eyes" title="Permalink to this heading">#</a></h3>
 <p>Here we will increase the detection radius up to five fold.</p>
 <section id="question-1-3">
-<h4>Question 1.3<a class="headerlink" href="#question-1-3" title="Permalink to this headline">#</a></h4>
+<h4>Question 1.3<a class="headerlink" href="#question-1-3" title="Permalink to this heading">#</a></h4>
 <p>Make a guess. Will linear increases in vision (aka detection radius) give our predator a linear improvement in fitness value, for this particular task and prey starting location?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -829,7 +829,7 @@ document.write(`
 </div>
 </section>
 <section id="question-1-5">
-<h4>Question 1.5<a class="headerlink" href="#question-1-5" title="Permalink to this headline">#</a></h4>
+<h4>Question 1.5<a class="headerlink" href="#question-1-5" title="Permalink to this heading">#</a></h4>
 <p>Was your answer to the last question correct? If it was not, hypothesize why that was.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -841,10 +841,10 @@ document.write(`
 </section>
 </section>
 <section id="the-fast-and-the">
-<h3>The fast and the….<a class="headerlink" href="#the-fast-and-the" title="Permalink to this headline">#</a></h3>
+<h3>The fast and the….<a class="headerlink" href="#the-fast-and-the" title="Permalink to this heading">#</a></h3>
 <p>Here we will increase the step size of the predator up to five fold. This is akin to increasing its speed relative to the target.</p>
 <section id="question-1-6">
-<h4>Question 1.6<a class="headerlink" href="#question-1-6" title="Permalink to this headline">#</a></h4>
+<h4>Question 1.6<a class="headerlink" href="#question-1-6" title="Permalink to this heading">#</a></h4>
 <p>Make a guess. Will linear increases in speed (aka step size) give our predator a linear improvement in fitness value, for this particular task and prey starting location?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -956,7 +956,7 @@ document.write(`
 </div>
 </section>
 <section id="question-1-7">
-<h4>Question 1.7<a class="headerlink" href="#question-1-7" title="Permalink to this headline">#</a></h4>
+<h4>Question 1.7<a class="headerlink" href="#question-1-7" title="Permalink to this heading">#</a></h4>
 <p>Was your answer to the last question correct? If it was not, hypothesize why that was.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -968,10 +968,10 @@ document.write(`
 </section>
 </section>
 <section id="range-anxiety">
-<h3>Range anxiety<a class="headerlink" href="#range-anxiety" title="Permalink to this headline">#</a></h3>
+<h3>Range anxiety<a class="headerlink" href="#range-anxiety" title="Permalink to this heading">#</a></h3>
 <p>Here we will increase the range/scale of the predator up to five fold. This is akin to increasing how far it will travel in a fixed time interval.</p>
 <section id="question-1-8">
-<h4>Question 1.8<a class="headerlink" href="#question-1-8" title="Permalink to this headline">#</a></h4>
+<h4>Question 1.8<a class="headerlink" href="#question-1-8" title="Permalink to this heading">#</a></h4>
 <p>Make a guess. Will linear increases in exploration range (aka scale) give our predator a linear improvement in fitness value, for this particular task and prey starting location?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1082,7 +1082,7 @@ document.write(`
 </div>
 </section>
 <section id="question-1-9">
-<h4>Question 1.9<a class="headerlink" href="#question-1-9" title="Permalink to this headline">#</a></h4>
+<h4>Question 1.9<a class="headerlink" href="#question-1-9" title="Permalink to this heading">#</a></h4>
 <p>Was your answer to the last question correct? If it was not, hypothesize why that was.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1094,10 +1094,10 @@ document.write(`
 </section>
 </section>
 <section id="hunting-buddies">
-<h3>Hunting buddies<a class="headerlink" href="#hunting-buddies" title="Permalink to this headline">#</a></h3>
+<h3>Hunting buddies<a class="headerlink" href="#hunting-buddies" title="Permalink to this heading">#</a></h3>
 <p>Will adding more predators help? If, that is, everything else is the same as our base case.</p>
 <section id="question-1-10">
-<h4>Question 1.10<a class="headerlink" href="#question-1-10" title="Permalink to this headline">#</a></h4>
+<h4>Question 1.10<a class="headerlink" href="#question-1-10" title="Permalink to this heading">#</a></h4>
 <p>Make a guess. Will linear increases in predators give a linear improvement in fitness value, for this particular task and prey starting location?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1217,7 +1217,7 @@ document.write(`
 </div>
 </section>
 <section id="question-1-11">
-<h4>Question 1.11<a class="headerlink" href="#question-1-11" title="Permalink to this headline">#</a></h4>
+<h4>Question 1.11<a class="headerlink" href="#question-1-11" title="Permalink to this heading">#</a></h4>
 <p>Was your answer to the last question correct? If it was not, hypothesize why that was.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1229,10 +1229,10 @@ document.write(`
 </section>
 </section>
 <section id="no-one-can-see-me">
-<h3>No one can see me!?<a class="headerlink" href="#no-one-can-see-me" title="Permalink to this headline">#</a></h3>
+<h3>No one can see me!?<a class="headerlink" href="#no-one-can-see-me" title="Permalink to this heading">#</a></h3>
 <p>Here we will increase the prey’s ability to escape, <em>p escape</em>.</p>
 <section id="question-1-12">
-<h4>Question 1.12<a class="headerlink" href="#question-1-12" title="Permalink to this headline">#</a></h4>
+<h4>Question 1.12<a class="headerlink" href="#question-1-12" title="Permalink to this heading">#</a></h4>
 <p>Make a guess. Will linear increases to p escape give a linear decrease in fitness value, for this particular task and prey starting location?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1343,7 +1343,7 @@ document.write(`
 </div>
 </section>
 <section id="question-1-13">
-<h4>Question 1.13<a class="headerlink" href="#question-1-13" title="Permalink to this headline">#</a></h4>
+<h4>Question 1.13<a class="headerlink" href="#question-1-13" title="Permalink to this heading">#</a></h4>
 <p>Was your answer to the last question correct? If it was not, hypothesize why that was.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1356,11 +1356,11 @@ document.write(`
 </section>
 </section>
 <section id="section-2-life-is-in-your-hands-now">
-<h2>Section 2 - Life is in your hands now….<a class="headerlink" href="#section-2-life-is-in-your-hands-now" title="Permalink to this headline">#</a></h2>
+<h2>Section 2 - Life is in your hands now….<a class="headerlink" href="#section-2-life-is-in-your-hands-now" title="Permalink to this heading">#</a></h2>
 <p>Okay, now let’s play a game for some extra credit. We’ll award you 10 “evolutionary” points. You can spend them on four parametrers: step size, scale, num_predators. The domain is now bigger, and the are 12 prey of three different “species”. <strong>Do not change any parameters but the four listed.</strong></p>
 </section>
 <section id="challenge">
-<h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">#</a></h2>
+<h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this heading">#</a></h2>
 <p>The challenge is to find the <strong>best</strong> way to spend the 10 points so as to maximize the fitness (i.e., prey - predators).</p>
 <p>Play around with combinations of values to find the best fitness possible. Save the notebook and submit it for 2pts of extra credit on your final grade. Whoever submits the highest fitness score gets an extra 2pts on their final grade.</p>
 <p><strong>NOTE:</strong> Do not go over 10 total points or else you will be disqualified and receive no extra credit. Do not change any other parameters or else you will be disqualified and receive no credit.</p>

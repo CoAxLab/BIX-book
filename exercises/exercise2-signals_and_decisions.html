@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Exercise 2: Signals and decisions &#8212; Biologically Intelligent eXploration (BIX)</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -60,15 +61,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercise2-signals_and_decisions';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Exercise 3: CBGT networks and predator-prey dynamics" href="exercise3-cbgt_and_pred_prey.html" />
     <link rel="prev" title="Exercise 1: Github &amp; Colab" href="exercise1-getting-started.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -157,16 +158,15 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p class="caption"><span class="caption-text">Getting started</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/intro-python.html">Introduction to python</a></li>
 
 </ul>
-<p class="caption"><span class="caption-text">Labs</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../notebooks/lab1-information.html">Lab 1- Information theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../notebooks/lab2-explorelib.html">Lab 2 - Random exploration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../notebooks/lab3-chemotaxis.html">Lab 3 - Chemotaxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/lab1-randomsearch.html">Lab 1 - Random exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/lab2-chemotaxis.html">Lab 2 - Simple Chemotaxis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/lab4-evidence_accumulation.html">Lab 4 - Evidence Accumulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/lab5-cbgt.html">Lab 5 - CBGT pathways</a></li>
 
@@ -176,7 +176,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/lab10-curiosity_driven_learning.html">Lab 10 - Curiosity-driven exploration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Exercises</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Exercise 2: Signals and decisions</strong></a></li>
@@ -439,9 +439,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-2-signals-and-decisions">
-<h1><strong>Exercise 2: Signals and decisions</strong><a class="headerlink" href="#exercise-2-signals-and-decisions" title="Permalink to this headline">#</a></h1>
+<h1><strong>Exercise 2: Signals and decisions</strong><a class="headerlink" href="#exercise-2-signals-and-decisions" title="Permalink to this heading">#</a></h1>
 <section id="getting-started">
-<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">#</a></h2>
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
 <p>This homework will involve concepts from the labs we’ve gone over in class. Feel free to reference them as you complete the assignment.</p>
 <p>This homework contains 3 sections:</p>
 <ol class="arabic simple">
@@ -452,11 +452,11 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="part-1-simple-random-walk-simulations">
-<h2>Part 1 - Simple random walk simulations<a class="headerlink" href="#part-1-simple-random-walk-simulations" title="Permalink to this headline">#</a></h2>
+<h2>Part 1 - Simple random walk simulations<a class="headerlink" href="#part-1-simple-random-walk-simulations" title="Permalink to this heading">#</a></h2>
 <p>Here you will run a few simulations to see how the different parameters on random walk (Gaussian vs. Levy) influence the behavior of the agents.</p>
 <p>Fill out the code cells below to complete the assignment.  Most of the programming is extremely straight-forward, as it is all based on the code from the lab, which you can use/modify in this notebook.</p>
 <section id="install-explorationlib">
-<h3>Install <em>explorationlib</em><a class="headerlink" href="#install-explorationlib" title="Permalink to this headline">#</a></h3>
+<h3>Install <em>explorationlib</em><a class="headerlink" href="#install-explorationlib" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/coaxlab/explorationlib
@@ -468,7 +468,7 @@ document.write(`
 </div>
 </section>
 <section id="import-modules">
-<h3>Import modules<a class="headerlink" href="#import-modules" title="Permalink to this headline">#</a></h3>
+<h3>Import modules<a class="headerlink" href="#import-modules" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from the standard library</span>
@@ -525,7 +525,7 @@ document.write(`
 </div>
 </div>
 <section id="additional-notebook-configuration">
-<h4>Additional notebook configuration<a class="headerlink" href="#additional-notebook-configuration" title="Permalink to this headline">#</a></h4>
+<h4>Additional notebook configuration<a class="headerlink" href="#additional-notebook-configuration" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -546,7 +546,7 @@ document.write(`
 </section>
 </section>
 <section id="task-creating-agents-agents-10-pt">
-<h2>Task - Creating agents agents [10 pt]<a class="headerlink" href="#task-creating-agents-agents-10-pt" title="Permalink to this headline">#</a></h2>
+<h2>Task - Creating agents agents [10 pt]<a class="headerlink" href="#task-creating-agents-agents-10-pt" title="Permalink to this heading">#</a></h2>
 <p>Run a batch of simulations with the following agents:</p>
 <ul class="simple">
 <li><p>DiffusionDiscrete</p></li>
@@ -557,7 +557,7 @@ document.write(`
 <p>So for this we will need to set up a sense environment, which we call the <em>ScentGrid</em>.</p>
 <p>The code for running these simulations will be very similar to the simulation code in the lab. We will scaffold some of it for you here.</p>
 <section id="initialize-and-run-the-experiments">
-<h3>Initialize and run the experiments<a class="headerlink" href="#initialize-and-run-the-experiments" title="Permalink to this headline">#</a></h3>
+<h3>Initialize and run the experiments<a class="headerlink" href="#initialize-and-run-the-experiments" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>set the parameters</p></li>
 <li><p>create the environment</p></li>
@@ -613,7 +613,7 @@ document.write(`
 </div>
 </section>
 <section id="visualize-the-trajectories-10-pt">
-<h3>Visualize the trajectories [10 pt]<a class="headerlink" href="#visualize-the-trajectories-10-pt" title="Permalink to this headline">#</a></h3>
+<h3>Visualize the trajectories [10 pt]<a class="headerlink" href="#visualize-the-trajectories-10-pt" title="Permalink to this heading">#</a></h3>
 <p>Plot the trajectories taken by the agents in all 10 experiments. Use blue to plot the levy agent, brown for the diffusion agent, and green for the sniff agent. Follow examples from Labs 2 &amp; 4.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -682,7 +682,7 @@ document.write(`
 </div>
 </section>
 <section id="summarize-the-performance-10-pt">
-<h3>Summarize the performance [10 pt]<a class="headerlink" href="#summarize-the-performance-10-pt" title="Permalink to this headline">#</a></h3>
+<h3>Summarize the performance [10 pt]<a class="headerlink" href="#summarize-the-performance-10-pt" title="Permalink to this heading">#</a></h3>
 <p>Next plot the average scores for each agent. See plotting in Lab 2 for help.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -714,7 +714,7 @@ document.write(`
 </div>
 </section>
 <section id="question-1-1-5-pt">
-<h3>Question 1.1 [5 pt]<a class="headerlink" href="#question-1-1-5-pt" title="Permalink to this headline">#</a></h3>
+<h3>Question 1.1 [5 pt]<a class="headerlink" href="#question-1-1-5-pt" title="Permalink to this heading">#</a></h3>
 <p>Do you notice any tangible differences between the two random agents and the agent that uses sensory information?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -726,10 +726,10 @@ document.write(`
 </section>
 </section>
 <section id="task-decreasing-scent-radius">
-<h2>Task - Decreasing Scent Radius<a class="headerlink" href="#task-decreasing-scent-radius" title="Permalink to this headline">#</a></h2>
+<h2>Task - Decreasing Scent Radius<a class="headerlink" href="#task-decreasing-scent-radius" title="Permalink to this heading">#</a></h2>
 <p>Rerun the code in the previous section, but changing the scent radius (how far scent diffuses from each target) of the environment from 10 to 1.</p>
 <section id="question-1-2-5-pt">
-<h3>Question 1.2 [5 pt]<a class="headerlink" href="#question-1-2-5-pt" title="Permalink to this headline">#</a></h3>
+<h3>Question 1.2 [5 pt]<a class="headerlink" href="#question-1-2-5-pt" title="Permalink to this heading">#</a></h3>
 <p>How does the performance of the agents change?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -740,7 +740,7 @@ document.write(`
 </div>
 </section>
 <section id="question-1-3-5-pt">
-<h3>Question 1.3 [5 pt]<a class="headerlink" href="#question-1-3-5-pt" title="Permalink to this headline">#</a></h3>
+<h3>Question 1.3 [5 pt]<a class="headerlink" href="#question-1-3-5-pt" title="Permalink to this heading">#</a></h3>
 <p>Speculate why the reduction in the scent radius caused the change reported in Question 1.2.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -753,10 +753,10 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="part-2-signal-detection-theory">
-<h2>Part 2 - Signal Detection Theory<a class="headerlink" href="#part-2-signal-detection-theory" title="Permalink to this headline">#</a></h2>
+<h2>Part 2 - Signal Detection Theory<a class="headerlink" href="#part-2-signal-detection-theory" title="Permalink to this heading">#</a></h2>
 <p>Now we are going to pivot to working on playing with signal detection theory.</p>
 <section id="task-calculate-d-and-c-directly-10-pt">
-<h3>Task - Calculate <span class="math notranslate nohighlight">\(d'\)</span> and <span class="math notranslate nohighlight">\(c\)</span> directly [10 pt]<a class="headerlink" href="#task-calculate-d-and-c-directly-10-pt" title="Permalink to this headline">#</a></h3>
+<h3>Task - Calculate <span class="math notranslate nohighlight">\(d'\)</span> and <span class="math notranslate nohighlight">\(c\)</span> directly [10 pt]<a class="headerlink" href="#task-calculate-d-and-c-directly-10-pt" title="Permalink to this heading">#</a></h3>
 <p>In the code cell below, calculate and print the <span class="math notranslate nohighlight">\(d'\)</span> and <span class="math notranslate nohighlight">\(c\)</span> values that we would expect from a <em>hit rate</em> of 0.85 and <em>false alarm</em> rate of 0.30, given the assumptions of SDT.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -781,7 +781,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-1-5-pt">
-<h3>Question 2.1 [5 pt]<a class="headerlink" href="#question-2-1-5-pt" title="Permalink to this headline">#</a></h3>
+<h3>Question 2.1 [5 pt]<a class="headerlink" href="#question-2-1-5-pt" title="Permalink to this heading">#</a></h3>
 <p>What are the values for <span class="math notranslate nohighlight">\(d'\)</span> and <span class="math notranslate nohighlight">\(c\)</span>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -792,7 +792,7 @@ document.write(`
 </div>
 </section>
 <section id="task-playing-with-signal-to-noise-distributions">
-<h3>Task - Playing with signal-to-noise distributions.<a class="headerlink" href="#task-playing-with-signal-to-noise-distributions" title="Permalink to this headline">#</a></h3>
+<h3>Task - Playing with signal-to-noise distributions.<a class="headerlink" href="#task-playing-with-signal-to-noise-distributions" title="Permalink to this heading">#</a></h3>
 <p>Now let us run the widget code and play with some parameters to answer the questions below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -810,7 +810,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-2-5-pt">
-<h3>Question 2.2 [5 pt]<a class="headerlink" href="#question-2-2-5-pt" title="Permalink to this headline">#</a></h3>
+<h3>Question 2.2 [5 pt]<a class="headerlink" href="#question-2-2-5-pt" title="Permalink to this heading">#</a></h3>
 <p>Describe the relationship between the <strong>false alarm rate</strong> and <span class="math notranslate nohighlight">\(d'\)</span> in SDT (use the interactive visualization to help get some intuition), if you hold <strong>hit rate</strong> at a constant value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -821,7 +821,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-3-5-pt">
-<h3>Question 2.3 [5 pt]<a class="headerlink" href="#question-2-3-5-pt" title="Permalink to this headline">#</a></h3>
+<h3>Question 2.3 [5 pt]<a class="headerlink" href="#question-2-3-5-pt" title="Permalink to this heading">#</a></h3>
 <p>Describe the relationship between number of <strong>correct rejections</strong> (1 - <strong>false alarms</strong>) and the criterion parameter (<span class="math notranslate nohighlight">\(c\)</span>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -832,7 +832,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-4-5-pt">
-<h3>Question 2.4 [5 pt]<a class="headerlink" href="#question-2-4-5-pt" title="Permalink to this headline">#</a></h3>
+<h3>Question 2.4 [5 pt]<a class="headerlink" href="#question-2-4-5-pt" title="Permalink to this heading">#</a></h3>
 <p>Describe in plain words why when the <strong>hit</strong> and <strong>false alarm</strong> rates are equal, <span class="math notranslate nohighlight">\(d'\)</span> is zero but <span class="math notranslate nohighlight">\(c\)</span> isn’t necessarily zero.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -845,16 +845,16 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="part-3-evidence-accumulation">
-<h2>Part 3 - Evidence Accumulation<a class="headerlink" href="#part-3-evidence-accumulation" title="Permalink to this headline">#</a></h2>
+<h2>Part 3 - Evidence Accumulation<a class="headerlink" href="#part-3-evidence-accumulation" title="Permalink to this heading">#</a></h2>
 <p>This part has two main sections:</p>
 <ul class="simple">
 <li><p>First, we will build off the lab by exploring the relationship between decision threshold (one of the DDM parameters) and the performance of an accumulating agent.</p></li>
 <li><p>Second, we will take a brief look at the role of randomness in the exploratory behavior of a sniffing agent.</p></li>
 </ul>
 <section id="install-necessary-import-explorationlib-modules">
-<h3>Install necessary import explorationlib modules<a class="headerlink" href="#install-necessary-import-explorationlib-modules" title="Permalink to this headline">#</a></h3>
+<h3>Install necessary import explorationlib modules<a class="headerlink" href="#install-necessary-import-explorationlib-modules" title="Permalink to this heading">#</a></h3>
 <section id="id1">
-<h4>Import modules<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<h4>Import modules<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Agents</span>
@@ -878,11 +878,11 @@ document.write(`
 </section>
 </section>
 <section id="task-influence-of-threshold-on-performance">
-<h2>Task - Influence of Threshold on Performance<a class="headerlink" href="#task-influence-of-threshold-on-performance" title="Permalink to this headline">#</a></h2>
+<h2>Task - Influence of Threshold on Performance<a class="headerlink" href="#task-influence-of-threshold-on-performance" title="Permalink to this heading">#</a></h2>
 <p>How does decision thershold influence behavior? Here, we will perform a parameter sweep over the decision threshold to see how the agent is affected in a basic sniffing task.</p>
 <p>For this section, you will need to slightly modify the lab code to loop over a list of thresholds rather than a list of drift rates.</p>
 <section id="define-shared-parameters-and-initialize-environment">
-<h3>Define shared parameters and initialize environment<a class="headerlink" href="#define-shared-parameters-and-initialize-environment" title="Permalink to this headline">#</a></h3>
+<h3>Define shared parameters and initialize environment<a class="headerlink" href="#define-shared-parameters-and-initialize-environment" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shared exp parameters</span>
@@ -917,7 +917,7 @@ document.write(`
 </div>
 </section>
 <section id="create-a-list-of-thresholds-to-test">
-<h3>Create a list of thresholds to test<a class="headerlink" href="#create-a-list-of-thresholds-to-test" title="Permalink to this headline">#</a></h3>
+<h3>Create a list of thresholds to test<a class="headerlink" href="#create-a-list-of-thresholds-to-test" title="Permalink to this heading">#</a></h3>
 <p>We want to take our sniff agent with evidence accumulation, and loop through a set of 5 threshold values: [1, 2, 3, 4, 5].</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -933,7 +933,7 @@ document.write(`
 </div>
 </section>
 <section id="run-100-experiments-for-each-threshold-10-pts">
-<h3>Run 100 experiments for each threshold [10 pts]<a class="headerlink" href="#run-100-experiments-for-each-threshold-10-pts" title="Permalink to this headline">#</a></h3>
+<h3>Run 100 experiments for each threshold [10 pts]<a class="headerlink" href="#run-100-experiments-for-each-threshold-10-pts" title="Permalink to this heading">#</a></h3>
 <p>Borrow the loop code from Lab 4. Set the following parameters:</p>
 <ul class="simple">
 <li><p>drift_rate = 1.0</p></li>
@@ -967,7 +967,7 @@ document.write(`
 </div>
 </section>
 <section id="create-plots-of-distance-traveled-averaged-for-each-agent-i-e-each-threshold">
-<h3>Create plots of distance traveled averaged for each agent (i.e., each threshold).<a class="headerlink" href="#create-plots-of-distance-traveled-averaged-for-each-agent-i-e-each-threshold" title="Permalink to this headline">#</a></h3>
+<h3>Create plots of distance traveled averaged for each agent (i.e., each threshold).<a class="headerlink" href="#create-plots-of-distance-traveled-averaged-for-each-agent-i-e-each-threshold" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code cells here</span>
@@ -997,7 +997,7 @@ document.write(`
 </div>
 </section>
 <section id="plot-the-average-number-of-deaths-for-each-agent-i-e-threshold">
-<h3>Plot the average number of deaths for each agent (i.e., threshold).<a class="headerlink" href="#plot-the-average-number-of-deaths-for-each-agent-i-e-threshold" title="Permalink to this headline">#</a></h3>
+<h3>Plot the average number of deaths for each agent (i.e., threshold).<a class="headerlink" href="#plot-the-average-number-of-deaths-for-each-agent-i-e-threshold" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
@@ -1018,7 +1018,7 @@ document.write(`
 </div>
 </section>
 <section id="plot-the-score-of-the-best-agent-for-each-type-of-agent-i-e-threshold">
-<h3>Plot the score of the best agent for each type of agent (i.e., threshold)<a class="headerlink" href="#plot-the-score-of-the-best-agent-for-each-type-of-agent-i-e-threshold" title="Permalink to this headline">#</a></h3>
+<h3>Plot the score of the best agent for each type of agent (i.e., threshold)<a class="headerlink" href="#plot-the-score-of-the-best-agent-for-each-type-of-agent-i-e-threshold" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
@@ -1045,7 +1045,7 @@ document.write(`
 </div>
 </section>
 <section id="finally-plot-the-average-score-for-each-type-of-agent-i-e-threshold">
-<h3>Finally plot the average score for each type of agent (i.e., threshold).<a class="headerlink" href="#finally-plot-the-average-score-for-each-type-of-agent-i-e-threshold" title="Permalink to this headline">#</a></h3>
+<h3>Finally plot the average score for each type of agent (i.e., threshold).<a class="headerlink" href="#finally-plot-the-average-score-for-each-type-of-agent-i-e-threshold" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
@@ -1082,7 +1082,7 @@ document.write(`
 </div>
 </section>
 <section id="question-3-1-5-pt">
-<h3>Question 3.1 [5 pt]<a class="headerlink" href="#question-3-1-5-pt" title="Permalink to this headline">#</a></h3>
+<h3>Question 3.1 [5 pt]<a class="headerlink" href="#question-3-1-5-pt" title="Permalink to this heading">#</a></h3>
 <p>Based on the plots above and in your own words, summarize the relationship between the decision <em>threshold</em> and the performance of the agnets.  How do the effects of increasing threshold compare to the effects of increasing drift rate (from the example in Lab 4)?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1093,7 +1093,7 @@ document.write(`
 </div>
 </section>
 <section id="question-3-2-5-pt">
-<h3>Question 3.2 [5 pt]<a class="headerlink" href="#question-3-2-5-pt" title="Permalink to this headline">#</a></h3>
+<h3>Question 3.2 [5 pt]<a class="headerlink" href="#question-3-2-5-pt" title="Permalink to this heading">#</a></h3>
 <p>Based on your observations, do you think an accumulator is needed for this <em>particular</em> task setup?  Would you expect an agent which doesn’t accumulate (having a threshold of almost zero, thus reacting immediately to its first sensory signal) to outform an agent which uses multiple time steps to accumulate evidence?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1104,7 +1104,7 @@ document.write(`
 </div>
 </section>
 <section id="question-3-3-5-pt">
-<h3>Question 3.3 [5 pt]<a class="headerlink" href="#question-3-3-5-pt" title="Permalink to this headline">#</a></h3>
+<h3>Question 3.3 [5 pt]<a class="headerlink" href="#question-3-3-5-pt" title="Permalink to this heading">#</a></h3>
 <p>Let’s get philosophical. In what scenarios would pure random exploration (e.g., the diffusion and levy agents) be better than agents that utilize the energy necessary to process and accumulate sensory signals (e.g., the sniff agents)?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

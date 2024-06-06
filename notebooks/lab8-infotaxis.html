@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 8 - Infotaxis &#8212; Biologically Intelligent eXploration (BIX)</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -60,15 +61,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lab8-infotaxis';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lab 9 - Reward seeking" href="lab9-reward_seeking.html" />
     <link rel="prev" title="Lab 7 - Foraging" href="lab7-foraging.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -157,16 +158,15 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p class="caption"><span class="caption-text">Getting started</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro-python.html">Introduction to python</a></li>
 
 </ul>
-<p class="caption"><span class="caption-text">Labs</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="lab1-information.html">Lab 1- Information theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab2-explorelib.html">Lab 2 - Random exploration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab3-chemotaxis.html">Lab 3 - Chemotaxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1-randomsearch.html">Lab 1 - Random exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2-chemotaxis.html">Lab 2 - Simple Chemotaxis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4-evidence_accumulation.html">Lab 4 - Evidence Accumulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab5-cbgt.html">Lab 5 - CBGT pathways</a></li>
 
@@ -176,7 +176,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab10-curiosity_driven_learning.html">Lab 10 - Curiosity-driven exploration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Exercises</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
@@ -409,19 +409,19 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-8-infotaxis">
-<h1>Lab 8 - Infotaxis<a class="headerlink" href="#lab-8-infotaxis" title="Permalink to this headline">#</a></h1>
+<h1>Lab 8 - Infotaxis<a class="headerlink" href="#lab-8-infotaxis" title="Permalink to this heading">#</a></h1>
 <p>Here we will explore how our little artificial organisms do two things:</p>
 <ol class="arabic simple">
 <li><p>Learn a <em>concept</em> of information as a signal.</p></li>
 <li><p>How this concept of information facilitates learning in noisy environments.</p></li>
 </ol>
 <section id="background">
-<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h2>
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
 <p>In this lab we return to <em>taxic explorations</em>. Recall that in Lab 3 we look at what happens when sense information is not just noisy, but partially observed. In otherwords, when there is distortion in the channel of information.</p>
 <p>Here we will compare the simple chemotaxic framework, where agents simply follow the gradient of the scent, to an <em>infotaxic</em> framework where agents follow the <em>information</em> carried in the signal instead.</p>
 </section>
 <section id="e-coli-again">
-<h2>E Coli, again?<a class="headerlink" href="#e-coli-again" title="Permalink to this headline">#</a></h2>
+<h2>E Coli, again?<a class="headerlink" href="#e-coli-again" title="Permalink to this heading">#</a></h2>
 <p>Recall our basic model of E. Coli exploration is as simple as can be.</p>
 <ul class="simple">
 <li><p>When the gradient is positive, meaning you are going “up” the gradient, the probability of turning is set to <em>p pos</em>.</p></li>
@@ -430,18 +430,18 @@ document.write(`
 <li><p>The length of travel before the next turn decision is sampled from an exponential distribution just like the <em>DiffusionDiscrete</em></p></li>
 </ul>
 <section id="information-agents">
-<h3>Information agents<a class="headerlink" href="#information-agents" title="Permalink to this headline">#</a></h3>
+<h3>Information agents<a class="headerlink" href="#information-agents" title="Permalink to this heading">#</a></h3>
 <p>We will study three agents. One who does <em>chemotaxis</em>. One who does a kind of <em>infotaxis</em>. One that does random search (aka Diffusion). For fun, let’s call this one a <em>randotaxis</em> agent. This last rando-agent is really a control. A reference point.</p>
 <p>In a sense the <em>chemotaxis</em> agent only tries to answer question Q2 (above). While <em>infotaxis</em> only tries to answer Q1. They are extreme strategies, in other words. The bigger question we will ask, in a very limited setting, is which extreme method is better <em>generally</em>?</p>
 </section>
 <section id="costly-cognition">
-<h3>Costly cognition<a class="headerlink" href="#costly-cognition" title="Permalink to this headline">#</a></h3>
+<h3>Costly cognition<a class="headerlink" href="#costly-cognition" title="Permalink to this heading">#</a></h3>
 <p>Both <em>chemo-</em> and <em>infotaxis</em> agents will use a DDM-style accumulator to try and make better decisions about the direction of the gradient. These decisions are of course statistical in nature. (We won’t be tuning the accumulator parameters in this lab. Assume the parameters I give you, for the DDM, are “good enough”.)</p>
 <p>For the <em>randotaxis</em> agent number of steps means the number of steps or actions the agent takes.</p>
 </section>
 </section>
 <section id="reviewing-the-definition-of-chemotaxis">
-<h2>Reviewing the definition of <em>chemotaxis</em>:<a class="headerlink" href="#reviewing-the-definition-of-chemotaxis" title="Permalink to this headline">#</a></h2>
+<h2>Reviewing the definition of <em>chemotaxis</em>:<a class="headerlink" href="#reviewing-the-definition-of-chemotaxis" title="Permalink to this heading">#</a></h2>
 <p>Our <em>chemotaxis</em> agent (<em>AccumulatorGradientGrid</em>) tries to directly estimate the gradient <span class="math notranslate nohighlight">\(\nabla\)</span> in scent by comparing the level of scent at the last grid position it occupied to the current scent level (<span class="math notranslate nohighlight">\(o\)</span>). By last grid position here we mean the last grid position when it moved last.</p>
 <div class="math notranslate nohighlight">
 \[\nabla \approx o_t - o_{t-1}\]</div>
@@ -453,7 +453,7 @@ document.write(`
 </ol>
 </section>
 <section id="a-definition-of-infotaxis">
-<h2>A definition of <em>infotaxis</em>:<a class="headerlink" href="#a-definition-of-infotaxis" title="Permalink to this headline">#</a></h2>
+<h2>A definition of <em>infotaxis</em>:<a class="headerlink" href="#a-definition-of-infotaxis" title="Permalink to this heading">#</a></h2>
 <p>Compared to chemo- definition the definition of infotaxis is a little more involved. It has what we can think of as five cognitive or behavioral steps:</p>
 <ol class="arabic simple">
 <li><p>Use an accumulator to (stabely) estimate if there is a scent or not. AKA hits and misses.</p></li>
@@ -466,12 +466,67 @@ document.write(`
 <p>If you want to look at exactly how this agent works, check out line 1242 in the <em><a class="reference external" href="http://agents.py">agents.py</a></em> file: /usr/local/lib/python3.7/dist-packages/explorationlib/agent.py</p>
 </section>
 <section id="section-setup">
-<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this headline">#</a></h2>
+<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this heading">#</a></h2>
 <p>First let’s set things up for the two parts of the lab. You’ve done this before, so we don’t need to specify each installation and module step.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install --upgrade git+https://github.com/coaxlab/explorationlib
 !pip install --upgrade git+https://github.com/MattChanTK/gym-maze.git
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting git+https://github.com/coaxlab/explorationlib
+  Cloning https://github.com/coaxlab/explorationlib to /tmp/pip-req-build-696m8f2w
+  Running command git clone --filter=blob:none --quiet https://github.com/coaxlab/explorationlib /tmp/pip-req-build-696m8f2w
+  Resolved https://github.com/coaxlab/explorationlib to commit 51e93ea9a3866d32202fb912bc46f7fcb18e8a17
+  Preparing metadata (setup.py) ... ?25l?25hdone
+Requirement already satisfied: numpy in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (1.25.2)
+Requirement already satisfied: scipy in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (1.11.4)
+Requirement already satisfied: pandas in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (2.0.3)
+Requirement already satisfied: matplotlib in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (3.7.1)
+Requirement already satisfied: seaborn in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (0.13.1)
+Requirement already satisfied: scikit-learn in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (1.2.2)
+Requirement already satisfied: numba in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (0.58.1)
+Requirement already satisfied: future in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (0.18.3)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (1.2.1)
+Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (4.51.0)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (1.4.5)
+Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (24.0)
+Requirement already satisfied: pillow&gt;=6.2.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (9.4.0)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (3.1.2)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (2.8.2)
+Requirement already satisfied: llvmlite&lt;0.42,&gt;=0.41.0dev0 in /usr/local/lib/python3.10/dist-packages (from numba-&gt;explorationlib==0.0.1) (0.41.1)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.10/dist-packages (from pandas-&gt;explorationlib==0.0.1) (2023.4)
+Requirement already satisfied: tzdata&gt;=2022.1 in /usr/local/lib/python3.10/dist-packages (from pandas-&gt;explorationlib==0.0.1) (2024.1)
+Requirement already satisfied: joblib&gt;=1.1.1 in /usr/local/lib/python3.10/dist-packages (from scikit-learn-&gt;explorationlib==0.0.1) (1.4.2)
+Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.10/dist-packages (from scikit-learn-&gt;explorationlib==0.0.1) (3.5.0)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;explorationlib==0.0.1) (1.16.0)
+Building wheels for collected packages: explorationlib
+  Building wheel for explorationlib (setup.py) ... ?25l?25hdone
+  Created wheel for explorationlib: filename=explorationlib-0.0.1-py3-none-any.whl size=41444 sha256=e093ec16ef20344424b4c634be8413ca840b7ec164527c3a5c30a696a9f41f6a
+  Stored in directory: /tmp/pip-ephem-wheel-cache-4lsd3n0e/wheels/71/57/e8/88c93e85ce02efaef024038b2ddcb6c6dec8a1a212f712bb05
+Successfully built explorationlib
+Installing collected packages: explorationlib
+Successfully installed explorationlib-0.0.1
+Collecting git+https://github.com/MattChanTK/gym-maze.git
+  Cloning https://github.com/MattChanTK/gym-maze.git to /tmp/pip-req-build-14vmvjcg
+  Running command git clone --filter=blob:none --quiet https://github.com/MattChanTK/gym-maze.git /tmp/pip-req-build-14vmvjcg
+  Resolved https://github.com/MattChanTK/gym-maze.git to commit 83176811b49b5538a6213520612f44fb1bc49114
+  Preparing metadata (setup.py) ... ?25l?25hdone
+Requirement already satisfied: gym in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (0.25.2)
+Requirement already satisfied: pygame in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (2.5.2)
+Requirement already satisfied: numpy in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (1.25.2)
+Requirement already satisfied: cloudpickle&gt;=1.2.0 in /usr/local/lib/python3.10/dist-packages (from gym-&gt;gym-maze==0.4) (2.2.1)
+Requirement already satisfied: gym-notices&gt;=0.0.4 in /usr/local/lib/python3.10/dist-packages (from gym-&gt;gym-maze==0.4) (0.0.8)
+Building wheels for collected packages: gym-maze
+  Building wheel for gym-maze (setup.py) ... ?25l?25hdone
+  Created wheel for gym-maze: filename=gym_maze-0.4-py3-none-any.whl size=14214 sha256=d6ea212a1d8f393785327e0448d4296391bf8a757b759bfbbb0e1b8cb9cd7558
+  Stored in directory: /tmp/pip-ephem-wheel-cache-g5lsdajw/wheels/b0/53/2e/e282706624110bc964538d7840bef68fef2bc1865a87e3016e
+Successfully built gym-maze
+Installing collected packages: gym-maze
+Successfully installed gym-maze-0.4
 </pre></div>
 </div>
 </div>
@@ -539,7 +594,7 @@ document.write(`
 </div>
 </section>
 <section id="section-1-chemotaxis-vs-infotaxis">
-<h2>Section 1 - Chemotaxis vs. infotaxis.<a class="headerlink" href="#section-1-chemotaxis-vs-infotaxis" title="Permalink to this headline">#</a></h2>
+<h2>Section 1 - Chemotaxis vs. infotaxis.<a class="headerlink" href="#section-1-chemotaxis-vs-infotaxis" title="Permalink to this heading">#</a></h2>
 <p>In this section we take on accumulating evidence as a policy for decision making. Our venue is still chemotaxis, but now our sensors are noisy. The presence of this uncertainty makes decisions–of the kind common to decision theory–a necessity.</p>
 <p>Let’s see just how helpful the concept of information for chemotaxic search can be.</p>
 <div class="cell docutils container">
@@ -598,6 +653,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/e0e7f949966f916add08befb56207e01364c228120963e35a36755b2592d05be.png" src="../_images/e0e7f949966f916add08befb56207e01364c228120963e35a36755b2592d05be.png" />
+</div>
 </div>
 <p>We will use 3 agents in these sims:</p>
 <ul class="simple">
@@ -641,6 +699,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5838]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now let’s run the experiments.</p>
 <div class="cell docutils container">
@@ -679,6 +742,8 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "26005da5628f41ffa9979760277c2750"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "0185f3f079cd402489c8a73543323e59"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "8ce1f45c9eb146c08ef9483c998a3251"}</script></div>
 </div>
 <p>Let’s plot an example experiment. Here I’m choosing the second run for each agent.</p>
 <div class="cell docutils container">
@@ -723,6 +788,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/2eb518cc0519182386838b57737dc4e8da7ddd51dad03f681a3e5bf747366dcb.png" src="../_images/2eb518cc0519182386838b57737dc4e8da7ddd51dad03f681a3e5bf747366dcb.png" />
+</div>
 </div>
 <p>Hard to distinguish their individual behaviors, but our agents seem to be exploring.</p>
 <p>Now let’s evaluate some metrics of performance.</p>
@@ -756,6 +824,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/afa9f1cab7e6f9dbd78b53abc1b1e603850109a98168bbe6d98217b500cbf736.png" src="../_images/afa9f1cab7e6f9dbd78b53abc1b1e603850109a98168bbe6d98217b500cbf736.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -783,6 +854,9 @@ document.write(`
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "6991ed00c66042f2af89cb65573bb621"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "40391a699ad34f6bbc481525d92a63b6"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "bf9e06b69cff435ebac5f5ed055c3048"}</script><img alt="../_images/9e41096d2348825f122117dfe56461c2dc8e1dc6df495dc08fcf7c9b99c372da.png" src="../_images/9e41096d2348825f122117dfe56461c2dc8e1dc6df495dc08fcf7c9b99c372da.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -822,9 +896,13 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "944f2d7aae81423588bcd25af5634898"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "c1aa81fd58f442c9ab419170e405df49"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "3b1d8447df124a73a23b0a652195271b"}</script><img alt="../_images/533f374795899d97de2b1f713ee9a2c4dbc3ea9f2c7e08106380f486909ea2de.png" src="../_images/533f374795899d97de2b1f713ee9a2c4dbc3ea9f2c7e08106380f486909ea2de.png" />
+<img alt="../_images/44771600f3e74025e5588ee8705e726709594e05cc5ec34ecf1a1d2299673c4c.png" src="../_images/44771600f3e74025e5588ee8705e726709594e05cc5ec34ecf1a1d2299673c4c.png" />
+</div>
 </div>
 <section id="question-1-1">
-<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this headline">#</a></h3>
+<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h3>
 <p>How does each of our agents perform across the performance measures we have chosen?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -835,7 +913,7 @@ document.write(`
 </div>
 </section>
 <section id="question-1-2">
-<h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this headline">#</a></h3>
+<h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this heading">#</a></h3>
 <p>Is having a concept of information (i.e., the Info agent)helpful in these sorts of noisy environments? Why or why not based on how the agents performed? Compare to both Rando and Chemo.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -847,7 +925,7 @@ document.write(`
 </section>
 </section>
 <section id="section-2-robustness-of-information-searching">
-<h2>Section 2 - Robustness of information searching<a class="headerlink" href="#section-2-robustness-of-information-searching" title="Permalink to this headline">#</a></h2>
+<h2>Section 2 - Robustness of information searching<a class="headerlink" href="#section-2-robustness-of-information-searching" title="Permalink to this heading">#</a></h2>
 <p>In this final section we will see how the distortion in the channel driven by missing information influences the efficiency of our Info agent.</p>
 <p>Here we will test a range of <em>p_scent</em> values. Essentially we will be turning <em>down</em> the distortion as <em>p_scent</em> increases. For these experiments we will hold the <em>noise_sigma</em> constant at 1.</p>
 <div class="cell docutils container">
@@ -928,6 +1006,8 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "e67099a7598d44daa94412f6d807e07f"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "86f7eaa7c0bb4cbca00525ce772adb99"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "84745c08a3e642c5bb3cd37cb713425b"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "2788002e1e774b3ca4bedbb2b113acde"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "101afb13dde1410dbf0e92dcb6c6cdd0"}</script></div>
 </div>
 <p>Now let us take a look at the performance of our agent across runs.</p>
 <div class="cell docutils container">
@@ -955,6 +1035,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/487ca1477d6ef282ccbf0e0ddaba7e064dfd6d459b2d2c4b7d596e7510a3b077.png" src="../_images/487ca1477d6ef282ccbf0e0ddaba7e064dfd6d459b2d2c4b7d596e7510a3b077.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -972,6 +1055,9 @@ document.write(`
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "a100d6e680c8419c99a219ead008313e"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "4d8706b914f1482f84b480f05b5adc04"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "50805e0f7ee6446382788f8a134041e5"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b13a9ba29ae9428588f7fff4f3c32fd8"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "df21c0efd3c24da0bcd54759c7960eed"}</script><img alt="../_images/cbb32839be4e815e3ed02c9f08fe6b5ad6273aa8fb0237fc49bb344f46fe2d34.png" src="../_images/cbb32839be4e815e3ed02c9f08fe6b5ad6273aa8fb0237fc49bb344f46fe2d34.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -996,6 +1082,9 @@ document.write(`
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "292a81c4f82d44a8b2be31f660857f6d"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "bbeadae953a1491e9236430516ef6fd6"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "eda9dbe04dc944b481a69959ee67690f"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b49ee27f6c524afd8bb110d41fd2804f"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ba04fa74c7fe4f7fbed7dbfcb137ef41"}</script><img alt="../_images/c7b6befee281d914683208c81067b0728271e23b1b4f530af02c0bd064c4ab2c.png" src="../_images/c7b6befee281d914683208c81067b0728271e23b1b4f530af02c0bd064c4ab2c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1032,9 +1121,13 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "06dfa487a5be4da2bc1de17266d48136"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "aed75a586de74bb9b1e83719ced590fe"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "bff85070370e44b28840749019ca6315"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "43a636ad8e1242438dfc17e4666f7b2e"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "cf1ddb84676b434eacffb6a58ac11566"}</script><img alt="../_images/04c96a53f78cfed144658d52644e2fdd2f3c5ede799e02bec95fadd03e3813e4.png" src="../_images/04c96a53f78cfed144658d52644e2fdd2f3c5ede799e02bec95fadd03e3813e4.png" />
+<img alt="../_images/d40f95b3dac540d59c3e8ac291e5e9110a559becdf001c2e664fd265d22b626a.png" src="../_images/d40f95b3dac540d59c3e8ac291e5e9110a559becdf001c2e664fd265d22b626a.png" />
+</div>
 </div>
 <section id="question-2-1">
-<h3>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this headline">#</a></h3>
+<h3>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this heading">#</a></h3>
 <p>How does increasing <em>p_scent</em> impact our Info agent’s performance? Explain why this particular pattern emerges in the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1045,7 +1138,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-2">
-<h3>Question 2.2<a class="headerlink" href="#question-2-2" title="Permalink to this headline">#</a></h3>
+<h3>Question 2.2<a class="headerlink" href="#question-2-2" title="Permalink to this heading">#</a></h3>
 <p>Re-run the simulations from this section, but now change the drift-rate from 1.0 to 0.75. How and why does this influence the agent’s behavior (compared to the higher drift-rate)?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1056,7 +1149,7 @@ document.write(`
 </div>
 </section>
 <section id="question-2-3">
-<h3>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this headline">#</a></h3>
+<h3>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this heading">#</a></h3>
 <p>Now set the drift-rate back to 1.0 and reduce the boundary height from 3.0 to 1.5. Re-run the simulations in again. How and why does this influence the agent’s behavior (compared to the higher boundary height)?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

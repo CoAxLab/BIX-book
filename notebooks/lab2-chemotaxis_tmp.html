@@ -170,7 +170,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="lab6-predator_prey.html">Lab 6 - Predator-prey dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab7-foraging.html">Lab 7 - Foraging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab8-infotaxis.html">Lab 8 - Infotaxis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab10-curiosity_driven_learning.html">Lab 10 - Curiosity-driven exploration</a></li>
 </ul>
@@ -676,10 +675,18 @@ Successfully installed cloudpickle-3.0.0 gym-0.26.2 gym-maze-0.4 gym-notices-0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x2a39b0e80&gt;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-1-ee213883f1b3&gt;</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent_patches</span><span class="p">(</span><span class="n">target_boundary</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p_scent</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">scent</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;create_grid_scent_patches&#39; is not defined
 </pre></div>
 </div>
-<img alt="../_images/82e5def535ef27f84655ace5449ae1916648b648b97a0f377cb174b07fcb1569.png" src="../_images/82e5def535ef27f84655ace5449ae1916648b648b97a0f377cb174b07fcb1569.png" />
 </div>
 </div>
 <p>Again, let’s average across 100 targets to see what the modal resolvable scent would look like over samples.</p>

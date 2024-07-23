@@ -170,7 +170,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="lab6-predator_prey.html">Lab 6 - Predator-prey dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab7-foraging.html">Lab 7 - Foraging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab8-infotaxis.html">Lab 8 - Infotaxis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab10-curiosity_driven_learning.html">Lab 10 - Curiosity-driven exploration</a></li>
 </ul>
@@ -376,7 +375,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 5 - CBGT pathways</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-setup">Section - Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-0-setup">Section 0 - Setup</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-in-cbgt-modeling-code-library">Load in CBGT modeling code library</a></li>
 </ul>
 </li>
@@ -428,8 +427,8 @@ document.write(`
 <li><p>Investigate the effects of direct pathway strength.</p></li>
 <li><p>Investigate the effects of indirect pathway strength.</p></li>
 </ol>
-<section id="section-setup">
-<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this heading">#</a></h2>
+<section id="section-0-setup">
+<h2>Section 0 - Setup<a class="headerlink" href="#section-0-setup" title="Permalink to this heading">#</a></h2>
 <p>Run all of the following code cells, which set up the environment and define several helper functions that we will use to run CBGT decision simulations.</p>
 <section id="load-in-cbgt-modeling-code-library">
 <h3>Load in CBGT modeling code library<a class="headerlink" href="#load-in-cbgt-modeling-code-library" title="Permalink to this heading">#</a></h3>
@@ -444,7 +443,16 @@ document.write(`
 <p>Copy the CBGT simulation library from the CoAx lab GitHub to our Colab notebook (in the <code class="docutils literal notranslate"><span class="pre">/content</span></code> directory specified above).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/CoAxLab/CBGT
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!git clone https://github.com/CoAxLab/CBGT</span>
+
+<span class="c1"># For local debuggging purposes</span>
+<span class="c1"># Mount Google Drive</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+
+<span class="c1"># # Install files from Google Drive</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/content/drive/My\ Drive/Code/CBGT&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -452,7 +460,8 @@ document.write(`
 <p>This next code line sets Colab’s working directory to the CGBT library which we’ve just copied in.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">CBGT</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># cd /content/CBGT</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive/Code/CBGT&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -643,7 +652,8 @@ document.write(`
     <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="n">batch_size</span><span class="p">]:</span>
         <span class="n">temp</span> <span class="o">=</span> <span class="n">ng</span><span class="o">.</span><span class="n">findOutputs</span><span class="p">(</span><span class="n">result</span><span class="p">)[</span><span class="s1">&#39;decision made&#39;</span><span class="p">]</span>
         <span class="n">row</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;rt&#39;</span><span class="p">:</span><span class="n">temp</span><span class="p">[</span><span class="s1">&#39;delay&#39;</span><span class="p">],</span> <span class="s1">&#39;accuracy&#39;</span><span class="p">:(</span><span class="mi">1</span><span class="o">-</span><span class="n">temp</span><span class="p">[</span><span class="s1">&#39;pathvals&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])})</span>
-        <span class="n">rtdata</span> <span class="o">=</span> <span class="n">rtdata</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># rtdata = rtdata.append(row, ignore_index=True)</span>
+        <span class="n">rtdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">rtdata</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">rtdata</span>
 </pre></div>
 </div>
@@ -1035,7 +1045,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 5 - CBGT pathways</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-setup">Section - Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-0-setup">Section 0 - Setup</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-in-cbgt-modeling-code-library">Load in CBGT modeling code library</a></li>
 </ul>
 </li>

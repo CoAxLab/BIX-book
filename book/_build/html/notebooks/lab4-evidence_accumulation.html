@@ -61,6 +61,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lab4-evidence_accumulation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -170,7 +172,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="lab6-predator_prey.html">Lab 6 - Predator-prey dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab7-foraging.html">Lab 7 - Foraging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab8-infotaxis.html">Lab 8 - Infotaxis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab10-curiosity_driven_learning.html">Lab 10 - Curiosity-driven exploration</a></li>
 </ul>
@@ -375,7 +376,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-setup">Section - Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-0-setup">Section 0 - Setup</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-admcode-and-explorationlib-libraries">Install ADMCode and explorationlib libraries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-modules">Import Modules</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-config">Notebook Config</a></li>
@@ -393,6 +395,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-using-sensory-evidence-to-explore">Section 2 - Using Sensory Evidence To Explore</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accumulation-of-chemosignals">Accumulation of chemosignals</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-influence-of-drift-rate-on-performance">Example: Influence of drift rate on performance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-things-a-bit-more-difficult">Making things a bit more difficult</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-environment">Create environment</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drift-rates">Drift rates</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1">Question 2.1</a></li>
@@ -421,19 +424,106 @@ document.write(`
 <li><p>Visualize the drift-diffusion model and see how parameters change evidence accumulation.</p></li>
 <li><p>Introduce an exploratory agent that accumulates sensory evidence , and explore how the parameters of the DDM influence the performance of the agent</p></li>
 </ol>
-<p>Note that this lab re-uses agents we had in the last lab, but explores them in much mroe detail.</p>
-<section id="section-setup">
-<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this heading">#</a></h2>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
+<p>Here we will go over the evidence accumulation process. First we will just explore the dynamics of simple accumulation-to-bound processes. Then we will implement an accumulator process to our chemotaxis valentino agent.</p>
+<p>As a reminder, the accumulation-to-bound process models the drift of an evidence process <span class="math notranslate nohighlight">\(\theta\)</span> whose rate of change is determined by a drift rate <span class="math notranslate nohighlight">\(v\)</span>, time <span class="math notranslate nohighlight">\(t\)</span>, and a diffusion noise constant <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\delta\theta = v \delta t + \sigma \delta W\]</div>
+<p>Here <span class="math notranslate nohighlight">\(W\)</span> is a Wiener noise process. The diffusion of evidence process starts after and onset time <span class="math notranslate nohighlight">\(tr\)</span>, reflecting sensory delays and it until <span class="math notranslate nohighlight">\(\theta \geq \frac{+a}{2}\)</span> or <span class="math notranslate nohighlight">\(\theta \leq \frac{-a}{2}\)</span> where <span class="math notranslate nohighlight">\(a\)</span> is a threhsold (or boundary height) of evidence. Often <span class="math notranslate nohighlight">\(\theta\)</span> starts at 0 (i.e., unbiased), but can start with a degree of bias <span class="math notranslate nohighlight">\(z\)</span>.</p>
+<p>In the simulations we will use for our valentino agents, we will have a 1 dimensional decision. Which means that the process starts at 0 and only continues until it hits the upper boundary <span class="math notranslate nohighlight">\(a\)</span> (i.e., stops when <span class="math notranslate nohighlight">\(\theta \geq a\)</span>) as the agent only need to make one deciison: to change or not to change.</p>
+</section>
+<section id="section-0-setup">
+<h2>Section 0 - Setup<a class="headerlink" href="#section-0-setup" title="Permalink to this heading">#</a></h2>
 <p>First let’s set things up for the two parts of the lab.</p>
 <section id="install-admcode-and-explorationlib-libraries">
 <h3>Install ADMCode and explorationlib libraries<a class="headerlink" href="#install-admcode-and-explorationlib-libraries" title="Permalink to this heading">#</a></h3>
 <p>Install the code for running the DDM simulations (ADMCode) and the evidence accumulation agents (explorelib)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For local debuggging purposes</span>
+<span class="c1"># Mount Google Drive</span>
+<span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+
+<span class="c1"># # Install files from Google Drive</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>/content/drive/My<span class="se">\ </span>Drive/Code/explorationlib
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Drive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount(&quot;/content/drive&quot;, force_remount=True).
+Processing ./drive/My Drive/Code/explorationlib
+  Preparing metadata (setup.py) ... ?25l?25hdone
+Requirement already satisfied: numpy in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (1.25.2)
+Requirement already satisfied: scipy in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (1.11.4)
+Requirement already satisfied: pandas in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (2.0.3)
+Requirement already satisfied: matplotlib in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (3.7.1)
+Requirement already satisfied: seaborn in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (0.13.1)
+Requirement already satisfied: scikit-learn in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (1.2.2)
+Requirement already satisfied: numba in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (0.58.1)
+Requirement already satisfied: future in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (0.18.3)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (1.2.1)
+Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (4.53.1)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (1.4.5)
+Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (24.1)
+Requirement already satisfied: pillow&gt;=6.2.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (9.4.0)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (3.1.2)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (2.8.2)
+Requirement already satisfied: llvmlite&lt;0.42,&gt;=0.41.0dev0 in /usr/local/lib/python3.10/dist-packages (from numba-&gt;explorationlib==0.0.1) (0.41.1)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.10/dist-packages (from pandas-&gt;explorationlib==0.0.1) (2023.4)
+Requirement already satisfied: tzdata&gt;=2022.1 in /usr/local/lib/python3.10/dist-packages (from pandas-&gt;explorationlib==0.0.1) (2024.1)
+Requirement already satisfied: joblib&gt;=1.1.1 in /usr/local/lib/python3.10/dist-packages (from scikit-learn-&gt;explorationlib==0.0.1) (1.4.2)
+Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.10/dist-packages (from scikit-learn-&gt;explorationlib==0.0.1) (3.5.0)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;explorationlib==0.0.1) (1.16.0)
+Building wheels for collected packages: explorationlib
+  Building wheel for explorationlib (setup.py) ... ?25l?25hdone
+  Created wheel for explorationlib: filename=explorationlib-0.0.1-py3-none-any.whl size=42168 sha256=769992c0c722c65e8b0b44a63ab2b271d8bebc8b03f7cce318f27a2272cd230e
+  Stored in directory: /tmp/pip-ephem-wheel-cache-_cjzleuj/wheels/70/04/31/d07fb84326fd8056827d857835a51893f17af60294640e06ad
+Successfully built explorationlib
+Installing collected packages: explorationlib
+  Attempting uninstall: explorationlib
+    Found existing installation: explorationlib 0.0.1
+    Uninstalling explorationlib-0.0.1:
+      Successfully uninstalled explorationlib-0.0.1
+Successfully installed explorationlib-0.0.1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install explorationlib &amp; gym-maze</span>
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/coaxlab/explorationlib.git
+<span class="c1"># !pip install --upgrade git+https://github.com/coaxlab/explorationlib.git</span>
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/MattChanTK/gym-maze.git
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>celluloid<span class="w"> </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>gifs
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting git+https://github.com/MattChanTK/gym-maze.git
+  Cloning https://github.com/MattChanTK/gym-maze.git to /tmp/pip-req-build-2odwsrlk
+  Running command git clone --filter=blob:none --quiet https://github.com/MattChanTK/gym-maze.git /tmp/pip-req-build-2odwsrlk
+  Resolved https://github.com/MattChanTK/gym-maze.git to commit 83176811b49b5538a6213520612f44fb1bc49114
+  Preparing metadata (setup.py) ... ?25l?25hdone
+Requirement already satisfied: gym in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (0.25.2)
+Requirement already satisfied: pygame in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (2.6.0)
+Requirement already satisfied: numpy in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (1.25.2)
+Requirement already satisfied: cloudpickle&gt;=1.2.0 in /usr/local/lib/python3.10/dist-packages (from gym-&gt;gym-maze==0.4) (2.2.1)
+Requirement already satisfied: gym-notices&gt;=0.0.4 in /usr/local/lib/python3.10/dist-packages (from gym-&gt;gym-maze==0.4) (0.0.8)
+Requirement already satisfied: celluloid in /usr/local/lib/python3.10/dist-packages (0.2.0)
+Requirement already satisfied: matplotlib in /usr/local/lib/python3.10/dist-packages (from celluloid) (3.7.1)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (1.2.1)
+Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (4.53.1)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (1.4.5)
+Requirement already satisfied: numpy&gt;=1.20 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (1.25.2)
+Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (24.1)
+Requirement already satisfied: pillow&gt;=6.2.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (9.4.0)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (3.1.2)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (2.8.2)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;celluloid) (1.16.0)
 </pre></div>
 </div>
 </div>
@@ -456,6 +546,8 @@ document.write(`
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 
 <span class="c1"># Import misc</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
@@ -487,6 +579,7 @@ document.write(`
 <span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">create_grid_scent</span>
 <span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">uniform_targets</span>
 <span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">constant_values</span>
+<span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">create_grid_scent_patches</span>
 
 <span class="c1"># Vis - 2</span>
 <span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_position2d</span>
@@ -498,6 +591,12 @@ document.write(`
 <span class="c1"># Score</span>
 <span class="kn">from</span> <span class="nn">explorationlib.score</span> <span class="kn">import</span> <span class="n">total_reward</span>
 <span class="kn">from</span> <span class="nn">explorationlib.score</span> <span class="kn">import</span> <span class="n">num_death</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.10/dist-packages/explorationlib/run.py:9: TqdmExperimentalWarning: Using `tqdm.autonotebook.tqdm` in notebook mode. Use `tqdm.tqdm` instead to force console mode (e.g. in jupyter console)
+  from tqdm.autonotebook import tqdm
 </pre></div>
 </div>
 </div>
@@ -566,6 +665,276 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-2763ee92-e50b-481e-96f9-b1160ffbdccb" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>trial</th>
+      <th>rt</th>
+      <th>choice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0.334</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>0.288</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>0.280</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>0.326</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0.266</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-2763ee92-e50b-481e-96f9-b1160ffbdccb')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-2763ee92-e50b-481e-96f9-b1160ffbdccb button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-2763ee92-e50b-481e-96f9-b1160ffbdccb');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-4571c96d-c66f-4027-be78-506cddb7dece">
+  <button class="colab-df-quickchart" onclick="quickchart('df-4571c96d-c66f-4027-be78-506cddb7dece')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-4571c96d-c66f-4027-be78-506cddb7dece button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+    </div>
+  </div>
+</div></div>
 </div>
 <p>This produced an output object called <strong>traces</strong> that has not only the choice and reactiontime on each trial, but also the information diffusion traces for each run of the DDM.</p>
 <p>One important thing to note is that in these simulations the upper bound represents the “correct” choice, while the lower bound represents “errors”. So this is what is known as an accuracy coding for the DDM.</p>
@@ -584,6 +953,13 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RT (cor) = 310 ms
+RT (err) = 314 ms
+Accuracy = 46%
+</pre></div>
+</div>
+</div>
 </div>
 <p>As we can see, the DDM is biased towards the upper boundary. What parameter defines this bias in the model that we set up?</p>
 </section>
@@ -596,6 +972,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/c60191b7639b9cb14a711179a63a1ec458d3401e90ee94fb517e890a4836fd6e.png" src="../_images/c60191b7639b9cb14a711179a63a1ec458d3401e90ee94fb517e890a4836fd6e.png" />
+</div>
 </div>
 <p>The plot above shows all fo the traces. Let’s see about plotting just the first trial’s trace.</p>
 <div class="cell docutils container">
@@ -603,6 +982,9 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">vis</span><span class="o">.</span><span class="n">plot_ddm_sims</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">traces</span><span class="o">=</span><span class="n">traces</span><span class="p">[:</span><span class="mi">1</span><span class="p">],</span> <span class="n">plot_v</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/4391d64b3a77f7634509b95c4e4efcd4fea6c4b91b96a2377a7e383e6c0f5e64.png" src="../_images/4391d64b3a77f7634509b95c4e4efcd4fea6c4b91b96a2377a7e383e6c0f5e64.png" />
 </div>
 </div>
 <p>The example above shows the mean overall drift process trajectory as a solid black line. The single diffusion process plotted is the diffusion process for both trials.</p>
@@ -682,10 +1064,62 @@ ntrials = 1000</p>
 <p>Based on what you have been told so far, how would you expect increases in the <em>drift rate</em> to affect average rewards, best rewards, and deaths in an open field task, with sparse targets and noisy scents?</p>
 <p>Here, drift rate can be conceptualized as the fidelity of sensory signal, like a sort of signal-to-noise ratio.</p>
 </section>
+<section id="making-things-a-bit-more-difficult">
+<h3>Making things a bit more difficult<a class="headerlink" href="#making-things-a-bit-more-difficult" title="Permalink to this heading">#</a></h3>
+<p>Because we are making “smarter” agents we can increase the difficulty of our search problem. We are going to start allowing for signal dropout. What we mean by that is we will make some information disappear… poof! Imagine that scent molecules are decomposing and they just drop out of our substrate randomly.</p>
+<p>We can control the probability of a scent molecule being detected at any point in space with the <em>p_scent</em> parameter.</p>
+<p>Let’s see how this works. First, we can recreate our scent distributions from Lab 2. But we set <em>p_scent</em> to 0.1, which means that there is a 10% probabilty of detecting the scent at each point of the grid (or a 90% signal drop out rate).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">noise_sigma</span> <span class="o">=</span> <span class="mf">2.0</span>
+
+<span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent_patches</span><span class="p">(</span><span class="n">target_boundary</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p_scent</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">noise_sigma</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">scent</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7807d4de46a0&gt;
+</pre></div>
+</div>
+<img alt="../_images/a386a840e8c51c9304a2492668ac0df8977ca2e909547f29995d065d5c985b5c.png" src="../_images/a386a840e8c51c9304a2492668ac0df8977ca2e909547f29995d065d5c985b5c.png" />
+</div>
+</div>
+<p>As you can see, it is pretty noisy.</p>
+<p>So like before, let’s average across 100 targets to see what the modal resolvable scent looks like (on average)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">scents</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_samples</span><span class="p">):</span>
+    <span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent_patches</span><span class="p">(</span><span class="n">target_boundary</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p_scent</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">scents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">scent</span><span class="p">))</span>
+
+<span class="n">scent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">scents</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">scent</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7807d4c6bfd0&gt;
+</pre></div>
+</div>
+<img alt="../_images/c5b883b06528123d37bd53e0193e4d5e095ee9bc53e676ceb271d140f1dd7d1f.png" src="../_images/c5b883b06528123d37bd53e0193e4d5e095ee9bc53e676ceb271d140f1dd7d1f.png" />
+</div>
+</div>
+</section>
 <section id="create-environment">
 <h3>Create environment<a class="headerlink" href="#create-environment" title="Permalink to this heading">#</a></h3>
 <p>The name of the env for this section is the <em>ScentGrid</em>. It basically parses up the continuous space into a grid of steps.</p>
-<p>Let’s add some targets and scents to it.</p>
+<p>Let’s add some targets and scents to it. Now we are doing to include the drop out of the scent, setting <em>p_scent</em> to 0.5 (50% drop out)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shared exp parameters</span>
@@ -711,7 +1145,10 @@ ntrials = 1000</p>
 <span class="n">values</span> <span class="o">=</span> <span class="n">constant_values</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Scents</span>
-<span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent</span><span class="p">(</span><span class="n">target_boundary</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.95</span>
+<span class="n">noise_sigma</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent_patches</span><span class="p">(</span><span class="n">target_boundary</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p_scent</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">noise_sigma</span><span class="p">)</span>
 <span class="n">scents</span> <span class="o">=</span> <span class="p">[</span><span class="n">scent</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">targets</span><span class="p">))]</span>
 <span class="n">env</span><span class="o">.</span><span class="n">add_scents</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">scents</span><span class="p">,</span> <span class="n">noise_sigma</span><span class="o">=</span><span class="n">noise_sigma</span><span class="p">)</span>
 </pre></div>
@@ -735,7 +1172,11 @@ ntrials = 1000</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/20a5c09aef8d57a629fb327e45daa8e0e9540c6a4c024b5a803bf1e19f6a642c.png" src="../_images/20a5c09aef8d57a629fb327e45daa8e0e9540c6a4c024b5a803bf1e19f6a642c.png" />
 </div>
+</div>
+<p>So we now have another dimension with which to make our stimulus noisy. Just to make things harder.</p>
 </section>
 <section id="drift-rates">
 <h3>Drift rates<a class="headerlink" href="#drift-rates" title="Permalink to this heading">#</a></h3>
@@ -803,6 +1244,8 @@ ntrials = 1000</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "a95525c2bb464388bf453916f3a26a71"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "1c5f4787c7db4685ab6dee5aeb93d9d0"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ac3d3adb9c824144beb55f4a352f9052"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "69f02c3ffd8c47b584d83176f16c0eb7"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "433d1133aeae46b590c09327d1a4765c"}</script></div>
 </div>
 </section>
 <section id="plot-an-example">
@@ -832,6 +1275,9 @@ ntrials = 1000</p>
 <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1a926fd8a9e8d036f596cea450cdd2dc4e4338799dfde085d5417ee4a3cc5c35.png" src="../_images/1a926fd8a9e8d036f596cea450cdd2dc4e4338799dfde085d5417ee4a3cc5c35.png" />
 </div>
 </div>
 </section>
@@ -864,6 +1310,9 @@ ntrials = 1000</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/2de3063bf957d89d8357a626e1d51bc80181de2da2bb995c1dea7fb82fc0d5ae.png" src="../_images/2de3063bf957d89d8357a626e1d51bc80181de2da2bb995c1dea7fb82fc0d5ae.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -881,6 +1330,9 @@ ntrials = 1000</p>
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "3356b018e1a04d45ba9d59312de6ebc1"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "cd0b54d4d29447e084a25b9e41294e71"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "29e4b34143944f55b7afb3d9dbad430f"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "217eeba61db44279af006cd7c65738f0"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "de29f6e9079c437dab790f78acd5ed3d"}</script><img alt="../_images/90690ef1bb6a96dc5725441a980e83ec28eba4d8ed5da7f7b9c59e1222bfcdb2.png" src="../_images/90690ef1bb6a96dc5725441a980e83ec28eba4d8ed5da7f7b9c59e1222bfcdb2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -905,6 +1357,9 @@ ntrials = 1000</p>
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "40234856368641bb95ef7a7cb955161c"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "f1dd93bee9c74368a85a2ada66f9fcf3"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "9a7b33cee6824f649f492ab1b4eeb600"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "588a04bf273645d3930c9fb200e6067f"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "730a383afded40689afd831fc5a8508a"}</script><img alt="../_images/b79fb27e99582942dd74fc3dd8c5d91666c16dc1a8eac4abc5c1840c8062c2d1.png" src="../_images/b79fb27e99582942dd74fc3dd8c5d91666c16dc1a8eac4abc5c1840c8062c2d1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -940,6 +1395,10 @@ ntrials = 1000</p>
     <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "483c39dc30c3460893169a266b23b33f"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "c05396a6e4af4664b5acc8e45d84bb0f"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "e7c3e0a04dc6494bb3a18062a998a4bc"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "d0b6ccc35bd94d7894467cba07005ae2"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "36f0eef014c94f3394761b7ee0c8eba8"}</script><img alt="../_images/67863b67f2915d4b6d42baedc136e0a4042da91a5c39c9c6791f80685b94d65b.png" src="../_images/67863b67f2915d4b6d42baedc136e0a4042da91a5c39c9c6791f80685b94d65b.png" />
+<img alt="../_images/fc1ed3c6c913ad6639305f61af5f43f8088e58bad92e160789b013490719d4b5.png" src="../_images/fc1ed3c6c913ad6639305f61af5f43f8088e58bad92e160789b013490719d4b5.png" />
 </div>
 </div>
 </section>
@@ -1037,7 +1496,8 @@ ntrials = 1000</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-setup">Section - Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-0-setup">Section 0 - Setup</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-admcode-and-explorationlib-libraries">Install ADMCode and explorationlib libraries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-modules">Import Modules</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-config">Notebook Config</a></li>
@@ -1055,6 +1515,7 @@ ntrials = 1000</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-using-sensory-evidence-to-explore">Section 2 - Using Sensory Evidence To Explore</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accumulation-of-chemosignals">Accumulation of chemosignals</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-influence-of-drift-rate-on-performance">Example: Influence of drift rate on performance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-things-a-bit-more-difficult">Making things a bit more difficult</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-environment">Create environment</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drift-rates">Drift rates</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1">Question 2.1</a></li>

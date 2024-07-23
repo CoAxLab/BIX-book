@@ -1,0 +1,39 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+def compute_hits_and_false_alarms(signal, decisions, threshold):
+    hits = np.sum((signal > threshold) & (decisions == 1))
+    false_alarms = np.sum((signal <= threshold) & (decisions == 1))
+    return hits, false_alarms
+
+# Simulate data (signal + noise)
+num_trials = 1000
+signal_strength = 2.0
+noise_std = 1.0
+noise = np.random.normal(0, noise_std, num_trials)
+signal = signal_strength + noise
+
+# Threshold for decision-making
+threshold = 1.5
+
+# Make decisions based on threshold
+decisions = np.where(signal > threshold, 1, 0)
+
+# Compute hits and false alarms using the function
+hits, false_alarms = compute_hits_and_false_alarms(signal, decisions, threshold)
+
+# Compute hit rate and false alarm rate
+hit_rate = hits / num_trials
+false_alarm_rate = false_alarms / num_trials
+
+print(f"Hit rate: {hit_rate:.2f}")
+print(f"False alarm rate: {false_alarm_rate:.2f}")
+
+# Plot the signal distribution
+plt.hist(signal, bins=30, alpha=0.7, label="Signal + Noise")
+plt.axvline(threshold, color="red", linestyle="--", label="Decision Threshold")
+plt.xlabel("Signal Strength")
+plt.ylabel("Frequency")
+plt.title("Signal Detection Experiment")
+plt.legend()
+plt.show()

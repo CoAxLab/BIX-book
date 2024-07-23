@@ -1,0 +1,1163 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Lab 6 - Information theory &#8212; Biologically Intelligent eXploration (BIX)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lab6-information';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/levy-flight.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/levy-flight.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Biologically Intelligent eXploration (BIX)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro-python.html">Introduction to python</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lab1-randomsearch.html">Lab 1 - Random exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2-chemotaxis.html">Lab 2 - Simple Chemotaxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4-evidence_accumulation.html">Lab 4 - Evidence Accumulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5-cbgt.html">Lab 5 - CBGT pathways</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="lab6-predator_prey.html">Lab 6 - Predator-prey dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7-foraging.html">Lab 7 - Foraging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab10-curiosity_driven_learning.html">Lab 10 - Curiosity-driven exploration</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise3-cbgt_and_pred_prey.html"><strong>Exercise 3: CBGT networks and predator-prey dynamics</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise4-foraging_and_rl_and_info.html"><strong>Homework 4: Foraging and reinforcement learning</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/CoAxLab/BIX-book/main?urlpath=tree/book/notebooks/lab6-information.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/CoAxLab/BIX-book/blob/main/book/notebooks/lab6-information.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/lab6-information.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 6 - Information theory</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-entropy"><strong>What is entropy?</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-between-variables"><strong>Entropy between variables</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mutual-information-between-variables"><strong>Mutual information between variables</strong>.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kullback-leibler-kl-divergence"><strong>Kullback-Leibler (KL) divergence</strong>.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-0-setup">Section 0 - Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-entropy">Section 1 - Entropy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-our-two-neurons">Visualizing our two neurons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1">Question 1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2">Question 1.2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-mutual-information">Section 2 - Mutual information</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1">Question 2.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2">Question 2.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3">Question 2.3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-3-kl-divergence">Section 3 - KL divergence</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-1">Question 3.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2">Question 3.2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-4-putting-it-together">Section 4 - Putting it together</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-1">Question 4.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-2">Question 4.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-3">Question 4.3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-4">Question 4.4</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-6-information-theory">
+<h1>Lab 6 - Information theory<a class="headerlink" href="#lab-6-information-theory" title="Permalink to this heading">#</a></h1>
+<p>This lab has a few goals designed to get you comfortable with working with python and playing with the basiscs of information theory.</p>
+<p>Sections:</p>
+<ol class="arabic simple">
+<li><p>Entropy</p></li>
+<li><p>Mutual information</p></li>
+<li><p>KL divergence</p></li>
+</ol>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
+<p>For this lab we won’t be working with our main library, <em>explorationlib</em>. We’ll use a few standard libraries to both get more comfortable with python and to refresh the concepts of information theory discussed in class.</p>
+<section id="what-is-entropy">
+<h3><strong>What is entropy?</strong><a class="headerlink" href="#what-is-entropy" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>According to Shannon’s definition, the entropy <span class="math notranslate nohighlight">\(H(X)\)</span> of a discrete random variable is: <span class="math notranslate nohighlight">\(H(X)= \sum_{x \in X} p(x) \log _2 p(x)^{-1}\)</span>.</p></li>
+<li><p>Here we are assuming that the discrete variable is binary, hence the use of <span class="math notranslate nohighlight">\(\log _2\)</span></p></li>
+<li><p>A key aspect of the definition entropy is the ‘surprise’ termn, <span class="math notranslate nohighlight">\(p(x)^{-1}\)</span>. The more surprising an outcome is, the more valuable that bit of information is. We will return to this later in class.</p></li>
+</ul>
+</section>
+<section id="entropy-between-variables">
+<h3><strong>Entropy between variables</strong><a class="headerlink" href="#entropy-between-variables" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The <em>joint entropy</em> between two discrete random variables, <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, is just an expansion of the regular concept of entropy: <span class="math notranslate nohighlight">\(H(X, Y)= \sum_{x \in X} p(x,y) \log _2 p(x,y)^{-1}\)</span>.</p></li>
+<li><p>Note that in here, <span class="math notranslate nohighlight">\(p(x,y)\)</span> is the joint probability distribution between the variables.</p></li>
+<li><p>Expanding out from the rules of conditional probabilities (thank you Mr. Bayes), the joint entropy can be expanded as the product of the entropy of the primary variable and the conditional entropy of the two variables: <span class="math notranslate nohighlight">\(H(X,Y) = H(X) + H(Y|X)\)</span>. <em>Pay attention to the ordering of terms, it gets important later</em>.</p></li>
+</ul>
+</section>
+<section id="mutual-information-between-variables">
+<h3><strong>Mutual information between variables</strong>.<a class="headerlink" href="#mutual-information-between-variables" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Sticking with the idea of joint entropy, the <em>conditional entropy</em> <span class="math notranslate nohighlight">\(H(X|Y)\)</span> reflects the residual entropy of <span class="math notranslate nohighlight">\(X\)</span> after you have knowledge about <span class="math notranslate nohighlight">\(Y\)</span>. This is expressed as: <span class="math notranslate nohighlight">\(H(X|Y)=H(X)-I(X;Y)\)</span>.</p></li>
+<li><p>We call this second term, <span class="math notranslate nohighlight">\(I(X;Y)\)</span> the <em>mutual information</em> between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>. It is the information provided by Y about X. If you were in statistics and working with continuous variables, this would be the correlation (or covariance).</p></li>
+<li><p>We can rewrite the equation above as <span class="math notranslate nohighlight">\(I(X;Y) = H(X) - H(X|Y) = \sum_{x \in X, y \in Y} p(x,y) \log _2 \frac{p(x,y)}{p(x)p(y)}\)</span></p></li>
+</ul>
+</section>
+<section id="kullback-leibler-kl-divergence">
+<h3><strong>Kullback-Leibler (KL) divergence</strong>.<a class="headerlink" href="#kullback-leibler-kl-divergence" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Often referred to as relative entropy, this is a measure of how one probability distribution diverges from a second, reference probability distribution. It quantifies the amount of information lost when approximating one distribution with another.</p></li>
+<li><p>Consider <span class="math notranslate nohighlight">\(P(X)\)</span> and <span class="math notranslate nohighlight">\(Q(X)\)</span> to be two probability distribtions of a random variable. In our example, spike trains from two neurons.</p></li>
+<li><p>The KL divergence of <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span>, <span class="math notranslate nohighlight">\(D_{KL}(P||Q)\)</span>, is defined as</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[D_{KL}(P||Q)=\Sigma_{x \in X} p(x)\log_2 (\frac{p(x)}{q(x)})\]</div>
+<ul class="simple">
+<li><p>Essentially <span class="math notranslate nohighlight">\(D_{KL}(P||Q)\)</span> is a measure of the distance between two distributions</p></li>
+</ul>
+</section>
+</section>
+<section id="section-0-setup">
+<h2>Section 0 - Setup<a class="headerlink" href="#section-0-setup" title="Permalink to this heading">#</a></h2>
+<p>For today’s lab we’ll start simple. All we need is <em>numpy</em> and <em>matplotlib</em> (for plotting)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the general libraries we will be using</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-1-entropy">
+<h2>Section 1 - Entropy<a class="headerlink" href="#section-1-entropy" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>For this section we will simulate two cells, a presynaptic and postsynaptic cell. The data will consist of spikes. We will vary the degree of dependency between the neurons and look at their relative entropies.</p></li>
+<li><p>One way to achieve this is to use a Poisson process to simulate the neurons. Here, the firing of each neuron at each time step is modeled as a binary event that occurs with some probability. The influence of the first neuron on the second is represented by increasing the firing probability of the second neuron when the first one fires.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_neuron_spikes</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">base_firing_prob</span><span class="p">,</span> <span class="n">influence</span><span class="p">,</span> <span class="n">noise_level</span><span class="p">,</span> <span class="n">neuron1</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simulate the spiking of a neuron.</span>
+
+<span class="sd">    If neuron1 is not None, then this neuron is influenced by neuron1.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">spikes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">):</span>
+        <span class="n">firing_prob</span> <span class="o">=</span> <span class="n">base_firing_prob</span>
+
+        <span class="k">if</span> <span class="n">neuron1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">neuron1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">firing_prob</span> <span class="o">+=</span> <span class="n">influence</span>
+
+        <span class="n">firing_prob</span> <span class="o">+=</span> <span class="n">noise_level</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">firing_prob</span><span class="p">:</span>
+            <span class="n">spikes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">spikes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Time and rates</span>
+<span class="n">total_time_sec</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">sampling_rate_hz</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="n">total_time_sec</span> <span class="o">*</span> <span class="n">sampling_rate_hz</span>
+
+<span class="c1"># Probabilities</span>
+<span class="n">base_firing_prob</span> <span class="o">=</span> <span class="mf">0.02</span>
+<span class="n">influence</span> <span class="o">=</span> <span class="mf">0.03</span>
+<span class="n">noise_level</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="c1"># Simulate the two neurons</span>
+<span class="n">neuron1</span> <span class="o">=</span> <span class="n">simulate_neuron_spikes</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">base_firing_prob</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">noise_level</span><span class="p">)</span>
+<span class="n">neuron2</span> <span class="o">=</span> <span class="n">simulate_neuron_spikes</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">base_firing_prob</span><span class="p">,</span> <span class="n">influence</span><span class="p">,</span> <span class="n">noise_level</span><span class="p">,</span> <span class="n">neuron1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Neuron 1 spike train:&quot;</span><span class="p">,</span> <span class="n">neuron1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Neuron 2 spike train:&quot;</span><span class="p">,</span> <span class="n">neuron2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neuron 1 spike train: [0. 0. 0. ... 0. 0. 0.]
+Neuron 2 spike train: [0. 0. 0. ... 0. 0. 0.]
+</pre></div>
+</div>
+</div>
+</div>
+<p>What we have created are two binary vectors, <em>neuron1</em> and <em>neuron2</em>, that represent the spike trains of two neurons over 5 seconds at a 1 kHz sampling rate.</p>
+<p>Each time step is a binary event where 1 represents a spike and 0 represents no spike. The base firing probability is 2%, but this is modified by two factors: the influence of the first neuron on the second, and some independent noise.</p>
+<p>The <em>influence</em> parameter controls how much the first neuron affects the second: whenever the first neuron fires, the firing probability of the second neuron is increased by the influence factor. The <em>noise level</em> parameter controls the amount of independent noise in the firing probabilities. This noise is modeled as Gaussian noise and is independent for each neuron and each time step.</p>
+<section id="visualizing-our-two-neurons">
+<h3>Visualizing our two neurons<a class="headerlink" href="#visualizing-our-two-neurons" title="Permalink to this heading">#</a></h3>
+<p>We can use a raster plot to visualize the spike times of our neurons. For this we will use matplotlib.</p>
+<p>In a raster plot, each row corresponds to a different repetition of the experiment (a different neuron in this case), and the x-axis represents time. Each small vertical line (marker) represents a spike.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_spikes</span><span class="p">(</span><span class="n">neuron1</span><span class="p">,</span> <span class="n">neuron2</span><span class="p">,</span> <span class="n">sampling_rate_hz</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot the spikes of the two neurons as a raster plot.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">time_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">neuron1</span><span class="p">))</span> <span class="o">/</span> <span class="n">sampling_rate_hz</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Neuron 1</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">eventplot</span><span class="p">(</span><span class="n">time_points</span><span class="p">[</span><span class="n">neuron1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Neuron 1&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Spikes&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Neuron 2</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">eventplot</span><span class="p">(</span><span class="n">time_points</span><span class="p">[</span><span class="n">neuron2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Neuron 2&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Spikes&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time (sec)&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the plotting function</span>
+<span class="n">plot_spikes</span><span class="p">(</span><span class="n">neuron1</span><span class="p">,</span> <span class="n">neuron2</span><span class="p">,</span> <span class="n">sampling_rate_hz</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9a0879da94e7d80b37e82fe90bd77f990e1e1a0fa7839f3683544d697cf640a7.png" src="../_images/9a0879da94e7d80b37e82fe90bd77f990e1e1a0fa7839f3683544d697cf640a7.png" />
+</div>
+</div>
+<p>Let’s now calculate the entropy of each neuron. For this we will use a simple function that follows the equations for entropy in the Background and the reading.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_entropy</span><span class="p">(</span><span class="n">neuron</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the entropy of the spike train of a neuron.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Count the number of 0s and 1s in the array</span>
+    <span class="n">unique</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">neuron</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">probs</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">neuron</span><span class="p">)</span>
+
+    <span class="c1"># Calculate the entropy</span>
+    <span class="n">entropy</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">probs</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">probs</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">entropy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s see how our neurons are doing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate and print the entropies</span>
+<span class="n">entropy_neuron1</span> <span class="o">=</span> <span class="n">calculate_entropy</span><span class="p">(</span><span class="n">neuron1</span><span class="p">)</span>
+<span class="n">entropy_neuron2</span> <span class="o">=</span> <span class="n">calculate_entropy</span><span class="p">(</span><span class="n">neuron2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Entropy of Neuron 1: </span><span class="si">{</span><span class="n">entropy_neuron1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Entropy of Neuron 2: </span><span class="si">{</span><span class="n">entropy_neuron2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entropy of Neuron 1: 0.1536208432265204
+Entropy of Neuron 2: 0.12541661625503772
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-1-1">
+<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h3>
+<p>Increase the baseline firing rate parameter, <em>base_firing_prob</em>, by a factor of 10 to 0.2. What happens to the entropies of the neurons? Explain why this effect may or may not occur.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-1-2">
+<h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this heading">#</a></h3>
+<p>Put the baseline firing rate parameter back to 0.02. Increase the influence parameter, from neuron 1 to neuron 2, by a factor of 10 to 0.3. What happens to the entropies of the neurons? Explain why this effect may or may not occur.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="section-2-mutual-information">
+<h2>Section 2 - Mutual information<a class="headerlink" href="#section-2-mutual-information" title="Permalink to this heading">#</a></h2>
+<p>We have our two happy little neurons firing. We’ve played with the parameters to see how it impacts their relative entropy. Now let’s go back to the original parameter settings and see about estimating the mutual information between our neurons.</p>
+<p>Recall that to estimate the mutual information, we need to estimate the conditional entropy for <span class="math notranslate nohighlight">\(X\)</span> on <span class="math notranslate nohighlight">\(Y\)</span>. For binary variables things are a bit easier because <span class="math notranslate nohighlight">\(H(X|Y) = H(Y) - H(X,Y)\)</span>. Which means we only need to get both independnet entropies and the joint entropy. This leaves us with this simple and beautiful equation: <span class="math notranslate nohighlight">\(I(X; Y) = H(X) + H(Y) - H(X, Y)\)</span>.</p>
+<p>We can easily write a function to do this. First we start with esimating the joint entropy of the two variables.</p>
+<div class="math notranslate nohighlight">
+\[ H(X,Y) = -\Sigma_{x,y}P(X=x,Y=y)\log_2 P(X=x, Y=y) \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_joint_entropy</span><span class="p">(</span><span class="n">neuron1</span><span class="p">,</span> <span class="n">neuron2</span><span class="p">):</span>
+    <span class="c1"># Calculate joint probability distribution</span>
+    <span class="n">joint_prob</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span><span class="n">neuron1</span><span class="p">,</span> <span class="n">neuron2</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+    <span class="n">joint_prob</span> <span class="o">/=</span> <span class="nb">len</span><span class="p">(</span><span class="n">neuron1</span><span class="p">)</span>
+
+    <span class="c1"># Calculate joint entropy</span>
+    <span class="n">joint_entropy</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">joint_prob</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">joint_prob</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">joint_entropy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s take a moment to take a look at this central estimate of the joint firing probabilities. We’ll pull this out of the function and probe here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joint_prob</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span><span class="n">neuron1</span><span class="p">,</span> <span class="n">neuron2</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">joint_prob</span> <span class="o">/=</span> <span class="nb">len</span><span class="p">(</span><span class="n">neuron1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">joint_prob</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.9618 0.016 ]
+ [0.021  0.0012]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Most of the time, both neurons are 0 (upper left value). A small percentage of the time one neuron fires when the other does not (off diagonal entries). Finally, a small percentage of the time both neurons fire together (lower right).</p>
+<p>Now we can calculate the full mutual information by subtracting this joint entropy from the relative entropy of the two variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_mutual_information</span><span class="p">(</span><span class="n">neuron1</span><span class="p">,</span> <span class="n">neuron2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the mutual information between the spike trains of two neurons.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">entropy_neuron1</span> <span class="o">=</span> <span class="n">calculate_entropy</span><span class="p">(</span><span class="n">neuron1</span><span class="p">)</span>
+    <span class="n">entropy_neuron2</span> <span class="o">=</span> <span class="n">calculate_entropy</span><span class="p">(</span><span class="n">neuron2</span><span class="p">)</span>
+    <span class="n">joint_entropy</span> <span class="o">=</span> <span class="n">calculate_joint_entropy</span><span class="p">(</span><span class="n">neuron1</span><span class="p">,</span> <span class="n">neuron2</span><span class="p">)</span>
+
+    <span class="c1"># Use the formula for mutual information</span>
+    <span class="n">mutual_information</span> <span class="o">=</span> <span class="n">entropy_neuron1</span> <span class="o">+</span> <span class="n">entropy_neuron2</span> <span class="o">-</span> <span class="n">joint_entropy</span>
+
+    <span class="k">return</span> <span class="n">mutual_information</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>So let’s see what the mutal information is when we re-simulate our neurons back at the original parameter settings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Time and rates</span>
+<span class="n">total_time_sec</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">sampling_rate_hz</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="n">total_time_sec</span> <span class="o">*</span> <span class="n">sampling_rate_hz</span>
+
+<span class="c1"># Probabilities</span>
+<span class="n">base_firing_prob</span> <span class="o">=</span> <span class="mf">0.02</span>
+<span class="n">influence</span> <span class="o">=</span> <span class="mf">0.03</span>
+<span class="n">noise_level</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="c1"># Simulate the two neurons</span>
+<span class="n">neuron1</span> <span class="o">=</span> <span class="n">simulate_neuron_spikes</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">base_firing_prob</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">noise_level</span><span class="p">)</span>
+<span class="n">neuron2</span> <span class="o">=</span> <span class="n">simulate_neuron_spikes</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">base_firing_prob</span><span class="p">,</span> <span class="n">influence</span><span class="p">,</span> <span class="n">noise_level</span><span class="p">,</span> <span class="n">neuron1</span><span class="p">)</span>
+
+<span class="c1"># Calculate and print the mutual information</span>
+<span class="n">mutual_information</span> <span class="o">=</span> <span class="n">calculate_mutual_information</span><span class="p">(</span><span class="n">neuron2</span><span class="p">,</span> <span class="n">neuron1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mutual Information: </span><span class="si">{</span><span class="n">mutual_information</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mutual Information: 0.0017134781933942356
+</pre></div>
+</div>
+</div>
+</div>
+<p>This reflects the mutual dependence between the two neurons. You can probably guess what questions we will ask about this.</p>
+<section id="question-2-1">
+<h3>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this heading">#</a></h3>
+<p>Increase the baseline firing rate parameter, <em>base_firing_prob</em>, by a factor of 10 to 0.2. What happens to the mutual information of the neurons? Explain why this effect may or may not occur.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-2-2">
+<h3>Question 2.2<a class="headerlink" href="#question-2-2" title="Permalink to this heading">#</a></h3>
+<p>Put the baseline firing rate parameter back to 0.02. Increase the influence parameter, from neuron 1 to neuron 2, by a factor of 10 to 0.3. What happens to the mutual information of the neurons? Explain why this effect may or may not occur.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-2-3">
+<h3>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this heading">#</a></h3>
+<p>Take the last set of simulations that you ran (with the influence set at 0.3) and switch the order of the neurons in the calculation of mutual information. What does or does not happen to the mutual information estimate? Why?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="section-3-kl-divergence">
+<h2>Section 3 - KL divergence<a class="headerlink" href="#section-3-kl-divergence" title="Permalink to this heading">#</a></h2>
+<p>We can now move on to our information measure of interest, the KL divergence, <span class="math notranslate nohighlight">\(D_{KL}(P||Q)\)</span>. Let’s start by setting up our neurons so that the first, presynaptic neuron has a strong influence on the spiking probability of the second, postsynaptic neuron.</p>
+<p>For this we will make a strong synaptic connection by changing the <em>influence</em> parameter to 0.99, which means that when neuron1 spikes, neuron2’s firing probability increases by 99%.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Time and rates</span>
+<span class="n">total_time_sec</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">sampling_rate_hz</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="n">total_time_sec</span> <span class="o">*</span> <span class="n">sampling_rate_hz</span>
+
+<span class="c1"># Probabilities</span>
+<span class="n">base_firing_prob</span> <span class="o">=</span> <span class="mf">0.02</span>
+<span class="n">influence</span> <span class="o">=</span> <span class="mf">0.99</span>
+<span class="n">noise_level</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="c1"># Simulate the two neurons</span>
+<span class="n">neuron1</span> <span class="o">=</span> <span class="n">simulate_neuron_spikes</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">base_firing_prob</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">noise_level</span><span class="p">)</span>
+<span class="n">neuron2</span> <span class="o">=</span> <span class="n">simulate_neuron_spikes</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">base_firing_prob</span><span class="p">,</span> <span class="n">influence</span><span class="p">,</span> <span class="n">noise_level</span><span class="p">,</span> <span class="n">neuron1</span><span class="p">)</span>
+
+<span class="c1"># Plot</span>
+<span class="n">plot_spikes</span><span class="p">(</span><span class="n">neuron1</span><span class="p">,</span> <span class="n">neuron2</span><span class="p">,</span> <span class="n">sampling_rate_hz</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d2e263f0cfa9e529336209966bc656318978a709e5d82677091be458dc059054.png" src="../_images/d2e263f0cfa9e529336209966bc656318978a709e5d82677091be458dc059054.png" />
+</div>
+</div>
+<p>Now let’s write a simple function to calculate the KL divergence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_kl_divergence</span><span class="p">(</span><span class="n">neuron1</span><span class="p">,</span> <span class="n">neuron2</span><span class="p">):</span>
+    <span class="c1"># Calculate probability distributions</span>
+    <span class="n">unique</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">neuron1</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">p1</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">neuron1</span><span class="p">)</span>
+
+    <span class="n">unique</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">neuron2</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">p2</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">neuron2</span><span class="p">)</span>
+
+    <span class="c1"># Avoid division by zero and log(0) by adding a small constant</span>
+    <span class="n">epsilon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
+    <span class="n">p1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">p2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Calculate KL divergence</span>
+    <span class="n">kl_div</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">p1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">p1</span> <span class="o">/</span> <span class="n">p2</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">kl_div</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using the spiking data above, we get the following</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kl_div_value</span> <span class="o">=</span> <span class="n">calculate_kl_divergence</span><span class="p">(</span><span class="n">neuron1</span><span class="p">,</span> <span class="n">neuron2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;KL Divergence: </span><span class="si">{</span><span class="n">kl_div_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KL Divergence: 0.007744611857461763
+</pre></div>
+</div>
+</div>
+</div>
+<p>Just to prove to you that KL divergence measures similarity in distributions, let’s make two completely independent neurons and look at their KL divergence score.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simulate the two neurons</span>
+<span class="n">neuron3</span> <span class="o">=</span> <span class="n">simulate_neuron_spikes</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">base_firing_prob</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">noise_level</span><span class="p">)</span>
+
+<span class="n">kl_div_value</span> <span class="o">=</span> <span class="n">calculate_kl_divergence</span><span class="p">(</span><span class="n">neuron1</span><span class="p">,</span> <span class="n">neuron3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;KL Divergence: </span><span class="si">{</span><span class="n">kl_div_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KL Divergence: 1.3514809547292219e-05
+</pre></div>
+</div>
+</div>
+</div>
+<section id="question-3-1">
+<h3>Question 3.1<a class="headerlink" href="#question-3-1" title="Permalink to this heading">#</a></h3>
+<p>What does it mean that the KL diverence is higher for our connected neurons (neuron1, neuron2) than our unconnected neurons (neuron1, neuron3)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-3-2">
+<h3>Question 3.2<a class="headerlink" href="#question-3-2" title="Permalink to this heading">#</a></h3>
+<p>Go back to our connected neurons (neuron1 &amp; neuron2) and change the <em>influence</em> parameter back to 0.03. How does the KL divergence change? Explain why this effect may or may not occur.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="section-4-putting-it-together">
+<h2>Section 4 - Putting it together<a class="headerlink" href="#section-4-putting-it-together" title="Permalink to this heading">#</a></h2>
+<p>Now let’s simulate a set of experiments were we systematically increase the <em>influence</em> parameter and see how our three measures change.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Time and rates</span>
+<span class="n">total_time_sec</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">sampling_rate_hz</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="n">total_time_sec</span> <span class="o">*</span> <span class="n">sampling_rate_hz</span>
+
+<span class="c1"># Probabilities</span>
+<span class="n">base_firing_prob</span> <span class="o">=</span> <span class="mf">0.02</span>
+<span class="n">noise_level</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="c1"># Influence parameters</span>
+<span class="n">influences</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">]</span>
+
+<span class="c1"># For plotting</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">influences</span>
+
+<span class="n">e1</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">e2</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">mi</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">kl</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">influence</span> <span class="ow">in</span> <span class="n">influences</span><span class="p">:</span>
+  <span class="n">neuron1</span> <span class="o">=</span> <span class="n">simulate_neuron_spikes</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">base_firing_prob</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">noise_level</span><span class="p">)</span>
+  <span class="n">neuron2</span> <span class="o">=</span> <span class="n">simulate_neuron_spikes</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">base_firing_prob</span><span class="p">,</span> <span class="n">influence</span><span class="p">,</span> <span class="n">noise_level</span><span class="p">,</span> <span class="n">neuron1</span><span class="p">)</span>
+
+  <span class="n">e1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calculate_entropy</span><span class="p">(</span><span class="n">neuron1</span><span class="p">))</span>
+  <span class="n">e2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calculate_entropy</span><span class="p">(</span><span class="n">neuron2</span><span class="p">))</span>
+  <span class="n">mi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calculate_mutual_information</span><span class="p">(</span><span class="n">neuron2</span><span class="p">,</span> <span class="n">neuron1</span><span class="p">))</span>
+  <span class="n">kl</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calculate_kl_divergence</span><span class="p">(</span><span class="n">neuron2</span><span class="p">,</span> <span class="n">neuron1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First let’s look at the relative entropies of the two neurons.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now let&#39;s plot the entropies first</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">],</span> <span class="n">e1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;neuron1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">],</span> <span class="n">e2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;neuron2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Entropy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Influence&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7d3b1baa75b0&gt;
+</pre></div>
+</div>
+<img alt="../_images/5c592fb3ce79e398f4a23276ab9c1aee4713081f246dd3eac3aeb0e019017594.png" src="../_images/5c592fb3ce79e398f4a23276ab9c1aee4713081f246dd3eac3aeb0e019017594.png" />
+</div>
+</div>
+<section id="question-4-1">
+<h3>Question 4.1<a class="headerlink" href="#question-4-1" title="Permalink to this heading">#</a></h3>
+<p>What do you notice about the relative entropies of the two neurons?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next let’s look at the mutual information.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now let&#39;s plot the mutual information</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">],</span> <span class="n">mi</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mutual information&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Influence&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:matplotlib.legend:No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7d3b1ba77e50&gt;
+</pre></div>
+</div>
+<img alt="../_images/ffcb3db86d492c02c3fd62609286c3212737bd5d65c7c575f6e356c5e697cc20.png" src="../_images/ffcb3db86d492c02c3fd62609286c3212737bd5d65c7c575f6e356c5e697cc20.png" />
+</div>
+</div>
+</section>
+<section id="question-4-2">
+<h3>Question 4.2<a class="headerlink" href="#question-4-2" title="Permalink to this heading">#</a></h3>
+<p>What does the mutual information do as you increase the presynaptic influence on the postsynaptic cell? Why does this occur?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, let’s look at the KL divergence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Finally KL divergence</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">],</span> <span class="n">kl</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;KL Divergence&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Influence&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:matplotlib.legend:No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7d3b1bb56f50&gt;
+</pre></div>
+</div>
+<img alt="../_images/4b5b781158f6c44f0546321fcbc3ab8b964759effcd5e88b395400d33a7b7af3.png" src="../_images/4b5b781158f6c44f0546321fcbc3ab8b964759effcd5e88b395400d33a7b7af3.png" />
+</div>
+</div>
+</section>
+<section id="question-4-3">
+<h3>Question 4.3<a class="headerlink" href="#question-4-3" title="Permalink to this heading">#</a></h3>
+<p>What does the KL divergence do as you increase the presynaptic influence on the postsynaptic cell? Why does this occur?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-4-4">
+<h3>Question 4.4<a class="headerlink" href="#question-4-4" title="Permalink to this heading">#</a></h3>
+<p>Put all three results together and in simple English, explain what is happening the properties of both neurons as you increase the influence parameter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-entropy"><strong>What is entropy?</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-between-variables"><strong>Entropy between variables</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mutual-information-between-variables"><strong>Mutual information between variables</strong>.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kullback-leibler-kl-divergence"><strong>Kullback-Leibler (KL) divergence</strong>.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-0-setup">Section 0 - Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-entropy">Section 1 - Entropy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-our-two-neurons">Visualizing our two neurons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1">Question 1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2">Question 1.2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-mutual-information">Section 2 - Mutual information</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1">Question 2.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2">Question 2.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3">Question 2.3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-3-kl-divergence">Section 3 - KL divergence</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-1">Question 3.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2">Question 3.2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-4-putting-it-together">Section 4 - Putting it together</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-1">Question 4.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-2">Question 4.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-3">Question 4.3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-4">Question 4.4</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Timothy Verstynen, Erik Peterson, Matthew Clapp, Jack Burgess
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -172,7 +172,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="lab6-predator_prey.html">Lab 6 - Predator-prey dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab7-foraging.html">Lab 7 - Foraging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab8-infotaxis.html">Lab 8 - Infotaxis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab10-curiosity_driven_learning.html">Lab 10 - Curiosity-driven exploration</a></li>
 </ul>
@@ -402,6 +401,7 @@ document.write(`
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1">Question 1.1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2">Question 1.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3">Question 1.3</a></li>
 </ul>
 </li>
 </ul>
@@ -447,6 +447,19 @@ document.write(`
 <section id="install-explorationlib">
 <h3>Install <em>explorationlib</em><a class="headerlink" href="#install-explorationlib" title="Permalink to this heading">#</a></h3>
 <p>Colab comes with many of the libraries we will need. It does not come with <em>explorationlib</em>. It’s a module we will be using, and was written to support this book. Let’s Install it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For local debuggging purposes</span>
+<span class="c1"># Mount Google Drive</span>
+<span class="c1"># from google.colab import drive</span>
+<span class="c1"># drive.mount(&#39;/content/drive&#39;)</span>
+
+<span class="c1"># # Install files from Google Drive</span>
+<span class="c1"># !pip install --upgrade /content/drive/My\ Drive/Code/explorationlib</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/coaxlab/explorationlib
@@ -506,6 +519,7 @@ document.write(`
 <span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_position2d</span>
 <span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_length_hist</span>
 <span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_length</span>
+<span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_angle_hist</span>
 <span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">plot_targets2d</span>
 <span class="c1">#from explorationlib.plot import render_2d</span>
 <span class="kn">from</span> <span class="nn">explorationlib.plot</span> <span class="kn">import</span> <span class="n">show_gif</span>
@@ -606,7 +620,7 @@ document.write(`
 </div>
 <p>Along with step length, the agent also must decide the direction of movement. We will use the parameter <span class="math notranslate nohighlight">\(\theta\)</span> to represent the angle of movement in polar coordinates. At each moment <span class="math notranslate nohighlight">\(i\)</span> the movement direction <span class="math notranslate nohighlight">\(\theta_i\)</span> will be sampled according to a uniform distribution ranging from 0 to <span class="math notranslate nohighlight">\(2\pi\)</span>.</p>
 <div class="math notranslate nohighlight">
-\[\theta_i \sim \mathcal{U}(0, 2*\pi)\]</div>
+\[\theta_i \sim U(0, 2*\pi)\]</div>
 <p>This means that at any given moment, Rando can turn in any direction in a <span class="math notranslate nohighlight">\(360^{\circ}\)</span> circle. We can visualie this distribution of angles pretty easily.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -639,7 +653,7 @@ document.write(`
 <p>We want to run a simple experiment using <em>explorationlib</em>. We will simulate Rando’s behavior as they wander the environment seeking “food” resources that are detectable by scents (though our toy animal has no sensory abilities yet).</p>
 <ol class="arabic simple">
 <li><p>Instantiate a single Rando agent, in our 2-d foraging environment.</p></li>
-<li><p>Run an experiment, for 400 steps.</p></li>
+<li><p>Run an experiment, for 500 steps.</p></li>
 <li><p>Plot the environment and the agent’s path in it.</p></li>
 <li><p>Score the agent, and reward (targets), and its efficiency.</p></li>
 </ol>
@@ -649,15 +663,14 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameters</span>
-<span class="n">exp_name</span> <span class="o">=</span> <span class="s2">&quot;data/explorationlib_a1.pkl&quot;</span>   <span class="c1"># all experiments need names</span>
+<span class="n">exp_name</span> <span class="o">=</span> <span class="s2">&quot;data/explorationlib_rando.pkl&quot;</span>   <span class="c1"># where we can store the data</span>
 <span class="n">num_experiments</span> <span class="o">=</span> <span class="mi">1</span>             <span class="c1"># we only want to run one experiment</span>
 <span class="n">num_steps</span> <span class="o">=</span> <span class="mi">500</span>                 <span class="c1"># how many exploration steps in space?</span>
 
-<span class="n">scale</span> <span class="o">=</span> <span class="mi">2</span>             <span class="c1"># The noise scale; the diffusion constant</span>
-<span class="n">detection_radius</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># How far can the agent see?</span>
+<span class="n">scale</span> <span class="o">=</span> <span class="mf">.5</span>             <span class="c1"># The diffusion constant</span>
 <span class="n">boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>   <span class="c1"># a 2d world, 10 by 10</span>
 <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;stopping&quot;</span>     <span class="c1"># stop when we hit a wall</span>
-<span class="n">num_targets</span> <span class="o">=</span> <span class="mi">100</span>     <span class="c1"># how many thingss to &quot;eat&quot;?</span>
+<span class="n">num_targets</span> <span class="o">=</span> <span class="mi">100</span>     <span class="c1"># how many targets in the arena?</span>
 
 <span class="c1"># Setup targets. Targets are an abstraction for the</span>
 <span class="c1"># thing we are exploring to find. For now, all targets</span>
@@ -696,7 +709,7 @@ document.write(`
     <span class="n">env</span><span class="p">,</span>
     <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">,</span>
     <span class="n">num_experiments</span><span class="o">=</span><span class="n">num_experiments</span><span class="p">,</span>
-    <span class="n">seed</span><span class="o">=</span><span class="mi">52317</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="mi">5858</span><span class="p">,</span>
     <span class="n">dump</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -747,6 +760,21 @@ document.write(`
 </div>
 </div>
 <p>Notice that there are quite a few parameters you can play with to change the size of the plot, colors, and so on. See <code class="docutils literal notranslate"><span class="pre">explorationlib.plot</span></code> for all the options</p>
+<p>Finally, let’s see how our distribution of step lengths looks. Here we will just plot the step at each jump (or turn) and the histogram of step lengths.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View size</span>
+<span class="n">plot_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># Agent</span>
+<span class="n">ax</span><span class="o">=</span><span class="kc">None</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">plot_length</span><span class="p">(</span><span class="n">select_exp</span><span class="p">(</span><span class="n">exp_data</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">plot_length_hist</span><span class="p">(</span><span class="n">select_exp</span><span class="p">(</span><span class="n">exp_data</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">loglog</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">3.72</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It doesn’t look quite Normally distributed, as Brownian motion would expect. But likely that’s because we only have about 500 steps.</p>
 </section>
 <section id="score">
 <h4>Score<a class="headerlink" href="#score" title="Permalink to this heading">#</a></h4>
@@ -780,7 +808,7 @@ document.write(`
 </section>
 <section id="question-1-1">
 <h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h3>
-<p>Repeat the experiment 10 times with different random seeds. Keep track of the two outcome measures, <em>total reward</em> and <em>search efficiency</em>. How much variation do you see from run to run?</p>
+<p>Rerun the simulation above but now have the agent run for 10,000 steps. What happens to the histogram (or distribution) of step lengths?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
@@ -791,6 +819,17 @@ document.write(`
 </section>
 <section id="question-1-2">
 <h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this heading">#</a></h3>
+<p>Repeat the experiment 10 times with different random seeds. Keep track of the two outcome measures, <em>total reward</em> and <em>search efficiency</em>. How much variation do you see from run to run?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-1-3">
+<h3>Question 1.3<a class="headerlink" href="#question-1-3" title="Permalink to this heading">#</a></h3>
 <p>Now set the random seed number back to 52317 and rerun the original simulation. Then change the number of steps in each simulation (the <em>num_steps</em> parameter) to 1000. How do the two outcome measures (<em>total reward</em> and <em>search efficiency</em>) change?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -895,6 +934,7 @@ document.write(`
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1">Question 1.1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2">Question 1.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3">Question 1.3</a></li>
 </ul>
 </li>
 </ul>

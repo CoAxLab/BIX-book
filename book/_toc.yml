@@ -8,17 +8,18 @@ parts:
     chapters:
     - file: notebooks/lab1-randomsearch
     - file: notebooks/lab2-chemotaxis
+    - file: notebooks/lab3-signal_detection_theory
     - file: notebooks/lab4-evidence_accumulation
     - file: notebooks/lab5-cbgt
-    - file: notebooks/lab6-predator_prey
-    - file: notebooks/lab7-foraging
-    - file: notebooks/lab8-infotaxis
+    - file: notebooks/lab6-information
+    - file: notebooks/lab7-infotaxis
+    - file: notebooks/lab8-patch_foraging
     - file: notebooks/lab9-reward_seeking
-    - file: notebooks/lab10-curiosity_driven_learning
-  - caption: Exercises
-    chapters:
-    - file: exercises/exercise1-getting-started
-    - file: exercises/exercise2-signals_and_decisions
-    - file: exercises/exercise3-cbgt_and_pred_prey
-    - file: exercises/exercise4-foraging_and_rl_and_info
+    - file: notebooks/lab10-exploration_vs_exploitation
+  # - caption: Exercises
+  #   chapters:
+  #   - file: exercises/exercise1-getting-started
+  #   - file: exercises/exercise2-signals_and_decisions
+  #   - file: exercises/exercise3-cbgt_and_pred_prey
+  #   - file: exercises/exercise4-foraging_and_rl_and_info
 

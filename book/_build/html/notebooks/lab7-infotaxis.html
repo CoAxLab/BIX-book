@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Lab 7 - Infotaxis (aka- Curiosity) &#8212; Biologically Intelligent eXploration (BIX)</title>
+    <title>Lab 7 - Infotaxis (aka- pure curiosity-driven search) &#8212; Biologically Intelligent eXploration (BIX)</title>
   
   
   
@@ -66,6 +66,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lab7-infotaxis';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 8 - Patch foraging" href="lab8-patch_foraging.html" />
+    <link rel="prev" title="Lab 6 - Information theory" href="lab6-information.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -162,23 +164,17 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lab1-randomsearch.html">Lab 1 - Random exploration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2-chemotaxis.html">Lab 2 - Simple Chemotaxis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4-evidence_accumulation.html">Lab 4 - Evidence Accumulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab5-cbgt.html">Lab 5 - CBGT pathways</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="lab6-predator_prey.html">Lab 6 - Predator-prey dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab7-foraging.html">Lab 7 - Foraging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6-information.html">Lab 6 - Information theory</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 7 - Infotaxis (aka- pure curiosity-driven search)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8-patch_foraging.html">Lab 8 - Patch foraging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab10-curiosity_driven_learning.html">Lab 10 - Curiosity-driven exploration</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise3-cbgt_and_pred_prey.html"><strong>Exercise 3: CBGT networks and predator-prey dynamics</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise4-foraging_and_rl_and_info.html"><strong>Homework 4: Foraging and reinforcement learning</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab10-exploration_vs_exploitation.html">Lab 10 - Exploring vs. exploiting</a></li>
 </ul>
 
     </div>
@@ -364,7 +360,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lab 7 - Infotaxis (aka- Curiosity)</h1>
+    <h1>Lab 7 - Infotaxis (aka- pure curiosity-driven search)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -390,7 +386,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-robustness-of-information-searching">Section 2 - Robustness of information searching</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1">Question 2.1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2">Question 2.2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3">Question 2.3</a></li>
 </ul>
 </li>
 </ul>
@@ -404,8 +399,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab-7-infotaxis-aka-curiosity">
-<h1>Lab 7 - Infotaxis (aka- Curiosity)<a class="headerlink" href="#lab-7-infotaxis-aka-curiosity" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-7-infotaxis-aka-pure-curiosity-driven-search">
+<h1>Lab 7 - Infotaxis (aka- pure curiosity-driven search)<a class="headerlink" href="#lab-7-infotaxis-aka-pure-curiosity-driven-search" title="Permalink to this heading">#</a></h1>
 <p>Here we will explore how our little artificial organisms do two things:</p>
 <ol class="arabic simple">
 <li><p>Learn a <em>concept</em> of information as a signal. This reflects the curiosity about a signal, as opposed to its magnitude.</p></li>
@@ -429,34 +424,28 @@ document.write(`
 </section>
 <section id="costly-cognition">
 <h3>Costly cognition<a class="headerlink" href="#costly-cognition" title="Permalink to this heading">#</a></h3>
-<p>Both <em>chemo-</em> and <em>infotaxis</em> agents will use a DDM-style accumulator to try and make better decisions about the direction of the gradient. These decisions are of course statistical in nature. (We won’t be tuning the accumulator parameters in this lab. Assume the parameters I give you, for the DDM, are “good enough”.)</p>
-<p>For the <em>randotaxis</em> agent number of steps means the number of steps or actions the agent takes.</p>
+<p>Both <em>chemo-</em> and <em>infotaxis</em> agents will use a simple accumulation-of-evidence process to try and make better decisions about the direction of the gradient. These decisions are of course statistical in nature.</p>
+<p>Our control agent, <em>randotaxis</em>, will be another simple Brownian random walk agent.</p>
 </section>
 </section>
 <section id="reviewing-the-definition-of-chemotaxis">
 <h2>Reviewing the definition of <em>chemotaxis</em>:<a class="headerlink" href="#reviewing-the-definition-of-chemotaxis" title="Permalink to this heading">#</a></h2>
-<p>Our <em>chemotaxis</em> agent (<em>AccumulatorGradientGrid</em>) tries to directly estimate the gradient <span class="math notranslate nohighlight">\(\nabla\)</span> in scent by comparing the level of scent at the last grid position it occupied to the current scent level (<span class="math notranslate nohighlight">\(o\)</span>). By last grid position here we mean the last grid position when it moved last.</p>
+<p>Our <em>chemotaxis</em> agent (<em>GradientDiffusionGrid</em>) tries to directly estimate the gradient <span class="math notranslate nohighlight">\(\nabla\)</span> in scent by comparing the level of scent at the last grid position it occupied to the current scent level (<span class="math notranslate nohighlight">\(o\)</span>). By last grid position here we mean the last grid position when it moved last.</p>
 <div class="math notranslate nohighlight">
 \[\nabla \approx o_t - o_{t-1}\]</div>
-<p>Because an accumulator is present, our chemo- sequentially tries to estimate this gradient by sampling the new current location, until the threshold is met.</p>
-<p>Chemo-accumulators have what we can think of as two cognitive or behavioral steps:</p>
-<ol class="arabic simple">
-<li><p>Use an accumulator to (stabely) estimate the chemo gradient</p></li>
-<li><p>Use the gradient to make turning decisions</p></li>
-</ol>
+<p>For today we’re going back to the simple, non-accumulator chemotaxic agent that uses the simple gradient to make a decision about running vs. tumbling.</p>
 </section>
 <section id="a-definition-of-infotaxis">
 <h2>A definition of <em>infotaxis</em>:<a class="headerlink" href="#a-definition-of-infotaxis" title="Permalink to this heading">#</a></h2>
 <p>Compared to chemo- definition the definition of infotaxis is a little more involved. It has what we can think of as five cognitive or behavioral steps:</p>
 <ol class="arabic simple">
-<li><p>Use an accumulator to (stabely) estimate if there is a scent or not. AKA hits and misses.</p></li>
-<li><p>Build a probability model of hits/misses (at every point)</p></li>
+<li><p>Use a simple differntial to estimate whether the gradient is increasing or decreasing.</p></li>
+<li><p>Build a probability model of hits(increasing)/misses(decreasing) at every point of the grid.</p></li>
 <li><p>Measure information gained when probability model changes. This is quantified using the KL divergence that measures how the properties of the signal are changing.</p></li>
 <li><p>Measure the gradient of information gains</p></li>
 <li><p>Use the gradient to make turning decisions</p></li>
 </ol>
-<p><em>Note</em>: Even though the info-accumulator is more complex, it can take advantage of missing scent information to drive its behavior. It can also use positive scent hits, of course, too.</p>
-<p>If you want to look at exactly how this agent works, check out line 1242 in the <em><a class="reference external" href="http://agents.py">agents.py</a></em> file: /usr/local/lib/python3.7/dist-packages/explorationlib/agent.py</p>
+<p><em>Note</em>: Even though the infotaxis is more complex, it can take advantage of missing scent information to drive its behavior. It can also use positive scent hits, of course, too.</p>
 </section>
 <section id="section-0-setup">
 <h2>Section 0 - Setup<a class="headerlink" href="#section-0-setup" title="Permalink to this heading">#</a></h2>
@@ -465,61 +454,6 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install --upgrade git+https://github.com/coaxlab/explorationlib
 !pip install --upgrade git+https://github.com/MattChanTK/gym-maze.git
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting git+https://github.com/coaxlab/explorationlib
-  Cloning https://github.com/coaxlab/explorationlib to /tmp/pip-req-build-shqpbfjb
-  Running command git clone --filter=blob:none --quiet https://github.com/coaxlab/explorationlib /tmp/pip-req-build-shqpbfjb
-  Resolved https://github.com/coaxlab/explorationlib to commit 0e48b2c41412a17edddfb3ca0b03f4263745844c
-  Preparing metadata (setup.py) ... ?25l?25hdone
-Requirement already satisfied: numpy in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (1.25.2)
-Requirement already satisfied: scipy in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (1.11.4)
-Requirement already satisfied: pandas in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (2.0.3)
-Requirement already satisfied: matplotlib in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (3.7.1)
-Requirement already satisfied: seaborn in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (0.13.1)
-Requirement already satisfied: scikit-learn in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (1.2.2)
-Requirement already satisfied: numba in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (0.58.1)
-Requirement already satisfied: future in /usr/local/lib/python3.10/dist-packages (from explorationlib==0.0.1) (0.18.3)
-Requirement already satisfied: contourpy&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (1.2.1)
-Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (4.53.1)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (1.4.5)
-Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (24.1)
-Requirement already satisfied: pillow&gt;=6.2.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (9.4.0)
-Requirement already satisfied: pyparsing&gt;=2.3.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (3.1.2)
-Requirement already satisfied: python-dateutil&gt;=2.7 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;explorationlib==0.0.1) (2.8.2)
-Requirement already satisfied: llvmlite&lt;0.42,&gt;=0.41.0dev0 in /usr/local/lib/python3.10/dist-packages (from numba-&gt;explorationlib==0.0.1) (0.41.1)
-Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.10/dist-packages (from pandas-&gt;explorationlib==0.0.1) (2023.4)
-Requirement already satisfied: tzdata&gt;=2022.1 in /usr/local/lib/python3.10/dist-packages (from pandas-&gt;explorationlib==0.0.1) (2024.1)
-Requirement already satisfied: joblib&gt;=1.1.1 in /usr/local/lib/python3.10/dist-packages (from scikit-learn-&gt;explorationlib==0.0.1) (1.4.2)
-Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.10/dist-packages (from scikit-learn-&gt;explorationlib==0.0.1) (3.5.0)
-Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;explorationlib==0.0.1) (1.16.0)
-Building wheels for collected packages: explorationlib
-  Building wheel for explorationlib (setup.py) ... ?25l?25hdone
-  Created wheel for explorationlib: filename=explorationlib-0.0.1-py3-none-any.whl size=42167 sha256=b79e554639855eac799845b99b3ee17d1333704ebcca77818a0b38b65db6b409
-  Stored in directory: /tmp/pip-ephem-wheel-cache-7m9bd8zg/wheels/71/57/e8/88c93e85ce02efaef024038b2ddcb6c6dec8a1a212f712bb05
-Successfully built explorationlib
-Installing collected packages: explorationlib
-Successfully installed explorationlib-0.0.1
-Collecting git+https://github.com/MattChanTK/gym-maze.git
-  Cloning https://github.com/MattChanTK/gym-maze.git to /tmp/pip-req-build-zfx9mglb
-  Running command git clone --filter=blob:none --quiet https://github.com/MattChanTK/gym-maze.git /tmp/pip-req-build-zfx9mglb
-  Resolved https://github.com/MattChanTK/gym-maze.git to commit 83176811b49b5538a6213520612f44fb1bc49114
-  Preparing metadata (setup.py) ... ?25l?25hdone
-Requirement already satisfied: gym in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (0.25.2)
-Requirement already satisfied: pygame in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (2.6.0)
-Requirement already satisfied: numpy in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (1.25.2)
-Requirement already satisfied: cloudpickle&gt;=1.2.0 in /usr/local/lib/python3.10/dist-packages (from gym-&gt;gym-maze==0.4) (2.2.1)
-Requirement already satisfied: gym-notices&gt;=0.0.4 in /usr/local/lib/python3.10/dist-packages (from gym-&gt;gym-maze==0.4) (0.0.8)
-Building wheels for collected packages: gym-maze
-  Building wheel for gym-maze (setup.py) ... ?25l?25hdone
-  Created wheel for gym-maze: filename=gym_maze-0.4-py3-none-any.whl size=14214 sha256=8c80109714f9b829934f12b031d789d7a7819216d303bdf230086bc7949295b7
-  Stored in directory: /tmp/pip-ephem-wheel-cache-o6uyd0rz/wheels/b0/53/2e/e282706624110bc964538d7840bef68fef2bc1865a87e3016e
-Successfully built gym-maze
-Installing collected packages: gym-maze
-Successfully installed gym-maze-0.4
 </pre></div>
 </div>
 </div>
@@ -540,8 +474,8 @@ Successfully installed gym-maze-0.4
 <span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">ScentGrid</span>
 
 <span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">DiffusionGrid</span>
-<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">AccumulatorGradientGrid</span>
-<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">AccumulatorInfoGrid</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">GradientDiffusionGrid</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">GradientInfoGrid</span>
 
 <span class="kn">from</span> <span class="nn">explorationlib.run</span> <span class="kn">import</span> <span class="n">experiment</span>
 <span class="kn">from</span> <span class="nn">explorationlib.util</span> <span class="kn">import</span> <span class="n">select_exp</span>
@@ -593,7 +527,7 @@ Successfully installed gym-maze-0.4
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Noise and missing scents</span>
-<span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">noise_sigma</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="c1"># Shared</span>
@@ -605,7 +539,7 @@ Successfully installed gym-maze-0.4
 <span class="n">detection_radius</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">max_steps</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">min_length</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">num_targets</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">num_targets</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">target_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="c1"># Targets</span>
@@ -646,9 +580,6 @@ Successfully installed gym-maze-0.4
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/731866b15047ae2dbad3b90bf73b659b5b69ae687a77d8de6f7f9c6e57eb5cbb.png" src="../_images/731866b15047ae2dbad3b90bf73b659b5b69ae687a77d8de6f7f9c6e57eb5cbb.png" />
-</div>
 </div>
 <p>We will use 3 agents in these sims:</p>
 <ul class="simple">
@@ -661,39 +592,33 @@ Successfully installed gym-maze-0.4
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Agents</span>
 
 <span class="c1"># Random search agent</span>
-<span class="n">diff</span> <span class="o">=</span> <span class="n">DiffusionGrid</span><span class="p">(</span><span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">DiffusionGrid</span><span class="p">(</span><span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">)</span>
 <span class="n">diff</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
 
-<span class="n">drift_rate</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">threshold</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="c1"># Run &amp; tumble information</span>
+<span class="n">min_length</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Minimum step length on the grid</span>
+<span class="n">p_neg</span> <span class="o">=</span> <span class="mf">0.8</span> <span class="c1"># Probability of jumping if gradient/information is decreasing</span>
+<span class="n">p_pos</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="c1"># Probabilty of jumping if gradient/information is increasing</span>
 
 <span class="c1"># Chemotaxis agent</span>
-<span class="n">chemo</span> <span class="o">=</span> <span class="n">AccumulatorGradientGrid</span><span class="p">(</span>
+<span class="n">chemo</span> <span class="o">=</span> <span class="n">GradientDiffusionGrid</span><span class="p">(</span>
     <span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span>
-    <span class="n">max_steps</span><span class="o">=</span><span class="n">max_steps</span><span class="p">,</span>
-    <span class="n">drift_rate</span><span class="o">=</span><span class="n">drift_rate</span><span class="p">,</span>
-    <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span>
-    <span class="n">accumulate_sigma</span><span class="o">=</span><span class="mi">1</span>
+    <span class="n">p_neg</span><span class="o">=</span><span class="n">p_neg</span><span class="p">,</span>
+    <span class="n">p_pos</span><span class="o">=</span><span class="n">p_pos</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">chemo</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
 
 
 <span class="c1"># Infotaxis agent</span>
-<span class="n">info</span> <span class="o">=</span> <span class="n">AccumulatorInfoGrid</span><span class="p">(</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.05</span> <span class="c1"># Threshold for information gain</span>
+<span class="n">info</span> <span class="o">=</span> <span class="n">GradientInfoGrid</span><span class="p">(</span>
     <span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span>
-    <span class="n">max_steps</span><span class="o">=</span><span class="n">max_steps</span><span class="p">,</span>
-    <span class="n">drift_rate</span><span class="o">=</span><span class="n">drift_rate</span><span class="p">,</span>
-    <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span>
-    <span class="n">accumulate_sigma</span><span class="o">=</span><span class="mi">1</span>
+    <span class="n">p_neg</span><span class="o">=</span><span class="n">p_neg</span><span class="p">,</span>
+    <span class="n">p_pos</span><span class="o">=</span><span class="n">p_pos</span><span class="p">,</span>
+    <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span>
 <span class="p">)</span>
-
 <span class="n">info</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5838]
 </pre></div>
 </div>
 </div>
@@ -735,17 +660,24 @@ Successfully installed gym-maze-0.4
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "a453b9ca30fc4b5ca77076732ff94ee2"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "15528a86a92143c291b0bbec004ec921"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b8a932fcc8dc4e75b4d002d15dff0d47"}</script></div>
 </div>
-<p>Let’s plot an example experiment. Here I’m choosing the second run for each agent.</p>
+<p>Let’s plot an example experiment. Here I’m choosing the sixth run for each agent.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="c1"># -</span>
-<span class="n">num_experiment</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">num_experiment</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_position2d</span><span class="p">(</span>
+    <span class="n">select_exp</span><span class="p">(</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">num_experiment</span><span class="p">),</span>
+    <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plot_position2d</span><span class="p">(</span>
     <span class="n">select_exp</span><span class="p">(</span><span class="n">chemo_exp</span><span class="p">,</span> <span class="n">num_experiment</span><span class="p">),</span>
     <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span>
@@ -762,14 +694,6 @@ Successfully installed gym-maze-0.4
     <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_position2d</span><span class="p">(</span>
-    <span class="n">select_exp</span><span class="p">(</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">num_experiment</span><span class="p">),</span>
-    <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span>
-    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
-    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
-<span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plot_targets2d</span><span class="p">(</span>
     <span class="n">env</span><span class="p">,</span>
     <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span>
@@ -781,25 +705,22 @@ Successfully installed gym-maze-0.4
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/82b80790d87bb3b6c478e269e55443bb1328d1d709cb61ad8b3f8048332e3c7b.png" src="../_images/82b80790d87bb3b6c478e269e55443bb1328d1d709cb61ad8b3f8048332e3c7b.png" />
-</div>
 </div>
 <p>Hard to distinguish their individual behaviors, but our agents seem to be exploring.</p>
 <p>Now let’s evaluate some metrics of performance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
-<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">info_exp</span><span class="p">,</span> <span class="n">chemo_exp</span><span class="p">]</span>
-<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Info&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemo&quot;</span><span class="p">]</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">]</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">chemo_exp</span><span class="p">,</span> <span class="n">info_exp</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemo&quot;</span><span class="p">,</span> <span class="s2">&quot;Info&quot;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">]</span>
 
 <span class="c1"># Score by eff</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
     <span class="n">l</span> <span class="o">=</span> <span class="mf">0.0</span>
     <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
-        <span class="n">l</span> <span class="o">+=</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;agent_total_l&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">l</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;agent_num_step&quot;</span><span class="p">])</span>
     <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
 
 <span class="c1"># Tabulate</span>
@@ -811,24 +732,16 @@ Successfully installed gym-maze-0.4
 <span class="c1"># Plot means</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">sd</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Total distance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Total run distance&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/56ccf4c05b43f1cc299d02b848a7bd8d4d596d3bc18a665ab907d1217e23c70e.png" src="../_images/56ccf4c05b43f1cc299d02b848a7bd8d4d596d3bc18a665ab907d1217e23c70e.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
-<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">info_exp</span><span class="p">,</span> <span class="n">chemo_exp</span><span class="p">]</span>
-<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Info&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemo&quot;</span><span class="p">]</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">]</span>
-
-<span class="c1"># Score by eff</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score by eff</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
     <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num_death</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
@@ -848,18 +761,10 @@ Successfully installed gym-maze-0.4
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "103042f174a0459c8679e1794f5d969e"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b56327d94c224d4691775f1d214499ba"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "a537096740974a8eb23a3a6139bd1a3e"}</script><img alt="../_images/91f06975b06749d334b99dcf7c249282df396334a1a9ef82cf2cd1538ace6725.png" src="../_images/91f06975b06749d334b99dcf7c249282df396334a1a9ef82cf2cd1538ace6725.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
-<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">info_exp</span><span class="p">,</span> <span class="n">chemo_exp</span><span class="p">]</span>
-<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Info&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemo&quot;</span><span class="p">]</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">]</span>
-
-<span class="c1"># Score by eff</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score by eff</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">total_reward</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
@@ -889,10 +794,6 @@ Successfully installed gym-maze-0.4
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "247663a6e84a44f5b81527a5b6e22580"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "952a4db073c440e7890c027b01d442d9"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "3e1738de50dd45c3bc89bcac4de45b69"}</script><img alt="../_images/40db114e7f8cbc2bab7304a89f43b8cf8a98dddaa068f7358cb1bd5b602291fc.png" src="../_images/40db114e7f8cbc2bab7304a89f43b8cf8a98dddaa068f7358cb1bd5b602291fc.png" />
-<img alt="../_images/78d7965453198a360e2122ad7ae4690ef207d9ddbf012084b5056be3af9f5cc2.png" src="../_images/78d7965453198a360e2122ad7ae4690ef207d9ddbf012084b5056be3af9f5cc2.png" />
-</div>
 </div>
 <section id="question-1-1">
 <h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h3>
@@ -907,7 +808,7 @@ Successfully installed gym-maze-0.4
 </section>
 <section id="question-1-2">
 <h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this heading">#</a></h3>
-<p>Is having a concept of information (i.e., the Info agent)helpful in these sorts of noisy environments? Why or why not based on how the agents performed? Compare to both Rando and Chemo.</p>
+<p>Is having a concept of information (i.e., the Info agent) helpful in these sorts of noisy environments? Why or why not based on how the agents performed? Compare to both Rando and Chemo.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
@@ -919,16 +820,16 @@ Successfully installed gym-maze-0.4
 </section>
 <section id="section-2-robustness-of-information-searching">
 <h2>Section 2 - Robustness of information searching<a class="headerlink" href="#section-2-robustness-of-information-searching" title="Permalink to this heading">#</a></h2>
-<p>In this final section we will see how the distortion in the channel driven by missing information influences the efficiency of our Info agent.</p>
-<p>Here we will test a range of <em>p_scent</em> values. Essentially we will be turning <em>down</em> the distortion as <em>p_scent</em> increases. For these experiments we will hold the <em>noise_sigma</em> constant at 1.</p>
+<p>You’ll notice that the infotaxis agent has an additional parameter over the simple chemotaxis agent, which is it’s threshold. This is needed because, unlike the scent gradient, the information gain (i.e., KL-divergence) gradient is bounded at zero. This determines how much information gain is necessary to trigger a shift.</p>
+<p>Here we will test a range of <em>threshold</em> values (within the range of values our infotaxis agent is likely to see) and look at the change in performance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Our parameters</span>
-<span class="n">p_scents</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">.50</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mf">.95</span><span class="p">]</span>
+<span class="n">thresholds</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">,</span> <span class="mf">.05</span><span class="p">,</span> <span class="mf">.075</span><span class="p">,</span> <span class="mf">.09</span><span class="p">]</span>
 
 <span class="c1"># For plotting</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;darkgreen&quot;</span><span class="p">,</span> <span class="s2">&quot;seagreen&quot;</span><span class="p">,</span> <span class="s2">&quot;cadetblue&quot;</span><span class="p">,</span> <span class="s2">&quot;steelblue&quot;</span><span class="p">,</span> <span class="s2">&quot;mediumpurple&quot;</span><span class="p">]</span>
-<span class="n">names</span> <span class="o">=</span> <span class="n">p_scents</span> <span class="c1"># list(range(5))</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">thresholds</span>
 </pre></div>
 </div>
 </div>
@@ -936,12 +837,7 @@ Successfully installed gym-maze-0.4
 <p>Let’s run these experiments. All of the parameters for the agent and environment (aside from <em>p_scent</em>) are specified below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the accumulation parameters</span>
-<span class="n">drift_rate</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">threshold</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">accumulate_sigma</span> <span class="o">=</span> <span class="mf">1.0</span>
-
-<span class="c1"># Define non-scent probability values</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define non-scent probability values</span>
 <span class="n">noise_sigma</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">detection_radius</span> <span class="o">=</span> <span class="mi">1</span>
@@ -950,40 +846,46 @@ Successfully installed gym-maze-0.4
 <span class="n">num_targets</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">target_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
+<span class="c1"># Define targets</span>
+<span class="n">prng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
+<span class="n">targets</span> <span class="o">=</span> <span class="n">uniform_targets</span><span class="p">(</span><span class="n">num_targets</span><span class="p">,</span> <span class="n">target_boundary</span><span class="p">,</span> <span class="n">prng</span><span class="o">=</span><span class="n">prng</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">constant_values</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Scents</span>
+<span class="n">scents</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">targets</span><span class="p">)):</span>
+    <span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent_patches</span><span class="p">(</span>
+        <span class="n">target_boundary</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p_scent</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">noise_sigma</span><span class="p">)</span>
+    <span class="n">scents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scent</span><span class="p">)</span>
+
+<span class="c1"># Env</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">ScentGrid</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">add_scents</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">scents</span><span class="p">,</span> <span class="n">noise_sigma</span><span class="o">=</span><span class="n">noise_sigma</span><span class="p">)</span>
+
 <span class="c1"># How many experiments to run</span>
 <span class="n">num_experiments</span> <span class="o">=</span> <span class="mi">100</span>
 
 <span class="c1"># Infotaxis agent</span>
-<span class="n">info</span> <span class="o">=</span> <span class="n">AccumulatorInfoGrid</span><span class="p">(</span>
-    <span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span>
-    <span class="n">max_steps</span><span class="o">=</span><span class="n">max_steps</span><span class="p">,</span>
-    <span class="n">drift_rate</span><span class="o">=</span><span class="n">drift_rate</span><span class="p">,</span>
-    <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span>
-    <span class="n">accumulate_sigma</span><span class="o">=</span><span class="mi">1</span>
-<span class="p">)</span>
-<span class="n">info</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
+<span class="n">min_length</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">p_neg</span> <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">p_pos</span> <span class="o">=</span> <span class="mf">0.2</span>
 
 <span class="c1"># Run</span>
 <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p_scent</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">p_scents</span><span class="p">):</span>
-  <span class="c1"># Targets</span>
-  <span class="n">prng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
-  <span class="n">targets</span> <span class="o">=</span> <span class="n">uniform_targets</span><span class="p">(</span><span class="n">num_targets</span><span class="p">,</span> <span class="n">target_boundary</span><span class="p">,</span> <span class="n">prng</span><span class="o">=</span><span class="n">prng</span><span class="p">)</span>
-  <span class="n">values</span> <span class="o">=</span> <span class="n">constant_values</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">threshold</span> <span class="ow">in</span> <span class="n">thresholds</span><span class="p">:</span>
 
-  <span class="c1"># Scents</span>
-  <span class="n">scents</span> <span class="o">=</span> <span class="p">[]</span>
-  <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">targets</span><span class="p">)):</span>
-      <span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent_patches</span><span class="p">(</span>
-          <span class="n">target_boundary</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p_scent</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">noise_sigma</span><span class="p">)</span>
-      <span class="n">scents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scent</span><span class="p">)</span>
+  <span class="c1"># Setup our agent with a new threshold</span>
+  <span class="n">info</span> <span class="o">=</span> <span class="n">GradientInfoGrid</span><span class="p">(</span>
+      <span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span>
+      <span class="n">p_neg</span><span class="o">=</span><span class="n">p_neg</span><span class="p">,</span>
+      <span class="n">p_pos</span><span class="o">=</span><span class="n">p_pos</span><span class="p">,</span>
+      <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span>
+  <span class="p">)</span>
+  <span class="n">info</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
 
-  <span class="c1"># Env</span>
-  <span class="n">env</span> <span class="o">=</span> <span class="n">ScentGrid</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-  <span class="n">env</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
-  <span class="n">env</span><span class="o">.</span><span class="n">add_scents</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">scents</span><span class="p">,</span> <span class="n">noise_sigma</span><span class="o">=</span><span class="n">noise_sigma</span><span class="p">)</span>
-
+  <span class="c1"># Run the experiment</span>
   <span class="n">exp</span> <span class="o">=</span> <span class="n">experiment</span><span class="p">(</span>
     <span class="sa">f</span><span class="s2">&quot;info&quot;</span><span class="p">,</span>
     <span class="n">info</span><span class="p">,</span>
@@ -994,15 +896,44 @@ Successfully installed gym-maze-0.4
     <span class="n">split_state</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">seed</span><span class="o">=</span><span class="n">seed_value</span>
   <span class="p">)</span>
-
   <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">exp</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "c1dca8a2c090440e939f7fadc5a4a2ce"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "cd24f97a235a4acfb4d7237a5edd8697"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "8b90f6ae43144ad2acf958570d582601"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "1737011c3cff44e5bbdc67109c355736"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "bd5a698859134346a90d855f86186b4c"}</script></div>
 </div>
-<p>Now let us take a look at the performance of our agent across runs.</p>
+<p>Now let us take a look at the performance. First let’s see how the average information gain changes across runs of each experiment (i.e., threshold type). Remember, this is our first agent with a spatial memory and it carries over across runs. So we should see a decreasing trend as the agent learns the environment more.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;agent_info_gain&quot;</span><span class="p">]))</span>
+
+    <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">steps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">thresholds</span><span class="p">),</span> <span class="n">num_experiments</span><span class="p">))</span>
+
+<span class="c1"># Create the x values for the plot</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">))</span>
+
+<span class="c1"># Plotting each row of the array as a separate line</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">steps</span><span class="p">)):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">steps</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">thresholds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add legend</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mean Info Gain (E)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Experiment&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we will look at the average performance on a variety of measures as we vary the threshold.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
@@ -1010,7 +941,8 @@ Successfully installed gym-maze-0.4
 <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
     <span class="n">l</span> <span class="o">=</span> <span class="mf">0.0</span>
     <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
-        <span class="n">l</span> <span class="o">+=</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;agent_total_l&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">l</span> <span class="o">+=</span> <span class="nb">max</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;agent_num_turn&quot;</span><span class="p">])</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">l</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
     <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
 
 <span class="c1"># Tabulate</span>
@@ -1021,15 +953,39 @@ Successfully installed gym-maze-0.4
 <span class="c1"># -</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">],</span> <span class="n">m</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Total distance&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;p_scent&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Number of turns&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Threshold&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/97b5367a7408c0841ca5f6c88480aea435181d18dd6d9f6265e579375d960bbe.png" src="../_images/97b5367a7408c0841ca5f6c88480aea435181d18dd6d9f6265e579375d960bbe.png" />
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+        <span class="n">l</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;agent_num_step&quot;</span><span class="p">])</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">l</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+<span class="c1"># Tabulate</span>
+<span class="n">m</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+
+<span class="c1"># -</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">],</span> <span class="n">m</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Total run distance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Threshold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1043,14 +999,11 @@ Successfully installed gym-maze-0.4
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">],</span> <span class="n">scores</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Deaths&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;p_scent&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Threshold&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "a00a4696d30b4190aef24b870ae45e0d"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ae62b997700742d3b0e3cb784d87ca17"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "71294faf18d44997a95a5c83f3174554"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "406a6d2d99da4bd0a00fd08a934ae7cd"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "d136685824024c9c82eb5ef041776ba3"}</script><img alt="../_images/b55197958b359ee83a87408661397fe90cb1cdec3ea041038efa26c59e7ca44c.png" src="../_images/b55197958b359ee83a87408661397fe90cb1cdec3ea041038efa26c59e7ca44c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1070,14 +1023,11 @@ Successfully installed gym-maze-0.4
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">],</span> <span class="n">m</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Best agent&#39;s score&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;p_scent&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Threshold&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "53c74bd9120c48cfb5f9fbc71b476d44"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "26353f4a3568410e88e17f77915fcbd5"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "9502664dc96a417594e2acf821b40351"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "0f2156a37396452b8b8010d2bf4f9eb9"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "4a659495abad41439f0f504789435d44"}</script><img alt="../_images/fa8aa127971a7bc5942814d6f4062a1e44761a9155a9a60eb63ff3e03236691b.png" src="../_images/fa8aa127971a7bc5942814d6f4062a1e44761a9155a9a60eb63ff3e03236691b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1098,7 +1048,7 @@ Successfully installed gym-maze-0.4
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">],</span> <span class="n">m</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">sd</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Avg. score&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;p_scent&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Threshold&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 
@@ -1108,20 +1058,16 @@ Successfully installed gym-maze-0.4
     <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;p_scent&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Threshold&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "d7d80cba73984a75b0c443145dfaaded"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "98c3ffec501b4ffdbeb9d9ed4dea2ea7"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "cd43c42feeb84b68ab6a42541af9d47d"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "c695bbe823914d818d2314018f9d7ad6"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "60c22dee793d4494b4ab48a9339a9774"}</script><img alt="../_images/6ff541124805d1849289e02d259440099cc15c91116050d8497ea936186f8cda.png" src="../_images/6ff541124805d1849289e02d259440099cc15c91116050d8497ea936186f8cda.png" />
-<img alt="../_images/18d0acd1e2a0dc30f0ad6224ef4e133d8ade9240a2a65d5f282093ff43241510.png" src="../_images/18d0acd1e2a0dc30f0ad6224ef4e133d8ade9240a2a65d5f282093ff43241510.png" />
-</div>
 </div>
 <section id="question-2-1">
 <h3>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this heading">#</a></h3>
-<p>How does increasing <em>p_scent</em> impact our Info agent’s performance? Explain why this particular pattern emerges in the results.</p>
+<p>How does increasing the <em>threshold</em> impact our Info agent’s performance? Explain why this particular pattern emerges in the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
@@ -1132,18 +1078,7 @@ Successfully installed gym-maze-0.4
 </section>
 <section id="question-2-2">
 <h3>Question 2.2<a class="headerlink" href="#question-2-2" title="Permalink to this heading">#</a></h3>
-<p>Re-run the simulations from this section, but now change the drift-rate from 1.0 to 0.75. How and why does this influence the agent’s behavior (compared to the higher drift-rate)?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="question-2-3">
-<h3>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this heading">#</a></h3>
-<p>Now set the drift-rate back to 1.0 and reduce the boundary height from 3.0 to 1.5. Re-run the simulations in again. How and why does this influence the agent’s behavior (compared to the higher boundary height)?</p>
+<p>Take the results from the two sections together. Compare the infotaxis agent with the random search or chemotaxis agent. What does this tell you about the nature of curious search?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
@@ -1186,6 +1121,24 @@ Successfully installed gym-maze-0.4
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="lab6-information.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 6 - Information theory</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab8-patch_foraging.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 8 - Patch foraging</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -1220,7 +1173,6 @@ Successfully installed gym-maze-0.4
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-robustness-of-information-searching">Section 2 - Robustness of information searching</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1">Question 2.1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2">Question 2.2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3">Question 2.3</a></li>
 </ul>
 </li>
 </ul>

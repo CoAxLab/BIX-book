@@ -66,6 +66,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lab6-information';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 7 - Infotaxis (aka- pure curiosity-driven search)" href="lab7-infotaxis.html" />
+    <link rel="prev" title="Lab 5 - CBGT pathways" href="lab5-cbgt.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -162,23 +164,17 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lab1-randomsearch.html">Lab 1 - Random exploration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2-chemotaxis.html">Lab 2 - Simple Chemotaxis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4-evidence_accumulation.html">Lab 4 - Evidence Accumulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab5-cbgt.html">Lab 5 - CBGT pathways</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="lab6-predator_prey.html">Lab 6 - Predator-prey dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab7-foraging.html">Lab 7 - Foraging</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 6 - Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7-infotaxis.html">Lab 7 - Infotaxis (aka- pure curiosity-driven search)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8-patch_foraging.html">Lab 8 - Patch foraging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab10-curiosity_driven_learning.html">Lab 10 - Curiosity-driven exploration</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise3-cbgt_and_pred_prey.html"><strong>Exercise 3: CBGT networks and predator-prey dynamics</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise4-foraging_and_rl_and_info.html"><strong>Homework 4: Foraging and reinforcement learning</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab10-exploration_vs_exploitation.html">Lab 10 - Exploring vs. exploiting</a></li>
 </ul>
 
     </div>
@@ -533,12 +529,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neuron 1 spike train: [0. 0. 0. ... 0. 0. 0.]
-Neuron 2 spike train: [0. 0. 0. ... 0. 0. 0.]
-</pre></div>
-</div>
-</div>
 </div>
 <p>What we have created are two binary vectors, <em>neuron1</em> and <em>neuron2</em>, that represent the spike trains of two neurons over 5 seconds at a 1 kHz sampling rate.</p>
 <p>Each time step is a binary event where 1 represents a spike and 0 represents no spike. The base firing probability is 2%, but this is modified by two factors: the influence of the first neuron on the second, and some independent noise.</p>
@@ -581,9 +571,6 @@ Neuron 2 spike train: [0. 0. 0. ... 0. 0. 0.]
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/9a0879da94e7d80b37e82fe90bd77f990e1e1a0fa7839f3683544d697cf640a7.png" src="../_images/9a0879da94e7d80b37e82fe90bd77f990e1e1a0fa7839f3683544d697cf640a7.png" />
-</div>
 </div>
 <p>Let’s now calculate the entropy of each neuron. For this we will use a simple function that follows the equations for entropy in the Background and the reading.</p>
 <div class="cell docutils container">
@@ -612,12 +599,6 @@ Neuron 2 spike train: [0. 0. 0. ... 0. 0. 0.]
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Entropy of Neuron 1: </span><span class="si">{</span><span class="n">entropy_neuron1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Entropy of Neuron 2: </span><span class="si">{</span><span class="n">entropy_neuron2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entropy of Neuron 1: 0.1536208432265204
-Entropy of Neuron 2: 0.12541661625503772
 </pre></div>
 </div>
 </div>
@@ -677,12 +658,6 @@ Entropy of Neuron 2: 0.12541661625503772
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.9618 0.016 ]
- [0.021  0.0012]]
-</pre></div>
-</div>
-</div>
 </div>
 <p>Most of the time, both neurons are 0 (upper left value). A small percentage of the time one neuron fires when the other does not (off diagonal entries). Finally, a small percentage of the time both neurons fire together (lower right).</p>
 <p>Now we can calculate the full mutual information by subtracting this joint entropy from the relative entropy of the two variables.</p>
@@ -724,11 +699,6 @@ Entropy of Neuron 2: 0.12541661625503772
 <span class="c1"># Calculate and print the mutual information</span>
 <span class="n">mutual_information</span> <span class="o">=</span> <span class="n">calculate_mutual_information</span><span class="p">(</span><span class="n">neuron2</span><span class="p">,</span> <span class="n">neuron1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mutual Information: </span><span class="si">{</span><span class="n">mutual_information</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mutual Information: 0.0017134781933942356
 </pre></div>
 </div>
 </div>
@@ -793,9 +763,6 @@ Entropy of Neuron 2: 0.12541661625503772
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/d2e263f0cfa9e529336209966bc656318978a709e5d82677091be458dc059054.png" src="../_images/d2e263f0cfa9e529336209966bc656318978a709e5d82677091be458dc059054.png" />
-</div>
 </div>
 <p>Now let’s write a simple function to calculate the KL divergence.</p>
 <div class="cell docutils container">
@@ -829,11 +796,6 @@ Entropy of Neuron 2: 0.12541661625503772
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KL Divergence: 0.007744611857461763
-</pre></div>
-</div>
-</div>
 </div>
 <p>Just to prove to you that KL divergence measures similarity in distributions, let’s make two completely independent neurons and look at their KL divergence score.</p>
 <div class="cell docutils container">
@@ -843,11 +805,6 @@ Entropy of Neuron 2: 0.12541661625503772
 
 <span class="n">kl_div_value</span> <span class="o">=</span> <span class="n">calculate_kl_divergence</span><span class="p">(</span><span class="n">neuron1</span><span class="p">,</span> <span class="n">neuron3</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;KL Divergence: </span><span class="si">{</span><span class="n">kl_div_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KL Divergence: 1.3514809547292219e-05
 </pre></div>
 </div>
 </div>
@@ -926,12 +883,6 @@ Entropy of Neuron 2: 0.12541661625503772
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7d3b1baa75b0&gt;
-</pre></div>
-</div>
-<img alt="../_images/5c592fb3ce79e398f4a23276ab9c1aee4713081f246dd3eac3aeb0e019017594.png" src="../_images/5c592fb3ce79e398f4a23276ab9c1aee4713081f246dd3eac3aeb0e019017594.png" />
-</div>
 </div>
 <section id="question-4-1">
 <h3>Question 4.1<a class="headerlink" href="#question-4-1" title="Permalink to this heading">#</a></h3>
@@ -955,15 +906,6 @@ Entropy of Neuron 2: 0.12541661625503772
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:matplotlib.legend:No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7d3b1ba77e50&gt;
-</pre></div>
-</div>
-<img alt="../_images/ffcb3db86d492c02c3fd62609286c3212737bd5d65c7c575f6e356c5e697cc20.png" src="../_images/ffcb3db86d492c02c3fd62609286c3212737bd5d65c7c575f6e356c5e697cc20.png" />
 </div>
 </div>
 </section>
@@ -989,15 +931,6 @@ Entropy of Neuron 2: 0.12541661625503772
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:matplotlib.legend:No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7d3b1bb56f50&gt;
-</pre></div>
-</div>
-<img alt="../_images/4b5b781158f6c44f0546321fcbc3ab8b964759effcd5e88b395400d33a7b7af3.png" src="../_images/4b5b781158f6c44f0546321fcbc3ab8b964759effcd5e88b395400d33a7b7af3.png" />
 </div>
 </div>
 </section>
@@ -1057,6 +990,24 @@ Entropy of Neuron 2: 0.12541661625503772
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="lab5-cbgt.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 5 - CBGT pathways</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab7-infotaxis.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 7 - Infotaxis (aka- pure curiosity-driven search)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>

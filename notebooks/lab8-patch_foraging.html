@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Lab 7 - Foraging &#8212; Biologically Intelligent eXploration (BIX)</title>
+    <title>Lab 8 - Patch foraging &#8212; Biologically Intelligent eXploration (BIX)</title>
   
   
   
@@ -61,11 +61,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lab7-foraging';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lab8-patch_foraging';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lab 9 - Reward seeking" href="lab9-reward_seeking.html" />
-    <link rel="prev" title="Lab 6 - Predator-prey dynamics" href="lab6-predator_prey.html" />
+    <link rel="prev" title="Lab 7 - Infotaxis (aka- pure curiosity-driven search)" href="lab7-infotaxis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -168,17 +168,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab4-evidence_accumulation.html">Lab 4 - Evidence Accumulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab5-cbgt.html">Lab 5 - CBGT pathways</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="lab6-predator_prey.html">Lab 6 - Predator-prey dynamics</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 7 - Foraging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6-information.html">Lab 6 - Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7-infotaxis.html">Lab 7 - Infotaxis (aka- pure curiosity-driven search)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 8 - Patch foraging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab10-curiosity_driven_learning.html">Lab 10 - Curiosity-driven exploration</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise3-cbgt_and_pred_prey.html"><strong>Exercise 3: CBGT networks and predator-prey dynamics</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise4-foraging_and_rl_and_info.html"><strong>Homework 4: Foraging and reinforcement learning</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab10-exploration_vs_exploitation.html">Lab 10 - Exploring vs. exploiting</a></li>
 </ul>
 
     </div>
@@ -233,7 +227,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/CoAxLab/BIX-book/main?urlpath=tree/book/notebooks/lab7-foraging.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/CoAxLab/BIX-book/main?urlpath=tree/book/notebooks/lab8-patch_foraging.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -251,7 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/CoAxLab/BIX-book/blob/main/book/notebooks/lab7-foraging.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/CoAxLab/BIX-book/blob/main/book/notebooks/lab8-patch_foraging.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -282,7 +276,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/notebooks/lab7-foraging.ipynb" target="_blank"
+      <li><a href="../_sources/notebooks/lab8-patch_foraging.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -364,7 +358,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lab 7 - Foraging</h1>
+    <h1>Lab 8 - Patch foraging</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -380,7 +374,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#we-can-think-of-optimal-foraging-in-terms-of-a-simplified-model">We can think of optimal foraging in terms of a simplified model.</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-setup">Section - Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-0-setup">Section 0 - Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-building-a-simulated-patchy-environment">Section 1 - Building a simulated patchy environment</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-this-environment">Visualizing this environment</a></li>
 </ul>
@@ -414,13 +408,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab-7-foraging">
-<h1>Lab 7 - Foraging<a class="headerlink" href="#lab-7-foraging" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-8-patch-foraging">
+<h1>Lab 8 - Patch foraging<a class="headerlink" href="#lab-8-patch-foraging" title="Permalink to this heading">#</a></h1>
 <p>This lab has 4 main components designed to give provide an theoretical and experiental/interactive understanding of foraging in patchy environments.</p>
 <p>Sections:</p>
 <ol class="arabic simple">
 <li><p>Consider foraging in “patchy” environments, and build a simulated patchy environment.</p></li>
-<li><p>Predict and evaluate the behavior of agents with different exploration strategies in the patcy environment.</p></li>
+<li><p>Predict and evaluate the behavior of agents with different exploration strategies in the patchy environment.</p></li>
 <li><p>Predict and evaluate how agents’ behavior &amp; performance will change as characteristics of the patchy environment change.</p></li>
 </ol>
 <section id="background">
@@ -429,8 +423,7 @@ document.write(`
 <h3>Real environments are “patchy”.<a class="headerlink" href="#real-environments-are-patchy" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>So far, we’ve been playing around with simulated environments where food (“targets”) are spread uniformly over space.</p></li>
-<li><p>In reality, environments are often “patchy”. For example, berries or flowers may be concentrated on isolated bushes, which are spaced apart from one another (see the natural environment below).
-<img alt="natural patchy environment" src="https://cdn.pixabay.com/photo/2021/07/04/16/41/yakima-valley-6386896_1280.jpg" /></p></li>
+<li><p>In reality, environments are often “patchy”. For example, berries or flowers may be concentrated on isolated bushes, which are spaced apart from one another</p></li>
 </ul>
 </section>
 <section id="patchy-environments-define-the-foraging-problem">
@@ -454,78 +447,15 @@ document.write(`
 <p>Next up, let’s get set up to run some patch environment simulations!</p>
 </section>
 </section>
-<section id="section-setup">
-<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this heading">#</a></h2>
-<p>We need to load the usual explorationlib library and supporting functions. For this lab specifically, we will be loading a certain <em>branch</em> of exploration library - one where I have coded functions for the creation and evaluation of behavior in patchy environments.</p>
-<p>Change the directory to where we want to clone in the specific explorationlib code library branch.</p>
+<section id="section-0-setup">
+<h2>Section 0 - Setup<a class="headerlink" href="#section-0-setup" title="Permalink to this heading">#</a></h2>
+<p>The setup is the same as prior labs.</p>
+<p>Install our code libraries as usual</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">content</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/content
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/coaxlab/explorationlib
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fatal: destination path &#39;explorationlib&#39; already exists and is not an empty directory.
-</pre></div>
-</div>
-</div>
-</div>
-<p>Change the working directory to the cloned library, so that we can load modules from it later on.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">explorationlib</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/content/explorationlib
-</pre></div>
-</div>
-</div>
-</div>
-<p>Install some other supporting code libraries, like gym-maze, which some explorationlib simulated environment code relies on.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/MattChanTK/gym-maze.git
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/coaxlab/explorationlib
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/MattChanTK/gym-maze.git
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>celluloid<span class="w"> </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>gifs
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting git+https://github.com/MattChanTK/gym-maze.git
-  Cloning https://github.com/MattChanTK/gym-maze.git to /tmp/pip-req-build-4os5hv0s
-  Running command git clone --filter=blob:none --quiet https://github.com/MattChanTK/gym-maze.git /tmp/pip-req-build-4os5hv0s
-  Resolved https://github.com/MattChanTK/gym-maze.git to commit 83176811b49b5538a6213520612f44fb1bc49114
-  Preparing metadata (setup.py) ... ?25l?25hdone
-Requirement already satisfied: gym in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (0.25.2)
-Requirement already satisfied: pygame in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (2.5.2)
-Requirement already satisfied: numpy in /usr/local/lib/python3.10/dist-packages (from gym-maze==0.4) (1.25.2)
-Requirement already satisfied: cloudpickle&gt;=1.2.0 in /usr/local/lib/python3.10/dist-packages (from gym-&gt;gym-maze==0.4) (2.2.1)
-Requirement already satisfied: gym-notices&gt;=0.0.4 in /usr/local/lib/python3.10/dist-packages (from gym-&gt;gym-maze==0.4) (0.0.8)
-Requirement already satisfied: celluloid in /usr/local/lib/python3.10/dist-packages (0.2.0)
-Requirement already satisfied: matplotlib in /usr/local/lib/python3.10/dist-packages (from celluloid) (3.7.1)
-Requirement already satisfied: contourpy&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (1.2.1)
-Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (4.53.0)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (1.4.5)
-Requirement already satisfied: numpy&gt;=1.20 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (1.25.2)
-Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (24.1)
-Requirement already satisfied: pillow&gt;=6.2.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (9.4.0)
-Requirement already satisfied: pyparsing&gt;=2.3.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (3.1.2)
-Requirement already satisfied: python-dateutil&gt;=2.7 in /usr/local/lib/python3.10/dist-packages (from matplotlib-&gt;celluloid) (2.8.2)
-Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;celluloid) (1.16.0)
 </pre></div>
 </div>
 </div>
@@ -553,12 +483,8 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 
 <span class="c1"># Agents</span>
 <span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">DiffusionGrid</span>
-<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">DiffusionDiscrete</span>
 <span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">GradientDiffusionGrid</span>
-<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">GradientDiffusionDiscrete</span>
-<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">AccumulatorGradientGrid</span>
-<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">AccumulatorInfoGrid</span>
-<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">TruncatedLevyDiscrete</span>
+<span class="kn">from</span> <span class="nn">explorationlib.agent</span> <span class="kn">import</span> <span class="n">GradientInfoGrid</span>
 
 <span class="c1"># Env</span>
 <span class="kn">from</span> <span class="nn">explorationlib.local_gym</span> <span class="kn">import</span> <span class="n">ScentGrid</span>
@@ -597,21 +523,21 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Noise and missing scents</span>
-<span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.5</span>
-<span class="n">noise_sigma</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">noise_sigma</span> <span class="o">=</span> <span class="mi">2</span>
 
 <span class="c1"># Shared agent parameters</span>
 <span class="n">num_experiments</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">400</span>
-<span class="n">seed_value</span> <span class="o">=</span> <span class="mi">6074</span>
+<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">seed_value</span> <span class="o">=</span> <span class="mi">52317</span>
 
 <span class="c1"># Environment parameters</span>
 <span class="n">detection_radius</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">max_steps</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">min_length</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">n_patches</span> <span class="o">=</span> <span class="mi">7</span> <span class="c1">#         # number of patches</span>
-<span class="n">n_per_patch</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1">#      # number targets per patch</span>
-<span class="n">radius</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">#            # radius of each patch</span>
+<span class="n">n_patches</span> <span class="o">=</span> <span class="mi">8</span> <span class="c1">#         # number of patches</span>
+<span class="n">n_per_patch</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1">#      # number targets per patch</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#            # radius of each patch</span>
 <span class="n">target_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="c1"># Generate patches of argets</span>
@@ -652,41 +578,50 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/1aef362397d78a85646d6b54e2f8d0323a04c9d1dbb1e2218a0278062c408804.png" src="../_images/1aef362397d78a85646d6b54e2f8d0323a04c9d1dbb1e2218a0278062c408804.png" />
-</div>
 </div>
 </section>
 </section>
 <section id="section-2-different-exploration-strategies-in-the-patchy-environment">
 <h2>Section 2 - Different exploration strategies in the patchy environment<a class="headerlink" href="#section-2-different-exploration-strategies-in-the-patchy-environment" title="Permalink to this heading">#</a></h2>
-<p>Now we will predict and evaluate the behavior of agents with different exploration strategies in the patcy environment. These are agents that we have used in pervious labs. See those labs to remember how these agents work.</p>
-<p>Here we will generate 2 different types of agents - one that moves randomly (diffusion on the grid), and one that follows chemical signals emitted by targets (chemotaxis)</p>
+<p>Now we will predict and evaluate the behavior of agents with different exploration strategies in the patcy environment. We will pick up on the three types of agents we have worked with so far.</p>
+<ul class="simple">
+<li><p>A random, Brownian random walker</p></li>
+<li><p>A simple chemotaxis agent</p></li>
+<li><p>A curious infotaxis agent</p></li>
+</ul>
+<p>These are agents that we have used in pervious labs. See those labs to remember how these agents work.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Agents</span>
 
 <span class="c1"># Random search agent</span>
-<span class="n">diff</span> <span class="o">=</span> <span class="n">DiffusionGrid</span><span class="p">(</span><span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">diff</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
+<span class="n">rand</span> <span class="o">=</span> <span class="n">DiffusionGrid</span><span class="p">(</span><span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">)</span>
+<span class="n">rand</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
 
-<span class="n">drift_rate</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">threshold</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="c1"># Common parameters</span>
+<span class="n">min_length</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">p_neg</span> <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">p_pos</span> <span class="o">=</span> <span class="mf">0.2</span>
 
 <span class="c1"># Chemotaxis agent</span>
-<span class="n">chemo</span> <span class="o">=</span> <span class="n">AccumulatorGradientGrid</span><span class="p">(</span>
+<span class="n">chemo</span> <span class="o">=</span> <span class="n">GradientDiffusionGrid</span><span class="p">(</span>
     <span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span>
-    <span class="n">max_steps</span><span class="o">=</span><span class="n">max_steps</span><span class="p">,</span>
-    <span class="n">drift_rate</span><span class="o">=</span><span class="n">drift_rate</span><span class="p">,</span>
-    <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span>
-    <span class="n">accumulate_sigma</span><span class="o">=</span><span class="mi">1</span>
+    <span class="n">p_neg</span><span class="o">=</span><span class="n">p_neg</span><span class="p">,</span>
+    <span class="n">p_pos</span><span class="o">=</span><span class="n">p_pos</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">chemo</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[6074]
+
+
+<span class="c1"># Infotaxis agent</span>
+<span class="n">threshold</span><span class="o">=</span><span class="mf">0.05</span>
+<span class="n">info</span> <span class="o">=</span> <span class="n">GradientInfoGrid</span><span class="p">(</span>
+    <span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span>
+    <span class="n">p_neg</span><span class="o">=</span><span class="n">p_neg</span><span class="p">,</span>
+    <span class="n">p_pos</span><span class="o">=</span><span class="n">p_pos</span><span class="p">,</span>
+    <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">info</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -727,11 +662,10 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 <p>Run the code below to perform a number of experiments, simulating how these different agents behave in the patch environment that you built.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># num_experiments = 50</span>
-<span class="c1"># Experiments</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Experiments</span>
 <span class="n">rand_exp</span> <span class="o">=</span> <span class="n">experiment</span><span class="p">(</span>
     <span class="sa">f</span><span class="s2">&quot;rand&quot;</span><span class="p">,</span>
-    <span class="n">diff</span><span class="p">,</span>
+    <span class="n">rand</span><span class="p">,</span>
     <span class="n">env</span><span class="p">,</span>
     <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">,</span>
     <span class="n">num_experiments</span><span class="o">=</span><span class="n">num_experiments</span><span class="p">,</span>
@@ -749,11 +683,19 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
     <span class="n">split_state</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">seed</span><span class="o">=</span><span class="n">seed_value</span>
 <span class="p">)</span>
+<span class="n">info_exp</span> <span class="o">=</span> <span class="n">experiment</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;info&quot;</span><span class="p">,</span>
+    <span class="n">info</span><span class="p">,</span>
+    <span class="n">env</span><span class="p">,</span>
+    <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">,</span>
+    <span class="n">num_experiments</span><span class="o">=</span><span class="n">num_experiments</span><span class="p">,</span>
+    <span class="n">dump</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">split_state</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="n">seed_value</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "fbbf50634293435ab93997cfab11bf09"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "82c6ebbd715b428a992cff61f6472ee7"}</script></div>
 </div>
 <p>Run the code below to plot behavior of each agent type during one experiment example.</p>
 <div class="cell docutils container">
@@ -761,7 +703,7 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="c1"># -</span>
-<span class="n">num_experiment</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">num_experiment</span> <span class="o">=</span> <span class="n">num_experiments</span> <span class="o">-</span> <span class="mi">1</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plot_position2d</span><span class="p">(</span>
     <span class="n">select_exp</span><span class="p">(</span><span class="n">chemo_exp</span><span class="p">,</span> <span class="n">num_experiment</span><span class="p">),</span>
@@ -775,8 +717,16 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
     <span class="n">select_exp</span><span class="p">(</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">num_experiment</span><span class="p">),</span>
     <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
     <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_position2d</span><span class="p">(</span>
+    <span class="n">select_exp</span><span class="p">(</span><span class="n">info_exp</span><span class="p">,</span> <span class="n">num_experiment</span><span class="p">),</span>
+    <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Info&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plot_targets2d</span><span class="p">(</span>
@@ -789,9 +739,6 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/5f724b4607a9c8ef7c9225cb6015ce96c4d9050c8f54a26112b0cd0abed573b1.png" src="../_images/5f724b4607a9c8ef7c9225cb6015ce96c4d9050c8f54a26112b0cd0abed573b1.png" />
 </div>
 </div>
 </section>
@@ -812,9 +759,9 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
-<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">chemo_exp</span><span class="p">]</span>
-<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemo&quot;</span><span class="p">]</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">]</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">chemo_exp</span><span class="p">,</span> <span class="n">info_exp</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemo&quot;</span><span class="p">,</span><span class="s2">&quot;Info&quot;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span><span class="s2">&quot;green&quot;</span><span class="p">]</span>
 
 <span class="c1"># Score by on_patch_time #eff</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
@@ -847,10 +794,6 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "eaa800721f394d9687c0ef63f166dd1f"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "919f2b9ebfd240628862d08d460c6ea3"}</script><img alt="../_images/e1c8d6502d774a4971bc1d4642c104e9ea268b3a93e9c2291990f05fc2cce125.png" src="../_images/e1c8d6502d774a4971bc1d4642c104e9ea268b3a93e9c2291990f05fc2cce125.png" />
-<img alt="../_images/c2bd3706640aa8b32323036acdcbd936436c45e00ef8bbe0541d16828e2ec810.png" src="../_images/c2bd3706640aa8b32323036acdcbd936436c45e00ef8bbe0541d16828e2ec810.png" />
-</div>
 </div>
 </section>
 <section id="quantify-total-reward-for-each-agent-type">
@@ -859,9 +802,9 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
-<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">chemo_exp</span><span class="p">]</span>
-<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemo&quot;</span><span class="p">]</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">]</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">chemo_exp</span><span class="p">,</span> <span class="n">info_exp</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemo&quot;</span><span class="p">,</span><span class="s2">&quot;Info&quot;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span><span class="s2">&quot;green&quot;</span><span class="p">]</span>
 
 <span class="c1"># Score by eff</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
@@ -893,10 +836,6 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "728711f7174b4782aea3f74c8eb25c48"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "61fd6c549fab4bad847ddeec9cb9fc50"}</script><img alt="../_images/7dd060e5179b2c6548fca20727a6a036070d88ef458c7eb275004fe82a9664aa.png" src="../_images/7dd060e5179b2c6548fca20727a6a036070d88ef458c7eb275004fe82a9664aa.png" />
-<img alt="../_images/609248c41083e1d554c30e9db371d6942f4b3c211e9c0345c61c6ef1725ced7d.png" src="../_images/609248c41083e1d554c30e9db371d6942f4b3c211e9c0345c61c6ef1725ced7d.png" />
-</div>
 </div>
 </section>
 <section id="quantify-deaths-for-each-agent-type">
@@ -905,9 +844,9 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
-<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">chemo_exp</span><span class="p">]</span>
-<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemo&quot;</span><span class="p">]</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">]</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">chemo_exp</span><span class="p">,</span> <span class="n">info_exp</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemo&quot;</span><span class="p">,</span> <span class="s2">&quot;Info&quot;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">]</span>
 
 <span class="c1"># Score by eff</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
@@ -928,9 +867,6 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "764dca44fff9432ea3c8bec10513366e"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "6422c8058c744a3584a0e49b397fb56f"}</script><img alt="../_images/fc2ae1559346241eaf8b9a2fa6cdecbf702b342d6dc5dbfe82c1230fc7751d6d.png" src="../_images/fc2ae1559346241eaf8b9a2fa6cdecbf702b342d6dc5dbfe82c1230fc7751d6d.png" />
 </div>
 </div>
 </section>
@@ -959,10 +895,11 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </section>
 <section id="section-3-exploration-strategies-in-different-patchy-environments">
 <h2>Section 3 - Exploration strategies in different patchy environments<a class="headerlink" href="#section-3-exploration-strategies-in-different-patchy-environments" title="Permalink to this heading">#</a></h2>
+<p>Let’s look at a slightly harder foraging problem: sparse patches. We will create a new patch environment, just like our first one, but with only two patches of 20 targets each.</p>
 </section>
 <section id="question-3-1">
 <h2>Question 3.1<a class="headerlink" href="#question-3-1" title="Permalink to this heading">#</a></h2>
-<p>Next, we will try creating a new patch environment just like our first one, but with only two patches of 20 targets each. Make predictions as to how the performance of each agent type will change and why. Make predictions for on-patch-proportion, total reward, and death.</p>
+<p>Which agent do you predict will do the best in terms of on-patch-proportion, total reward, and death.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add your predictions here, as a python comment in this cell below.</span>
@@ -970,16 +907,17 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </div>
 </div>
 </div>
+<p>Here’s how we’ll set up the experiment</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Noise and missing scents</span>
-<span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.5</span>
-<span class="n">noise_sigma</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">noise_sigma</span> <span class="o">=</span> <span class="mi">2</span>
 
 <span class="c1"># Shared agent parameters</span>
 <span class="n">num_experiments</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">400</span>
-<span class="n">seed_value</span> <span class="o">=</span> <span class="mi">5074</span>               <span class="c1"># seed value for random number generator</span>
+<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">seed_value</span> <span class="o">=</span> <span class="mi">52317</span>               <span class="c1"># seed value for random number generator</span>
 
 <span class="c1"># Environment parameters</span>
 <span class="n">detection_radius</span> <span class="o">=</span> <span class="mi">1</span>
@@ -987,7 +925,7 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 <span class="n">min_length</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">n_patches</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">#          # number of patches</span>
 <span class="n">n_per_patch</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1">#       # number targets per patch</span>
-<span class="n">radius</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">#             # radius of each patch</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1">#             # radius of each patch</span>
 <span class="n">target_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="c1"># Generate patches of argets</span>
@@ -1011,6 +949,7 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </div>
 </div>
 </div>
+<p>Now let’s see our environment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
@@ -1027,16 +966,14 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/e0be95a67f2d8a5f05c8290d68f1227983f775caa693490291ab47fb6cc5c978.png" src="../_images/e0be95a67f2d8a5f05c8290d68f1227983f775caa693490291ab47fb6cc5c978.png" />
 </div>
-</div>
+<p>Time to test our agents.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Experiments</span>
 <span class="n">rand_exp</span> <span class="o">=</span> <span class="n">experiment</span><span class="p">(</span>
     <span class="sa">f</span><span class="s2">&quot;rand&quot;</span><span class="p">,</span>
-    <span class="n">diff</span><span class="p">,</span>
+    <span class="n">rand</span><span class="p">,</span>
     <span class="n">env</span><span class="p">,</span>
     <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">,</span>
     <span class="n">num_experiments</span><span class="o">=</span><span class="n">num_experiments</span><span class="p">,</span>
@@ -1054,18 +991,71 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
     <span class="n">split_state</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">seed</span><span class="o">=</span><span class="n">seed_value</span>
 <span class="p">)</span>
+<span class="n">info_exp</span> <span class="o">=</span> <span class="n">experiment</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;info&quot;</span><span class="p">,</span>
+    <span class="n">info</span><span class="p">,</span>
+    <span class="n">env</span><span class="p">,</span>
+    <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">,</span>
+    <span class="n">num_experiments</span><span class="o">=</span><span class="n">num_experiments</span><span class="p">,</span>
+    <span class="n">dump</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">split_state</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="n">seed_value</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "c667344ee5014b34b5405d187617d203"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "19c5e41169bc46f2b5df032abee58a08"}</script></div>
 </div>
+<p>First let’s take a look at a good demonstration trial. I’m picking one example that will make sense in a little bit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># - Picking a good example that is consistent with summary results</span>
+<span class="n">num_experiment</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_position2d</span><span class="p">(</span>
+    <span class="n">select_exp</span><span class="p">(</span><span class="n">chemo_exp</span><span class="p">,</span> <span class="n">num_experiment</span><span class="p">),</span>
+    <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Chemo&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_position2d</span><span class="p">(</span>
+    <span class="n">select_exp</span><span class="p">(</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">num_experiment</span><span class="p">),</span>
+    <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_position2d</span><span class="p">(</span>
+    <span class="n">select_exp</span><span class="p">(</span><span class="n">info_exp</span><span class="p">,</span> <span class="n">num_experiment</span><span class="p">),</span>
+    <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Info&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_targets2d</span><span class="p">(</span>
+    <span class="n">env</span><span class="p">,</span>
+    <span class="n">boundary</span><span class="o">=</span><span class="n">plot_boundary</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Targets&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Okay, now let’s take a look at time on patch.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
-<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">chemo_exp</span><span class="p">]</span>
-<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemo&quot;</span><span class="p">]</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">]</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">chemo_exp</span><span class="p">,</span> <span class="n">info_exp</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemo&quot;</span><span class="p">,</span> <span class="s2">&quot;Info&quot;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">]</span>
 
 <span class="c1"># Score by on_patch_time #eff</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1098,17 +1088,15 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "68ee9a6464f7488493e0a49c12dcb9a9"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "f44b44c88b7645a79ed5d4ec1950083f"}</script><img alt="../_images/c8645cee82ff5229648211608fa74b751ce0aa1094e4538745c3c870798aa8f5.png" src="../_images/c8645cee82ff5229648211608fa74b751ce0aa1094e4538745c3c870798aa8f5.png" />
-<img alt="../_images/2d81da558ac857b0827b97ffa84d89083e3bfcfabea2f1f94dd355981f2fa7e3.png" src="../_images/2d81da558ac857b0827b97ffa84d89083e3bfcfabea2f1f94dd355981f2fa7e3.png" />
 </div>
-</div>
+<p>Interesting patterns that I have some questions about at the end.</p>
+<p>Now, let’s look at total rewards.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
-<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">chemo_exp</span><span class="p">]</span>
-<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemo&quot;</span><span class="p">]</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">]</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">chemo_exp</span><span class="p">,</span> <span class="n">info_exp</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemo&quot;</span><span class="p">,</span> <span class="s2">&quot;Info&quot;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">]</span>
 
 <span class="c1"># Score by eff</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1140,17 +1128,15 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "67ec473ffe6a44918daec19aba11dc44"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "98be9f28f202418c962cde77494ce3f1"}</script><img alt="../_images/5136eb2873a107128abf42dc7cb7d7d0569e72a3dc47b04356af82cd0253819e.png" src="../_images/5136eb2873a107128abf42dc7cb7d7d0569e72a3dc47b04356af82cd0253819e.png" />
-<img alt="../_images/55f89fa0ddd5e017b021d9c9d119c32403cfb4c7003b59892d0bf99662b47e5f.png" src="../_images/55f89fa0ddd5e017b021d9c9d119c32403cfb4c7003b59892d0bf99662b47e5f.png" />
 </div>
-</div>
+<p>Interesting. Look at the difference between our chemotaxis agent and our curious (infotaxis) agent.</p>
+<p>Now we can look at the contrastive performance measure of deaths.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Results</span>
-<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">chemo_exp</span><span class="p">]</span>
-<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemo&quot;</span><span class="p">]</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">]</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand_exp</span><span class="p">,</span> <span class="n">chemo_exp</span><span class="p">,</span> <span class="n">info_exp</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rando&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemo&quot;</span><span class="p">,</span> <span class="s2">&quot;Info&quot;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">]</span>
 
 <span class="c1"># Score by eff</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1171,9 +1157,6 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ac274764e40d4e6182d822aaa586fd9b"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "f587d899d1374ab79f88e87f1c7b5bcd"}</script><img alt="../_images/b7a19a1e14a324c2a5c171c38833b40f692238c424d32187c765a61b03636883.png" src="../_images/b7a19a1e14a324c2a5c171c38833b40f692238c424d32187c765a61b03636883.png" />
 </div>
 </div>
 <section id="question-3-2">
@@ -1234,12 +1217,12 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="lab6-predator_prey.html"
+       href="lab7-infotaxis.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lab 6 - Predator-prey dynamics</p>
+        <p class="prev-next-title">Lab 7 - Infotaxis (aka- pure curiosity-driven search)</p>
       </div>
     </a>
     <a class="right-next"
@@ -1275,7 +1258,7 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#we-can-think-of-optimal-foraging-in-terms-of-a-simplified-model">We can think of optimal foraging in terms of a simplified model.</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-setup">Section - Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-0-setup">Section 0 - Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-building-a-simulated-patchy-environment">Section 1 - Building a simulated patchy environment</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-this-environment">Visualizing this environment</a></li>
 </ul>

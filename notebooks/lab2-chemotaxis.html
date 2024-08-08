@@ -170,17 +170,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab4-evidence_accumulation.html">Lab 4 - Evidence Accumulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab5-cbgt.html">Lab 5 - CBGT pathways</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="lab6-predator_prey.html">Lab 6 - Predator-prey dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab7-foraging.html">Lab 7 - Foraging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6-information.html">Lab 6 - Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7-infotaxis.html">Lab 7 - Infotaxis (aka- pure curiosity-driven search)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8-patch_foraging.html">Lab 8 - Patch foraging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab10-curiosity_driven_learning.html">Lab 10 - Curiosity-driven exploration</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise1-getting-started.html"><strong>Exercise 1: Github &amp; Colab</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise2-signals_and_decisions.html"><strong>Exercise 2: Signals and decisions</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise3-cbgt_and_pred_prey.html"><strong>Exercise 3: CBGT networks and predator-prey dynamics</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise4-foraging_and_rl_and_info.html"><strong>Homework 4: Foraging and reinforcement learning</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab10-exploration_vs_exploitation.html">Lab 10 - Exploring vs. exploiting</a></li>
 </ul>
 
     </div>
@@ -429,7 +423,7 @@ document.write(`
 <li><p>When the gradient is positive, meaning you are going “up” the gradient, the probability of turning and sampling from a Levy walk power law (i.e., a jump) is set to <em>p pos</em>.</p></li>
 <li><p>When the gradient is negative, the probability of a jump is set to <em>p neg</em>. (See code below, for an example).</p></li>
 <li><p>If the agent “decides” to jump, the direction it takes is uniform random.</p></li>
-<li><p>The length of travel before the next turn decision is sampled from an Power-law distribution.</p></li>
+<li><p>The length of travel now is just a single step on the grid. This makes our decision problem a lot simpler. Basically this is equivalent to making the diffusion parameter, <span class="math notranslate nohighlight">\(D\)</span>, consistent across experiments.</p></li>
 </ul>
 </section>
 <section id="section-0-setup">
@@ -667,17 +661,15 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Agents</span>
 
 <span class="c1"># Random search agent</span>
-<span class="n">diff</span> <span class="o">=</span> <span class="n">DiffusionGrid</span><span class="p">(</span><span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">DiffusionGrid</span><span class="p">(</span><span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">)</span>
 <span class="n">diff</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
 
 <span class="c1"># Chemotaxis agent</span>
 <span class="n">min_length</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Minimum step length on the grid</span>
-<span class="n">scale</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># The smaller this value, the bigger the Levy flights</span>
 <span class="n">p_neg</span> <span class="o">=</span> <span class="mf">0.8</span> <span class="c1"># Probability of jumping if gradient is decreasing</span>
 <span class="n">p_pos</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="c1"># Probabilty of jumping if gradient is increasing</span>
 <span class="n">chemo</span> <span class="o">=</span> <span class="n">GradientDiffusionGrid</span><span class="p">(</span>
     <span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span>
-    <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
     <span class="n">p_neg</span><span class="o">=</span><span class="n">p_neg</span><span class="p">,</span>
     <span class="n">p_pos</span><span class="o">=</span><span class="n">p_pos</span><span class="p">,</span>
 <span class="p">)</span>
@@ -763,7 +755,7 @@ document.write(`
 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
     <span class="n">l</span> <span class="o">=</span> <span class="mf">0.0</span>
     <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
-        <span class="n">l</span> <span class="o">+=</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;agent_total_l&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">l</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;agent_num_step&quot;</span><span class="p">])</span>
     <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
 
 <span class="c1"># Tabulate</span>
@@ -775,14 +767,14 @@ document.write(`
 <span class="c1"># Plot means</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">sd</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Total distance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Total run distance&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Clearly the Chemo agent is moving more. But are they moving <em>differently</em> too? Let’s take a look at the distributions of their movements.</p>
+<p>Clearly the Chemo agent is running longer. But are they moving <em>differently</em> too? Let’s take a look at the distributions of their movements.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View size</span>
@@ -790,10 +782,10 @@ document.write(`
 
 <span class="c1"># Agent</span>
 <span class="n">ax</span><span class="o">=</span><span class="kc">None</span>
-<span class="n">ax</span><span class="o">=</span><span class="n">plot_length_hist</span><span class="p">(</span><span class="n">select_exp</span><span class="p">(</span><span class="n">rand_exp</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">loglog</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">plot_length_hist</span><span class="p">(</span><span class="n">select_exp</span><span class="p">(</span><span class="n">rand_exp</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">loglog</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">=</span><span class="n">plot_length_hist</span><span class="p">(</span><span class="n">select_exp</span><span class="p">(</span><span class="n">chemo_exp</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">loglog</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">plot_length_hist</span><span class="p">(</span><span class="n">select_exp</span><span class="p">(</span><span class="n">chemo_exp</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">loglog</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>

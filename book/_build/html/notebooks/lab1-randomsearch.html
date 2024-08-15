@@ -576,7 +576,7 @@ document.write(`
 <span class="n">scale_param</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">shape_param</span> <span class="o">=</span> <span class="mi">4</span>
 
-<span class="c1"># Generate exponential distribution data</span>
+<span class="c1"># Generate gamma distribution data</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">gamma</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">scale_param</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape_param</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 
 
@@ -600,7 +600,7 @@ document.write(`
 </div>
 <p>Along with step length, the agent also must decide the direction of movement. We will use the parameter <span class="math notranslate nohighlight">\(\theta\)</span> to represent the angle of movement in polar coordinates. At each moment <span class="math notranslate nohighlight">\(i\)</span> the movement direction <span class="math notranslate nohighlight">\(\theta_i\)</span> will be sampled according to a uniform distribution ranging from 0 to <span class="math notranslate nohighlight">\(2\pi\)</span>.</p>
 <div class="math notranslate nohighlight">
-\[\theta_i \sim U(0, 2*\pi)\]</div>
+\[\theta_i \sim U(0, 2\pi)\]</div>
 <p>This means that at any given moment, Rando can turn in any direction in a <span class="math notranslate nohighlight">\(360^{\circ}\)</span> circle. We can visualie this distribution of angles pretty easily.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -787,38 +787,26 @@ document.write(`
 <p>Go back to the top of this section, change the <em>random seed number</em> in the cell where we ran the experiment and run it again. Each time you do you should generate a new exploration pattern. You’ll get different rewards and efficiency each time as well.</p>
 </section>
 </section>
+<hr class="docutils" />
 <section id="question-1-1">
 <h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h3>
 <p>Rerun the simulation above but now have the agent run for 10,000 steps. What happens to the histogram (or distribution) of step lengths?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p><strong>Answer:</strong></p>
+<p><em>(insert response here)</em></p>
 </section>
+<hr class="docutils" />
 <section id="question-1-2">
 <h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this heading">#</a></h3>
 <p>Repeat the experiment 10 times with different random seeds. Keep track of the two outcome measures, <em>total reward</em> and <em>search efficiency</em>. How much variation do you see from run to run?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p><strong>Answer:</strong></p>
+<p><em>(insert response here)</em></p>
 </section>
+<hr class="docutils" />
 <section id="question-1-3">
 <h3>Question 1.3<a class="headerlink" href="#question-1-3" title="Permalink to this heading">#</a></h3>
 <p>Now set the random seed number back to 52317 and rerun the original simulation. Then change the number of steps in each simulation (the <em>num_steps</em> parameter) to 1000. How do the two outcome measures (<em>total reward</em> and <em>search efficiency</em>) change?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here as a comment. Explain yourself.</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p><strong>Answer:</strong></p>
+<p><em>(insert response here)</em></p>
 </section>
 </section>
 </section>

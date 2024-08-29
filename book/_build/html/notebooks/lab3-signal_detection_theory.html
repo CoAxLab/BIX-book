@@ -1,0 +1,883 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Lab 3 - Signal detection theory &#8212; Biologically Intelligent eXploration (BIX)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lab3-signal_detection_theory';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 4 - Evidence Accumulation" href="lab4-evidence_accumulation.html" />
+    <link rel="prev" title="Lab 2 - Simple Chemotaxis" href="lab2-chemotaxis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/levy-flight.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/levy-flight.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Biologically Intelligent eXploration (BIX)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro-python.html">Introduction to python</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lab1-randomsearch.html">Lab 1 - Random exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2-chemotaxis.html">Lab 2 - Simple Chemotaxis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 3 - Signal detection theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4-evidence_accumulation.html">Lab 4 - Evidence Accumulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5-cbgt.html">Lab 5 - CBGT pathways</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="lab6-information.html">Lab 6 - Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7-infotaxis.html">Lab 7 - Infotaxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8-patch_foraging.html">Lab 8 - Patch foraging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab9-reward_seeking.html">Lab 9 - Reward seeking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab10-exploration_vs_exploitation.html">Lab 10 - Exploring vs. exploiting</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/CoAxLab/BIX-book/main?urlpath=tree/book/notebooks/lab3-signal_detection_theory.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/CoAxLab/BIX-book/blob/main/book/notebooks/lab3-signal_detection_theory.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/lab3-signal_detection_theory.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 3 - Signal detection theory</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-setup">Section - Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-config">Notebook Config</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-simulating-an-sdt-experiment">Section 1 - Simulating an SDT experiment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-data">Generating Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyze-this-agent-s-behavior">Analyze this agent’s behavior</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-signal-and-noise-distributions">Plot the signal and noise distributions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1">Question 1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2">Question 1.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3">Question 1.3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-4">Question 1.4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-receiver-operating-characteristics">Section 2 - Receiver operating characteristics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1">Question 2.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3">Question 2.3</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-3-signal-detection-theory">
+<h1>Lab 3 - Signal detection theory<a class="headerlink" href="#lab-3-signal-detection-theory" title="Permalink to this heading">#</a></h1>
+<p>Here we will expand on the issue of optimally detecting signal from noise.</p>
+<p>This lab has two main components designed to go over the basics of signal detection theory.</p>
+<ol class="arabic simple">
+<li><p>Simulate a simple signal detection experiment.</p></li>
+<li><p>Look at how changing aspects of the signal detection process impacts the receiver operating characteristics.</p></li>
+</ol>
+<p>We won’t be working with valentinos in this lab, but will return to them a bit later.</p>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
+<p>In this lab we will visit the basics of signal detection theory. I’ll be using SDT to refer to signal detection theory from here on out.</p>
+<p><strong>Components of SDT</strong></p>
+<ol class="arabic simple">
+<li><p><em>The noise distribution.</em> This is assumed to be a standard Gaussian (Normal) distribution, with a mean of 0 and standard deviation of 1. We typically write this as <span class="math notranslate nohighlight">\(N(0,1)\)</span>.</p></li>
+<li><p><em>The signal distribution.</em> This will always have the same variance as the noise distribution, but with a different mean. The mean of the signal distribution is called <em>d-prime</em> (or <span class="math notranslate nohighlight">\(d'\)</span>) and by convention we represent it as a positive number. The <span class="math notranslate nohighlight">\(d'\)</span> reflects the signal-to-noise ratio.</p></li>
+<li><p><em>Threshold.</em> This is also referred to as the strategy of the observer/agent and is sometimes referenced just as <span class="math notranslate nohighlight">\(C\)</span>.</p></li>
+<li><p><em>Ideal observer threshold.</em> This is the <em>statistically optimal</em> separation between the noise and signal distributions. Because they have the same standard deviations, the ideal observer is just <span class="math notranslate nohighlight">\(\frac{d'}{2}\)</span>.</p></li>
+</ol>
+<p><strong>Outcomes</strong></p>
+<p>An experiment to test the signal characteristics in biological systems typically involves presenting signals of different intensities in the context of background noise and having an agent make a response when a stimulus appears above their detection threshold. Often this detection is implicit and depends on the sensory systems of the agent.</p>
+<p>By looking at the relationship between stimulus (signal present vs. signal absent) and responses (response made or not), we can estimate 4 different classes of outcomes based on the agent’s responses.</p>
+<ol class="arabic simple">
+<li><p><em>Hits.</em> When a signal was presented and a response was registered.</p></li>
+<li><p><em>Misses.</em> When a signal was presented and no response was registered.</p></li>
+<li><p><em>False alarms.</em> When no signal was presented and a response was registered.</p></li>
+<li><p><em>Correct rejections.</em> When no signal was presented and no response was registered.</p></li>
+</ol>
+<p>From these we can directly estimate the signal-to-noise intensity for any agent by calculating the <span class="math notranslate nohighlight">\(d'\)</span> behaviorally as:</p>
+<div class="math notranslate nohighlight">
+\[ d' = \Phi(hits) - \Phi(false\ alarms)\]</div>
+<p>Here <span class="math notranslate nohighlight">\(\Phi(\cdot)\)</span> means that we have converted the rates to a <span class="math notranslate nohighlight">\(z-score\)</span>. Basically we treat the rates, bounded between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span>, as the p-values of a standard normal distribution and use a lookup table to determine what z-score (i.e., standard deviations away from the mean) would produce that p-value. Note that z-scores can be positive or negative. So pay attention to the signs when calculating your <span class="math notranslate nohighlight">\(d'\)</span></p>
+<p><strong>Receiver operating characteristics (ROC)</strong></p>
+<p>One way of visualizing signal characteristics is to run a set of experiments with different agents, who have different thresholds and perceptual characterisics (i.e., different noise standard deviations), and plot the results of each agent on a 2-dimensional graph. We assume that the signal characteristics are always the same. On the x-axis you plot false alarms and on the y-axis you plot hits. The characteristics of this curve reveal the characteristics of the signal to noise for that particular stimulus.</p>
+</section>
+<section id="section-setup">
+<h2>Section - Setup<a class="headerlink" href="#section-setup" title="Permalink to this heading">#</a></h2>
+<p>This lab is super simple. We will only need numpy for basic calculations and matplotlib for plotting. Later we will need scipy for some calculations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="notebook-config">
+<h3>Notebook Config<a class="headerlink" href="#notebook-config" title="Permalink to this heading">#</a></h3>
+<p>Now let’s do some tweaks to get the notebooks to render things nicely.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pretty plots</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format=&#39;retina&#39;
+<span class="o">%</span><span class="k">config</span> IPCompleter.greedy=True
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;10&quot;</span>
+
+<span class="c1"># Dev</span>
+<span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="section-1-simulating-an-sdt-experiment">
+<h2>Section 1 - Simulating an SDT experiment<a class="headerlink" href="#section-1-simulating-an-sdt-experiment" title="Permalink to this heading">#</a></h2>
+<p>Here we start by making a simple function that simulates the data we would get from a simple SDT experiment as described above.</p>
+<p>For this function we will want 4 inputs:</p>
+<ol class="arabic simple">
+<li><p>An array of signal intensities (<em>signal</em>) on each trial.</p></li>
+<li><p>An array of noise intensities (<em>noise</em>) on each trial.</p></li>
+<li><p>The threshold of the simulated observer (<em>thresold</em>).</p></li>
+</ol>
+<p>For our little experiment today we will assume that:</p>
+<ul class="simple">
+<li><p>The number of trials in the signal and noise vectors is the same.</p></li>
+</ul>
+<p>Our function returns the hits, false alarms, misses, and correct rejections as <em>rates</em> (i.e., bounded between 0 and 1).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">response_generate</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+    <span class="c1"># get the length of the two vectors (we assume they are the same)</span>
+    <span class="n">num_trials</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+
+    <span class="c1"># hits are when the signal is presented and it is above the observer&#39;s threshold</span>
+    <span class="n">hits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">signal</span><span class="o">&gt;</span><span class="n">threshold</span><span class="p">))</span><span class="o">/</span><span class="n">num_trials</span>
+
+    <span class="c1"># false alarms are when the noise is presented and it is above the observer&#39;s threshold</span>
+    <span class="n">false_alarms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">noise</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">))</span><span class="o">/</span><span class="n">num_trials</span>
+
+    <span class="c1"># misses are when the signal is presented and it is below the observer&#39;s threshold</span>
+    <span class="n">misses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">signal</span><span class="o">&lt;</span><span class="n">threshold</span><span class="p">))</span><span class="o">/</span><span class="n">num_trials</span>
+
+    <span class="c1"># correct_rejections are when the noise is presented and it is below the observer&#39;s threshold</span>
+    <span class="n">correct_rejections</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">noise</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">))</span><span class="o">/</span><span class="n">num_trials</span>
+
+    <span class="c1"># Everything is returned as a rate</span>
+    <span class="k">return</span> <span class="n">hits</span><span class="p">,</span> <span class="n">false_alarms</span><span class="p">,</span> <span class="n">misses</span><span class="p">,</span> <span class="n">correct_rejections</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="generating-data">
+<h3>Generating Data<a class="headerlink" href="#generating-data" title="Permalink to this heading">#</a></h3>
+<p>Let’s set up basic parameters for a trial simulation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameters for simulating the data (signal + noise)</span>
+<span class="n">num_trials</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">signal_strength</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">noise_std</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">noise_std</span><span class="p">,</span> <span class="n">num_trials</span><span class="p">)</span>
+<span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">signal_strength</span><span class="p">,</span> <span class="n">noise_std</span><span class="p">,</span> <span class="n">num_trials</span><span class="p">)</span>
+
+<span class="c1"># Threshold for decision-making</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">1.5</span>
+
+<span class="c1"># Ideal observer separation</span>
+<span class="n">ideal_separation</span> <span class="o">=</span> <span class="n">signal_strength</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>So here we will have a <span class="math notranslate nohighlight">\(d'=1.0\)</span>, which means that the signal mean is 1 standard deviation away from the noise mean. We will also have the agent’s threshold be <span class="math notranslate nohighlight">\(1.5\)</span>, which makes this agent slightly conservative.</p>
+</section>
+<section id="analyze-this-agent-s-behavior">
+<h3>Analyze this agent’s behavior<a class="headerlink" href="#analyze-this-agent-s-behavior" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute hits and false alarms using the function</span>
+<span class="n">hits</span><span class="p">,</span> <span class="n">false_alarms</span><span class="p">,</span> <span class="n">misses</span><span class="p">,</span> <span class="n">correct_rejections</span> <span class="o">=</span> <span class="n">response_generate</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
+
+<span class="c1"># What was the performance?</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hit rate: </span><span class="si">{</span><span class="n">hits</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;False alarm rate: </span><span class="si">{</span><span class="n">false_alarms</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Misses: </span><span class="si">{</span><span class="n">misses</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Correct rejections: </span><span class="si">{</span><span class="n">correct_rejections</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we can see, the observer is performing pretty well all things considered. Let’s plot these results to see it visually.</p>
+</section>
+<section id="plot-the-signal-and-noise-distributions">
+<h3>Plot the signal and noise distributions<a class="headerlink" href="#plot-the-signal-and-noise-distributions" title="Permalink to this heading">#</a></h3>
+<p>Here we can plot the signal, the noise, the threshold, and the optimal/ideal separation position.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the signal distribution</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Signal&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Noise&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">threshold</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Decision Threshold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">ideal_separation</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ideal Threshold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Signal Strength&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Signal Detection Experiment&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="question-1-1">
+<h3>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h3>
+<p>With the current parameters, is this agent conservative or liberal in their threshold. What is the degree of this conservative/liberal bias of the observer (i.e., <span class="math notranslate nohighlight">\(C\)</span>)?</p>
+<p><strong>Answer:</strong></p>
+<p><em>(insert response here)</em></p>
+</section>
+<hr class="docutils" />
+<section id="question-1-2">
+<h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this heading">#</a></h3>
+<p>Re-run the simulations above, with the following parameters.</p>
+<p>num_trials = 1000 \
+signal_strength = 1.0 \
+noise_std = 1.0 \
+threshold = 0.5 \</p>
+<p><em>Question</em>: How does this change the performance of the agent? How do the performance measures (i.e., hits, false alarms, misses, and correct rejections) change. Also how does the bias of the agent’s responses change?</p>
+<p><strong>Answer:</strong></p>
+<p><em>(insert response here)</em></p>
+</section>
+<hr class="docutils" />
+<section id="question-1-3">
+<h3>Question 1.3<a class="headerlink" href="#question-1-3" title="Permalink to this heading">#</a></h3>
+<p>Using the <em>percent point function</em> (ppf) from <em>scipy</em> (i.e., <em>stats.norm.ppf</em>), calculate the <span class="math notranslate nohighlight">\(d'\)</span> of the agent that you simulated for Question 1.2.</p>
+<p>Show your calculations below and, as a comment, describe how well this matches the actual <span class="math notranslate nohighlight">\(d'\)</span> (i.e., signal strenght) used int he simulation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Insert your d&#39; calculation here</span>
+
+<span class="n">dprime</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#REPLACE THE 0 WITH YOUR CALCULATION</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Answer:</strong></p>
+<p><em>(insert response here)</em></p>
+</section>
+<hr class="docutils" />
+<section id="question-1-4">
+<h3>Question 1.4<a class="headerlink" href="#question-1-4" title="Permalink to this heading">#</a></h3>
+<p>Re-run the simulations above, with the following parameters.</p>
+<p>num_trials = 1000 \
+signal_strength = 2.0 \
+noise_std = 1.0 \
+threshold = 1.5 \</p>
+<p>Then re-calculate the <span class="math notranslate nohighlight">\(d'\)</span>.</p>
+<p><em>Question</em> : How did the <span class="math notranslate nohighlight">\(d'\)</span> change? Is it moving with the signal strength?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Insert your d&#39; calculation here</span>
+
+<span class="n">dprime</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#REPLACE THE 0 WITH YOUR CALCULATION</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Answer:</strong></p>
+<p><em>(insert response here)</em></p>
+</section>
+</section>
+<section id="section-2-receiver-operating-characteristics">
+<h2>Section 2 - Receiver operating characteristics<a class="headerlink" href="#section-2-receiver-operating-characteristics" title="Permalink to this heading">#</a></h2>
+<p>Here we are going to plot out the ROC curve for our simple agent. To do this we need to run through a batch of agents that have different thresholds, while keeping the signal and noise characteristics constant.</p>
+<p>Let’s start with writing a simple loop to simulate a set of 50 agents.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vary the threshold to create an ROC curve</span>
+<span class="n">num_trials</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">num_agents</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">noise_std</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">signal_strength</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">thresholds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">num_agents</span><span class="p">)</span>  <span class="c1"># Vary threshold used</span>
+<span class="n">hit_rates</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">false_alarm_rates</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">correct_rejection_rates</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">threshold</span> <span class="ow">in</span> <span class="n">thresholds</span><span class="p">:</span>
+    <span class="c1"># Simulate data (signal + noise)</span>
+    <span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">noise_std</span><span class="p">,</span> <span class="n">num_trials</span><span class="p">)</span>
+    <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">signal_strength</span><span class="p">,</span> <span class="n">noise_std</span><span class="p">,</span> <span class="n">num_trials</span><span class="p">)</span>
+
+    <span class="c1"># Compute hits and false alarms using the function</span>
+    <span class="n">hits</span><span class="p">,</span> <span class="n">false_alarms</span><span class="p">,</span> <span class="n">misses</span><span class="p">,</span> <span class="n">correct_rejections</span> <span class="o">=</span> <span class="n">response_generate</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
+
+    <span class="c1"># Compute hit rate and false alarm rate</span>
+    <span class="n">hit_rates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hits</span><span class="p">)</span>
+    <span class="n">false_alarm_rates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">false_alarms</span><span class="p">)</span>
+    <span class="n">correct_rejection_rates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">correct_rejections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can plot the ROC curve. It is pretty simple to do.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the ROC curve</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">false_alarm_rates</span><span class="p">,</span> <span class="n">hit_rates</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;False Alarm Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Hit Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Receiver Operating Characteristic (ROC) Curve&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The think we want to look for is how our curve deviagtes from the dashed line, sometimses called the <em>unity line</em> because it represents the case where <span class="math notranslate nohighlight">\(x=y\)</span>. The farther towards the upper left corner of the plot (and away from the unity line), the more discriminable the signal is from the noise (i.e., higher <span class="math notranslate nohighlight">\(d'\)</span>).</p>
+<p>We can quantify the this curve more directly by calculating the <em>area under the curve</em> (AUC). The higher the AUC the greater the signal to noise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the AUC</span>
+<span class="n">AUC</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">hit_rates</span><span class="p">)</span><span class="o">/</span><span class="n">num_agents</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AUC: </span><span class="si">{</span><span class="n">AUC</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<section id="question-2-1">
+<h3>Question 2.1<a class="headerlink" href="#question-2-1" title="Permalink to this heading">#</a></h3>
+<p>Rerun the experiment above but change the signal strength to <span class="math notranslate nohighlight">\(2.0\)</span>. How does the ROC curve change? How does the AUC change?</p>
+<p><strong>Answer:</strong></p>
+<p><em>(insert response here)</em></p>
+<hr class="docutils" />
+<p>##Question 2.2</p>
+<p>Rerun the experiment above but change the signal strength to <span class="math notranslate nohighlight">\(0.5\)</span>. How does the ROC curve change? How does the AUC change?</p>
+<p><strong>Answer:</strong></p>
+<p><em>(insert response here)</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="question-2-3">
+<h3>Question 2.3<a class="headerlink" href="#question-2-3" title="Permalink to this heading">#</a></h3>
+<p>Now we can test a little bit of your coding skills to address an interesting phenomenon.</p>
+<p>Copy the <em>for loop</em> code in the cell that creates the ROC curve above and paste it below. Revise the code in these ways:</p>
+<ol class="arabic simple">
+<li><p>Hold the threshold constant at <span class="math notranslate nohighlight">\(1.0\)</span>.</p></li>
+<li><p>Vary the noise standard deviations from <span class="math notranslate nohighlight">\(0.25\)</span> to <span class="math notranslate nohighlight">\(4.0\)</span>.</p></li>
+<li><p>Set the signal strength to <span class="math notranslate nohighlight">\(2.0\)</span>.</p></li>
+<li><p>Revise the <em>for loop</em> accordingly to vary the noise standard deviations instead of threshold.</p></li>
+</ol>
+<p>Then copy the plotting code to create the ROC curve.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT LOOP CODE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT PLOTTING CODE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Question</em>: How has the ROC curve changed? What does this change tell you about this other dimension of the ROC curve?</p>
+<p><strong>Answer:</strong></p>
+<p><em>(insert response here)</em></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab2-chemotaxis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 2 - Simple Chemotaxis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab4-evidence_accumulation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 4 - Evidence Accumulation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-setup">Section - Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-config">Notebook Config</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-simulating-an-sdt-experiment">Section 1 - Simulating an SDT experiment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-data">Generating Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyze-this-agent-s-behavior">Analyze this agent’s behavior</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-signal-and-noise-distributions">Plot the signal and noise distributions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1">Question 1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2">Question 1.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3">Question 1.3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-4">Question 1.4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-receiver-operating-characteristics">Section 2 - Receiver operating characteristics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1">Question 2.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3">Question 2.3</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Timothy Verstynen, Erik Peterson, Matthew Clapp, Jack Burgess
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -4,6 +4,7 @@ parts:
   - caption: Getting started
     chapters:
     - file: notebooks/intro-python
+    - file: notebooks/intro-github
   - caption: Labs
     chapters:
     - file: notebooks/lab1-randomsearch

@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lab 2 - Simple Chemotaxis" href="lab2-chemotaxis.html" />
-    <link rel="prev" title="Introduction to python" href="intro-python.html" />
+    <link rel="prev" title="Introduction to Github and Colab" href="intro-github.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -161,6 +161,8 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro-python.html">Introduction to python</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="intro-github.html">Introduction to Github and Colab</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
@@ -566,10 +568,14 @@ document.write(`
 <section id="id1">
 <h3>Agents<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>For most of this class we will be working with artifical agents that I call <em>valentinos</em>. Each valentino is a simulated agent that forages the little 2-dimensional virtual world. We have complete control over the valentino’s behavior and will expand their capabilities as the class progresses.</p>
-<p>We will start simple today with an agent that uses Brownian motion to explore and find food. It is the simplest valentino possible. It doesn’t use sensory signals or other environmental information to move about. It just randomly diffuses throughout the environment. We’ll name this valentino <em>Rando</em>. Rando makes two decisions at every moment (i.e., time point). First, there is the decision of how far to move. We call this the <em>step size</em> and will use the parameter <span class="math notranslate nohighlight">\(l_i\)</span> to refer to the length of the step taken at the <span class="math notranslate nohighlight">\(i^{th}\)</span> moment. This will be sampled according to an gamma distribution with a scale parameter <span class="math notranslate nohighlight">\(\theta\)</span> (with <span class="math notranslate nohighlight">\(\theta=2\)</span> for now) and shape parameter <span class="math notranslate nohighlight">\(k\)</span> (<span class="math notranslate nohighlight">\(k=2\)</span> for now). This gives us a distribution of moves with a lot of short jumps and a few larger jumps.</p>
+<p>We will start simple today with an agent that uses Brownian motion to explore and find food. It is the simplest valentino possible. It doesn’t use sensory signals or other environmental information to move about. It just randomly diffuses throughout the environment. We’ll name this valentino <em>Rando</em>. Rando makes two decisions at every moment (i.e., time point). First, there is the decision of how far to move. We call this the <em>step size</em> and will use the parameter <span class="math notranslate nohighlight">\(l_i\)</span> to refer to the length of the step taken at the <span class="math notranslate nohighlight">\(i^{th}\)</span> moment. This will be sampled according to an gamma distribution with a scale parameter <span class="math notranslate nohighlight">\(\theta\)</span> (with <span class="math notranslate nohighlight">\(\theta=2\)</span> for now) and shape parameter <span class="math notranslate nohighlight">\(k\)</span> (<span class="math notranslate nohighlight">\(k=2\)</span> for now).</p>
+<p>This gives us a probability distribution described like this:</p>
 <div class="math notranslate nohighlight">
 \[p(x) = x^{k-1} \frac{e^{\frac{-x}{\theta}}}{\theta^k \Gamma(k)}\]</div>
-<p>Here <span class="math notranslate nohighlight">\(\Gamma\)</span> is what is known as the gamma function. But we can skip the details for now.</p>
+<p>Here <span class="math notranslate nohighlight">\(\Gamma\)</span> is what is known as the gamma function. But we can skip the details for now. Just don’t mix it up with the gamma distribution itself (which is described by the above equation that <em>includes</em> a gamma function).</p>
+<p>So we say that each step <span class="math notranslate nohighlight">\(l_i\)</span> is sampled as:</p>
+<div class="math notranslate nohighlight">
+\[l_i \sim Gamma(k,\theta)\]</div>
 <p>Let’s see what this looks like.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -849,12 +855,12 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro-python.html"
+       href="intro-github.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction to python</p>
+        <p class="prev-next-title">Introduction to Github and Colab</p>
       </div>
     </a>
     <a class="right-next"

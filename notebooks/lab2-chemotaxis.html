@@ -423,9 +423,10 @@ document.write(`
 \[\nabla S \approx s_t - s_{t-1}\]</div>
 <p>Our chemotaxis agent thus behaves as follows:</p>
 <ul class="simple">
-<li><p>When the gradient is positive, meaning you are going “up” the gradient, the probability of turning and sampling from a Levy walk power law (i.e., a jump) is set to <em>p pos</em>.</p></li>
-<li><p>When the gradient is negative, the probability of a jump is set to <em>p neg</em>. (See code below, for an example).</p></li>
-<li><p>If the agent “decides” to jump, the direction it takes is uniform random.</p></li>
+<li><p>When the gradient is positive, meaning you are going “up” the gradient, the probabilty of changing course and doing a tumble is set to <em>p pos</em>.</p></li>
+<li><p>When the gradient is negative, the probability of a doing a tumble is set to <em>p neg</em>. (See code below, for an example).</p></li>
+<li><p>If the agent “decides” to tumble, the direction it takes is uniform random.</p></li>
+<li><p>If no tumble is decided, the agent keeps moving in the direciton it was going before.</p></li>
 <li><p>The length of travel now is just a single step on the grid. This makes our decision problem a lot simpler. Basically this is equivalent to making the diffusion parameter, <span class="math notranslate nohighlight">\(D\)</span>, consistent across experiments.</p></li>
 </ul>
 </section>
@@ -517,10 +518,8 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent_patches</span><span class="p">(</span>
-        <span class="n">target_boundary</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent_patches</span><span class="p">(</span>
+        <span class="n">target_boundary</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">scent</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
@@ -533,10 +532,9 @@ document.write(`
 <p>To corrupt the signal we can simply add more Gaussian noise. In this case we will use the <em>add_noise</em> function with a <span class="math notranslate nohighlight">\(\sigma=1\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">noise_sigma</span> <span class="o">=</span> <span class="mf">1.0</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noise_sigma</span> <span class="o">=</span> <span class="mf">1.0</span>
 
-<span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent_patches</span><span class="p">(</span><span class="n">target_boundary</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent_patches</span><span class="p">(</span><span class="n">target_boundary</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">scent</span> <span class="o">=</span> <span class="n">add_noise</span><span class="p">(</span><span class="n">scent</span><span class="p">,</span> <span class="n">noise_sigma</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">scent</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
@@ -554,7 +552,7 @@ document.write(`
 
 <span class="n">scents</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_samples</span><span class="p">):</span>
-    <span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent_patches</span><span class="p">(</span><span class="n">target_boundary</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent_patches</span><span class="p">(</span><span class="n">target_boundary</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">scent</span> <span class="o">=</span> <span class="n">add_noise</span><span class="p">(</span><span class="n">scent</span><span class="p">,</span> <span class="n">noise_sigma</span><span class="p">)</span>
     <span class="n">scents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">scent</span><span class="p">))</span>
 
@@ -643,7 +641,7 @@ document.write(`
 <p>We will use 2 agents in these sims:</p>
 <ul class="simple">
 <li><p>Rando: Uses random Brownian motion search.</p></li>
-<li><p>Chemo: Uses only the detected scent gradient to make a decision as to whether or not to “jump”.</p></li>
+<li><p>Chemo: Uses only the detected scent gradient to make a decision as to whether or not to tumble.</p></li>
 </ul>
 <p>How do these agents work? Check the explorationlib code for details.</p>
 <ul class="simple">
@@ -661,8 +659,8 @@ document.write(`
 
 <span class="c1"># Chemotaxis agent</span>
 <span class="n">min_length</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Minimum step length on the grid</span>
-<span class="n">p_neg</span> <span class="o">=</span> <span class="mf">0.8</span> <span class="c1"># Probability of jumping if gradient is decreasing</span>
-<span class="n">p_pos</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="c1"># Probabilty of jumping if gradient is increasing</span>
+<span class="n">p_neg</span> <span class="o">=</span> <span class="mf">0.80</span> <span class="c1"># Probability of jumping if gradient is decreasing</span>
+<span class="n">p_pos</span> <span class="o">=</span> <span class="mf">0.20</span> <span class="c1"># Probabilty of jumping if gradient is increasing</span>
 <span class="n">chemo</span> <span class="o">=</span> <span class="n">GradientDiffusionGrid</span><span class="p">(</span>
     <span class="n">min_length</span><span class="o">=</span><span class="n">min_length</span><span class="p">,</span>
     <span class="n">p_neg</span><span class="o">=</span><span class="n">p_neg</span><span class="p">,</span>
@@ -834,7 +832,7 @@ document.write(`
 <span class="c1"># Dists</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">scores</span><span class="p">),</span> <span class="mi">50</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">scores</span><span class="p">),</span> <span class="mi">15</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Score&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
@@ -861,7 +859,8 @@ document.write(`
 <hr class="docutils" />
 <section id="question-2-4">
 <h3>Question 2.4<a class="headerlink" href="#question-2-4" title="Permalink to this heading">#</a></h3>
-<p>Change the number of targets to 100 and re-run the simulations. How did the performance of the agents change as you increased the density of the food in the environment? Why does this happen? Be specific.</p>
+<p>Right now we have set <em>p neg</em> and <em>p pos</em> to 80% and 20% respectively. This means that the probability of stopping a run and tumbling is 80% of the time when a gradient is not increasing and 20% of the time when it is. Let’s see how the performance changes when we make the algorithm almost deterministic. Write down the (approximate) performance numbers you have above (total run distance, number of deaths, and total reward), change <em>p neg</em> to 1.00 and <em>p pos</em> to 0.00. This means that whenever the gradient is increasing, our sniff valentino will keep running and when it decreases it will always tumble.</p>
+<p>Wha the performance of our chemotaxic agent when you make this a deterministic algorithm? Why do you think this change in performance occured? Be specific.</p>
 <p><strong>Answer:</strong></p>
 <p><em>(insert response here)</em></p>
 <hr class="docutils" />

@@ -549,7 +549,7 @@ document.write(`
 <p>Let’s start with a simple set of simulations using the parameters below. The parameters get passed to the DDM agent as a numpy array.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">.05</span> <span class="c1"># boundary height</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">.15</span> <span class="c1"># boundary height</span>
 <span class="n">v</span> <span class="o">=</span> <span class="o">-</span><span class="mf">.05</span> <span class="c1"># strong drift-rate</span>
 <span class="n">tr</span> <span class="o">=</span> <span class="mf">.25</span> <span class="c1"># nondecision time (in seconds)</span>
 <span class="n">z</span> <span class="o">=</span> <span class="mf">.5</span> <span class="c1"># starting point ([0,1], fraction of a)</span>
@@ -637,9 +637,9 @@ ntrials = 1000</p>
 <hr class="docutils" />
 <section id="question-1-2">
 <h3>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this heading">#</a></h3>
-<p>Re-run the simulations above, but go back to the baseline parameters:</p>
+<p>Re-run the simulations above, but go back to the baseline parameters, but now change the drift rate to what is below:</p>
 <p>a = .05  \
-v = -.05 <br />
+v = .1 <br />
 tr = .25 \
 z = .5  \</p>
 <p>dt = .001 \
@@ -654,7 +654,7 @@ ntrials = 1000</p>
 </section>
 <section id="section-2-using-sensory-evidence-to-explore">
 <h2>Section 2 - Using Sensory Evidence To Explore<a class="headerlink" href="#section-2-using-sensory-evidence-to-explore" title="Permalink to this heading">#</a></h2>
-<p>In this section we take on accumulating evidence as a policy for decision making. Our venue is still chemotaxis, but now our sensors are noisy. The presence of this uncertainty makes decisions–of the kind common to decision theory–a necessity.</p>
+<p>In this section we take on accumulating evidence as a policy for decision making. We’ll call this agent our “decider” agent. Our venue is still chemotaxis, but now our sensors are noisy. The presence of this uncertainty makes decisions–of the kind common to decision theory–a necessity.</p>
 <p>The agents we will be using are the same as used in the Chemotaxis lab (Lab 3). Look back there to see the structure of the gradient search. But here we will explore something in more detail that we skipped over in that lab: evidence accumulation.</p>
 </section>
 <section id="accumulation-of-chemosignals">
@@ -800,7 +800,7 @@ ntrials = 1000</p>
 </div>
 </div>
 <hr class="docutils" />
-<p>### Question 2.1</p>
+<p>###Question 2.1</p>
 <p>In the context of this gradient decision that our wandering agent does, what should <em>increasing</em> the drift rate do to the agent’s behavior?</p>
 <p><strong>Answer:</strong></p>
 <p><em>(insert response here)</em></p>

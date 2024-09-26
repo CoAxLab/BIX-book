@@ -727,7 +727,7 @@ ntrials = 1000</p>
 <section id="create-environment">
 <h3>Create environment<a class="headerlink" href="#create-environment" title="Permalink to this heading">#</a></h3>
 <p>The name of the env for this section is the <em>ScentGrid</em>. It basically parses up the continuous space into a grid of steps.</p>
-<p>Let’s add some targets and scents to it. Now we are doing to include the drop out of the scent, setting <em>p_scent</em> to 0.95 (95% drop out)</p>
+<p>Let’s add some targets and scents to it. Now we are doing to include the drop out of the scent, setting <em>p_scent</em> to 0.1 (90% drop out)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shared exp parameters</span>
@@ -754,7 +754,7 @@ ntrials = 1000</p>
 
 <span class="c1"># Scents</span>
 <span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.95</span>
+<span class="n">p_scent</span> <span class="o">=</span> <span class="mf">0.1</span>
 <span class="n">noise_sigma</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="n">coord</span><span class="p">,</span> <span class="n">scent</span> <span class="o">=</span> <span class="n">create_grid_scent_patches</span><span class="p">(</span><span class="n">target_boundary</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p_scent</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">noise_sigma</span><span class="p">)</span>
 <span class="n">scents</span> <span class="o">=</span> <span class="p">[</span><span class="n">scent</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">targets</span><span class="p">))]</span>
@@ -790,7 +790,7 @@ ntrials = 1000</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Our parameters</span>
-<span class="n">drift_rates</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]</span>
+<span class="n">drift_rates</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.95</span><span class="p">]</span>
 
 <span class="c1"># For plotting</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;darkgreen&quot;</span><span class="p">,</span> <span class="s2">&quot;seagreen&quot;</span><span class="p">,</span> <span class="s2">&quot;cadetblue&quot;</span><span class="p">,</span> <span class="s2">&quot;steelblue&quot;</span><span class="p">,</span> <span class="s2">&quot;mediumpurple&quot;</span><span class="p">]</span>
@@ -812,7 +812,7 @@ ntrials = 1000</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exp params</span>
-<span class="n">threshold</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">4.0</span>
 <span class="n">accumulate_sigma</span> <span class="o">=</span> <span class="mf">1.0</span>
 
 <span class="n">num_experiments</span> <span class="o">=</span> <span class="mi">100</span>

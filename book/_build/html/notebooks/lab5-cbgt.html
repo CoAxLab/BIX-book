@@ -444,7 +444,8 @@ document.write(`
 <p>This next code line sets Colab’s working directory to the CGBT library which we’ve just copied in.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive/Code/CBGT&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;CBGT&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -454,8 +455,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import libraries and configure plots</span>
-
-<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">random</span>
@@ -661,7 +661,7 @@ document.write(`
 </section>
 <section id="how-selection-works-in-this-model">
 <h3>How selection works in this model<a class="headerlink" href="#how-selection-works-in-this-model" title="Permalink to this heading">#</a></h3>
-<p>During the selection process (between choices during decision making), stimulation is applied to the cortex, causing cortical activity to ramp upwards. The cortex then feeds into the direct and indirect populations of the striatum, which then affects the firing rates in other areas of the basal ganglia. The diagram above shows which populations are excitatory (increase activation) and which are inhibitory (reduce activation).</p>
+<p>During the selection process (between choices during decision making), stimulation is applied to the cortex, causing cortical activity to ramp upwards. The cortex then feeds into the direct and indirect populations of the striatum, which then affects the firing rates in other areas of the basal ganglia. The diagram in the lecture slides shows which populations are excitatory (increase activation) and which are inhibitory (reduce activation).</p>
 </section>
 <hr class="docutils" />
 <section id="question-1-1">
@@ -856,13 +856,8 @@ document.write(`
 <section id="question-3-1-predict-effect-on-reaction-time">
 <h3>Question 3.1: Predict effect on reaction time<a class="headerlink" href="#question-3-1-predict-effect-on-reaction-time" title="Permalink to this heading">#</a></h3>
 <p>When the strength of the indirect pathway is increased, what will happen to the network’s average reaction time?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your answer here, as a python comment</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p><strong>Answer:</strong></p>
+<p><em>(insert response here)</em></p>
 </section>
 <hr class="docutils" />
 <section id="question-3-2">
